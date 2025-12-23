@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>David Matthew Quintana · Desarrollo web bilingüe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Sitios web bilingües y prácticos para pequeños negocios y profesionales independientes."
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-language="es">
+  <div class="logo-background">
+    <div class="bg-logo">DMQ</div>
+  </div>
+
+  <div class="floating-toggle">
+    <span data-lang="en" class="inactive">EN</span>
+    <span>/</span>
+    <span data-lang="es">ES</span>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <a href="index.html">
+          <h1>David Matthew Quintana</h1>
+        </a>
+
+        <p class="tagline" lang-block data-lang="en">
+          Bilingual Web Developer | Creating practical solutions for small businesses and professionals
+        </p>
+        <p class="tagline" lang-block data-lang="es" data-active="true">
+          Desarrollador Web Bilingüe | Creando soluciones prácticas para pequeños negocios y profesionales
+        </p>
+      </div>
+
+      <div class="header-right">
+        <div class="lang-switcher" aria-label="Selector de idioma">
+          <button type="button" data-lang="en">EN</button>
+          <button type="button" data-lang="es" data-active="true">ES</button>
+        </div>
+
+        <nav class="nav" aria-label="Navegación principal">
+          <a href="index.html" lang-block data-lang="en">Home</a>
+          <a href="pricing.html" lang-block data-lang="en">Pricing</a>
+          <a href="#contact" class="cta" lang-block data-lang="en">Contact</a>
+
+          <a href="index.html" lang-block data-lang="es" data-active="true">Inicio</a>
+          <a href="pricing.html" lang-block data-lang="es" data-active="true">Precios</a>
+          <a href="#contact" class="cta" lang-block data-lang="es" data-active="true">Contacto</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="top" class="hero section-spacing" aria-labelledby="hero-title-es">
+      <div class="container">
+        <div class="hero-left">
+          <div data-lang="en" lang-block>
+            <h2 id="hero-title-en">Bilingual, accessible, results-focused sites</h2>
+            <p>
+              I design and build web platforms that don't just look good—they solve real problems. Specialized in bilingual content (English/Spanish) and accessibility, I help local businesses connect with their community and project professional authority.
+            </p>
+            <div style="display: flex; gap: var(--space-md); flex-wrap: wrap; margin-bottom: var(--space-lg);">
+              <a href="#projects" class="btn btn-primary">View projects</a>
+              <a href="#contact" class="btn btn-secondary">Work together</a>
+            </div>
+            <nav style="display: flex; gap: var(--space-lg); flex-wrap: wrap; margin-top: var(--space-md); padding-top: var(--space-md); border-top: 1px solid rgba(148, 163, 184, 0.1);">
+              <a href="#projects" style="color: var(--accent-2); text-decoration: none; font-size: var(--text-sm); font-weight: 600;">Projects</a>
+              <a href="#skills" style="color: var(--accent-2); text-decoration: none; font-size: var(--text-sm); font-weight: 600;">Skills</a>
+              <a href="#services" style="color: var(--accent-2); text-decoration: none; font-size: var(--text-sm); font-weight: 600;">Services</a>
+            </nav>
+          </div>
+
+          <div data-lang="es" lang-block data-active="true">
+            <h2 id="hero-title-es">Sitios bilingües, accesibles y enfocados en resultados</h2>
+            <p>
+              Diseño y construyo plataformas web que no solo se ven bien, sino que resuelven problemas reales. Especializado en contenido bilingüe (inglés/español) y accesibilidad, ayudo a negocios locales a conectar con su comunidad y proyectar autoridad profesional.
+            </p>
+            <div style="display: flex; gap: var(--space-md); flex-wrap: wrap; margin-bottom: var(--space-lg);">
+              <a href="#projects" class="btn btn-primary">Ver proyectos</a>
+              <a href="#contact" class="btn btn-secondary">Trabajemos juntos</a>
+            </div>
+            <nav style="display: flex; gap: var(--space-lg); flex-wrap: wrap; margin-top: var(--space-md); padding-top: var(--space-md); border-top: 1px solid rgba(148, 163, 184, 0.1);">
+              <a href="#projects" style="color: var(--accent-2); text-decoration: none; font-size: var(--text-sm); font-weight: 600;">Proyectos</a>
+              <a href="#skills" style="color: var(--accent-2); text-decoration: none; font-size: var(--text-sm); font-weight: 600;">Habilidades</a>
+              <a href="#services" style="color: var(--accent-2); text-decoration: none; font-size: var(--text-sm); font-weight: 600;">Servicios</a>
+            </nav>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <img
+            src="profile.jpg"
+            alt="Retrato de David Matthew Quintana"
+            class="profile-photo"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="about section-spacing" aria-labelledby="about-title-es">
+      <div class="container">
+        <div class="about-text">
+          <div data-lang="en" lang-block>
+            <h3 id="about-title-en">About me</h3>
+            <p>
+              I'm David Quintana, a community-focused developer, bilingual Notary Public in Colorado, and senior at MSU Denver in Health Care Information Systems.
+            </p>
+            <p>
+              As founder of Quintana Notary & Signing, I understand firsthand the challenges of running a small business. My approach combines technical precision with cultural sensitivity, allowing me to build sites that are both technically robust and emotionally resonant. My experience in healthcare systems and legal processes enables me to provide an extra layer of trust and structure in every project I undertake.
+            </p>
+          </div>
+
+          <div data-lang="es" lang-block data-active="true">
+            <h3 id="about-title-es">Sobre mí</h3>
+            <p>
+              Soy David Quintana, un desarrollador enfocado en el impacto comunitario, Notario Público bilingüe en Colorado y estudiante de último año en Health Care Information Systems en MSU Denver.
+            </p>
+            <p>
+              Como fundador de Quintana Notaría y Firmas, entiendo de primera mano los retos de gestionar un pequeño negocio. Mi enfoque combina la precisión técnica con la sensibilidad cultural, permitiéndome construir sitios que son técnicamente robustos y emocionalmente resonantes. Mi experiencia en sistemas de salud y trámites legales me permite ofrecer una capa extra de confianza y estructura en cada proyecto que emprendo.
+            </p>
+          </div>
+        </div>
+
+        <div class="about-photo">
+          <img
+            src="about-photo.jpg"
+            alt="Retrato de David Matthew Quintana"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="projects section-spacing">
+      <div class="container">
+        <header data-lang="en" lang-block>
+          <h3>Selected projects</h3>
+          <p class="section-note">
+            Click a card to visit the live site or review the code on GitHub.
+          </p>
+        </header>
+
+        <header data-lang="es" lang-block data-active="true">
+          <h3>Proyectos seleccionados</h3>
+          <p class="section-note">
+            Haz clic en una tarjeta para ver el sitio en vivo o revisar el código en GitHub.
+          </p>
+        </header>
+
+        <div class="project-grid">
+          <article class="project-card">
+            <a href="https://tiendasalvadorenadenver.com" target="_blank" rel="noopener noreferrer">
+              <img
+                src="tienda-salvadorena-homepage-sc.png"
+                alt="Sitio Tienda Salvadoreña en Denver"
+                class="project-thumb"
+              />
+            </a>
+            <div class="project-body">
+              <div data-lang="en" lang-block>
+                <h4>Tienda Salvadoreña</h4>
+                <p class="project-subtitle">Digital Preservation of a 30-Year Legacy</p>
+                <p class="project-desc">
+                  Digitized Denver's oldest Salvadoran grocery store with a focus on cultural identity.
+                </p>
+                <ul class="project-highlights">
+                  <li><strong>Technical Achievement:</strong> Custom translation engine in Vanilla JS (500+ keys) with language persistence.</li>
+                  <li><strong>Impact:</strong> AI integration for nostalgic visuals and unique content (Pollo Campero guide) that connects with the diaspora.</li>
+                  <li><strong>Stack:</strong> HTML, CSS Grid/Flexbox, JavaScript, AI-Enhanced Visuals.</li>
+                </ul>
+              </div>
+              <div data-lang="es" lang-block data-active="true">
+                <h4>Tienda Salvadoreña</h4>
+                <p class="project-subtitle">Preservación Digital de un Legado de 30 Años</p>
+                <p class="project-desc">
+                  Digitalicé el supermercado salvadoreño más antiguo de Denver con un enfoque en la identidad cultural.
+                </p>
+                <ul class="project-highlights">
+                  <li><strong>Logro Técnico:</strong> Motor de traducción personalizado en Vanilla JS (500+ claves) con persistencia de idioma.</li>
+                  <li><strong>Impacto:</strong> Integración de IA para visuales nostálgicos y contenido único (guía de Pollo Campero) que conecta con la diáspora.</li>
+                  <li><strong>Stack:</strong> HTML, CSS Grid/Flexbox, JavaScript, AI-Enhanced Visuals.</li>
+                </ul>
+              </div>
+
+              <div class="project-links">
+                <a href="tienda-case-study.html" data-lang="en" lang-block>
+                  Case Study
+                </a>
+                <a href="tienda-case-study.html" data-lang="es" lang-block data-active="true">
+                  Caso de Estudio
+                </a>
+
+                <a href="https://tiendasalvadorenadenver.com" target="_blank" rel="noopener noreferrer" data-lang="en" lang-block>
+                  Live site
+                </a>
+                <a href="https://tiendasalvadorenadenver.com" target="_blank" rel="noopener noreferrer" data-lang="es" lang-block data-active="true">
+                  Sitio en vivo
+                </a>
+
+                <a href="https://github.com/dquint32" target="_blank" rel="noopener noreferrer" data-lang="en" lang-block>
+                  Code on GitHub
+                </a>
+                <a href="https://github.com/dquint32" target="_blank" rel="noopener noreferrer" data-lang="es" lang-block data-active="true">
+                  Código en GitHub
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <a href="https://quintananotarysigning.com" target="_blank" rel="noopener noreferrer">
+              <img
+                src="quintana-notary-signing-homepage-sc.png"
+                alt="Sitio Quintana Notary & Signing"
+                class="project-thumb"
+              />
+            </a>
+            <div class="project-body">
+              <div data-lang="en" lang-block>
+                <h4>Quintana Notary & Signing</h4>
+                <p class="project-subtitle">Legal Authority and Mobile Conversion</p>
+                <p class="project-desc">
+                  Active professional platform for bilingual notary services, designed to build trust and capture clients.
+                </p>
+                <ul class="project-highlights">
+                  <li><strong>Technical Achievement:</strong> Mobile-First design with persistent contact bar and WCAG 2.1 AA accessibility compliance.</li>
+                  <li><strong>Impact:</strong> Real business tool managing bilingual inquiries and projecting authority in the legal sector.</li>
+                  <li><strong>Stack:</strong> HTML, CSS, JavaScript (Local Storage for UX), SEO Optimization.</li>
+                </ul>
+              </div>
+              <div data-lang="es" lang-block data-active="true">
+                <h4>Quintana Notary & Signing</h4>
+                <p class="project-subtitle">Autoridad Legal y Conversión Móvil</p>
+                <p class="project-desc">
+                  Plataforma profesional activa para servicios notariales bilingües, diseñada para generar confianza y captar clientes.
+                </p>
+                <ul class="project-highlights">
+                  <li><strong>Logro Técnico:</strong> Diseño Mobile-First con barra de contacto persistente y cumplimiento de accesibilidad WCAG 2.1 AA.</li>
+                  <li><strong>Impacto:</strong> Herramienta de negocio real que gestiona consultas bilingües y proyecta autoridad en el sector legal.</li>
+                  <li><strong>Stack:</strong> HTML, CSS, JavaScript (Local Storage para UX), Optimización SEO.</li>
+                </ul>
+              </div>
+
+              <div class="project-links">
+                <a href="quintana-notary-signing-case-study.html" data-lang="en" lang-block>
+                  Case Study
+                </a>
+                <a href="quintana-notary-signing-case-study.html" data-lang="es" lang-block data-active="true">
+                  Caso de Estudio
+                </a>
+                
+                <a href="https://quintananotarysigning.com" target="_blank" rel="noopener noreferrer" data-lang="en" lang-block>
+                  Live site
+                </a>
+                <a href="https://quintananotarysigning.com" target="_blank" rel="noopener noreferrer" data-lang="es" lang-block data-active="true">
+                  Sitio en vivo
+                </a>
+
+                <a href="https://github.com/dquint32" target="_blank" rel="noopener noreferrer" data-lang="en" lang-block>
+                  Code on GitHub
+                </a>
+                <a href="https://github.com/dquint32" target="_blank" rel="noopener noreferrer" data-lang="es" lang-block data-active="true">
+                  Código en GitHub
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <a href="https://dquint32.github.io/Exam3_CIS3030_MSUDENVER/" target="_blank" rel="noopener noreferrer">
+              <img
+                src="exam3-sc.png"
+                alt="Interactive Quiz Application"
+                class="project-thumb"
+              />
+            </a>
+            <div class="project-body">
+              <div data-lang="en" lang-block>
+                <h4>HTML/CSS/JS Exam Practice Quiz</h4>
+                <p class="project-subtitle">Interactive Educational Assessment Tool</p>
+                <p class="project-desc">
+                  Comprehensive 75-question exam simulator with real-time feedback, visual progress tracking, and detailed explanations.
+                </p>
+                <ul class="project-highlights">
+                  <li><strong>Technical Achievement:</strong> Advanced state management with array-based tracking, dynamic DOM manipulation, and smart code detection using regex patterns.</li>
+                  <li><strong>Impact:</strong> Self-paced learning platform with instant visual feedback, three-panel answer system (code snippets, console output, visual representation).</li>
+                  <li><strong>Stack:</strong> Vanilla JavaScript (ES6+), CSS Grid/Flexbox, HTML5, 700+ lines of modular code with zero dependencies.</li>
+                </ul>
+              </div>
+              <div data-lang="es" lang-block data-active="true">
+                <h4>Examen de Práctica HTML/CSS/JS</h4>
+                <p class="project-subtitle">Herramienta Interactiva de Evaluación Educativa</p>
+                <p class="project-desc">
+                  Simulador de examen completo con 75 preguntas, retroalimentación en tiempo real, seguimiento visual de progreso y explicaciones detalladas.
+                </p>
+                <ul class="project-highlights">
+                  <li><strong>Logro Técnico:</strong> Gestión avanzada de estado con seguimiento basado en arrays, manipulación dinámica del DOM y detección inteligente de código usando patrones regex.</li>
+                  <li><strong>Impacto:</strong> Plataforma de aprendizaje autoguiada con retroalimentación visual instantánea, sistema de respuestas de tres paneles (fragmentos de código, salida de consola, representación visual).</li>
+                  <li><strong>Stack:</strong> JavaScript Vanilla (ES6+), CSS Grid/Flexbox, HTML5, 700+ líneas de código modular sin dependencias externas.</li>
+                </ul>
+              </div>
+              <div class="project-links">
+                <a href="https://dquint32.github.io/Exam3_CIS3030_MSUDENVER/" target="_blank" rel="noopener noreferrer" data-lang="en" lang-block>
+                  Live site
+                </a>
+                <a href="https://dquint32.github.io/Exam3_CIS3030_MSUDENVER/" target="_blank" rel="noopener noreferrer" data-lang="es" lang-block data-active="true">
+                  Sitio en vivo
+                </a>
+
+                <a href="https://github.com/dquint32" target="_blank" rel="noopener noreferrer" data-lang="en" lang-block>
+                  Code on GitHub
+                </a>
+                <a href="https://github.com/dquint32" target="_blank" rel="noopener noreferrer" data-lang="es" lang-block data-active="true">
+                  Código en GitHub
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              <img
+                src="ayudadmv-homepage-sc.png"
+                alt="Plataforma Ayuda DMV"
+                class="project-thumb"
+              />
+            </a>
+            <div class="project-body">
+              <div data-lang="en" lang-block>
+                <h4>Ayuda DMV</h4>
+                <p class="project-subtitle">Community Support and Education</p>
+                <p class="project-desc">
+                  Bilingual resource platform for vehicle and basic legal processes.
+                </p>
+                <ul class="project-highlights">
+                  <li><strong>Focus:</strong> Simplified UX for users navigating complex bureaucratic processes in Spanish.</li>
+                  <li><strong>Stack:</strong> HTML, CSS, Focus on readability and content.</li>
+                </ul>
+              </div>
+              <div data-lang="es" lang-block data-active="true">
+                <h4>Ayuda DMV</h4>
+                <p class="project-subtitle">Apoyo Comunitario y Educación</p>
+                <p class="project-desc">
+                  Plataforma de recursos bilingües para trámites vehiculares y legales básicos.
+                </p>
+                <ul class="project-highlights">
+                  <li><strong>Enfoque:</strong> UX simplificada para usuarios que navegan procesos burocráticos complejos en español.</li>
+                  <li><strong>Stack:</strong> HTML, CSS, enfoque en legibilidad y contenido.</li>
+                </ul>
+              </div>
+              <div class="project-links">
+                <span class="badge" data-lang="en" lang-block>Coming soon</span>
+                <span class="badge" data-lang="es" lang-block data-active="true">Próximamente</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="skills section-spacing" aria-labelledby="skills-title-es">
+      <div class="container">
+        <div data-lang="en" lang-block>
+          <h3 id="skills-title-en">Technical skills</h3>
+          <div class="skills-grid">
+            <div class="skill-category">
+              <h4>Frontend</h4>
+              <ul>
+                <li>HTML5 & Semantic Tagging</li>
+                <li>CSS3 (Grid, Flexbox, Custom Properties)</li>
+                <li>JavaScript (Vanilla ES6+, DOM API)</li>
+                <li>Responsive Web Design</li>
+              </ul>
+            </div>
+            <div class="skill-category">
+              <h4>Design & Ethics</h4>
+              <ul>
+                <li>WCAG 2.1 AA Accessibility</li>
+                <li>Bilingual UX/UI Architecture</li>
+                <li>Mobile-First Methodology</li>
+                <li>Cultural Tone Alignment</li>
+              </ul>
+            </div>
+            <div class="skill-category">
+              <h4>Tools & Systems</h4>
+              <ul>
+                <li>Git / GitHub</li>
+                <li>Information Systems (Health Care Focus)</li>
+                <li>Visual Studio Code</li>
+                <li>Legal & Notarial Standards</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div data-lang="es" lang-block data-active="true">
+          <h3 id="skills-title-es">Habilidades técnicas</h3>
+          <div class="skills-grid">
+            <div class="skill-category">
+              <h4>Frontend</h4>
+              <ul>
+                <li>HTML5 y Etiquetado Semántico</li>
+                <li>CSS3 (Grid, Flexbox, Propiedades Personalizadas)</li>
+                <li>JavaScript (Vanilla ES6+, DOM API)</li>
+                <li>Diseño Web Adaptable (Responsive)</li>
+              </ul>
+            </div>
+            <div class="skill-category">
+              <h4>Diseño y Ética</h4>
+              <ul>
+                <li>Accesibilidad WCAG 2.1 AA</li>
+                <li>Arquitectura UX/UI Bilingüe</li>
+                <li>Metodología Mobile-First</li>
+                <li>Alineación de Tono Cultural</li>
+              </ul>
+            </div>
+            <div class="skill-category">
+              <h4>Herramientas y Sistemas</h4>
+              <ul>
+                <li>Git / GitHub</li>
+                <li>Sistemas de Información (Enfoque en Salud)</li>
+                <li>Visual Studio Code</li>
+                <li>Estándares Legales y Notariales</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="services section-spacing" aria-labelledby="services-title-es">
+      <div class="container">
+        <div data-lang="en" lang-block>
+          <h3 id="services-title-en">How I can help your business</h3>
+          <div class="services-grid">
+            <div class="service-card">
+              <h4>Bilingual Local Presence</h4>
+              <p>I don't just translate text; I design experiences that resonate with both English and Spanish speaking customers, doubling your potential reach.</p>
+            </div>
+            <div class="service-card">
+              <h4>Trust-Based Design</h4>
+              <p>For service businesses (lawyers, medical, legal), trust is everything. I build professional sites that project authority and reliability from the first click.</p>
+            </div>
+            <div class="service-card">
+              <h4>Accessible Growth</h4>
+              <p>I ensure your site is usable by everyone, including people with disabilities, which is not only ethical but improves your SEO and legal compliance.</p>
+            </div>
+          </div>
+        </div>
+
+        <div data-lang="es" lang-block data-active="true">
+          <h3 id="services-title-es">Cómo puedo ayudar a tu negocio</h3>
+          <div class="services-grid">
+            <div class="service-card">
+              <h4>Presencia Local Bilingüe</h4>
+              <p>No solo traduzco texto; diseño experiencias que resuenan tanto con clientes que hablan inglés como español, duplicando tu alcance potencial.</p>
+            </div>
+            <div class="service-card">
+              <h4>Diseño Basado en Confianza</h4>
+              <p>Para negocios de servicios (abogados, médicos, legales), la confianza lo es todo. Construyo sitios profesionales que proyectan autoridad y fiabilidad desde el primer clic.</p>
+            </div>
+            <div class="service-card">
+              <h4>Crecimiento Accesible</h4>
+              <p>Me aseguro de que tu sitio sea usable para todos, incluyendo personas con discapacidades, lo cual no solo es ético, sino que mejora tu SEO y cumplimiento legal.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section-spacing">
+      <div class="container">
+        <div data-lang="en" lang-block>
+          <h3>Contact</h3>
+          <div class="contact-card">
+            <p class="contact-intro">Have a project in mind or need bilingual consulting?</p>
+            <div class="contact-links">
+              <a href="https://www.linkedin.com/in/quintanadm95" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                LinkedIn
+              </a>
+              <a href="https://github.com/dquint32" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                GitHub
+              </a>
+              <a href="tel:+13035004122" class="contact-link-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.81 12.81 0 0 0 .63 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.63A2 2 0 0 1 22 16.92z"></path></svg>
+                303-500-4122
+              </a>
+              <a href="mailto:placasfirmas.david@gmail.com" class="contact-link-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                Email
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div data-lang="es" lang-block data-active="true">
+          <h3>Contacto</h3>
+          <div class="contact-card">
+            <p class="contact-intro">¿Tienes un proyecto en mente o necesitas asesoría bilingüe?</p>
+            <div class="contact-links">
+              <a href="https://www.linkedin.com/in/quintanadm95" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                LinkedIn
+              </a>
+              <a href="https://github.com/dquint32" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                GitHub
+              </a>
+              <a href="tel:+13035004122" class="contact-link-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.81 12.81 0 0 0 .63 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.63A2 2 0 0 1 22 16.92z"></path></svg>
+                303-500-4122
+              </a>
+              <a href="mailto:placasfirmas.david@gmail.com" class="contact-link-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                Correo
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      © <span id="year"></span> David Quintana. 
+      <span data-lang="en" lang-block>All rights reserved.</span>
+      <span data-lang="es" lang-block data-active="true">Todos los derechos reservados.</span>
+    </p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
