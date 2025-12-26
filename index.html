@@ -126,14 +126,15 @@
         </div>
 
         <div class="about-photo">
-  <div style="background: white; border-radius: 50%; padding: 1rem; display: inline-block;">
-    <img
-      src="about-photo.png"
-      alt="Retrato de David Matthew Quintana"
-      style="display: block; border-radius: 50%; width: 200px; height: 200px; object-fit: cover; object-position: center;"
-    />
-  </div>
-</div>
+          <div style="background: white; border-radius: 50%; padding: 1rem; display: inline-block;">
+            <img
+              src="about-photo.png"
+              alt="Retrato de David Matthew Quintana"
+              style="display: block; border-radius: 50%; width: 200px; height: 200px; object-fit: cover; object-position: center;"
+            />
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="projects" class="projects section-spacing">
@@ -323,7 +324,7 @@
           </article>
 
           <article class="project-card">
-            <a href="#" target="_blank" rel="noopener noreferrer">
+            <a href="https://ayuda-dmv.netlify.app" target="_blank" rel="noopener noreferrer">
               <img
                 src="ayudadmv-homepage-sc.png"
                 alt="Plataforma Ayuda DMV"
@@ -354,8 +355,19 @@
                 </ul>
               </div>
               <div class="project-links">
-                <span class="badge" data-lang="en" lang-block>Coming soon</span>
-                <span class="badge" data-lang="es" lang-block data-active="true">Próximamente</span>
+                <a href="https://ayuda-dmv.netlify.app" target="_blank" rel="noopener noreferrer" data-lang="en" lang-block>
+                  Live site
+                </a>
+                <a href="https://ayuda-dmv.netlify.app" target="_blank" rel="noopener noreferrer" data-lang="es" lang-block data-active="true">
+                  Sitio en vivo
+                </a>
+
+                <a href="https://github.com/dquint32" target="_blank" rel="noopener noreferrer" data-lang="en" lang-block>
+                  Code on GitHub
+                </a>
+                <a href="https://github.com/dquint32" target="_blank" rel="noopener noreferrer" data-lang="es" lang-block data-active="true">
+                  Código en GitHub
+                </a>
               </div>
             </div>
           </article>
@@ -367,67 +379,91 @@
       <div class="container">
         <div data-lang="en" lang-block>
           <h3 id="skills-title-en">Technical skills</h3>
-          <div class="skills-grid">
-            <div class="skill-category">
-              <h4>Frontend</h4>
-              <ul>
-                <li>HTML5 & Semantic Tagging</li>
-                <li>CSS3 (Grid, Flexbox, Custom Properties)</li>
-                <li>JavaScript (Vanilla ES6+, DOM API)</li>
-                <li>Responsive Web Design</li>
-              </ul>
-            </div>
-            <div class="skill-category">
-              <h4>Design & Ethics</h4>
-              <ul>
-                <li>WCAG 2.1 AA Accessibility</li>
-                <li>Bilingual UX/UI Architecture</li>
-                <li>Mobile-First Methodology</li>
-                <li>Cultural Tone Alignment</li>
-              </ul>
-            </div>
-            <div class="skill-category">
-              <h4>Tools & Systems</h4>
-              <ul>
-                <li>Git / GitHub</li>
-                <li>Information Systems (Health Care Focus)</li>
-                <li>Visual Studio Code</li>
-                <li>Legal & Notarial Standards</li>
-              </ul>
-            </div>
+          <p class="section-note">
+            Core competencies for building bilingual, accessible, and results-driven web experiences.
+          </p>
+          
+          <div class="project-grid">
+            <article class="project-card" style="grid-template-columns: 1fr; min-height: auto;">
+              <div class="project-body">
+                <h4>Frontend Development</h4>
+                <ul class="skill-list">
+                  <li><strong>HTML5 & Semantic Tagging:</strong> Building accessible, SEO-friendly markup with proper document structure and ARIA roles.</li>
+                  <li><strong>CSS3 (Grid, Flexbox, Custom Properties):</strong> Modern layout systems and design tokens for maintainable, responsive interfaces.</li>
+                  <li><strong>JavaScript (Vanilla ES6+, DOM API):</strong> Client-side interactivity, state management, and event-driven architecture without framework dependencies.</li>
+                  <li><strong>Responsive Web Design:</strong> Mobile-first layouts that adapt seamlessly across devices and screen sizes.</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="project-card" style="grid-template-columns: 1fr; min-height: auto;">
+              <div class="project-body">
+                <h4>Design & Ethics</h4>
+                <ul class="skill-list">
+                  <li><strong>WCAG 2.1 AA Accessibility:</strong> Ensuring inclusive experiences for users with disabilities through semantic markup, keyboard navigation, and screen reader compatibility.</li>
+                  <li><strong>Bilingual UX/UI Architecture:</strong> Culturally-aware design that resonates with both English and Spanish-speaking audiences.</li>
+                  <li><strong>Mobile-First Methodology:</strong> Prioritizing performance and usability on smaller screens before scaling up.</li>
+                  <li><strong>Cultural Tone Alignment:</strong> Crafting messages that reflect community values and build trust across language barriers.</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="project-card" style="grid-template-columns: 1fr; min-height: auto;">
+              <div class="project-body">
+                <h4>Tools & Systems</h4>
+                <ul class="skill-list">
+                  <li><strong>Git / GitHub:</strong> Version control, collaborative workflows, and code documentation for transparent development.</li>
+                  <li><strong>Information Systems (Health Care Focus):</strong> Understanding of data privacy, HIPAA compliance, and secure information handling from academic training.</li>
+                  <li><strong>Visual Studio Code:</strong> Modern development environment with extensions for linting, formatting, and productivity.</li>
+                  <li><strong>Legal & Notarial Standards:</strong> Professional experience with compliance, documentation accuracy, and client confidentiality in legal contexts.</li>
+                </ul>
+              </div>
+            </article>
           </div>
         </div>
 
         <div data-lang="es" lang-block data-active="true">
           <h3 id="skills-title-es">Habilidades técnicas</h3>
-          <div class="skills-grid">
-            <div class="skill-category">
-              <h4>Frontend</h4>
-              <ul>
-                <li>HTML5 y Etiquetado Semántico</li>
-                <li>CSS3 (Grid, Flexbox, Propiedades Personalizadas)</li>
-                <li>JavaScript (Vanilla ES6+, DOM API)</li>
-                <li>Diseño Web Adaptable (Responsive)</li>
-              </ul>
-            </div>
-            <div class="skill-category">
-              <h4>Diseño y Ética</h4>
-              <ul>
-                <li>Accesibilidad WCAG 2.1 AA</li>
-                <li>Arquitectura UX/UI Bilingüe</li>
-                <li>Metodología Mobile-First</li>
-                <li>Alineación de Tono Cultural</li>
-              </ul>
-            </div>
-            <div class="skill-category">
-              <h4>Herramientas y Sistemas</h4>
-              <ul>
-                <li>Git / GitHub</li>
-                <li>Sistemas de Información (Enfoque en Salud)</li>
-                <li>Visual Studio Code</li>
-                <li>Estándares Legales y Notariales</li>
-              </ul>
-            </div>
+          <p class="section-note">
+            Competencias fundamentales para construir experiencias web bilingües, accesibles y orientadas a resultados.
+          </p>
+          
+          <div class="project-grid">
+            <article class="project-card" style="grid-template-columns: 1fr; min-height: auto;">
+              <div class="project-body">
+                <h4>Desarrollo Frontend</h4>
+                <ul class="skill-list">
+                  <li><strong>HTML5 y Etiquetado Semántico:</strong> Construcción de marcado accesible y optimizado para SEO con estructura documental apropiada y roles ARIA.</li>
+                  <li><strong>CSS3 (Grid, Flexbox, Propiedades Personalizadas):</strong> Sistemas de diseño modernos y tokens de diseño para interfaces mantenibles y adaptables.</li>
+                  <li><strong>JavaScript (Vanilla ES6+, DOM API):</strong> Interactividad del lado del cliente, gestión de estado y arquitectura basada en eventos sin dependencias de frameworks.</li>
+                  <li><strong>Diseño Web Adaptable (Responsive):</strong> Layouts mobile-first que se adaptan perfectamente a todos los dispositivos y tamaños de pantalla.</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="project-card" style="grid-template-columns: 1fr; min-height: auto;">
+              <div class="project-body">
+                <h4>Diseño y Ética</h4>
+                <ul class="skill-list">
+                  <li><strong>Accesibilidad WCAG 2.1 AA:</strong> Garantizando experiencias inclusivas para usuarios con discapacidades mediante marcado semántico, navegación por teclado y compatibilidad con lectores de pantalla.</li>
+                  <li><strong>Arquitectura UX/UI Bilingüe:</strong> Diseño culturalmente consciente que resuena tanto con audiencias de habla inglesa como española.</li>
+                  <li><strong>Metodología Mobile-First:</strong> Priorizando rendimiento y usabilidad en pantallas pequeñas antes de escalar.</li>
+                  <li><strong>Alineación de Tono Cultural:</strong> Elaborando mensajes que reflejan valores comunitarios y construyen confianza a través de barreras lingüísticas.</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="project-card" style="grid-template-columns: 1fr; min-height: auto;">
+              <div class="project-body">
+                <h4>Herramientas y Sistemas</h4>
+                <ul class="skill-list">
+                  <li><strong>Git / GitHub:</strong> Control de versiones, flujos de trabajo colaborativos y documentación de código para desarrollo transparente.</li>
+                  <li><strong>Sistemas de Información (Enfoque en Salud):</strong> Comprensión de privacidad de datos, cumplimiento HIPAA y manejo seguro de información desde formación académica.</li>
+                  <li><strong>Visual Studio Code:</strong> Entorno de desarrollo moderno con extensiones para linting, formateo y productividad.</li>
+                  <li><strong>Estándares Legales y Notariales:</strong> Experiencia profesional con cumplimiento normativo, precisión en documentación y confidencialidad del cliente en contextos legales.</li>
+                </ul>
+              </div>
+            </article>
           </div>
         </div>
       </div>
@@ -558,4 +594,3 @@
   <script src="main.js"></script>
 </body>
 </html>
-          
