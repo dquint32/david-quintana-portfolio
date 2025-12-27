@@ -9,6 +9,49 @@
     content="Sitios web bilingües y prácticos para pequeños negocios y profesionales independientes."
   />
   <link rel="stylesheet" href="styles.css" />
+  
+  <style>
+    /* Fix 1: "Why This Matters" Section 
+       Forces a dark background so the Teal/Light text is readable.
+    */
+    .feature-highlight {
+      background: #0f1724 !important; /* Dark Navy */
+      border: 1px solid #1e293b !important;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    .feature-highlight strong {
+      color: #2dd4bf !important; /* Bright Teal */
+      text-shadow: none !important;
+    }
+
+    .feature-highlight p {
+      color: #e2e8f0 !important; /* Very Light Gray/White */
+      font-weight: 400;
+    }
+
+    /* Fix 2: "Impact & Technical Highlights" (Results Cards)
+       Forces dark cards to ensure text contrast against the background.
+    */
+    .result-card {
+      background: #0f1724 !important; /* Dark Navy */
+      border: 1px solid #1e293b !important;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .result-card h4 {
+      color: #2dd4bf !important; /* Bright Teal */
+    }
+
+    .result-card p {
+      color: #cbd5e1 !important; /* Light Gray */
+    }
+    
+    /* Ensure the grid gap is visible */
+    .results-grid {
+      gap: 1.5rem;
+    }
+  </style>
 </head>
 <body data-language="es">
   <div class="logo-background">
