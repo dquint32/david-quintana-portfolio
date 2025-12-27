@@ -69,6 +69,10 @@
     // Only apply if user hasn't requested reduced motion
     if (prefersReducedMotion) return;
 
+    // Only apply on devices with hover capability (not mobile/touch)
+    const hasHover = window.matchMedia('(hover: hover)').matches;
+    if (!hasHover) return;
+
     // Create custom cursor elements
     const cursor = document.createElement('div');
     const cursorGlow = document.createElement('div');
