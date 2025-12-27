@@ -37,11 +37,6 @@
       </div>
 
       <div class="header-right">
-        <div class="lang-switcher" aria-label="Selector de idioma">
-          <button type="button" data-lang="en">EN</button>
-          <button type="button" data-lang="es" data-active="true">ES</button>
-        </div>
-
         <nav class="nav" aria-label="Navegación principal">
           <a href="index.html" lang-block data-lang="en">Home</a>
           <a href="pricing.html" lang-block data-lang="en">Pricing</a>
@@ -56,15 +51,15 @@
   </header>
 
   <main>
-    <section id="top" class="hero section-spacing" aria-labelledby="hero-title-es">
-      <div class="container">
+    <section id="top" class="section-spacing" aria-labelledby="hero-title">
+      <div class="container hero">
         <div class="hero-left">
           <div data-lang="en" lang-block>
             <h2 id="hero-title-en">Bilingual, accessible, results-focused sites</h2>
             <p>
               I design and build web platforms that don't just look good—they solve real problems. Specialized in bilingual content (English/Spanish) and accessibility, I help local businesses connect with their community and project professional authority.
             </p>
-            <div style="display: flex; gap: var(--space-md); flex-wrap: wrap;">
+            <div class="hero-cta-group">
               <a href="#projects" class="btn btn-primary">View projects</a>
               <a href="#contact" class="btn btn-secondary">Work together</a>
             </div>
@@ -75,7 +70,7 @@
             <p>
               Diseño y construyo plataformas web que no solo se ven bien, sino que resuelven problemas reales. Especializado en contenido bilingüe (inglés/español) y accesibilidad, ayudo a negocios locales a conectar con su comunidad y proyectar autoridad profesional.
             </p>
-            <div style="display: flex; gap: var(--space-md); flex-wrap: wrap;">
+            <div class="hero-cta-group">
               <a href="#projects" class="btn btn-primary">Ver proyectos</a>
               <a href="#contact" class="btn btn-secondary">Trabajemos juntos</a>
             </div>
@@ -88,21 +83,21 @@
             alt="Retrato de David Matthew Quintana"
             class="profile-photo"
           />
-          <nav style="display: flex; gap: var(--space-md); flex-wrap: wrap; margin-top: var(--space-md); justify-content: center;">
-            <a href="#projects" style="color: var(--accent-2); text-decoration: none; font-size: var(--text-sm); font-weight: 600;" data-lang="en" lang-block>Projects</a>
-            <a href="#skills" style="color: var(--accent-2); text-decoration: none; font-size: var(--text-sm); font-weight: 600;" data-lang="en" lang-block>Skills</a>
-            <a href="#services" style="color: var(--accent-2); text-decoration: none; font-size: var(--text-sm); font-weight: 600;" data-lang="en" lang-block>Services</a>
+          <nav class="hero-nav">
+            <a href="#projects" data-lang="en" lang-block>Projects</a>
+            <a href="#skills" data-lang="en" lang-block>Skills</a>
+            <a href="#services" data-lang="en" lang-block>Services</a>
             
-            <a href="#projects" style="color: var(--accent-2); text-decoration: none; font-size: var(--text-sm); font-weight: 600;" data-lang="es" lang-block data-active="true">Proyectos</a>
-            <a href="#skills" style="color: var(--accent-2); text-decoration: none; font-size: var(--text-sm); font-weight: 600;" data-lang="es" lang-block data-active="true">Habilidades</a>
-            <a href="#services" style="color: var(--accent-2); text-decoration: none; font-size: var(--text-sm); font-weight: 600;" data-lang="es" lang-block data-active="true">Servicios</a>
+            <a href="#projects" data-lang="es" lang-block data-active="true">Proyectos</a>
+            <a href="#skills" data-lang="es" lang-block data-active="true">Habilidades</a>
+            <a href="#services" data-lang="es" lang-block data-active="true">Servicios</a>
           </nav>
         </div>
       </div>
     </section>
 
-    <section class="about section-spacing" aria-labelledby="about-title-es">
-      <div class="container">
+    <section class="section-spacing" aria-labelledby="about-title">
+      <div class="container about">
         <div class="about-text">
           <div data-lang="en" lang-block>
             <h3 id="about-title-en">About me</h3>
@@ -120,49 +115,46 @@
               Soy David Quintana, un desarrollador enfocado en el impacto comunitario, Notario Público bilingüe en Colorado y estudiante de último año en Health Care Information Systems en MSU Denver.
             </p>
             <p>
-              Como fundador de Quintana Notary & Signing, entiendo de primera mano los retos de gestionar un pequeño negocio. Mi enfoque combina la precisión técnica con la sensibilidad cultural, permitiéndome construir sitios que son técnicamente robustos y emocionalmente resonantes. Mi experiencia en sistemas de salud y trámites legales me permite ofrecer una capa extra de confianza y estructura en cada proyecto que emprendo.
+              Como fundador de Quintana Notaría y Firmas, entiendo de primera mano los retos de gestionar un pequeño negocio. Mi enfoque combina la precisión técnica con la sensibilidad cultural, permitiéndome construir sitios que son técnicamente robustos y emocionalmente resonantes. Mi experiencia en sistemas de salud y trámites legales me permite ofrecer una capa extra de confianza y estructura en cada proyecto que emprendo.
             </p>
           </div>
         </div>
 
         <div class="about-photo">
-          <div style="background: white; border-radius: 50%; padding: 1rem; display: inline-block;">
-            <img
-              src="about-photo.png"
-              alt="David Matthew Quintana"
-              style="display: block; border-radius: 50%; width: 200px; height: 200px; object-fit: cover; object-position: center;"
-            />
-          </div>
+          <img
+            src="about-photo.png"
+            alt="David Matthew Quintana"
+          />
         </div>
       </div>
     </section>
 
-    <section id="projects" class="projects section-spacing">
-      <div class="container">
-        <header data-lang="en" lang-block>
-          <h3>Selected projects</h3>
-          <p class="section-note">
-            Click a card to visit the live site or review the code on GitHub.
-          </p>
-        </header>
+    <section id="projects" class="section-spacing">
+      <div class="container projects">
+        <div class="section-header">
+          <div data-lang="en" lang-block>
+            <h3>Selected projects</h3>
+            <p>Click a card to visit the live site or review the code on GitHub.</p>
+          </div>
 
-        <header data-lang="es" lang-block data-active="true">
-          <h3>Proyectos seleccionados</h3>
-          <p class="section-note">
-            Haz clic en una tarjeta para ver el sitio en vivo o revisar el código en GitHub.
-          </p>
-        </header>
+          <div data-lang="es" lang-block data-active="true">
+            <h3>Proyectos seleccionados</h3>
+            <p>Haz clic en una tarjeta para ver el sitio en vivo o revisar el código en GitHub.</p>
+          </div>
+        </div>
 
         <div class="project-grid">
-          <!-- Tienda Salvadoreña -->
+          <!-- Tienda Salvadoreña Project Card -->
           <article class="project-card">
-            <a href="https://tiendasalvadorenadenver.com" target="_blank" rel="noopener noreferrer">
-              <img
-                src="tienda-salvadorena-homepage-sc.png"
-                alt="Tienda Salvadoreña website"
-                class="project-thumb"
-              />
-            </a>
+            <div class="project-image-wrapper">
+              <a href="https://tiendasalvadorenadenver.com" target="_blank" rel="noopener noreferrer">
+                <img
+                  src="tienda-salvadorena-homepage-sc.png"
+                  alt="Sitio Tienda Salvadoreña en Denver"
+                  class="project-thumb"
+                />
+              </a>
+            </div>
             <div class="project-body">
               <div data-lang="en" lang-block>
                 <h4>Tienda Salvadoreña</h4>
@@ -171,9 +163,9 @@
                   Digitized Denver's oldest Salvadoran grocery store with a focus on cultural identity.
                 </p>
                 <ul class="project-highlights">
-                  <li><strong>Technical Achievement:</strong> Custom translation engine in Vanilla JS (500+ keys) with language persistence.</li>
-                  <li><strong>Impact:</strong> AI integration for nostalgic visuals and unique content (Pollo Campero guide) that connects with the diaspora.</li>
-                  <li><strong>Stack:</strong> HTML, CSS Grid/Flexbox, JavaScript, AI-Enhanced Visuals.</li>
+                  <li><strong>Technical Achievement:</strong> Engineered a custom, object-oriented translation engine in Vanilla JavaScript using a dictionary-based key system. This system allows for instantaneous switching between English and Spanish without page reloads or external libraries. It features a robust "Critical Fix" architecture that handles nested data-attributes and ensures language persistence across a multi-page site through browser session management.</li>
+                  <li><strong>Impact:</strong> Digitized and preserved the online presence of Denver's oldest Salvadoran grocery store, a 30-year community pillar. By implementing a bilingual UX, the platform connects the older "diaspora" generation with younger English-dominant family members, effectively modernizing the business's reach while honoring its cultural heritage through nostalgic visual storytelling (Pollo Campero and Family History sections).</li>
+                  <li><strong>Stack:</strong> Vanilla JavaScript (ES6), HTML5 (Semantic & ARIA-compliant), CSS3 (Custom Variables, Flexbox, Grid), Google Maps API, and AI-assisted visual asset generation.</li>
                 </ul>
               </div>
               <div data-lang="es" lang-block data-active="true">
@@ -183,9 +175,9 @@
                   Digitalicé el supermercado salvadoreño más antiguo de Denver con un enfoque en la identidad cultural.
                 </p>
                 <ul class="project-highlights">
-                  <li><strong>Logro Técnico:</strong> Motor de traducción personalizado en Vanilla JS (500+ claves) con persistencia de idioma.</li>
-                  <li><strong>Impacto:</strong> Integración de IA para visuales nostálgicos y contenido único (guía de Pollo Campero) que conecta con la diáspora.</li>
-                  <li><strong>Stack:</strong> HTML, CSS Grid/Flexbox, JavaScript, Visuales mejorados con IA.</li>
+                  <li><strong>Logro Técnico:</strong> Desarrollé un motor de traducción personalizado y orientado a objetos en JavaScript Vanilla usando un sistema de claves basado en diccionario. Este sistema permite cambiar instantáneamente entre inglés y español sin recargas de página o librerías externas. Cuenta con una arquitectura robusta de "Critical Fix" que maneja atributos de datos anidados y asegura la persistencia del idioma a través de múltiples páginas mediante gestión de sesión del navegador.</li>
+                  <li><strong>Impacto:</strong> Digitalicé y preservé la presencia en línea del supermercado salvadoreño más antiguo de Denver, un pilar comunitario de 30 años. Al implementar una UX bilingüe, la plataforma conecta a la generación mayor de la "diáspora" con familiares más jóvenes dominantes en inglés, modernizando efectivamente el alcance del negocio mientras honra su herencia cultural a través de narrativa visual nostálgica (secciones de Pollo Campero e Historia Familiar).</li>
+                  <li><strong>Stack:</strong> JavaScript Vanilla (ES6), HTML5 (Semántico y compatible con ARIA), CSS3 (Variables Personalizadas, Flexbox, Grid), API de Google Maps, y generación de activos visuales asistida por IA.</li>
                 </ul>
               </div>
 
@@ -207,15 +199,17 @@
             </div>
           </article>
 
-          <!-- Quintana Notary & Signing -->
+          <!-- Quintana Notary & Signing Project Card -->
           <article class="project-card">
-            <a href="https://quintananotarysigning.com" target="_blank" rel="noopener noreferrer">
-              <img
-                src="quintana-notary-signing-homepage-sc.png"
-                alt="Quintana Notary & Signing website"
-                class="project-thumb"
-              />
-            </a>
+            <div class="project-image-wrapper">
+              <a href="https://quintananotarysigning.com" target="_blank" rel="noopener noreferrer">
+                <img
+                  src="quintana-notary-signing-homepage-sc.png"
+                  alt="Sitio Quintana Notary & Signing"
+                  class="project-thumb"
+                />
+              </a>
+            </div>
             <div class="project-body">
               <div data-lang="en" lang-block>
                 <h4>Quintana Notary & Signing</h4>
@@ -224,9 +218,9 @@
                   Active professional platform for bilingual notary services, designed to build trust and capture clients.
                 </p>
                 <ul class="project-highlights">
-                  <li><strong>Technical Achievement:</strong> Mobile-First design with persistent contact bar and WCAG 2.1 AA accessibility compliance.</li>
-                  <li><strong>Impact:</strong> Real business tool managing bilingual inquiries and projecting authority in the legal sector.</li>
-                  <li><strong>Stack:</strong> HTML, CSS, JavaScript (Local Storage for UX), SEO Optimization.</li>
+                  <li><strong>Technical Achievement:</strong> Developed a robust, state-persistent translation architecture that utilizes the LocalStorage API and the HTML lang attribute to synchronize language settings across a comprehensive 7-page service platform. Additionally, engineered a mobile-first "Action Bar" and a refactored CSS Grid system that transforms complex legal pricing tables into readable, stacked cards on mobile devices, ensuring accessibility for users in urgent legal situations.</li>
+                  <li><strong>Impact:</strong> Streamlined the accessibility of essential legal and notarial services for the bilingual community in the Denver Metro area. By integrating direct-action communication triggers (WhatsApp and click-to-call) and a transparent, multi-language FAQ section, the platform reduces client anxiety and significantly lowers the barrier for users needing certified translations or mobile notary services at their home or office.</li>
+                  <li><strong>Stack:</strong> Vanilla JavaScript (ES6), HTML5 (Semantic & SEO Optimized), CSS3 (Custom Properties & Responsive Refactoring), FontAwesome, LocalStorage API, and Google Maps integration.</li>
                 </ul>
               </div>
               <div data-lang="es" lang-block data-active="true">
@@ -236,9 +230,9 @@
                   Plataforma profesional activa para servicios notariales bilingües, diseñada para generar confianza y captar clientes.
                 </p>
                 <ul class="project-highlights">
-                  <li><strong>Logro Técnico:</strong> Diseño Mobile-First con barra de contacto persistente y cumplimiento de accesibilidad WCAG 2.1 AA.</li>
-                  <li><strong>Impacto:</strong> Herramienta de negocio real que gestiona consultas bilingües y proyecta autoridad en el sector legal.</li>
-                  <li><strong>Stack:</strong> HTML, CSS, JavaScript (Local Storage para UX), Optimización SEO.</li>
+                  <li><strong>Logro Técnico:</strong> Desarrollé una arquitectura de traducción robusta con persistencia de estado que utiliza la API LocalStorage y el atributo HTML lang para sincronizar configuraciones de idioma a través de una plataforma de servicios integral de 7 páginas. Adicionalmente, diseñé una "Barra de Acción" mobile-first y un sistema CSS Grid refactorizado que transforma tablas de precios legales complejas en tarjetas apiladas legibles en dispositivos móviles, asegurando accesibilidad para usuarios en situaciones legales urgentes.</li>
+                  <li><strong>Impacto:</strong> Simplifiqué el acceso a servicios legales y notariales esenciales para la comunidad bilingüe en el área metropolitana de Denver. Al integrar disparadores de comunicación de acción directa (WhatsApp y clic para llamar) y una sección de preguntas frecuentes transparente y multilingüe, la plataforma reduce la ansiedad del cliente y disminuye significativamente la barrera para usuarios que necesitan traducciones certificadas o servicios notariales móviles en su hogar u oficina.</li>
+                  <li><strong>Stack:</strong> JavaScript Vanilla (ES6), HTML5 (Semántico y Optimizado para SEO), CSS3 (Propiedades Personalizadas y Refactorización Responsiva), FontAwesome, API LocalStorage, e integración con Google Maps.</li>
                 </ul>
               </div>
 
@@ -260,15 +254,17 @@
             </div>
           </article>
 
-          <!-- HTML/CSS/JS Quiz -->
+          <!-- HTML/CSS/JS Exam Practice Quiz -->
           <article class="project-card">
-            <a href="https://dquint32.github.io/Exam3_CIS3030_MSUDENVER/" target="_blank" rel="noopener noreferrer">
-              <img
-                src="exam3-sc.png"
-                alt="Interactive Quiz Application"
-                class="project-thumb"
-              />
-            </a>
+            <div class="project-image-wrapper">
+              <a href="https://dquint32.github.io/Exam3_CIS3030_MSUDENVER/" target="_blank" rel="noopener noreferrer">
+                <img
+                  src="exam3-sc.png"
+                  alt="Interactive Quiz Application"
+                  class="project-thumb"
+                />
+              </a>
+            </div>
             <div class="project-body">
               <div data-lang="en" lang-block>
                 <h4>HTML/CSS/JS Exam Practice Quiz</h4>
@@ -312,15 +308,17 @@
             </div>
           </article>
 
-          <!-- Ayuda DMV -->
+          <!-- Ayuda DMV Project Card -->
           <article class="project-card">
-            <a href="https://ayuda-dmv.netlify.app" target="_blank" rel="noopener noreferrer">
-              <img
-                src="ayudadmv-homepage-sc.png"
-                alt="Ayuda DMV platform"
-                class="project-thumb"
-              />
-            </a>
+            <div class="project-image-wrapper">
+              <a href="https://ayuda-dmv.netlify.app" target="_blank" rel="noopener noreferrer">
+                <img
+                  src="ayudadmv-homepage-sc.png"
+                  alt="Plataforma Ayuda DMV"
+                  class="project-thumb"
+                />
+              </a>
+            </div>
             <div class="project-body">
               <div data-lang="en" lang-block>
                 <h4>Ayuda DMV & Quintana Notary</h4>
@@ -335,15 +333,15 @@
                 </ul>
               </div>
               <div data-lang="es" lang-block data-active="true">
-                <h4>Ayuda DMV & Quintana Notary</h4>
+                <h4>Ayuda DMV y Quintana Notary</h4>
                 <p class="project-subtitle">Centro Digital Bilingüe para Servicios Gubernamentales y Legales</p>
                 <p class="project-desc">
-                  Una plataforma de negocio totalmente responsiva y multipágina diseñada para cerrar la brecha lingüística para los residentes de Colorado.
+                  Una plataforma comercial multipágina y totalmente responsiva diseñada para cerrar la brecha lingüística de los residentes de Colorado.
                 </p>
                 <ul class="project-highlights">
-                  <li><strong>Logro Técnico:</strong> Sistema de Internacionalización (i18n) liviano y sin dependencias usando Vanilla JS y manipulación del DOM para cambio de idioma instantáneo y sin parpadeos.</li>
-                  <li><strong>Impacto:</strong> Aborda directamente las barreras de accesibilidad para la comunidad hispanohablante al simplificar flujos de trabajo gubernamentales complejos (DMV/Notaría) a través de una interfaz bilingüe.</li>
-                  <li><strong>Stack:</strong> JavaScript Vanilla (ES6+, Módulos IIFE), HTML5 Semántico, CSS3 (Variables, Flexbox, Grid), FontAwesome, API LocalStorage.</li>
+                  <li><strong>Logro Técnico:</strong> Ingeniería de un sistema de Internacionalización (i18n) ligero y sin dependencias usando Vanilla JS, permitiendo cambios de idioma instantáneos y sin parpadeos.</li>
+                  <li><strong>Impacto:</strong> Aborda directamente las barreras de accesibilidad para la comunidad hispanohablante simplificando trámites gubernamentales complejos (DMV/Notaría) mediante una interfaz de doble idioma.</li>
+                  <li><strong>Stack:</strong> JavaScript Vanilla (ES6+, Módulos IIFE), HTML5 Semántico, CSS3 (Variables, Flexbox, Grid), FontAwesome, LocalStorage API.</li>
                 </ul>
               </div>
               <div class="project-links">
@@ -367,102 +365,90 @@
       </div>
     </section>
 
-    <section id="skills" class="skills section-spacing" aria-labelledby="skills-title-es">
-      <div class="container">
+    <section id="skills" class="section-spacing" aria-labelledby="skills-title">
+      <div class="container skills">
         <div data-lang="en" lang-block>
-          <h3 id="skills-title-en">Technical skills</h3>
-          <p class="section-note">
-            Core competencies for building bilingual, accessible, and results-driven web experiences.
-          </p>
+          <div class="section-header">
+            <h3 id="skills-title-en">Technical skills</h3>
+            <p>Core competencies for building bilingual, accessible, and results-driven web experiences.</p>
+          </div>
           
-          <div class="project-grid">
-            <article class="project-card" style="grid-template-columns: 1fr; min-height: auto;">
-              <div class="project-body">
-                <h4>Frontend Development</h4>
-                <ul class="skill-list">
-                  <li><strong>HTML5 & Semantic Tagging:</strong> Building accessible, SEO-friendly markup with proper document structure and ARIA roles.</li>
-                  <li><strong>CSS3 (Grid, Flexbox, Custom Properties):</strong> Modern layout systems and design tokens for maintainable, responsive interfaces.</li>
-                  <li><strong>JavaScript (Vanilla ES6+, DOM API):</strong> Client-side interactivity, state management, and event-driven architecture without framework dependencies.</li>
-                  <li><strong>Responsive Web Design:</strong> Mobile-first layouts that adapt seamlessly across devices and screen sizes.</li>
-                </ul>
-              </div>
+          <div class="skills-card-grid">
+            <article class="skill-detail-card">
+              <h4>Frontend Development</h4>
+              <ul class="skill-list">
+                <li><strong>HTML5 & Semantic Tagging:</strong> Building accessible, SEO-friendly markup with proper document structure and ARIA roles.</li>
+                <li><strong>CSS3 (Grid, Flexbox, Custom Properties):</strong> Modern layout systems and design tokens for maintainable, responsive interfaces.</li>
+                <li><strong>JavaScript (Vanilla ES6+, DOM API):</strong> Client-side interactivity, state management, and event-driven architecture without framework dependencies.</li>
+                <li><strong>Responsive Web Design:</strong> Mobile-first layouts that adapt seamlessly across devices and screen sizes.</li>
+              </ul>
             </article>
 
-            <article class="project-card" style="grid-template-columns: 1fr; min-height: auto;">
-              <div class="project-body">
-                <h4>Design & Ethics</h4>
-                <ul class="skill-list">
-                  <li><strong>WCAG 2.1 AA Accessibility:</strong> Ensuring inclusive experiences for users with disabilities through semantic markup, keyboard navigation, and screen reader compatibility.</li>
-                  <li><strong>Bilingual UX/UI Architecture:</strong> Culturally-aware design that resonates with both English and Spanish-speaking audiences.</li>
-                  <li><strong>Mobile-First Methodology:</strong> Prioritizing performance and usability on smaller screens before scaling up.</li>
-                  <li><strong>Cultural Tone Alignment:</strong> Crafting messages that reflect community values and build trust across language barriers.</li>
-                </ul>
-              </div>
+            <article class="skill-detail-card">
+              <h4>Design & Ethics</h4>
+              <ul class="skill-list">
+                <li><strong>WCAG 2.1 AA Accessibility:</strong> Ensuring inclusive experiences for users with disabilities through semantic markup, keyboard navigation, and screen reader compatibility.</li>
+                <li><strong>Bilingual UX/UI Architecture:</strong> Culturally-aware design that resonates with both English and Spanish-speaking audiences.</li>
+                <li><strong>Mobile-First Methodology:</strong> Prioritizing performance and usability on smaller screens before scaling up.</li>
+                <li><strong>Cultural Tone Alignment:</strong> Crafting messages that reflect community values and build trust across language barriers.</li>
+              </ul>
             </article>
 
-            <article class="project-card" style="grid-template-columns: 1fr; min-height: auto;">
-              <div class="project-body">
-                <h4>Tools & Systems</h4>
-                <ul class="skill-list">
-                  <li><strong>Git / GitHub:</strong> Version control, collaborative workflows, and code documentation for transparent development.</li>
-                  <li><strong>Information Systems (Health Care Focus):</strong> Understanding of data privacy, HIPAA compliance, and secure information handling from academic training.</li>
-                  <li><strong>Visual Studio Code:</strong> Modern development environment with extensions for linting, formatting, and productivity.</li>
-                  <li><strong>Legal & Notarial Standards:</strong> Professional experience with compliance, documentation accuracy, and client confidentiality in legal contexts.</li>
-                </ul>
-              </div>
+            <article class="skill-detail-card">
+              <h4>Tools & Systems</h4>
+              <ul class="skill-list">
+                <li><strong>Git / GitHub:</strong> Version control, collaborative workflows, and code documentation for transparent development.</li>
+                <li><strong>Information Systems (Health Care Focus):</strong> Understanding of data privacy, HIPAA compliance, and secure information handling from academic training.</li>
+                <li><strong>Visual Studio Code:</strong> Modern development environment with extensions for linting, formatting, and productivity.</li>
+                <li><strong>Legal & Notarial Standards:</strong> Professional experience with compliance, documentation accuracy, and client confidentiality in legal contexts.</li>
+              </ul>
             </article>
           </div>
         </div>
 
         <div data-lang="es" lang-block data-active="true">
-          <h3 id="skills-title-es">Habilidades técnicas</h3>
-          <p class="section-note">
-            Competencias fundamentales para construir experiencias web bilingües, accesibles y orientadas a resultados.
-          </p>
+          <div class="section-header">
+            <h3 id="skills-title-es">Habilidades técnicas</h3>
+            <p>Competencias fundamentales para construir experiencias web bilingües, accesibles y orientadas a resultados.</p>
+          </div>
           
-          <div class="project-grid">
-            <article class="project-card" style="grid-template-columns: 1fr; min-height: auto;">
-              <div class="project-body">
-                <h4>Desarrollo Frontend</h4>
-                <ul class="skill-list">
-                  <li><strong>HTML5 y Etiquetado Semántico:</strong> Construcción de marcado accesible y optimizado para SEO con estructura documental apropiada y roles ARIA.</li>
-                  <li><strong>CSS3 (Grid, Flexbox, Propiedades Personalizadas):</strong> Sistemas de diseño modernos y tokens de diseño para interfaces mantenibles y adaptables.</li>
-                  <li><strong>JavaScript (Vanilla ES6+, DOM API):</strong> Interactividad del lado del cliente, gestión de estado y arquitectura basada en eventos sin dependencias de frameworks.</li>
-                  <li><strong>Diseño Web Adaptable (Responsive):</strong> Layouts mobile-first que se adaptan perfectamente a todos los dispositivos y tamaños de pantalla.</li>
-                </ul>
-              </div>
+          <div class="skills-card-grid">
+            <article class="skill-detail-card">
+              <h4>Desarrollo Frontend</h4>
+              <ul class="skill-list">
+                <li><strong>HTML5 y Etiquetado Semántico:</strong> Construcción de marcado accesible y optimizado para SEO con estructura documental apropiada y roles ARIA.</li>
+                <li><strong>CSS3 (Grid, Flexbox, Propiedades Personalizadas):</strong> Sistemas de diseño modernos y tokens de diseño para interfaces mantenibles y adaptables.</li>
+                <li><strong>JavaScript (Vanilla ES6+, DOM API):</strong> Interactividad del lado del cliente, gestión de estado y arquitectura basada en eventos sin dependencias de frameworks.</li>
+                <li><strong>Diseño Web Adaptable (Responsive):</strong> Layouts mobile-first que se adaptan perfectamente a todos los dispositivos y tamaños de pantalla.</li>
+              </ul>
             </article>
 
-            <article class="project-card" style="grid-template-columns: 1fr; min-height: auto;">
-              <div class="project-body">
-                <h4>Diseño y Ética</h4>
-                <ul class="skill-list">
-                  <li><strong>Accesibilidad WCAG 2.1 AA:</strong> Garantizando experiencias inclusivas para usuarios con discapacidades mediante marcado semántico, navegación por teclado y compatibilidad con lectores de pantalla.</li>
-                  <li><strong>Arquitectura UX/UI Bilingüe:</strong> Diseño culturalmente consciente que resuena tanto con audiencias de habla inglesa como española.</li>
-                  <li><strong>Metodología Mobile-First:</strong> Priorizando rendimiento y usabilidad en pantallas pequeñas antes de escalar.</li>
-                  <li><strong>Alineación de Tono Cultural:</strong> Elaborando mensajes que reflejan valores comunitarios y construyen confianza a través de barreras lingüísticas.</li>
-                </ul>
-              </div>
+            <article class="skill-detail-card">
+              <h4>Diseño y Ética</h4>
+              <ul class="skill-list">
+                <li><strong>Accesibilidad WCAG 2.1 AA:</strong> Garantizando experiencias inclusivas para usuarios con discapacidades mediante marcado semántico, navegación por teclado y compatibilidad con lectores de pantalla.</li>
+                <li><strong>Arquitectura UX/UI Bilingüe:</strong> Diseño culturalmente consciente que resuena tanto con audiencias de habla inglesa como española.</li>
+                <li><strong>Metodología Mobile-First:</strong> Priorizando rendimiento y usabilidad en pantallas pequeñas antes de escalar.</li>
+                <li><strong>Alineación de Tono Cultural:</strong> Elaborando mensajes que reflejan valores comunitarios y construyen confianza a través de barreras lingüísticas.</li>
+              </ul>
             </article>
 
-            <article class="project-card" style="grid-template-columns: 1fr; min-height: auto;">
-              <div class="project-body">
-                <h4>Herramientas y Sistemas</h4>
-                <ul class="skill-list">
-                  <li><strong>Git / GitHub:</strong> Control de versiones, flujos de trabajo colaborativos y documentación de código para desarrollo transparente.</li>
-                  <li><strong>Sistemas de Información (Enfoque en Salud):</strong> Comprensión de privacidad de datos, cumplimiento HIPAA y manejo seguro de información desde formación académica.</li>
-                  <li><strong>Visual Studio Code:</strong> Entorno de desarrollo moderno con extensiones para linting, formateo y productividad.</li>
-                  <li><strong>Estándares Legales y Notariales:</strong> Experiencia profesional con cumplimiento normativo, precisión en documentación y confidencialidad del cliente en contextos legales.</li>
-                </ul>
-              </div>
+            <article class="skill-detail-card">
+              <h4>Herramientas y Sistemas</h4>
+              <ul class="skill-list">
+                <li><strong>Git / GitHub:</strong> Control de versiones, flujos de trabajo colaborativos y documentación de código para desarrollo transparente.</li>
+                <li><strong>Sistemas de Información (Enfoque en Salud):</strong> Comprensión de privacidad de datos, cumplimiento HIPAA y manejo seguro de información desde formación académica.</li>
+                <li><strong>Visual Studio Code:</strong> Entorno de desarrollo moderno con extensiones para linting, formateo y productividad.</li>
+                <li><strong>Estándares Legales y Notariales:</strong> Experiencia profesional con cumplimiento normativo, precisión en documentación y confidencialidad del cliente en contextos legales.</li>
+              </ul>
             </article>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="services" class="services section-spacing" aria-labelledby="services-title-es">
-      <div class="container">
+    <section id="services" class="section-spacing" aria-labelledby="services-title">
+      <div class="container services">
         <div data-lang="en" lang-block>
           <h3 id="services-title-en">How I can help your business</h3>
           <div class="services-grid">
