@@ -1,242 +1,240 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en" data-language="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>David Matthew Quintana · Desarrollo web bilingüe</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="Sitios web bilingües y prácticos para pequeños negocios y profesionales independientes."
-  />
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing | David Matthew Quintana</title>
+  <meta name="description" content="Transparent pricing for bilingual web development services. Mobile-first websites for small businesses and professionals in Colorado.">
+  <!-- FONTS & BASE STYLES -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body data-language="es">
-  <!-- Floating Logo Background -->
-  <div class="logo-background">
+<body class="pricing-page" data-language="en">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- GRID BACKGROUND LOGO -->
+  <div class="logo-background" aria-hidden="true">
     <div class="bg-logo">DMQ</div>
   </div>
 
-  <!-- Floating Language Toggle -->
-  <div class="floating-toggle">
-    <span data-lang="en" class="inactive">EN</span>
-    <span>/</span>
-    <span data-lang="es">ES</span>
-  </div>
+  <!-- FLOATING LANGUAGE TOGGLE -->
+  <button class="floating-toggle" type="button" aria-label="Toggle language">
+    <span data-lang="en">EN</span>
+    <span data-lang="es" class="inactive">ES</span>
+  </button>
 
+  <!-- SITE HEADER -->
   <header class="site-header">
     <div class="container header-inner">
       <div class="brand">
-        <a href="index.html">
-          <h1>David Matthew Quintana</h1>
+        <h1>
+          <a href="index.html">David Matthew Quintana</a>
+        </h1>
+        <p class="tagline">Bilingual Web Developer | Creating practical solutions for small businesses and professionals.</p>
+      </div>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html#projects">
+          <span lang-block data-lang="en" data-active="true">Projects</span>
+          <span lang-block data-lang="es">Proyectos</span>
         </a>
-
-        <!-- Taglines -->
-        <p class="tagline" lang-block data-lang="en">
-          Bilingual Web Developer | Creating practical solutions for small businesses and professionals
-        </p>
-        <p class="tagline" lang-block data-lang="es" data-active="true">
-          Desarrollador Web Bilingüe | Creando soluciones prácticas para pequeños negocios y profesionales
-        </p>
-      </div>
-
-      <div class="header-right">
-        <!-- Language switcher -->
-        <div class="lang-switcher" aria-label="Selector de idioma">
-          <button type="button" data-lang="en">EN</button>
-          <button type="button" data-lang="es" data-active="true">ES</button>
-        </div>
-
-        <nav class="nav" aria-label="Navegación principal">
-          <!-- EN -->
-          <a href="index.html" lang-block data-lang="en">Home</a>
-          <a href="pricing.html" lang-block data-lang="en">Pricing</a>
-          <a href="#contact" class="cta" lang-block data-lang="en">Contact</a>
-
-          <!-- ES -->
-          <a href="index.html" lang-block data-lang="es" data-active="true">Inicio</a>
-          <a href="pricing.html" lang-block data-lang="es" data-active="true">Precios</a>
-          <a href="#contact" class="cta" lang-block data-lang="es" data-active="true">Contacto</a>
-        </nav>
-      </div>
+        <a href="pricing.html" class="active">
+          <span lang-block data-lang="en" data-active="true">Pricing</span>
+          <span lang-block data-lang="es">Precios</span>
+        </a>
+        <a href="index.html" class="home-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+          <span lang-block data-lang="en">Home</span>
+          <span lang-block data-lang="es">Inicio</span>
+        </a>
+        <a href="index.html#contact" class="cta">
+          <span lang-block data-lang="en" data-active="true">Contact</span>
+          <span lang-block data-lang="es">Contacto</span>
+        </a>
+      </nav>
     </div>
   </header>
 
-
-  <main>
-    <!-- Hero -->
-    <section class="hero" style="padding: 3rem 0 2rem;">
+  <!-- Main content -->
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section class="section-spacing">
       <div class="container">
-        <div style="max-width: 750px; margin: 0 auto; text-align: center;">
+        <div class="section-header">
           <div lang-block data-lang="en">
-            <h2 style="margin-bottom: 1rem;">Simple & Easy Website Pricing</h2>
-            <p style="color: var(--muted); font-size: var(--text-md); max-width: 100%;">
-              Clear packages for small businesses · Bilingual available
-            </p>
+            <h2>Simple & Clear Website Pricing</h2>
+            <p>Transparent packages for small businesses · Bilingual available</p>
           </div>
           <div lang-block data-lang="es" data-active="true">
-            <h2 style="margin-bottom: 1rem;">Precios Claros y Sencillos para Sitios Web</h2>
-            <p style="color: var(--muted); font-size: var(--text-md); max-width: 100%;">
-              Paquetes claros para negocios pequeños · Bilingüe disponible
-            </p>
+            <h2>Precios Claros y Sencillos</h2>
+            <p>Paquetes transparentes para negocios pequeños · Bilingüe disponible</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Website Packages -->
-    <section class="section-spacing" id="packages" style="padding: 3rem 0;">
-      <div class="container pricing-container">
-        <div lang-block data-lang="en">
-          <h3>Website Packages</h3>
-          <p style="color: var(--muted); margin-bottom: 2rem;">Choose the package that fits your business needs.</p>
-        </div>
-        <div lang-block data-lang="es" data-active="true">
-          <h3>Paquetes de Sitios Web</h3>
-          <p style="color: var(--muted); margin-bottom: 2rem;">Elige el paquete que se adapte a las necesidades de tu negocio.</p>
+    <section class="section-spacing">
+      <div class="container">
+        <div class="section-header">
+          <div lang-block data-lang="en">
+            <h3>Website Packages</h3>
+            <p>Choose the package that fits your business needs</p>
+          </div>
+          <div lang-block data-lang="es" data-active="true">
+            <h3>Paquetes de Sitios Web</h3>
+            <p>Elige el paquete que se adapte a las necesidades de tu negocio</p>
+          </div>
         </div>
 
-        <div class="pricing-grid">
+        <div class="services-grid">
           <article class="service-card">
             <div lang-block data-lang="en">
               <h4>Landing Page</h4>
-              <p class="service-price">$350–$700 <span style="font-size: var(--text-sm); font-weight: normal; color: var(--muted);">· ~$500</span></p>
-              <p>A simple one-page website so people can find your business.</p>
+              <p class="service-price">$350–$700 <span class="price-avg">· ~$500</span></p>
+              <p>A simple one-page website so people can find your business online.</p>
             </div>
             <div lang-block data-lang="es" data-active="true">
               <h4>Landing Page</h4>
-              <p class="service-price">$350–$700 <span style="font-size: var(--text-sm); font-weight: normal; color: var(--muted);">· ~$500</span></p>
-              <p>Un sitio sencillo de una página para que encuentren tu negocio.</p>
+              <p class="service-price">$350–$700 <span class="price-avg">· ~$500</span></p>
+              <p>Un sitio sencillo de una página para que encuentren tu negocio en línea.</p>
             </div>
           </article>
 
           <article class="service-card">
             <div lang-block data-lang="en">
               <h4>Basic Website</h4>
-              <p class="service-price">$700–$1,500 <span style="font-size: var(--text-sm); font-weight: normal; color: var(--muted);">· ~$1,000</span></p>
-              <p>3–5 pages (Home, About, Services, Contact).</p>
+              <p class="service-price">$700–$1,500 <span class="price-avg">· ~$1,000</span></p>
+              <p>3–5 pages including Home, About, Services, and Contact.</p>
             </div>
             <div lang-block data-lang="es" data-active="true">
               <h4>Sitio Web Básico</h4>
-              <p class="service-price">$700–$1,500 <span style="font-size: var(--text-sm); font-weight: normal; color: var(--muted);">· ~$1,000</span></p>
-              <p>3–5 páginas (Inicio, Sobre Nosotros, Servicios, Contacto).</p>
+              <p class="service-price">$700–$1,500 <span class="price-avg">· ~$1,000</span></p>
+              <p>3–5 páginas incluyendo Inicio, Sobre Nosotros, Servicios y Contacto.</p>
             </div>
           </article>
 
           <article class="service-card">
             <div lang-block data-lang="en">
               <h4>Business Website</h4>
-              <p class="service-price">$1,500–$3,000 <span style="font-size: var(--text-sm); font-weight: normal; color: var(--muted);">· ~$2,200</span></p>
-              <p>6–10 pages, custom design, forms, social media links.</p>
+              <p class="service-price">$1,500–$3,000 <span class="price-avg">· ~$2,200</span></p>
+              <p>6–10 pages with custom design, contact forms, and social media integration.</p>
             </div>
             <div lang-block data-lang="es" data-active="true">
               <h4>Sitio de Negocio</h4>
-              <p class="service-price">$1,500–$3,000 <span style="font-size: var(--text-sm); font-weight: normal; color: var(--muted);">· ~$2,200</span></p>
-              <p>6–10 páginas, diseño personalizado, formularios, redes sociales.</p>
+              <p class="service-price">$1,500–$3,000 <span class="price-avg">· ~$2,200</span></p>
+              <p>6–10 páginas con diseño personalizado, formularios de contacto e integración de redes sociales.</p>
             </div>
           </article>
 
           <article class="service-card">
             <div lang-block data-lang="en">
               <h4>Advanced Website</h4>
-              <p class="service-price">$3,000–$5,000 <span style="font-size: var(--text-sm); font-weight: normal; color: var(--muted);">· ~$4,000</span></p>
-              <p>10+ pages, blog, booking, memberships, SEO setup.</p>
+              <p class="service-price">$3,000–$5,000 <span class="price-avg">· ~$4,000</span></p>
+              <p>10+ pages with blog, booking system, memberships, and SEO setup.</p>
             </div>
             <div lang-block data-lang="es" data-active="true">
               <h4>Sitio Web Avanzado</h4>
-              <p class="service-price">$3,000–$5,000 <span style="font-size: var(--text-sm); font-weight: normal; color: var(--muted);">· ~$4,000</span></p>
-              <p>10+ páginas, blog, reservaciones, membresías, SEO inicial.</p>
+              <p class="service-price">$3,000–$5,000 <span class="price-avg">· ~$4,000</span></p>
+              <p>10+ páginas con blog, sistema de reservaciones, membresías y configuración SEO.</p>
             </div>
           </article>
 
           <article class="service-card">
             <div lang-block data-lang="en">
               <h4>Online Store</h4>
-              <p class="service-price">$3,500–$8,000 <span style="font-size: var(--text-sm); font-weight: normal; color: var(--muted);">· ~$5,500</span></p>
-              <p>Sell products online, accept payments, manage orders.</p>
+              <p class="service-price">$3,500–$8,000 <span class="price-avg">· ~$5,500</span></p>
+              <p>Complete e-commerce solution to sell products, accept payments, and manage orders.</p>
             </div>
             <div lang-block data-lang="es" data-active="true">
               <h4>Tienda en Línea</h4>
-              <p class="service-price">$3,500–$8,000 <span style="font-size: var(--text-sm); font-weight: normal; color: var(--muted);">· ~$5,500</span></p>
-              <p>Vende productos en línea, acepta pagos, administra pedidos.</p>
+              <p class="service-price">$3,500–$8,000 <span class="price-avg">· ~$5,500</span></p>
+              <p>Solución completa de comercio electrónico para vender productos, aceptar pagos y administrar pedidos.</p>
             </div>
           </article>
         </div>
 
-        <div style="background: rgba(45, 212, 191, 0.1); border-left: 3px solid var(--accent-2); padding: 1.5rem; border-radius: 6px; margin-top: 2rem;">
+        <div class="pricing-notice">
           <div lang-block data-lang="en">
-            <p style="margin: 0; color: #e5e7eb; font-weight: 600;">✅ Bilingual Version (English + Spanish)</p>
-            <p style="margin: 0.5rem 0 0; color: var(--muted); font-size: var(--text-sm);">Add 20–30%</p>
+            <p class="notice-title">✅ Bilingual Version (English + Spanish)</p>
+            <p class="notice-desc">Add 20–30% to any package for full bilingual functionality</p>
           </div>
           <div lang-block data-lang="es" data-active="true">
-            <p style="margin: 0; color: #e5e7eb; font-weight: 600;">✅ Versión Bilingüe (Inglés + Español)</p>
-            <p style="margin: 0.5rem 0 0; color: var(--muted); font-size: var(--text-sm);">Agregar 20–30%</p>
+            <p class="notice-title">✅ Versión Bilingüe (Inglés + Español)</p>
+            <p class="notice-desc">Agregar 20–30% a cualquier paquete para funcionalidad bilingüe completa</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Pay-Per-Update -->
-    <section class="section-spacing" style="padding: 3rem 0;">
-      <div class="container pricing-container">
-        <div lang-block data-lang="en">
-          <h3>Pay-Per-Update</h3>
-          <p style="color: var(--muted); margin-bottom: 2rem;">Perfect for small businesses that don't need monthly plans.</p>
-        </div>
-        <div lang-block data-lang="es" data-active="true">
-          <h3>Paga Solo por Actualización</h3>
-          <p style="color: var(--muted); margin-bottom: 2rem;">Perfecto para negocios pequeños que no necesitan planes mensuales.</p>
+    <section class="section-spacing">
+      <div class="container">
+        <div class="section-header">
+          <div lang-block data-lang="en">
+            <h3>Pay-Per-Update</h3>
+            <p>Perfect for businesses that don't need monthly plans</p>
+          </div>
+          <div lang-block data-lang="es" data-active="true">
+            <h3>Paga Solo por Actualización</h3>
+            <p>Perfecto para negocios que no necesitan planes mensuales</p>
+          </div>
         </div>
 
-        <div class="pricing-grid pricing-grid-4">
+        <div class="services-grid">
           <article class="service-card">
             <div lang-block data-lang="en">
               <h4>Small Update</h4>
-              <p class="service-price">$20–$40 <span style="font-size: var(--text-sm); font-weight: normal; color: var(--muted);">· ~$30</span></p>
-              <p>Fix text, change a picture, update hours.</p>
+              <p class="service-price">$20–$40 <span class="price-avg">· ~$30</span></p>
+              <p>Fix text, change a picture, or update business hours.</p>
             </div>
             <div lang-block data-lang="es" data-active="true">
               <h4>Actualización Pequeña</h4>
-              <p class="service-price">$20–$40 <span style="font-size: var(--text-sm); font-weight: normal; color: var(--muted);">· ~$30</span></p>
-              <p>Cambiar texto, fotos o horarios.</p>
+              <p class="service-price">$20–$40 <span class="price-avg">· ~$30</span></p>
+              <p>Cambiar texto, fotos o actualizar horarios del negocio.</p>
             </div>
           </article>
 
           <article class="service-card">
             <div lang-block data-lang="en">
               <h4>Medium Update</h4>
-              <p class="service-price">$40–$80 <span style="font-size: var(--text-sm); font-weight: normal; color: var(--muted);">· ~$60</span></p>
-              <p>Add a new section, change several photos.</p>
+              <p class="service-price">$40–$80 <span class="price-avg">· ~$60</span></p>
+              <p>Add a new section or change multiple photos and content blocks.</p>
             </div>
             <div lang-block data-lang="es" data-active="true">
               <h4>Actualización Mediana</h4>
-              <p class="service-price">$40–$80 <span style="font-size: var(--text-sm); font-weight: normal; color: var(--muted);">· ~$60</span></p>
-              <p>Agregar una sección nueva o varias fotos.</p>
+              <p class="service-price">$40–$80 <span class="price-avg">· ~$60</span></p>
+              <p>Agregar una sección nueva o cambiar varias fotos y bloques de contenido.</p>
             </div>
           </article>
 
           <article class="service-card">
             <div lang-block data-lang="en">
               <h4>Holiday Theme</h4>
-              <p class="service-price">$60–$120 <span style="font-size: var(--text-sm); font-weight: normal; color: var(--muted);">· ~$90</span></p>
-              <p>Christmas, 4th of July, Mother's Day, custom themes. Includes switching back.</p>
+              <p class="service-price">$60–$120 <span class="price-avg">· ~$90</span></p>
+              <p>Seasonal themes for Christmas, holidays, or special events. Includes reverting to original design.</p>
             </div>
             <div lang-block data-lang="es" data-active="true">
               <h4>Tema de Festividad</h4>
-              <p class="service-price">$60–$120 <span style="font-size: var(--text-sm); font-weight: normal; color: var(--muted);">· ~$90</span></p>
-              <p>Navidad, 4 de Julio, temas personalizados. Incluye regresar al diseño normal.</p>
+              <p class="service-price">$60–$120 <span class="price-avg">· ~$90</span></p>
+              <p>Temas estacionales para Navidad, festividades o eventos especiales. Incluye regresar al diseño original.</p>
             </div>
           </article>
 
           <article class="service-card">
             <div lang-block data-lang="en">
               <h4>Big Update</h4>
-              <p class="service-price">$100–$250 <span style="font-size: var(--text-sm); font-weight: normal; color: var(--muted);">· ~$160</span></p>
-              <p>New page, redesign, upload 20+ products.</p>
+              <p class="service-price">$100–$250 <span class="price-avg">· ~$160</span></p>
+              <p>Add new pages, redesign sections, or upload 20+ products to your store.</p>
             </div>
             <div lang-block data-lang="es" data-active="true">
               <h4>Actualización Grande</h4>
-              <p class="service-price">$100–$250 <span style="font-size: var(--text-sm); font-weight: normal; color: var(--muted);">· ~$160</span></p>
-              <p>Nueva página, rediseño, subir 20+ productos.</p>
+              <p class="service-price">$100–$250 <span class="price-avg">· ~$160</span></p>
+              <p>Agregar páginas nuevas, rediseñar secciones o subir 20+ productos a tu tienda.</p>
             </div>
           </article>
         </div>
@@ -244,54 +242,56 @@
     </section>
 
     <!-- Monthly Maintenance -->
-    <section class="section-spacing" style="padding: 3rem 0;">
-      <div class="container pricing-container">
-        <div lang-block data-lang="en">
-          <h3>Monthly Maintenance (Optional)</h3>
-          <p style="color: var(--muted); margin-bottom: 2rem;">For businesses that want someone to take care of everything.</p>
-        </div>
-        <div lang-block data-lang="es" data-active="true">
-          <h3>Mantenimiento Mensual (Opcional)</h3>
-          <p style="color: var(--muted); margin-bottom: 2rem;">Para negocios que quieren que alguien se encargue de todo.</p>
+    <section class="section-spacing">
+      <div class="container">
+        <div class="section-header">
+          <div lang-block data-lang="en">
+            <h3>Monthly Maintenance</h3>
+            <p>Optional ongoing support for businesses that want hands-off management</p>
+          </div>
+          <div lang-block data-lang="es" data-active="true">
+            <h3>Mantenimiento Mensual</h3>
+            <p>Soporte continuo opcional para negocios que quieren gestión sin preocupaciones</p>
+          </div>
         </div>
 
-        <div class="pricing-grid pricing-grid-3">
+        <div class="services-grid">
           <article class="service-card">
             <div lang-block data-lang="en">
               <h4>Basic</h4>
-              <p class="service-price">$40–$80/month <span style="font-size: var(--text-sm); font-weight: normal; color: var(--muted);">· ~$55</span></p>
-              <p>Keep the website safe and running.</p>
+              <p class="service-price">$40–$80/month <span class="price-avg">· ~$55</span></p>
+              <p>Keep your website secure, updated, and running smoothly.</p>
             </div>
             <div lang-block data-lang="es" data-active="true">
               <h4>Básico</h4>
-              <p class="service-price">$40–$80/mes <span style="font-size: var(--text-sm); font-weight: normal; color: var(--muted);">· ~$55</span></p>
-              <p>Mantener el sitio seguro y funcionando.</p>
+              <p class="service-price">$40–$80/mes <span class="price-avg">· ~$55</span></p>
+              <p>Mantener tu sitio seguro, actualizado y funcionando sin problemas.</p>
             </div>
           </article>
 
           <article class="service-card">
             <div lang-block data-lang="en">
               <h4>Standard</h4>
-              <p class="service-price">$80–$150/month <span style="font-size: var(--text-sm); font-weight: normal; color: var(--muted);">· ~$110</span></p>
-              <p>Basic + small updates + SEO + monthly report.</p>
+              <p class="service-price">$80–$150/month <span class="price-avg">· ~$110</span></p>
+              <p>Basic maintenance plus small updates, SEO optimization, and monthly performance reports.</p>
             </div>
             <div lang-block data-lang="es" data-active="true">
               <h4>Estándar</h4>
-              <p class="service-price">$80–$150/mes <span style="font-size: var(--text-sm); font-weight: normal; color: var(--muted);">· ~$110</span></p>
-              <p>Básico + cambios pequeños + SEO + reporte mensual.</p>
+              <p class="service-price">$80–$150/mes <span class="price-avg">· ~$110</span></p>
+              <p>Mantenimiento básico más cambios pequeños, optimización SEO y reportes mensuales de rendimiento.</p>
             </div>
           </article>
 
           <article class="service-card">
             <div lang-block data-lang="en">
               <h4>Advanced</h4>
-              <p class="service-price">$150–$250/month <span style="font-size: var(--text-sm); font-weight: normal; color: var(--muted);">· ~$190</span></p>
-              <p>Standard + analytics + priority support.</p>
+              <p class="service-price">$150–$250/month <span class="price-avg">· ~$190</span></p>
+              <p>Standard plan plus advanced analytics, priority support, and regular content updates.</p>
             </div>
             <div lang-block data-lang="es" data-active="true">
               <h4>Avanzado</h4>
-              <p class="service-price">$150–$250/mes <span style="font-size: var(--text-sm); font-weight: normal; color: var(--muted);">· ~$190</span></p>
-              <p>Estándar + analíticas + soporte prioritario.</p>
+              <p class="service-price">$150–$250/mes <span class="price-avg">· ~$190</span></p>
+              <p>Plan estándar más analíticas avanzadas, soporte prioritario y actualizaciones regulares de contenido.</p>
             </div>
           </article>
         </div>
@@ -299,28 +299,30 @@
     </section>
 
     <!-- Domain & Setup -->
-    <section class="section-spacing" style="padding: 3rem 0;">
-      <div class="container pricing-container">
-        <div lang-block data-lang="en">
-          <h3>Domain & Setup</h3>
-          <p style="color: var(--muted); margin-bottom: 2rem;">For people who don't know how to buy a domain or connect everything.</p>
-        </div>
-        <div lang-block data-lang="es" data-active="true">
-          <h3>Dominio y Configuración</h3>
-          <p style="color: var(--muted); margin-bottom: 2rem;">Para personas que no saben comprar un dominio o conectarlo.</p>
+    <section class="section-spacing">
+      <div class="container">
+        <div class="section-header">
+          <div lang-block data-lang="en">
+            <h3>Domain & Setup</h3>
+            <p>Complete setup service for those who need help getting started</p>
+          </div>
+          <div lang-block data-lang="es" data-active="true">
+            <h3>Dominio y Configuración</h3>
+            <p>Servicio completo de configuración para quienes necesitan ayuda para comenzar</p>
+          </div>
         </div>
 
-        <div class="pricing-single">
+        <div class="services-grid single-column">
           <article class="service-card">
             <div lang-block data-lang="en">
-              <h4>Domain + Setup</h4>
-              <p class="service-price">$50–$150 <span style="font-size: var(--text-sm); font-weight: normal; color: var(--muted);">· ~$85</span></p>
-              <p>I buy the domain, connect it, set up hosting, and make your site show up on Google.</p>
+              <h4>Complete Setup Package</h4>
+              <p class="service-price">$50–$150 <span class="price-avg">· ~$85</span></p>
+              <p>I'll purchase your domain, configure hosting, connect everything, and ensure your site appears on Google search results.</p>
             </div>
             <div lang-block data-lang="es" data-active="true">
-              <h4>Dominio + Configuración</h4>
-              <p class="service-price">$50–$150 <span style="font-size: var(--text-sm); font-weight: normal; color: var(--muted);">· ~$85</span></p>
-              <p>Compro el dominio, lo conecto, configuro hosting y hago que tu sitio aparezca en Google.</p>
+              <h4>Paquete Completo de Configuración</h4>
+              <p class="service-price">$50–$150 <span class="price-avg">· ~$85</span></p>
+              <p>Compraré tu dominio, configuraré el hosting, conectaré todo y me aseguraré de que tu sitio aparezca en los resultados de Google.</p>
             </div>
           </article>
         </div>
@@ -328,120 +330,116 @@
     </section>
 
     <!-- What Is SEO -->
-    <section class="section-spacing" style="padding: 3rem 0;">
-      <div class="container pricing-container">
-        <div class="pricing-single">
-          <div style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.97), rgba(11, 18, 32, 0.98)); border: 1px solid rgba(148, 163, 184, 0.25); border-radius: 16px; padding: 2rem;">
-            <div lang-block data-lang="en">
-              <h3 style="margin-bottom: 1.5rem;">What Is SEO?</h3>
-              <p style="font-size: var(--text-md); line-height: 1.75; color: #e5e7eb; margin-bottom: 1rem;">
-                <strong style="color: var(--accent-2);">SEO simply means making your website easier to find on Google.</strong><br>
-                That's it – nothing complicated.
-              </p>
-              <p style="color: #cbd5e1; line-height: 1.75; margin: 0;">
-                When people search for your business, SEO helps your website show up higher so more customers can find you.
-              </p>
-            </div>
-            <div lang-block data-lang="es" data-active="true">
-              <h3 style="margin-bottom: 1.5rem;">¿Qué es SEO?</h3>
-              <p style="font-size: var(--text-md); line-height: 1.75; color: #e5e7eb; margin-bottom: 1rem;">
-                <strong style="color: var(--accent-2);">SEO significa hacer que tu sitio sea más fácil de encontrar en Google.</strong><br>
-                Eso es todo – nada complicado.
-              </p>
-              <p style="color: #cbd5e1; line-height: 1.75; margin: 0;">
-                Cuando la gente busca tu negocio, el SEO ayuda a que tu sitio aparezca más arriba para que más clientes te encuentren.
-              </p>
-            </div>
+    <section class="section-spacing">
+      <div class="container">
+        <div class="seo-explainer">
+          <div lang-block data-lang="en">
+            <h3>What Is SEO?</h3>
+            <p class="seo-main">
+              <strong>SEO simply means making your website easier to find on Google.</strong>
+            </p>
+            <p class="seo-desc">
+              When people search for your business or services, SEO helps your website show up higher in search results so more customers can find you. Nothing complicated—just better visibility.
+            </p>
+          </div>
+          <div lang-block data-lang="es" data-active="true">
+            <h3>¿Qué es SEO?</h3>
+            <p class="seo-main">
+              <strong>SEO significa hacer que tu sitio sea más fácil de encontrar en Google.</strong>
+            </p>
+            <p class="seo-desc">
+              Cuando la gente busca tu negocio o servicios, el SEO ayuda a que tu sitio aparezca más arriba en los resultados para que más clientes te encuentren. Nada complicado—solo mejor visibilidad.
+            </p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Payment Plan -->
-    <section class="section-spacing" style="padding: 3rem 0;">
-      <div class="container pricing-container">
-        <div class="pricing-single">
+    <section class="section-spacing">
+      <div class="container">
+        <div class="section-header">
           <div lang-block data-lang="en">
             <h3>Payment Plan</h3>
           </div>
           <div lang-block data-lang="es" data-active="true">
             <h3>Plan de Pago</h3>
           </div>
+        </div>
 
-          <div style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.4), rgba(11, 18, 32, 0.3)); border-radius: 12px; padding: 2rem; margin-top: 1.5rem;">
-            <ul style="list-style: none; padding: 0; margin: 0; color: #cbd5e1; font-size: var(--text-md); line-height: 2;">
-              <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative;">
-                <span style="position: absolute; left: 0; color: var(--accent-2); font-weight: bold;">✓</span>
-                <span lang-block data-lang="en"><strong>50% to start</strong></span>
-                <span lang-block data-lang="es" data-active="true"><strong>50% para comenzar</strong></span>
-              </li>
-              <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative;">
-                <span style="position: absolute; left: 0; color: var(--accent-2); font-weight: bold;">✓</span>
-                <span lang-block data-lang="en"><strong>50% when finished</strong></span>
-                <span lang-block data-lang="es" data-active="true"><strong>50% al entregar</strong></span>
-              </li>
-              <li style="padding-left: 1.5rem; position: relative;">
-                <span style="position: absolute; left: 0; color: var(--accent-2); font-weight: bold;">✓</span>
-                <span lang-block data-lang="en">No surprise fees – the price only changes if <em>you</em> ask for extra features.</span>
-                <span lang-block data-lang="es" data-active="true">Sin cargos sorpresa – el precio solo cambia si <em>tú</em> pides funciones nuevas.</span>
-              </li>
-            </ul>
-          </div>
+        <div class="payment-plan">
+          <ul class="payment-list">
+            <li>
+              <span class="checkmark">✓</span>
+              <span lang-block data-lang="en"><strong>50% to start</strong> – Secures your project slot</span>
+              <span lang-block data-lang="es" data-active="true"><strong>50% para comenzar</strong> – Asegura tu lugar en el proyecto</span>
+            </li>
+            <li>
+              <span class="checkmark">✓</span>
+              <span lang-block data-lang="en"><strong>50% when finished</strong> – Due upon completion</span>
+              <span lang-block data-lang="es" data-active="true"><strong>50% al entregar</strong> – Pagadero al completar</span>
+            </li>
+            <li>
+              <span class="checkmark">✓</span>
+              <span lang-block data-lang="en"><strong>No surprise fees</strong> – Price only changes if you request additional features</span>
+              <span lang-block data-lang="es" data-active="true"><strong>Sin cargos sorpresa</strong> – El precio solo cambia si pides funciones adicionales</span>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
 
     <!-- Why People Choose Me -->
-    <section class="section-spacing" style="padding: 3rem 0;">
-      <div class="container pricing-container">
-        <div class="pricing-single">
+    <section class="section-spacing">
+      <div class="container">
+        <div class="section-header">
           <div lang-block data-lang="en">
             <h3>Why People Choose Me</h3>
           </div>
           <div lang-block data-lang="es" data-active="true">
             <h3>Por Qué la Gente Me Elige</h3>
           </div>
+        </div>
 
-          <div style="background: linear-gradient(135deg, rgba(45, 212, 191, 0.08), rgba(255, 122, 89, 0.08)); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 16px; padding: 2rem; margin-top: 1.5rem;">
-            <ul style="list-style: none; padding: 0; margin: 0; color: #cbd5e1; line-height: 1.85;">
-              <li style="margin-bottom: 1.25rem; padding-left: 2rem; position: relative; font-size: var(--text-md);">
-                <span style="position: absolute; left: 0; color: var(--accent-2); font-size: 1.2em;">▸</span>
-                <span lang-block data-lang="en">I build everything <strong style="color: #ffffff;">from scratch</strong>, not with cheap templates.</span>
-                <span lang-block data-lang="es" data-active="true">Construyo todo <strong style="color: #ffffff;">desde cero</strong>, no uso plantillas baratas.</span>
-              </li>
-              <li style="margin-bottom: 1.25rem; padding-left: 2rem; position: relative; font-size: var(--text-md);">
-                <span style="position: absolute; left: 0; color: var(--accent-2); font-size: 1.2em;">▸</span>
-                <span lang-block data-lang="en">Your site will be <strong style="color: #ffffff;">fast</strong>, <strong style="color: #ffffff;">clean</strong>, and <strong style="color: #ffffff;">easy to use</strong>.</span>
-                <span lang-block data-lang="es" data-active="true">Tu sitio será <strong style="color: #ffffff;">rápido</strong>, <strong style="color: #ffffff;">limpio</strong> y <strong style="color: #ffffff;">fácil de usar</strong>.</span>
-              </li>
-              <li style="margin-bottom: 1.25rem; padding-left: 2rem; position: relative; font-size: var(--text-md);">
-                <span style="position: absolute; left: 0; color: var(--accent-2); font-size: 1.2em;">▸</span>
-                <span lang-block data-lang="en">I make it <strong style="color: #ffffff;">bilingual</strong> so you reach more customers.</span>
-                <span lang-block data-lang="es" data-active="true">Lo hago <strong style="color: #ffffff;">bilingüe</strong> para que llegues a más clientes.</span>
-              </li>
-              <li style="margin-bottom: 1.25rem; padding-left: 2rem; position: relative; font-size: var(--text-md);">
-                <span style="position: absolute; left: 0; color: var(--accent-2); font-size: 1.2em;">▸</span>
-                <span lang-block data-lang="en">I explain everything in <strong style="color: #ffffff;">simple language</strong>.</span>
-                <span lang-block data-lang="es" data-active="true">Explico todo en <strong style="color: #ffffff;">palabras sencillas</strong>.</span>
-              </li>
-              <li style="padding-left: 2rem; position: relative; font-size: var(--text-md);">
-                <span style="position: absolute; left: 0; color: var(--accent-2); font-size: 1.2em;">▸</span>
-                <span lang-block data-lang="en">I help small businesses get online <strong style="color: #ffffff;">without breaking the bank</strong>.</span>
-                <span lang-block data-lang="es" data-active="true">Ayudo a negocios pequeños a estar en línea <strong style="color: #ffffff;">sin gastar demasiado</strong>.</span>
-              </li>
-            </ul>
-          </div>
+        <div class="why-choose-me">
+          <ul class="reasons-list">
+            <li>
+              <span class="arrow">▸</span>
+              <span lang-block data-lang="en">I build everything <strong>from scratch</strong>, not with cheap templates</span>
+              <span lang-block data-lang="es" data-active="true">Construyo todo <strong>desde cero</strong>, no uso plantillas baratas</span>
+            </li>
+            <li>
+              <span class="arrow">▸</span>
+              <span lang-block data-lang="en">Your site will be <strong>fast</strong>, <strong>clean</strong>, and <strong>easy to use</strong></span>
+              <span lang-block data-lang="es" data-active="true">Tu sitio será <strong>rápido</strong>, <strong>limpio</strong> y <strong>fácil de usar</strong></span>
+            </li>
+            <li>
+              <span class="arrow">▸</span>
+              <span lang-block data-lang="en">I make it <strong>bilingual</strong> so you reach more customers</span>
+              <span lang-block data-lang="es" data-active="true">Lo hago <strong>bilingüe</strong> para que llegues a más clientes</span>
+            </li>
+            <li>
+              <span class="arrow">▸</span>
+              <span lang-block data-lang="en">I explain everything in <strong>simple language</strong></span>
+              <span lang-block data-lang="es" data-active="true">Explico todo en <strong>palabras sencillas</strong></span>
+            </li>
+            <li>
+              <span class="arrow">▸</span>
+              <span lang-block data-lang="en">I help small businesses get online <strong>without breaking the bank</strong></span>
+              <span lang-block data-lang="es" data-active="true">Ayudo a negocios pequeños a estar en línea <strong>sin gastar demasiado</strong></span>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- Contact -->
+    <!-- Contact Section -->
     <section id="contact" class="section-spacing">
       <div class="container">
         <div data-lang="en" lang-block>
           <h3>Contact</h3>
           <div class="contact-card">
-            <p class="contact-intro">Have a project in mind or need bilingual consulting?</p>
+            <p class="contact-intro">Have a project in mind or need bilingual consulting? You can write in English or Spanish.</p>
             
             <div class="contact-links">
               <a href="https://www.linkedin.com/in/quintanadm95" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
@@ -464,7 +462,7 @@
                 303-500-4122
               </a>
 
-              <a href="mailto:placasfirmas.david@gmail.com" class="contact-link-btn">
+              <a href="mailto:david@example.com" class="contact-link-btn">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                 Email
               </a>
@@ -475,7 +473,7 @@
         <div data-lang="es" lang-block data-active="true">
           <h3>Contacto</h3>
           <div class="contact-card">
-            <p class="contact-intro">¿Tienes un proyecto en mente o necesitas asesoría bilingüe?</p>
+            <p class="contact-intro">¿Tienes un proyecto o necesitas asesoría bilingüe? Puedes escribir en inglés o español; respondo en ambos idiomas.</p>
             
             <div class="contact-links">
               <a href="https://www.linkedin.com/in/quintanadm95" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
@@ -498,7 +496,7 @@
                 303-500-4122
               </a>
 
-              <a href="mailto:placasfirmas.david@gmail.com" class="contact-link-btn">
+              <a href="mailto:david@example.com" class="contact-link-btn">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                 Correo
               </a>
@@ -509,15 +507,25 @@
     </section>
   </main>
 
-  <footer class="site-footer">
-    <p>
-      © <span id="year"></span> David Quintana. 
-      <span data-lang="en" lang-block>All rights reserved.</span>
-      <span data-lang="es" lang-block data-active="true">Todos los derechos reservados.</span>
-    </p>
+  <footer class="portfolio-footer site-footer">
+    <div class="container">
+      <p>
+        <span lang-block data-lang="en">David Quintana Dev is a registered trade name of Servicios Quintana LLC.</span>
+        <span lang-block data-lang="es" data-active="true">David Quintana Dev es un nombre comercial registrado de Servicios Quintana LLC.</span>
+      </p>
+
+      <p class="legal-notice">
+        <span lang-block data-lang="en">Mandatory Disclosure: I am not an attorney licensed to practice law in the State of Colorado and I may not give legal advice or accept fees for legal advice.</span>
+        <span lang-block data-lang="es" data-active="true">Aviso Obligatorio: No soy un abogado licenciado para ejercer el derecho en el Estado de Colorado y no puedo dar asesoría legal ni aceptar honorarios por asesoría legal.</span>
+      </p>
+
+      <p>
+        <span lang-block data-lang="en">© 2026 Servicios Quintana LLC. All Rights Reserved.</span>
+        <span lang-block data-lang="es" data-active="true">© 2026 Servicios Quintana LLC. Todos los derechos reservados.</span>
+      </p>
+    </div>
   </footer>
 
   <script src="main.js"></script>
 </body>
 </html>
-          
