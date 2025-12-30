@@ -1,67 +1,67 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en" data-language="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>David Matthew Quintana · Desarrollo web bilingüe</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="Sitios web bilingües y prácticos para pequeños negocios y profesionales independientes."
-  />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>David Matthew Quintana | Bilingual Web Developer</title>
+  <meta name="description" content="Bilingual web developer creating practical, mobile-first websites for small businesses and professionals in Colorado.">
+  <!-- FONTS & BASE STYLES -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body data-language="es">
-  <!-- Skip to main content for accessibility -->
+<body class="case-study-page" data-language="en">
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- Background grid overlay -->
-  <div class="logo-background">
-    <div class="bg-logo">DMQ</div>
+  <!-- GRID BACKGROUND LOGO -->
+  <div class="logo-background" aria-hidden="true">
+    <div class="bg-logo">DQ</div>
   </div>
 
-  <!-- Floating language toggle -->
-  <div class="floating-toggle" role="button" aria-label="Toggle language between English and Spanish" tabindex="0">
-    <span data-lang="en" class="inactive">EN</span>
-    <span>/</span>
-    <span data-lang="es">ES</span>
-  </div>
+  <!-- FLOATING LANGUAGE TOGGLE -->
+  <button class="floating-toggle" type="button" aria-label="Toggle language">
+    <span data-lang="en">EN</span>
+    <span data-lang="es" class="inactive">ES</span>
+  </button>
 
-  <!-- Site header -->
+  <!-- SITE HEADER -->
   <header class="site-header">
     <div class="container header-inner">
       <div class="brand">
-        <a href="index.html">
-          <h1>David Matthew Quintana</h1>
+        <h1>
+          <a href="index.html">David Matthew Quintana</a>
+        </h1>
+        <p class="tagline">Bilingual Web Developer | Creating practical solutions for small businesses and professionals.</p>
+      </div>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html#projects">
+          <span lang-block data-lang="en" data-active="true">Projects</span>
+          <span lang-block data-lang="es">Proyectos</span>
         </a>
-
-        <p class="tagline" lang-block data-lang="en">
-          Bilingual Web Developer | Creating practical solutions for small businesses and professionals
-        </p>
-        <p class="tagline" lang-block data-lang="es" data-active="true">
-          Desarrollador Web Bilingüe | Creando soluciones prácticas para pequeños negocios y profesionales
-        </p>
-      </div>
-
-      <div class="header-right">
-        <nav class="nav" aria-label="Navegación principal">
-          <a href="index.html" lang-block data-lang="en">Home</a>
-          <a href="pricing.html" lang-block data-lang="en">Pricing</a>
-          <a href="#contact" class="cta" lang-block data-lang="en">Contact</a>
-
-          <a href="index.html" lang-block data-lang="es" data-active="true">Inicio</a>
-          <a href="pricing.html" lang-block data-lang="es" data-active="true">Precios</a>
-          <a href="#contact" class="cta" lang-block data-lang="es" data-active="true">Contacto</a>
-        </nav>
-      </div>
+        <a href="pricing.html">
+          <span lang-block data-lang="en" data-active="true">Pricing</span>
+          <span lang-block data-lang="es">Precios</span>
+        </a>
+        <a href="index.html" class="home-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+          <span lang-block data-lang="en">Home</span>
+          <span lang-block data-lang="es">Inicio</span>
+        </a>
+        <a href="index.html#contact" class="cta">
+          <span lang-block data-lang="en" data-active="true">Contact</span>
+          <span lang-block data-lang="es">Contacto</span>
+        </a>
+      </nav>
     </div>
   </header>
 
-  <!-- Main content -->
+
+
   <main id="main-content">
-    <!-- Hero Section -->
     <section id="top" class="section-spacing" aria-labelledby="hero-title">
       <div class="container hero">
         <div class="hero-left">
@@ -107,7 +107,6 @@
       </div>
     </section>
 
-    <!-- About Section -->
     <section class="section-spacing" aria-labelledby="about-title">
       <div class="container about">
         <div class="about-text">
@@ -141,7 +140,6 @@
       </div>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects" class="section-spacing">
       <div class="container projects">
         <div class="section-header">
@@ -157,7 +155,6 @@
         </div>
 
         <div class="project-grid">
-          <!-- Servicios Quintana LLC Project Card -->
           <article class="project-card">
             <div class="project-image-wrapper">
               <a href="https://serviciosquintana.com/" target="_blank" rel="noopener noreferrer">
@@ -211,302 +208,7 @@
               </div>
             </div>
           </article>
-        </div>
-      </div>
-    </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="section-spacing" aria-labelledby="skills-title">
-      <div class="container skills">
-        <div data-lang="en" lang-block>
-          <div class="section-header">
-            <h3 id="skills-title-en">Technical skills</h3>
-            <p>Core competencies for building bilingual, accessible, and results-driven web experiences.</p>
-          </div>
-          
-          <div class="skills-card-grid">
-            <article class="skill-detail-card">
-              <h4>Frontend Development</h4>
-              <ul class="skill-list">
-                <li>
-                  <strong>HTML5 & Semantic Tagging:</strong>
-                  Building accessible, SEO-friendly markup with proper document structure and ARIA roles.
-                </li>
-                <li>
-                  <strong>CSS3 (Grid, Flexbox, Custom Properties):</strong>
-                  Modern layout systems and design tokens for maintainable, responsive interfaces.
-                </li>
-                <li>
-                  <strong>JavaScript (Vanilla ES6+, DOM API):</strong>
-                  Client-side interactivity, state management, and event-driven architecture without framework dependencies.
-                </li>
-                <li>
-                  <strong>Responsive Web Design:</strong>
-                  Mobile-first layouts that adapt seamlessly across devices and screen sizes.
-                </li>
-              </ul>
-            </article>
-
-            <article class="skill-detail-card">
-              <h4>Design & Ethics</h4>
-              <ul class="skill-list">
-                <li>
-                  <strong>WCAG 2.1 AA Accessibility:</strong>
-                  Ensuring inclusive experiences for users with disabilities through semantic markup, keyboard navigation, and screen reader compatibility.
-                </li>
-                <li>
-                  <strong>Bilingual UX/UI Architecture:</strong>
-                  Culturally-aware design that resonates with both English and Spanish-speaking audiences.
-                </li>
-                <li>
-                  <strong>Mobile-First Methodology:</strong>
-                  Prioritizing performance and usability on smaller screens before scaling up.
-                </li>
-                <li>
-                  <strong>Cultural Tone Alignment:</strong>
-                  Crafting messages that reflect community values and build trust across language barriers.
-                </li>
-              </ul>
-            </article>
-
-            <article class="skill-detail-card">
-              <h4>Tools & Systems</h4>
-              <ul class="skill-list">
-                <li>
-                  <strong>Git / GitHub:</strong>
-                  Version control, collaborative workflows, and code documentation for transparent development.
-                </li>
-                <li>
-                  <strong>Information Systems (Health Care Focus):</strong>
-                  Understanding of data privacy, HIPAA compliance, and secure information handling from academic training.
-                </li>
-                <li>
-                  <strong>Visual Studio Code:</strong>
-                  Modern development environment with extensions for linting, formatting, and productivity.
-                </li>
-                <li>
-                  <strong>Legal & Notarial Standards:</strong>
-                  Professional experience with compliance, documentation accuracy, and client confidentiality in legal contexts.
-                </li>
-              </ul>
-            </article>
-          </div>
-        </div>
-
-        <div data-lang="es" lang-block data-active="true">
-          <div class="section-header">
-            <h3 id="skills-title-es">Habilidades técnicas</h3>
-            <p>Competencias fundamentales para construir experiencias web bilingües, accesibles y orientadas a resultados.</p>
-          </div>
-          
-          <div class="skills-card-grid">
-            <article class="skill-detail-card">
-              <h4>Desarrollo Frontend</h4>
-              <ul class="skill-list">
-                <li>
-                  <strong>HTML5 y Etiquetado Semántico:</strong>
-                  Construcción de marcado accesible y optimizado para SEO con estructura documental apropiada y roles ARIA.
-                </li>
-                <li>
-                  <strong>CSS3 (Grid, Flexbox, Propiedades Personalizadas):</strong>
-                  Sistemas de diseño modernos y tokens de diseño para interfaces mantenibles y adaptables.
-                </li>
-                <li>
-                  <strong>JavaScript (Vanilla ES6+, DOM API):</strong>
-                  Interactividad del lado del cliente, gestión de estado y arquitectura basada en eventos sin dependencias de frameworks.
-                </li>
-                <li>
-                  <strong>Diseño Web Adaptable (Responsive):</strong>
-                  Layouts mobile-first que se adaptan perfectamente a todos los dispositivos y tamaños de pantalla.
-                </li>
-              </ul>
-            </article>
-
-            <article class="skill-detail-card">
-              <h4>Diseño y Ética</h4>
-              <ul class="skill-list">
-                <li>
-                  <strong>Accesibilidad WCAG 2.1 AA:</strong>
-                  Garantizando experiencias inclusivas para usuarios con discapacidades mediante marcado semántico, navegación por teclado y compatibilidad con lectores de pantalla.
-                </li>
-                <li>
-                  <strong>Arquitectura UX/UI Bilingüe:</strong>
-                  Diseño culturalmente consciente que resuena tanto con audiencias de habla inglesa como española.
-                </li>
-                <li>
-                  <strong>Metodología Mobile-First:</strong>
-                  Priorizando rendimiento y usabilidad en pantallas pequeñas antes de escalar.
-                </li>
-                <li>
-                  <strong>Alineación de Tono Cultural:</strong>
-                  Elaborando mensajes que reflejan valores comunitarios y construyen confianza a través de barreras lingüísticas.
-                </li>
-              </ul>
-            </article>
-
-            <article class="skill-detail-card">
-              <h4>Herramientas y Sistemas</h4>
-              <ul class="skill-list">
-                <li>
-                  <strong>Git / GitHub:</strong>
-                  Control de versiones, flujos de trabajo colaborativos y documentación de código para desarrollo transparente.
-                </li>
-                <li>
-                  <strong>Sistemas de Información (Enfoque en Salud):</strong>
-                  Comprensión de privacidad de datos, cumplimiento HIPAA y manejo seguro de información desde formación académica.
-                </li>
-                <li>
-                  <strong>Visual Studio Code:</strong>
-                  Entorno de desarrollo moderno con extensiones para linting, formateo y productividad.
-                </li>
-                <li>
-                  <strong>Estándares Legales y Notariales:</strong>
-                  Experiencia profesional con cumplimiento normativo, precisión en documentación y confidencialidad del cliente en contextos legales.
-                </li>
-              </ul>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="section-spacing" aria-labelledby="services-title">
-      <div class="container services">
-        <div data-lang="en" lang-block>
-          <h3 id="services-title-en">How I can help your business</h3>
-          <div class="services-grid">
-            <div class="service-card">
-              <h4>Bilingual Local Presence</h4>
-              <p>I don't just translate text; I design experiences that resonate with both English and Spanish speaking customers, doubling your potential reach.</p>
-            </div>
-            <div class="service-card">
-              <h4>Trust-Based Design</h4>
-              <p>For service businesses (lawyers, medical, legal), trust is everything. I build professional sites that project authority and reliability from the first click.</p>
-            </div>
-            <div class="service-card">
-              <h4>Accessible Growth</h4>
-              <p>I ensure your site is usable by everyone, including people with disabilities, which is not only ethical but improves your SEO and legal compliance.</p>
-            </div>
-          </div>
-        </div>
-
-        <div data-lang="es" lang-block data-active="true">
-          <h3 id="services-title-es">Cómo puedo ayudar a tu negocio</h3>
-          <div class="services-grid">
-            <div class="service-card">
-              <h4>Presencia Local Bilingüe</h4>
-              <p>No solo traduzco texto; diseño experiencias que resuenan tanto con clientes que hablan inglés como español, duplicando tu alcance potencial.</p>
-            </div>
-            <div class="service-card">
-              <h4>Diseño Basado en Confianza</h4>
-              <p>Para negocios de servicios (abogados, médicos, legales), la confianza lo es todo. Construyo sitios profesionales que proyectan autoridad y fiabilidad desde el primer clic.</p>
-            </div>
-            <div class="service-card">
-              <h4>Crecimiento Accesible</h4>
-              <p>Me aseguro de que tu sitio sea usable para todos, incluyendo personas con discapacidades, lo cual no solo es ético, sino que mejora tu SEO y cumplimiento legal.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section-spacing">
-      <div class="container">
-        <div data-lang="en" lang-block>
-          <h3>Contact</h3>
-          <div class="contact-card">
-            <p class="contact-intro">Have a project in mind or need bilingual consulting?</p>
-            
-            <div class="contact-links">
-              <a href="https://www.linkedin.com/in/quintanadm95" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                LinkedIn
-              </a>
-
-              <a href="https://github.com/dquint32" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                GitHub
-              </a>
-
-              <a href="https://wa.me/13035004122" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-                WhatsApp
-              </a>
-
-              <a href="tel:+13035004122" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.81 12.81 0 0 0 .63 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.63A2 2 0 0 1 22 16.92z"></path></svg>
-                303-500-4122
-              </a>
-
-              <a href="mailto:placasfirmas.david@gmail.com" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                Email
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div data-lang="es" lang-block data-active="true">
-          <h3>Contacto</h3>
-          <div class="contact-card">
-            <p class="contact-intro">¿Tienes un proyecto en mente o necesitas asesoría bilingüe?</p>
-            
-            <div class="contact-links">
-              <a href="https://www.linkedin.com/in/quintanadm95" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                LinkedIn
-              </a>
-
-              <a href="https://github.com/dquint32" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                GitHub
-              </a>
-
-              <a href="https://wa.me/13035004122" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-                WhatsApp
-              </a>
-
-              <a href="tel:+13035004122" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.81 12.81 0 0 0 .63 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.63A2 2 0 0 1 22 16.92z"></path></svg>
-                303-500-4122
-              </a>
-
-              <a href="mailto:placasfirmas.david@gmail.com" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                Correo
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    <p>
-      © <span id="year"></span> David Quintana. 
-      <span data-lang="en" lang-block>All rights reserved.</span>
-      <span data-lang="es" lang-block data-active="true">Todos los derechos reservados.</span>
-    </p>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-</html> lang-block>
-                  Code on GitHub
-                </a>
-                <a href="https://github.com/dquint32" target="_blank" rel="noopener noreferrer" data-lang="es" lang-block data-active="true">
-                  Código en GitHub
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Tienda Salvadoreña Project Card -->
           <article class="project-card">
             <div class="project-image-wrapper">
               <a href="https://tiendasalvadorenadenver.com" target="_blank" rel="noopener noreferrer">
@@ -552,10 +254,10 @@
                 </a>
 
                 <a href="tienda-case-study.html" data-lang="en" lang-block>
-                  📋 Detailed case study
+                  Case Study
                 </a>
                 <a href="tienda-case-study.html" data-lang="es" lang-block data-active="true">
-                  📋 Caso de estudio detallado
+                  Caso de Estudio
                 </a>
 
                 <a href="https://github.com/dquint32" target="_blank" rel="noopener noreferrer" data-lang="en" lang-block>
@@ -568,7 +270,6 @@
             </div>
           </article>
 
-          <!-- Quintana Notary & Signing Project Card -->
           <article class="project-card">
             <div class="project-image-wrapper">
               <a href="https://quintananotarysigning.com" target="_blank" rel="noopener noreferrer">
@@ -614,10 +315,10 @@
                 </a>
 
                 <a href="quintana-notary-signing-case-study.html" data-lang="en" lang-block>
-                  📋 Detailed case study
+                  Case Study
                 </a>
                 <a href="quintana-notary-signing-case-study.html" data-lang="es" lang-block data-active="true">
-                  📋 Caso de estudio detallado
+                  Caso de Estudio
                 </a>
 
                 <a href="https://github.com/dquint32" target="_blank" rel="noopener noreferrer" data-lang="en" lang-block>
@@ -630,7 +331,6 @@
             </div>
           </article>
 
-          <!-- HTML/CSS/JS Exam Practice Quiz -->
           <article class="project-card">
             <div class="project-image-wrapper">
               <a href="https://dquint32.github.io/Exam3_CIS3030_MSUDENVER/" target="_blank" rel="noopener noreferrer">
@@ -684,7 +384,6 @@
             </div>
           </article>
 
-          <!-- Ayuda DMV Project Card -->
           <article class="project-card">
             <div class="project-image-wrapper">
               <a href="https://ayuda-dmv.netlify.app" target="_blank" rel="noopener noreferrer">
@@ -728,4 +427,308 @@
                   Sitio en vivo
                 </a>
 
-                <a href="https://github.com/dquint32" target="_blank" rel="noopener noreferrer" data-lang="en"
+                <a href="https://github.com/dquint32" target="_blank" rel="noopener noreferrer" data-lang="en" lang-block>
+                  Code on GitHub
+                </a>
+                <a href="https://github.com/dquint32" target="_blank" rel="noopener noreferrer" data-lang="es" lang-block data-active="true">
+                  Código en GitHub
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section-spacing" aria-labelledby="skills-title">
+      <div class="container skills">
+        <div data-lang="en" lang-block>
+          <div class="section-header">
+            <h3 id="skills-title-en">Technical Skills</h3>
+            <p>Core competencies for building bilingual, accessible, and results-driven web experiences.</p>
+          </div>
+          
+          <div class="skills-card-grid">
+            <article class="skill-detail-card">
+              <h4>Modern Frontend</h4>
+              <ul class="skill-list">
+                <li><strong>HTML5 Semantic & SEO:</strong> Proper document structure for search engines and accessibility.</li>
+                <li><strong>CSS3:</strong> Grid, Flexbox, Custom Variables, Neo-Brutalist design.</li>
+                <li><strong>JavaScript Vanilla (ES6+):</strong> No frameworks needed. Performance-focused interactivity.</li>
+              </ul>
+            </article>
+
+            <article class="skill-detail-card">
+              <h4>Web Architecture</h4>
+              <ul class="skill-list">
+                <li><strong>Custom i18n Systems:</strong> Instant bilingual toggling without page reloads.</li>
+                <li><strong>State Management:</strong> LocalStorage persistence and IIFE modules.</li>
+                <li><strong>Performance:</strong> Lazy loading, optimized assets, and clean code.</li>
+              </ul>
+            </article>
+
+            <article class="skill-detail-card">
+              <h4>Accessibility & Design</h4>
+              <ul class="skill-list">
+                <li><strong>WCAG 2.1 AA:</strong> ARIA roles, keyboard navigation, and reduced motion support.</li>
+                <li><strong>Inclusive Design:</strong> Interfaces that work for diverse communities and vestibular sensitivities.</li>
+                <li><strong>Local SEO:</strong> Google Business Profile optimization and schema markup.</li>
+              </ul>
+            </article>
+
+            <article class="skill-detail-card">
+              <h4>Tools & Systems</h4>
+              <ul class="skill-list">
+                <li><strong>Git & GitHub:</strong> Version control and transparent development.</li>
+                <li><strong>Netlify:</strong> Fast, secure deployments.</li>
+                <li><strong>APIs:</strong> Google Maps, FontAwesome, Generative AI integration.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+
+        <div data-lang="es" lang-block data-active="true">
+          <div class="section-header">
+            <h3 id="skills-title-es">Habilidades Técnicas</h3>
+            <p>Competencias fundamentales para construir experiencias web bilingües, accesibles y orientadas a resultados.</p>
+          </div>
+          
+          <div class="skills-card-grid">
+            <article class="skill-detail-card">
+              <h4>Frontend Moderno</h4>
+              <ul class="skill-list">
+                <li><strong>HTML5 Semántico:</strong> Estructura optimizada para SEO y lectores de pantalla.</li>
+                <li><strong>CSS3:</strong> Grid, Flexbox, Variables, Diseño Neo-Brutalista.</li>
+                <li><strong>JavaScript Vanilla (ES6+):</strong> Sin frameworks pesados. Interactividad enfocada en rendimiento.</li>
+              </ul>
+            </article>
+
+            <article class="skill-detail-card">
+              <h4>Arquitectura Web</h4>
+              <ul class="skill-list">
+                <li><strong>Sistemas i18n Personalizados:</strong> Traducción instantánea sin recargas de página.</li>
+                <li><strong>Manejo de Estado:</strong> Persistencia con LocalStorage y módulos IIFE.</li>
+                <li><strong>Optimización:</strong> Carga diferida (lazy loading) y código limpio.</li>
+              </ul>
+            </article>
+
+            <article class="skill-detail-card">
+              <h4>Accesibilidad y Diseño</h4>
+              <ul class="skill-list">
+                <li><strong>WCAG 2.1 AA:</strong> Roles ARIA, navegación por teclado y soporte para reducción de movimiento.</li>
+                <li><strong>Diseño Inclusivo:</strong> Interfaces para comunidades diversas y sensibilidades vestibulares.</li>
+                <li><strong>SEO Local:</strong> Optimización de Google Business Profile y marcado schema.</li>
+              </ul>
+            </article>
+
+            <article class="skill-detail-card">
+              <h4>Herramientas</h4>
+              <ul class="skill-list">
+                <li><strong>Git & GitHub:</strong> Control de versiones y desarrollo transparente.</li>
+                <li><strong>Netlify:</strong> Despliegues rápidos y seguros.</li>
+                <li><strong>APIs:</strong> Google Maps, FontAwesome, Integración de IA Generativa.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section-spacing" aria-labelledby="services-title">
+      <div class="container services">
+        <div data-lang="en" lang-block>
+          <div class="section-header">
+            <h3 id="services-title-en">Why Choose Me</h3>
+            <p>More than just code—I offer value that protects your business and connects with your community.</p>
+          </div>
+          <div class="services-grid">
+            <div class="service-card">
+              <h4>Bilingual Development (EN/ES)</h4>
+              <p>Instant translation without page reloads. Double your audience reach with culturally accurate content, not just automated translations.</p>
+            </div>
+            <div class="service-card">
+              <h4>Professional Platforms</h4>
+              <p>Specialized solutions for Notaries, Legal Services, Cultural Shops, and Consultants. I understand the "Trust Factor" needed for these industries.</p>
+            </div>
+            <div class="service-card">
+              <h4>Value Added</h4>
+              <p>Simple contract drafting, basic legal content structure, and technical consulting for small businesses. I combine IT knowledge with legal/notary experience.</p>
+            </div>
+          </div>
+        </div>
+
+        <div data-lang="es" lang-block data-active="true">
+          <div class="section-header">
+            <h3 id="services-title-es">Por qué me eligen</h3>
+            <p>Más que código: ofrezco valor que protege tu negocio y conecta con tu comunidad.</p>
+          </div>
+          <div class="services-grid">
+            <div class="service-card">
+              <h4>Desarrollo Bilingüe (EN/ES)</h4>
+              <p>Traducción instantánea sin recargas. Duplica tu alcance con contenido culturalmente preciso, no solo traducciones automáticas.</p>
+            </div>
+            <div class="service-card">
+              <h4>Plataformas Profesionales</h4>
+              <p>Soluciones especializadas para notarías, servicios legales, tiendas culturales y consultorías. Entiendo el "Factor de Confianza" necesario.</p>
+            </div>
+            <div class="service-card">
+              <h4>Valor Agregado</h4>
+              <p>Redacción de contratos simples, estructura de contenido legal básico y consultoría técnica. Combino conocimientos de TI con experiencia legal/notarial.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="section-spacing">
+      <div class="container">
+        <div class="section-header">
+          <div data-lang="en" lang-block>
+            <h3>Transparent Investment</h3>
+            <p>Clear, fixed-price packages designed for every stage of your business.</p>
+          </div>
+          <div data-lang="es" lang-block data-active="true">
+            <h3>Inversión Transparente</h3>
+            <p>Paquetes claros y de precio fijo diseñados para cualquier etapa de tu negocio.</p>
+          </div>
+        </div>
+
+        <div style="max-width: 800px; margin: 0 auto; text-align: center; background: var(--gunmetal); border: 1px solid var(--steel-gray); padding: var(--space-8);">
+          <div data-lang="en" lang-block>
+            <p style="font-size: 1.25rem; margin-bottom: var(--space-6); color: var(--soft-white);">
+              Whether you need a simple landing page or a full e-commerce platform, I offer straightforward pricing with <strong style="color: var(--cyber-orange);">no hidden monthly fees</strong>. You own your code, your domain, and your data.
+            </p>
+            
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-6); margin-bottom: var(--space-8); color: var(--muted-silver);">
+              <span style="display: flex; align-items: center; gap: 8px;">
+                <span style="color: var(--cyber-orange);">✓</span> 50/50 Payment Plan
+              </span>
+              <span style="display: flex; align-items: center; gap: 8px;">
+                <span style="color: var(--cyber-orange);">✓</span> Bilingual Options
+              </span>
+              <span style="display: flex; align-items: center; gap: 8px;">
+                <span style="color: var(--cyber-orange);">✓</span> SEO Included
+              </span>
+            </div>
+
+            <a href="pricing.html" class="btn btn-primary">View Services & Pricing</a>
+          </div>
+
+          <div data-lang="es" lang-block data-active="true">
+            <p style="font-size: 1.25rem; margin-bottom: var(--space-6); color: var(--soft-white);">
+              Ya sea que necesites una página de inicio simple o una tienda en línea completa, ofrezco precios directos <strong style="color: var(--cyber-orange);">sin tarifas mensuales ocultas</strong>. Tú eres dueño de tu código, tu dominio y tus datos.
+            </p>
+            
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-6); margin-bottom: var(--space-8); color: var(--muted-silver);">
+              <span style="display: flex; align-items: center; gap: 8px;">
+                <span style="color: var(--cyber-orange);">✓</span> Plan de Pago 50/50
+              </span>
+              <span style="display: flex; align-items: center; gap: 8px;">
+                <span style="color: var(--cyber-orange);">✓</span> Opciones Bilingües
+              </span>
+              <span style="display: flex; align-items: center; gap: 8px;">
+                <span style="color: var(--cyber-orange);">✓</span> SEO Incluido
+              </span>
+            </div>
+
+            <a href="pricing.html" class="btn btn-primary">Ver Servicios y Precios</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section-spacing">
+      <div class="container">
+        <div data-lang="en" lang-block>
+          <h3>Contact</h3>
+          <div class="contact-card">
+            <p class="contact-intro">Have a project in mind or need bilingual consulting? You can write in English or Spanish.</p>
+            
+            <div class="contact-links">
+              <a href="https://www.linkedin.com/in/quintanadm95" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                LinkedIn
+              </a>
+
+              <a href="https://github.com/dquint32" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                GitHub
+              </a>
+
+              <a href="https://wa.me/13035004122" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                WhatsApp
+              </a>
+
+              <a href="tel:+13035004122" class="contact-link-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.81 12.81 0 0 0 .63 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.63A2 2 0 0 1 22 16.92z"></path></svg>
+                303-500-4122
+              </a>
+
+              <a href="mailto:david@example.com" class="contact-link-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                Email
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div data-lang="es" lang-block data-active="true">
+          <h3>Contacto</h3>
+          <div class="contact-card">
+            <p class="contact-intro">¿Tienes un proyecto o necesitas asesoría bilingüe? Puedes escribir en inglés o español; respondo en ambos idiomas.</p>
+            
+            <div class="contact-links">
+              <a href="https://www.linkedin.com/in/quintanadm95" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                LinkedIn
+              </a>
+
+              <a href="https://github.com/dquint32" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                GitHub
+              </a>
+
+              <a href="https://wa.me/13035004122" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                WhatsApp
+              </a>
+
+              <a href="tel:+13035004122" class="contact-link-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.81 12.81 0 0 0 .63 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.63A2 2 0 0 1 22 16.92z"></path></svg>
+                303-500-4122
+              </a>
+
+              <a href="mailto:david@example.com" class="contact-link-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                Correo
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="portfolio-footer site-footer">
+    <div class="container">
+      <p>
+        <span lang-block data-lang="en">David Quintana Dev is a registered trade name of Servicios Quintana LLC.</span>
+        <span lang-block data-lang="es" data-active="true">David Quintana Dev es un nombre comercial registrado de Servicios Quintana LLC.</span>
+      </p>
+
+      <p class="legal-notice">
+        <span lang-block data-lang="en">Mandatory Disclosure: I am not an attorney licensed to practice law in the State of Colorado and I may not give legal advice or accept fees for legal advice.</span>
+        <span lang-block data-lang="es" data-active="true">Aviso Obligatorio: No soy un abogado licenciado para ejercer el derecho en el Estado de Colorado y no puedo dar asesoría legal ni aceptar honorarios por asesoría legal.</span>
+      </p>
+
+      <p>
+        <span lang-block data-lang="en">© 2026 Servicios Quintana LLC. All Rights Reserved.</span>
+        <span lang-block data-lang="es" data-active="true">© 2026 Servicios Quintana LLC. Todos los derechos reservados.</span>
+      </p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
