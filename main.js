@@ -1,35 +1,19 @@
 /* ============================================
-
-INDUSTRIAL MODERNISM + CYBER MINIMALISM
-
-JavaScript Interactions for David Quintana Portfolio
-
-============================================ */
+   INDUSTRIAL MODERNISM + CYBER MINIMALISM
+   JavaScript Interactions for David Quintana Portfolio
+   ============================================ */
 
 (function() {
-
 'use strict';
-
-/* ============================================
-
-REDUCED MOTION DETECTION
-
-============================================ */
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ============================================
-
-SCROLL REVEAL ANIMATIONS
-
-============================================ */
-
+   SCROLL REVEAL ANIMATIONS
+   ============================================ */
 function initScrollReveal() {
-
-  // Only apply animations if user hasn't requested reduced motion
   if (prefersReducedMotion) return;
 
-  // Select all elements to animate
   const revealElements = document.querySelectorAll(`
     .hero-left,
     .hero-right,
@@ -41,12 +25,10 @@ function initScrollReveal() {
     .section-header
   `);
 
-  // Add fade-in-up class to all elements
   revealElements.forEach(el => {
     el.classList.add('fade-in-up');
   });
 
-  // Create IntersectionObserver
   const observerOptions = {
     root: null,
     rootMargin: '0px',
@@ -56,44 +38,31 @@ function initScrollReveal() {
   const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        // Add delay based on position for staggered effect
         const delay = Array.from(entry.target.parentNode.children).indexOf(entry.target) * 100;
-
         setTimeout(() => {
           entry.target.classList.add('is-visible');
         }, delay);
-
-        // Stop observing once visible
         observer.unobserve(entry.target);
       }
     });
   }, observerOptions);
 
-  // Observe all elements
   revealElements.forEach(el => observer.observe(el));
 }
 
 /* ============================================
-
-MAGNETIC CURSOR EFFECT
-
-============================================ */
-
+   MAGNETIC CURSOR EFFECT
+   ============================================ */
 function initMagneticCursor() {
-  // Only apply if user hasn't requested reduced motion
   if (prefersReducedMotion) return;
-
-  // Only apply on devices with hover capability (not mobile/touch)
   const hasHover = window.matchMedia('(hover: hover)').matches;
   if (!hasHover) return;
 
-  // Create custom cursor elements
   const cursor = document.createElement('div');
   const cursorGlow = document.createElement('div');
   cursor.className = 'custom-cursor';
   cursorGlow.className = 'custom-cursor-glow';
 
-  // Add styles
   const style = document.createElement('style');
   style.textContent = `
     .custom-cursor,
@@ -104,7 +73,6 @@ function initMagneticCursor() {
       border-radius: 50%;
       transition: transform 0.15s ease-out, opacity 0.15s ease-out;
     }
-
     .custom-cursor {
       width: 10px;
       height: 10px;
@@ -112,7 +80,6 @@ function initMagneticCursor() {
       transform: translate(-50%, -50%);
       mix-blend-mode: difference;
     }
-
     .custom-cursor-glow {
       width: 40px;
       height: 40px;
@@ -121,15 +88,12 @@ function initMagneticCursor() {
       opacity: 0;
       transition: opacity 0.3s ease-out;
     }
-
     body.cursor-active .custom-cursor {
       transform: translate(-50%, -50%) scale(1.5);
     }
-
     body.cursor-active .custom-cursor-glow {
       opacity: 1;
     }
-
     @media (hover: none) {
       .custom-cursor,
       .custom-cursor-glow {
@@ -141,7 +105,6 @@ function initMagneticCursor() {
   document.body.appendChild(cursor);
   document.body.appendChild(cursorGlow);
 
-  // Track mouse position
   let mouseX = 0;
   let mouseY = 0;
   let cursorX = 0;
@@ -152,7 +115,6 @@ function initMagneticCursor() {
     mouseY = e.clientY;
   });
 
-  // Smooth cursor animation
   function updateCursor() {
     cursorX += (mouseX - cursorX) * 0.2;
     cursorY += (mouseY - cursorY) * 0.2;
@@ -165,7 +127,6 @@ function initMagneticCursor() {
 
   updateCursor();
 
-  // Magnetic effect on interactive elements
   const magneticElements = document.querySelectorAll(`
     .btn,
     .contact-link-btn,
@@ -197,37 +158,34 @@ function initMagneticCursor() {
 }
 
 /* ============================================
-
-LANGUAGE TOGGLE FUNCTIONALITY
-
-============================================ */
-
+   LANGUAGE TOGGLE FUNCTIONALITY (FIXED)
+   ============================================ */
 function initLanguageToggle() {
   const toggle = document.querySelector('.floating-toggle');
   const body = document.body;
+  
   if (!toggle) return;
 
-  toggle.addEventListener('click', () => {
-    const currentLang = body.getAttribute('data-language');
-    const newLang = currentLang === 'en' ? 'es' : 'en';
+  const switchLanguage = (lang) => {
+    const otherLang = lang === 'en' ? 'es' : 'en';
 
     // Update body attribute
-    body.setAttribute('data-language', newLang);
+    body.setAttribute('data-language', lang);
 
-    // Hide all language blocks
+    // Handle lang-block elements
     document.querySelectorAll('[lang-block]').forEach(el => {
-      el.removeAttribute('data-active');
+      const elLang = el.getAttribute('data-lang');
+      if (elLang === lang) {
+        el.setAttribute('data-active', 'true');
+      } else {
+        el.removeAttribute('data-active');
+      }
     });
 
-    // Show new language blocks
-    document.querySelectorAll(`[lang-block][data-lang="${newLang}"]`).forEach(el => {
-      el.setAttribute('data-active', 'true');
-    });
-
-    // Update toggle styling
+    // Update toggle button UI
     const spans = toggle.querySelectorAll('span[data-lang]');
     spans.forEach(span => {
-      if (span.getAttribute('data-lang') === newLang) {
+      if (span.getAttribute('data-lang') === lang) {
         span.classList.remove('inactive');
       } else {
         span.classList.add('inactive');
@@ -235,34 +193,33 @@ function initLanguageToggle() {
     });
 
     // Store preference
-    localStorage.setItem('preferred-language', newLang);
+    localStorage.setItem('preferred-language', lang);
+  };
+
+  // Click event
+  toggle.addEventListener('click', () => {
+    const currentLang = body.getAttribute('data-language') || 'en';
+    const newLang = currentLang === 'en' ? 'es' : 'en';
+    switchLanguage(newLang);
   });
 
-  // Load saved preference
-  const savedLang = localStorage.getItem('preferred-language');
-  if (savedLang && savedLang !== body.getAttribute('data-language')) {
-    toggle.click();
-  }
+  // Initialize with saved preference or default to English
+  const savedLang = localStorage.getItem('preferred-language') || 'en';
+  switchLanguage(savedLang);
 }
 
 /* ============================================
-
-SMOOTH SCROLL FOR ANCHOR LINKS
-
-============================================ */
-
+   SMOOTH SCROLL FOR ANCHOR LINKS
+   ============================================ */
 function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const href = this.getAttribute('href');
-
-      // Ignore empty or just "#" links
       if (!href || href === '#') return;
 
       const target = document.querySelector(href);
       if (target) {
         e.preventDefault();
-
         const headerOffset = 80;
         const elementPosition = target.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
@@ -277,11 +234,8 @@ function initSmoothScroll() {
 }
 
 /* ============================================
-
-HOVER ENHANCEMENTS FOR CARDS
-
-============================================ */
-
+   HOVER ENHANCEMENTS FOR CARDS
+   ============================================ */
 function initCardHoverEffects() {
   if (prefersReducedMotion) return;
 
@@ -303,11 +257,8 @@ function initCardHoverEffects() {
 }
 
 /* ============================================
-
-LAZY LOAD IMAGES
-
-============================================ */
-
+   LAZY LOAD IMAGES
+   ============================================ */
 function initLazyLoading() {
   const images = document.querySelectorAll('img[data-src]');
   const imageObserver = new IntersectionObserver((entries, observer) => {
@@ -325,16 +276,12 @@ function initLazyLoading() {
 }
 
 /* ============================================
-
-HEADER SHADOW ON SCROLL
-
-============================================ */
-
+   HEADER SHADOW ON SCROLL
+   ============================================ */
 function initHeaderScroll() {
   const header = document.querySelector('.site-header');
   if (!header) return;
 
-  let lastScroll = 0;
   window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
     if (currentScroll > 100) {
@@ -342,16 +289,12 @@ function initHeaderScroll() {
     } else {
       header.style.boxShadow = 'none';
     }
-    lastScroll = currentScroll;
   });
 }
 
 /* ============================================
-
-DYNAMIC YEAR IN FOOTER
-
-============================================ */
-
+   DYNAMIC YEAR IN FOOTER
+   ============================================ */
 function updateFooterYear() {
   const yearElement = document.getElementById('year');
   if (yearElement) {
@@ -360,11 +303,8 @@ function updateFooterYear() {
 }
 
 /* ============================================
-
-INTERSECTION OBSERVER FOR STATISTICS/COUNTERS
-
-============================================ */
-
+   INTERSECTION OBSERVER FOR STATISTICS/COUNTERS
+   ============================================ */
 function initCounterAnimations() {
   if (prefersReducedMotion) return;
 
@@ -397,22 +337,8 @@ function initCounterAnimations() {
 }
 
 /* ============================================
-
-FOCUS TRAP FOR MODALS (If needed)
-
-============================================ */
-
-function initFocusTrap() {
-  // Placeholder for modal functionality
-  // Add focus trap logic here if modals are implemented
-}
-
-/* ============================================
-
-LIGHTBOX (IMAGE ZOOM) INITIALIZATION
-
-============================================ */
-
+   LIGHTBOX (IMAGE ZOOM) INITIALIZATION
+   ============================================ */
 function initLightbox() {
   const images = document.querySelectorAll('.clickable-img');
   if (!images.length) return;
@@ -421,7 +347,6 @@ function initLightbox() {
   let overlayImg = null;
 
   function openLightbox(src, alt) {
-    // Create overlay if it does not exist
     if (!overlay) {
       overlay = document.createElement('div');
       overlay.className = 'lightbox-overlay';
@@ -439,7 +364,6 @@ function initLightbox() {
 
     overlayImg.src = src;
     overlayImg.alt = alt || '';
-
     document.body.appendChild(overlay);
   }
 
@@ -455,13 +379,9 @@ function initLightbox() {
 }
 
 /* ============================================
-
-INITIALIZE ALL FEATURES
-
-============================================ */
-
+   INITIALIZE ALL FEATURES
+   ============================================ */
 function init() {
-  // Wait for DOM to be ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
     return;
@@ -469,7 +389,6 @@ function init() {
 
   console.log('🚀 Portfolio Interactive Systems Initialized');
 
-  // Initialize all features
   initScrollReveal();
   initMagneticCursor();
   initLanguageToggle();
@@ -479,26 +398,16 @@ function init() {
   initHeaderScroll();
   updateFooterYear();
   initCounterAnimations();
-  initFocusTrap();
   initLightbox();
 
-  // Log reduced motion status
   if (prefersReducedMotion) {
     console.log('⚠️ Reduced motion mode active - animations disabled');
   }
 
-  // Add loaded class to body
   document.body.classList.add('loaded');
 }
 
-// Start initialization
 init();
-
-/* ============================================
-
-EXPORT FOR DEBUGGING (Optional)
-
-============================================ */
 
 window.portfolioDebug = {
   prefersReducedMotion,
