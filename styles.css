@@ -1977,3 +1977,63 @@ a:focus-visible,
     color: var(--black);
   }
 }
+
+/* ============================================
+   FIX: Foundational Training Button Overflow
+   ============================================ */
+
+/* Target the specific section with the orange box */
+.projects > div[style*="margin-top"] {
+  padding: var(--space-6) !important;
+  overflow: hidden;
+}
+
+/* Fix the button container */
+.projects > div[style*="margin-top"] p:has(.btn) {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+/* Fix the button itself */
+.projects > div[style*="margin-top"] .btn-primary {
+  width: 100%;
+  max-width: 100%;
+  padding: var(--space-3) var(--space-4);
+  font-size: 0.75rem;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.4;
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  word-break: break-word;
+  box-sizing: border-box;
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 768px) {
+  .projects > div[style*="margin-top"] {
+    padding: var(--space-4) !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .projects > div[style*="margin-top"] .btn-primary {
+    font-size: 0.6875rem;
+    padding: var(--space-3);
+    min-height: 64px;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects > div[style*="margin-top"] .btn-primary {
+    font-size: 0.625rem;
+    padding: var(--space-2) var(--space-3);
+    min-height: 72px;
+  }
+}
