@@ -1919,3 +1919,15 @@ body {
   overflow-x: hidden;
   padding-bottom: 100px;
 }
+
+body {
+  background-color: var(--charcoal);
+  color: var(--soft-white);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  padding-bottom: 100px;
+}
