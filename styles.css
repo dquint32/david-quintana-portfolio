@@ -1979,61 +1979,60 @@ a:focus-visible,
 }
 
 /* ============================================
-   FIX: Foundational Training Button Overflow
+   FIX: Foundational Training Button Overflow - UPDATED
    ============================================ */
 
-/* Target the specific section with the orange box */
-.projects > div[style*="margin-top"] {
-  padding: var(--space-6) !important;
+/* Target the orange bordered container in projects section */
+.projects .container > div[style*="background: var(--gunmetal)"],
+.projects .container > div[style*="background:var(--gunmetal)"] {
+  padding: var(--space-4) !important;
   overflow: hidden;
+  max-width: 100% !important;
+  box-sizing: border-box;
 }
 
-/* Fix the button container */
-.projects > div[style*="margin-top"] p:has(.btn) {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-  margin: 0;
+/* Target all buttons inside this container */
+.projects .btn-primary {
+  width: 100% !important;
+  max-width: 100% !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  text-align: center !important;
+  line-height: 1.4 !important;
+  min-height: 60px !important;
+  padding: var(--space-3) var(--space-3) !important;
+  font-size: 0.75rem !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
-/* Fix the button itself */
-.projects > div[style*="margin-top"] .btn-primary {
-  width: 100%;
-  max-width: 100%;
-  padding: var(--space-3) var(--space-4);
-  font-size: 0.75rem;
-  white-space: normal;
-  text-align: center;
-  line-height: 1.4;
-  min-height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  word-break: break-word;
+/* Extra safety for the paragraph containing the button */
+.projects p:has(.btn-primary) {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding: 0 !important;
   box-sizing: border-box;
 }
 
 /* Mobile-specific adjustments */
 @media (max-width: 768px) {
-  .projects > div[style*="margin-top"] {
-    padding: var(--space-4) !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
-
-  .projects > div[style*="margin-top"] .btn-primary {
-    font-size: 0.6875rem;
-    padding: var(--space-3);
-    min-height: 64px;
+  .projects .btn-primary {
+    font-size: 0.65rem !important;
+    padding: var(--space-2) var(--space-2) !important;
+    min-height: 68px !important;
   }
 }
 
 @media (max-width: 480px) {
-  .projects > div[style*="margin-top"] .btn-primary {
-    font-size: 0.625rem;
-    padding: var(--space-2) var(--space-3);
-    min-height: 72px;
+  .projects .btn-primary {
+    font-size: 0.6rem !important;
+    padding: 10px 8px !important;
+    min-height: 76px !important;
+    letter-spacing: 0.02em !important;
   }
 }
