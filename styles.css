@@ -1884,3 +1884,41 @@ a:focus-visible,
     color: var(--black);
   }
 }
+
+/* Fix language toggle overlap on mobile */
+@media (max-width: 768px) {
+  /* Add top padding to body to prevent overlap */
+  body {
+    padding-top: 60px;
+  }
+  
+  /* Adjust toggle positioning for mobile */
+  .floating-toggle {
+    top: var(--space-2);
+    right: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    font-size: 0.75rem;
+    min-height: 40px;
+    min-width: 70px;
+    z-index: 1001; /* Ensure it stays above header */
+  }
+  
+  /* Reduce header padding to compensate */
+  .site-header {
+    padding-top: var(--space-2);
+  }
+  
+  /* Alternative: Move toggle below header on very small screens */
+  @media (max-width: 480px) {
+    .floating-toggle {
+      top: auto;
+      bottom: var(--space-4);
+      right: var(--space-4);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    }
+    
+    body {
+      padding-top: 0;
+    }
+  }
+}
