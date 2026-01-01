@@ -185,11 +185,11 @@ a:focus-visible,
 }
 
 /* ============================================
-   FLOATING LANGUAGE TOGGLE
+   FLOATING LANGUAGE TOGGLE - BOTTOM POSITION
    ============================================ */
 .floating-toggle {
   position: fixed;
-  top: var(--space-6);
+  bottom: var(--space-6);
   right: var(--space-6);
   z-index: 1000;
   background: var(--black);
@@ -209,11 +209,13 @@ a:focus-visible,
   user-select: none;
   -webkit-user-select: none;
   -webkit-tap-highlight-color: transparent;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
 }
 
 .floating-toggle:hover {
   background: var(--cyber-orange);
   transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 106, 0, 0.4);
 }
 
 .floating-toggle:hover span {
@@ -1046,8 +1048,9 @@ a:focus-visible,
 .site-footer {
   background: var(--black);
   border-top: 1px solid var(--steel-gray);
-  padding: var(--space-8) 0;
+  padding: var(--space-8) 0 var(--space-16) 0;
   text-align: center;
+  margin-bottom: 80px;
 }
 
 .site-footer p {
@@ -1075,6 +1078,13 @@ a:focus-visible,
   max-width: 800px;
   margin: 0 auto;
 }
+
+.case-study-hero h2 {
+  font-size: cl
+
+/* ============================================
+   CASE STUDY STYLES CONTINUED
+   ============================================ */
 
 .case-study-hero h2 {
   font-size: clamp(2.4rem, 5vw, 3.8rem);
@@ -1108,7 +1118,7 @@ a:focus-visible,
 }
 
 /* ============================================
-   CASE STUDY: META SECTION (IMPROVED)
+   CASE STUDY: META SECTION
    ============================================ */
 .meta-section {
   background: var(--gunmetal);
@@ -1605,6 +1615,7 @@ a:focus-visible,
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .lightbox-img {
@@ -1613,6 +1624,7 @@ a:focus-visible,
   object-fit: contain;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
   border-radius: 8px;
+  cursor: default;
 }
 
 /* ============================================
@@ -1766,11 +1778,16 @@ a:focus-visible,
   }
 
   .floating-toggle {
-    top: var(--space-3);
-    right: var(--space-3);
+    bottom: var(--space-4);
+    right: var(--space-4);
     padding: var(--space-2) var(--space-4);
     font-size: 0.8125rem;
     min-height: 44px;
+  }
+
+  .site-footer {
+    padding: var(--space-8) 0 var(--space-24) 0;
+    margin-bottom: 0;
   }
 
   .breakpoint-card {
@@ -1824,17 +1841,22 @@ a:focus-visible,
 
 @media (max-width: 480px) {
   .floating-toggle {
-    top: var(--space-2);
-    right: var(--space-2);
+    bottom: var(--space-3);
+    right: var(--space-3);
     font-size: 0.75rem;
     padding: var(--space-2) var(--space-3);
     gap: var(--space-1);
+    min-width: 70px;
   }
 
   .case-study-page .full-img,
   .case-study-page .full-width-image img {
     max-height: 300px !important;
     max-width: 90vw !important;
+  }
+
+  .site-footer {
+    padding: var(--space-8) 0 100px 0;
   }
 }
 
@@ -1873,6 +1895,7 @@ a:focus-visible,
 @media (hover: none) {
   .floating-toggle:hover {
     transform: none;
+    background: var(--black);
   }
 
   .floating-toggle:active {
@@ -1882,91 +1905,5 @@ a:focus-visible,
 
   .floating-toggle:active span {
     color: var(--black);
-  }
-}
-
-/* Fix language toggle overlap on mobile */
-@media (max-width: 768px) {
-  /* Add top padding to body to prevent overlap */
-  body {
-    padding-top: 60px;
-  }
-  
-  /* Adjust toggle positioning for mobile */
-  .floating-toggle {
-    top: var(--space-2);
-    right: var(--space-2);
-    padding: var(--space-2) var(--space-3);
-    font-size: 0.75rem;
-    min-height: 40px;
-    min-width: 70px;
-    z-index: 1001; /* Ensure it stays above header */
-  }
-  
-  /* Reduce header padding to compensate */
-  .site-header {
-    padding-top: var(--space-2);
-  }
-  
-  /* Alternative: Move toggle below header on very small screens */
-  @media (max-width: 480px) {
-    .floating-toggle {
-      top: auto;
-      bottom: var(--space-4);
-      right: var(--space-4);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-    }
-    
-    body {
-      padding-top: 0;
-    }
-  }
-}
-
-/* Move language toggle to bottom-right corner */
-.floating-toggle {
-  position: fixed;
-  top: auto; /* Remove top positioning */
-  bottom: var(--space-6); /* Stick to bottom */
-  right: var(--space-6);
-  z-index: 1000;
-  background: var(--black);
-  border: 2px solid var(--cyber-orange);
-  padding: var(--space-3) var(--space-6);
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
-  letter-spacing: 0.05em;
-  display: flex;
-  gap: var(--space-2);
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  min-height: 44px;
-  min-width: 80px;
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-tap-highlight-color: transparent;
-}
-
-/* Mobile adjustments */
-@media (max-width: 768px) {
-  .floating-toggle {
-    bottom: var(--space-4);
-    right: var(--space-4);
-    padding: var(--space-2) var(--space-4);
-    font-size: 0.8125rem;
-    min-height: 44px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6); /* Add shadow for visibility */
-  }
-}
-
-@media (max-width: 480px) {
-  .floating-toggle {
-    bottom: var(--space-3);
-    right: var(--space-3);
-    font-size: 0.75rem;
-    padding: var(--space-2) var(--space-3);
-    gap: var(--space-1);
   }
 }
