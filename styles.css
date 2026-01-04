@@ -1756,17 +1756,19 @@ a:focus-visible,
   }
 
   .about {
-    grid-template-columns: 2fr 1fr;
-    padding: var(--space-12);
-  }
+  grid-template-columns: 3fr 200px;
+  padding: var(--space-12);
+  align-items: center;
+}
 
-  .about-photo {
-    justify-content: flex-end;
-  }
+.about-photo {
+  justify-content: flex-end;
+}
 
-  .about-profile-img {
-    max-width: 320px;
-  }
+.about-profile-img {
+  max-width: 200px;
+}
+
 
   .project-grid {
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
