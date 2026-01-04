@@ -2066,7 +2066,7 @@ a:focus-visible,
   }
 }
 
- /* ============================================
+/* ============================================
    HERO PROFILE PHOTO - MOBILE SIZE FIX (AGGRESSIVE)
    ============================================ */
 @media (max-width: 767px) {
@@ -2124,5 +2124,36 @@ a:focus-visible,
     font-size: 0.5625rem;
     padding: var(--space-1) var(--space-2);
     min-width: 55px;
+  }
+}
+
+/* ============================================
+   ABOUT SECTION - MOBILE ADJUSTMENTS
+   ============================================ */
+@media (max-width: 767px) {
+  .about {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    padding: var(--space-6);
+  }
+  
+  .about-photo {
+    order: -1;
+    justify-content: center;
+    margin-bottom: var(--space-3);
+  }
+  
+  .about-profile-img {
+    max-width: 120px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .about {
+    padding: var(--space-4);
+  }
+  
+  .about-profile-img {
+    max-width: 100px !important;
   }
 }
