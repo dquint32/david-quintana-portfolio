@@ -364,9 +364,15 @@ a:focus-visible,
 }
 
 .section-spacing {
-  padding: var(--space-12) 0;
+  padding: var(--space-8) 0;
   width: 100%;
   max-width: 100vw;
+}
+
+/* Remove top padding from first section after header */
+.section-spacing:first-of-type,
+#top {
+  padding-top: var(--space-4);
 }
 
 /* ============================================
@@ -377,7 +383,6 @@ a:focus-visible,
   grid-template-columns: 1fr;
   gap: var(--space-8);
   align-items: center;
-  min-height: auto;
   width: 100%;
 }
 
@@ -559,16 +564,27 @@ a:focus-visible,
   margin-bottom: var(--space-6);
 }
 
-.about-photo img {
+.about-photo {
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-profile-img {
+  width: 100%;
+  max-width: 280px;
   height: auto;
-  border: 2px solid var(--steel-gray);
+  border: 2px solid var(--cyber-orange);
+  filter: grayscale(20%);
   transition: all var(--transition-base);
 }
 
-.about-photo img:hover {
+.about-profile-img:hover {
+  filter: grayscale(0%);
   border-color: var(--cyber-orange);
   transform: translateY(-4px);
+  box-shadow: 0 8px 24px var(--orange-glow);
 }
 
 /* ============================================
@@ -1724,7 +1740,7 @@ a:focus-visible,
 
   .hero {
     grid-template-columns: 1fr 1fr;
-    min-height: 80vh;
+    min-height: auto;
   }
 
   .hero-left {
@@ -1742,6 +1758,14 @@ a:focus-visible,
   .about {
     grid-template-columns: 2fr 1fr;
     padding: var(--space-12);
+  }
+
+  .about-photo {
+    justify-content: flex-end;
+  }
+
+  .about-profile-img {
+    max-width: 320px;
   }
 
   .project-grid {
@@ -1821,7 +1845,7 @@ a:focus-visible,
 
 @media (min-width: 1025px) {
   .section-spacing {
-    padding: var(--space-16) 0;
+    padding: var(--space-12) 0;
   }
 
   .projects {
@@ -1927,6 +1951,10 @@ a:focus-visible,
 
   .site-footer {
     padding: var(--space-8) 0 100px 0;
+  }
+
+  .about-profile-img {
+    max-width: 240px;
   }
 }
 
