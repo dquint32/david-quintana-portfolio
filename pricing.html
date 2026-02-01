@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pricing | David Matthew Quintana</title>
   <meta name="description" content="Transparent pricing for bilingual web development services. Mobile-first websites for small businesses and professionals in Colorado.">
-  <!-- FONTS & BASE STYLES -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -14,18 +13,21 @@
 <body class="pricing-page" data-language="en">
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- GRID BACKGROUND LOGO -->
   <div class="logo-background" aria-hidden="true">
     <div class="bg-logo">DMQ</div>
   </div>
 
-  <!-- FLOATING LANGUAGE TOGGLE -->
   <button class="floating-toggle" type="button" aria-label="Toggle language">
     <span data-lang="en">EN</span>
     <span data-lang="es" class="inactive">ES</span>
   </button>
 
-  <!-- SITE HEADER -->
+  <button id="back-to-top" class="back-to-top-btn" aria-label="Back to top">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
   <header class="site-header">
     <div class="container header-inner">
       <div class="brand">
@@ -35,33 +37,37 @@
         <p class="tagline">Bilingual Web Developer | Creating practical solutions for small businesses and professionals.</p>
       </div>
       <nav class="nav" aria-label="Primary">
-        <a href="index.html#projects">
-          <span lang-block data-lang="en" data-active="true">Projects</span>
-          <span lang-block data-lang="es">Proyectos</span>
-        </a>
-        <a href="pricing.html" class="active">
-          <span lang-block data-lang="en" data-active="true">Pricing</span>
-          <span lang-block data-lang="es">Precios</span>
-        </a>
-        <a href="index.html" class="home-btn">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-            <polyline points="9 22 9 12 15 12 15 22"></polyline>
-          </svg>
-          <span lang-block data-lang="en">Home</span>
-          <span lang-block data-lang="es">Inicio</span>
-        </a>
-        <a href="index.html#contact" class="cta">
-          <span lang-block data-lang="en" data-active="true">Contact</span>
-          <span lang-block data-lang="es">Contacto</span>
-        </a>
+        <ul>
+          <li>
+            <a href="index.html">
+              <span lang-block data-lang="en" data-active="true">Home</span>
+              <span lang-block data-lang="es">Inicio</span>
+            </a>
+          </li>
+          <li>
+            <a href="index.html">
+              <span lang-block data-lang="en" data-active="true">HCIS Portfolio</span>
+              <span lang-block data-lang="es">Portafolio HCIS</span>
+            </a>
+          </li>
+          <li>
+            <a href="pricing.html" class="active">
+              <span lang-block data-lang="en" data-active="true">Pricing</span>
+              <span lang-block data-lang="es">Precios</span>
+            </a>
+          </li>
+          <li>
+            <a href="#contact" class="cta">
+              <span lang-block data-lang="en" data-active="true">Contact</span>
+              <span lang-block data-lang="es">Contacto</span>
+            </a>
+          </li>
+        </ul>
       </nav>
     </div>
   </header>
 
-  <!-- Main content -->
   <main id="main-content">
-    <!-- Hero Section -->
     <section class="section-spacing">
       <div class="container">
         <div class="section-header">
@@ -77,7 +83,6 @@
       </div>
     </section>
 
-    <!-- Website Packages -->
     <section class="section-spacing">
       <div class="container">
         <div class="section-header">
@@ -133,263 +138,298 @@
 
           <article class="service-card">
             <div lang-block data-lang="en">
-              <h4>Advanced Website</h4>
-              <p class="service-price">$3,000–$5,000 <span class="price-avg">· ~$4,000</span></p>
-              <p>10+ pages with blog, booking system, memberships, and SEO setup.</p>
+              <h4>E-commerce Website</h4>
+              <p class="service-price">$3,000–$7,000 <span class="price-avg">· ~$4,500</span></p>
+              <p>Online shop with shopping cart, payment integration, product management, and shipping setup.</p>
             </div>
             <div lang-block data-lang="es" data-active="true">
-              <h4>Sitio Web Avanzado</h4>
-              <p class="service-price">$3,000–$5,000 <span class="price-avg">· ~$4,000</span></p>
-              <p>10+ páginas con blog, sistema de reservaciones, membresías y configuración SEO.</p>
+              <h4>Sitio de Comercio Electrónico</h4>
+              <p class="service-price">$3,000–$7,000 <span class="price-avg">· ~$4,500</span></p>
+              <p>Tienda en línea con carrito de compras, integración de pagos, manejo de productos y configuración de envío.</p>
             </div>
           </article>
-
-          <article class="service-card">
-            <div lang-block data-lang="en">
-              <h4>Online Store</h4>
-              <p class="service-price">$3,500–$8,000 <span class="price-avg">· ~$5,500</span></p>
-              <p>Complete e-commerce solution to sell products, accept payments, and manage orders.</p>
-            </div>
-            <div lang-block data-lang="es" data-active="true">
-              <h4>Tienda en Línea</h4>
-              <p class="service-price">$3,500–$8,000 <span class="price-avg">· ~$5,500</span></p>
-              <p>Solución completa de comercio electrónico para vender productos, aceptar pagos y administrar pedidos.</p>
-            </div>
-          </article>
-        </div>
-
-        <div class="pricing-notice">
-          <div lang-block data-lang="en">
-            <p class="notice-title">✅ Bilingual Version (English + Spanish)</p>
-            <p class="notice-desc">Add 20–30% to any package for full bilingual functionality</p>
-          </div>
-          <div lang-block data-lang="es" data-active="true">
-            <p class="notice-title">✅ Versión Bilingüe (Inglés + Español)</p>
-            <p class="notice-desc">Agregar 20–30% a cualquier paquete para funcionalidad bilingüe completa</p>
-          </div>
         </div>
       </div>
     </section>
 
-    <!-- Pay-Per-Update -->
     <section class="section-spacing">
       <div class="container">
         <div class="section-header">
           <div lang-block data-lang="en">
-            <h3>Pay-Per-Update</h3>
-            <p>Perfect for businesses that don't need monthly plans</p>
+            <h3>Professional Services</h3>
+            <p>Additional services to support your online presence</p>
           </div>
           <div lang-block data-lang="es" data-active="true">
-            <h3>Paga Solo por Actualización</h3>
-            <p>Perfecto para negocios que no necesitan planes mensuales</p>
+            <h3>Servicios Profesionales</h3>
+            <p>Servicios adicionales para apoyar tu presencia en línea</p>
           </div>
         </div>
 
         <div class="services-grid">
           <article class="service-card">
             <div lang-block data-lang="en">
-              <h4>Small Update</h4>
-              <p class="service-price">$20–$40 <span class="price-avg">· ~$30</span></p>
-              <p>Fix text, change a picture, or update business hours.</p>
+              <h4>Consulting & Planning</h4>
+              <p class="service-price">$75–$150/hr</p>
+              <p>Get advice on your online strategy, UX design, or technical planning.</p>
             </div>
             <div lang-block data-lang="es" data-active="true">
-              <h4>Actualización Pequeña</h4>
-              <p class="service-price">$20–$40 <span class="price-avg">· ~$30</span></p>
-              <p>Cambiar texto, fotos o actualizar horarios del negocio.</p>
+              <h4>Consultoría y Planificación</h4>
+              <p class="service-price">$75–$150/hr</p>
+              <p>Obtén asesoría sobre tu estrategia en línea, diseño de UX, o planificación técnica.</p>
             </div>
           </article>
 
           <article class="service-card">
             <div lang-block data-lang="en">
-              <h4>Medium Update</h4>
-              <p class="service-price">$40–$80 <span class="price-avg">· ~$60</span></p>
-              <p>Add a new section or change multiple photos and content blocks.</p>
+              <h4>Website Audits & Troubleshooting</h4>
+              <p class="service-price">$150–$500</p>
+              <p>I'll review your current website and provide a detailed report with recommendations.</p>
             </div>
             <div lang-block data-lang="es" data-active="true">
-              <h4>Actualización Mediana</h4>
-              <p class="service-price">$40–$80 <span class="price-avg">· ~$60</span></p>
-              <p>Agregar una sección nueva o cambiar varias fotos y bloques de contenido.</p>
+              <h4>Auditorías y Solución de Problemas</h4>
+              <p class="service-price">$150–$500</p>
+              <p>Revisaré tu sitio web actual y te daré un informe detallado con recomendaciones.</p>
             </div>
           </article>
 
           <article class="service-card">
             <div lang-block data-lang="en">
-              <h4>Holiday Theme</h4>
-              <p class="service-price">$60–$120 <span class="price-avg">· ~$90</span></p>
-              <p>Seasonal themes for Christmas, holidays, or special events. Includes reverting to original design.</p>
+              <h4>Custom Features</h4>
+              <p class="service-price">Variable</p>
+              <p>Need something specific? Contact me to discuss custom functionality or integrations.</p>
             </div>
             <div lang-block data-lang="es" data-active="true">
-              <h4>Tema de Festividad</h4>
-              <p class="service-price">$60–$120 <span class="price-avg">· ~$90</span></p>
-              <p>Temas estacionales para Navidad, festividades o eventos especiales. Incluye regresar al diseño original.</p>
+              <h4>Funciones Personalizadas</h4>
+              <p class="service-price">Variable</p>
+              <p>¿Necesitas algo específico? Contáctame para discutir funcionalidades o integraciones personalizadas.</p>
             </div>
           </article>
 
           <article class="service-card">
             <div lang-block data-lang="en">
-              <h4>Big Update</h4>
-              <p class="service-price">$100–$250 <span class="price-avg">· ~$160</span></p>
-              <p>Add new pages, redesign sections, or upload 20+ products to your store.</p>
+              <h4>Website Maintenance</h4>
+              <p class="service-price">$100–$300/month</p>
+              <p>Regular updates, security checks, content updates, and technical support.</p>
             </div>
             <div lang-block data-lang="es" data-active="true">
-              <h4>Actualización Grande</h4>
-              <p class="service-price">$100–$250 <span class="price-avg">· ~$160</span></p>
-              <p>Agregar páginas nuevas, rediseñar secciones o subir 20+ productos a tu tienda.</p>
+              <h4>Mantenimiento de Sitio Web</h4>
+              <p class="service-price">$100–$300/mes</p>
+              <p>Actualizaciones regulares, revisiones de seguridad, actualizaciones de contenido y soporte técnico.</p>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Monthly Maintenance -->
     <section class="section-spacing">
       <div class="container">
         <div class="section-header">
           <div lang-block data-lang="en">
-            <h3>Monthly Maintenance</h3>
-            <p>Optional ongoing support for businesses that want hands-off management</p>
+            <h3>What's Included</h3>
           </div>
           <div lang-block data-lang="es" data-active="true">
-            <h3>Mantenimiento Mensual</h3>
-            <p>Soporte continuo opcional para negocios que quieren gestión sin preocupaciones</p>
+            <h3>Qué Está Incluido</h3>
           </div>
         </div>
 
-        <div class="services-grid">
-          <article class="service-card">
-            <div lang-block data-lang="en">
-              <h4>Basic</h4>
-              <p class="service-price">$40–$80/month <span class="price-avg">· ~$55</span></p>
-              <p>Keep your website secure, updated, and running smoothly.</p>
-            </div>
-            <div lang-block data-lang="es" data-active="true">
-              <h4>Básico</h4>
-              <p class="service-price">$40–$80/mes <span class="price-avg">· ~$55</span></p>
-              <p>Mantener tu sitio seguro, actualizado y funcionando sin problemas.</p>
-            </div>
-          </article>
-
-          <article class="service-card">
-            <div lang-block data-lang="en">
-              <h4>Standard</h4>
-              <p class="service-price">$80–$150/month <span class="price-avg">· ~$110</span></p>
-              <p>Basic maintenance plus small updates, SEO optimization, and monthly performance reports.</p>
-            </div>
-            <div lang-block data-lang="es" data-active="true">
-              <h4>Estándar</h4>
-              <p class="service-price">$80–$150/mes <span class="price-avg">· ~$110</span></p>
-              <p>Mantenimiento básico más cambios pequeños, optimización SEO y reportes mensuales de rendimiento.</p>
-            </div>
-          </article>
-
-          <article class="service-card">
-            <div lang-block data-lang="en">
-              <h4>Advanced</h4>
-              <p class="service-price">$150–$250/month <span class="price-avg">· ~$190</span></p>
-              <p>Standard plan plus advanced analytics, priority support, and regular content updates.</p>
-            </div>
-            <div lang-block data-lang="es" data-active="true">
-              <h4>Avanzado</h4>
-              <p class="service-price">$150–$250/mes <span class="price-avg">· ~$190</span></p>
-              <p>Plan estándar más analíticas avanzadas, soporte prioritario y actualizaciones regulares de contenido.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Domain & Setup -->
-    <section class="section-spacing">
-      <div class="container">
-        <div class="section-header">
-          <div lang-block data-lang="en">
-            <h3>Domain & Setup</h3>
-            <p>Complete setup service for those who need help getting started</p>
-          </div>
-          <div lang-block data-lang="es" data-active="true">
-            <h3>Dominio y Configuración</h3>
-            <p>Servicio completo de configuración para quienes necesitan ayuda para comenzar</p>
-          </div>
-        </div>
-
-        <div class="services-grid single-column">
-          <article class="service-card">
-            <div lang-block data-lang="en">
-              <h4>Complete Setup Package</h4>
-              <p class="service-price">$50–$150 <span class="price-avg">· ~$85</span></p>
-              <p>I'll purchase your domain, configure hosting, connect everything, and ensure your site appears on Google search results.</p>
-            </div>
-            <div lang-block data-lang="es" data-active="true">
-              <h4>Paquete Completo de Configuración</h4>
-              <p class="service-price">$50–$150 <span class="price-avg">· ~$85</span></p>
-              <p>Compraré tu dominio, configuraré el hosting, conectaré todo y me aseguraré de que tu sitio aparezca en los resultados de Google.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- What Is SEO -->
-    <section class="section-spacing">
-      <div class="container">
-        <div class="seo-explainer">
-          <div lang-block data-lang="en">
-            <h3>What Is SEO?</h3>
-            <p class="seo-main">
-              <strong>SEO simply means making your website easier to find on Google.</strong>
-            </p>
-            <p class="seo-desc">
-              When people search for your business or services, SEO helps your website show up higher in search results so more customers can find you. Nothing complicated—just better visibility.
-            </p>
-          </div>
-          <div lang-block data-lang="es" data-active="true">
-            <h3>¿Qué es SEO?</h3>
-            <p class="seo-main">
-              <strong>SEO significa hacer que tu sitio sea más fácil de encontrar en Google.</strong>
-            </p>
-            <p class="seo-desc">
-              Cuando la gente busca tu negocio o servicios, el SEO ayuda a que tu sitio aparezca más arriba en los resultados para que más clientes te encuentren. Nada complicado—solo mejor visibilidad.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Payment Plan -->
-    <section class="section-spacing">
-      <div class="container">
-        <div class="section-header">
-          <div lang-block data-lang="en">
-            <h3>Payment Plan</h3>
-          </div>
-          <div lang-block data-lang="es" data-active="true">
-            <h3>Plan de Pago</h3>
-          </div>
-        </div>
-
-        <div class="payment-plan">
-          <ul class="payment-list">
+        <div class="whats-included">
+          <ul class="included-list">
             <li>
               <span class="checkmark">✓</span>
-              <span lang-block data-lang="en"><strong>50% to start</strong> – Secures your project slot</span>
-              <span lang-block data-lang="es" data-active="true"><strong>50% para comenzar</strong> – Asegura tu lugar en el proyecto</span>
+              <span lang-block data-lang="en">Mobile-first responsive design that works on all devices</span>
+              <span lang-block data-lang="es" data-active="true">Diseño responsivo optimizado para móvil que funciona en todos los dispositivos</span>
             </li>
             <li>
               <span class="checkmark">✓</span>
-              <span lang-block data-lang="en"><strong>50% when finished</strong> – Due upon completion</span>
-              <span lang-block data-lang="es" data-active="true"><strong>50% al entregar</strong> – Pagadero al completar</span>
+              <span lang-block data-lang="en">Search Engine Optimization (SEO) fundamentals</span>
+              <span lang-block data-lang="es" data-active="true">Fundamentos de Optimización para Motores de Búsqueda (SEO)</span>
             </li>
             <li>
               <span class="checkmark">✓</span>
-              <span lang-block data-lang="en"><strong>No surprise fees</strong> – Price only changes if you request additional features</span>
-              <span lang-block data-lang="es" data-active="true"><strong>Sin cargos sorpresa</strong> – El precio solo cambia si pides funciones adicionales</span>
+              <span lang-block data-lang="en">Fast loading times and clean code</span>
+              <span lang-block data-lang="es" data-active="true">Tiempos de carga rápidos y código limpio</span>
+            </li>
+            <li>
+              <span class="checkmark">✓</span>
+              <span lang-block data-lang="en">Basic security measures (SSL, HTTPS)</span>
+              <span lang-block data-lang="es" data-active="true">Medidas básicas de seguridad (SSL, HTTPS)</span>
+            </li>
+            <li>
+              <span class="checkmark">✓</span>
+              <span lang-block data-lang="en">Contact forms and business information</span>
+              <span lang-block data-lang="es" data-active="true">Formularios de contacto e información del negocio</span>
+            </li>
+            <li>
+              <span class="checkmark">✓</span>
+              <span lang-block data-lang="en">Social media integration</span>
+              <span lang-block data-lang="es" data-active="true">Integración con redes sociales</span>
+            </li>
+            <li>
+              <span class="checkmark">✓</span>
+              <span lang-block data-lang="en">Google Analytics setup (optional)</span>
+              <span lang-block data-lang="es" data-active="true">Configuración de Google Analytics (opcional)</span>
+            </li>
+            <li>
+              <span class="checkmark">✓</span>
+              <span lang-block data-lang="en">Training on how to update basic content</span>
+              <span lang-block data-lang="es" data-active="true">Capacitación sobre cómo actualizar contenido básico</span>
+            </li>
+            <li>
+              <span class="checkmark">✓</span>
+              <span lang-block data-lang="en">60 days of post-launch support</span>
+              <span lang-block data-lang="es" data-active="true">60 días de soporte después del lanzamiento</span>
             </li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- Why People Choose Me -->
+    <section class="section-spacing">
+      <div class="container">
+        <div class="section-header">
+          <div lang-block data-lang="en">
+            <h3>Frequently Asked Questions</h3>
+          </div>
+          <div lang-block data-lang="es" data-active="true">
+            <h3>Preguntas Frecuentes</h3>
+          </div>
+        </div>
+
+        <div class="faqs">
+          <div class="faq-item">
+            <div lang-block data-lang="en">
+              <h4>Do I need to pay for hosting separately?</h4>
+              <p>Yes. Website hosting typically costs $5–$30/month depending on your needs. I can help you choose the right hosting provider and set everything up.</p>
+            </div>
+            <div lang-block data-lang="es" data-active="true">
+              <h4>¿Necesito pagar por el hosting por separado?</h4>
+              <p>Sí. El hosting de sitios web generalmente cuesta $5–$30/mes dependiendo de tus necesidades. Puedo ayudarte a elegir el proveedor adecuado y configurar todo.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div lang-block data-lang="en">
+              <h4>How long does it take to build a website?</h4>
+              <p>Landing pages: 1–2 weeks. Basic websites: 2–4 weeks. Business websites: 4–8 weeks. E-commerce: 8–12 weeks. Timeline depends on project complexity and content readiness.</p>
+            </div>
+            <div lang-block data-lang="es" data-active="true">
+              <h4>¿Cuánto tiempo toma construir un sitio web?</h4>
+              <p>Landing pages: 1–2 semanas. Sitios básicos: 2–4 semanas. Sitios de negocio: 4–8 semanas. E-commerce: 8–12 semanas. El tiempo depende de la complejidad y disponibilidad del contenido.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div lang-block data-lang="en">
+              <h4>Can you make my website bilingual?</h4>
+              <p>Absolutely! I specialize in bilingual websites (English/Spanish). This helps you reach more customers and serve your community better.</p>
+            </div>
+            <div lang-block data-lang="es" data-active="true">
+              <h4>¿Puedes hacer mi sitio web bilingüe?</h4>
+              <p>¡Por supuesto! Me especializo en sitios web bilingües (inglés/español). Esto te ayuda a llegar a más clientes y servir mejor a tu comunidad.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div lang-block data-lang="en">
+              <h4>Will I be able to update the website myself?</h4>
+              <p>Yes. I'll train you on basic updates (text, images, contact info). For more complex changes, I offer maintenance packages or hourly consulting.</p>
+            </div>
+            <div lang-block data-lang="es" data-active="true">
+              <h4>¿Podré actualizar el sitio web yo mismo?</h4>
+              <p>Sí. Te capacitaré en actualizaciones básicas (texto, imágenes, información de contacto). Para cambios más complejos, ofrezco paquetes de mantenimiento o consultoría por hora.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div lang-block data-lang="en">
+              <h4>What if I need changes after the website is done?</h4>
+              <p>You get 60 days of free support after launch. After that, you can hire me for hourly updates or sign up for a monthly maintenance package.</p>
+            </div>
+            <div lang-block data-lang="es" data-active="true">
+              <h4>¿Qué pasa si necesito cambios después de que el sitio esté listo?</h4>
+              <p>Tienes 60 días de soporte gratuito después del lanzamiento. Después de eso, puedes contratarme por actualizaciones por hora o inscribirte en un paquete de mantenimiento mensual.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div lang-block data-lang="en">
+              <h4>Do you offer payment plans?</h4>
+              <p>Yes. Typically 50% upfront and 50% at launch. For larger projects, we can discuss milestone-based payments. Contact me to discuss options.</p>
+            </div>
+            <div lang-block data-lang="es" data-active="true">
+              <h4>¿Ofreces planes de pago?</h4>
+              <p>Sí. Típicamente 50% por adelantado y 50% al lanzamiento. Para proyectos más grandes, podemos discutir pagos basados en hitos. Contáctame para discutir opciones.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div lang-block data-lang="en">
+              <h4>What if I don't have my content ready (photos, text, etc.)?</h4>
+              <p>No problem! I can help you create or source content. Additional costs may apply for professional copywriting or custom photography.</p>
+            </div>
+            <div lang-block data-lang="es" data-active="true">
+              <h4>¿Qué pasa si no tengo mi contenido listo (fotos, texto, etc.)?</h4>
+              <p>¡No hay problema! Puedo ayudarte a crear u obtener contenido. Pueden aplicarse costos adicionales para redacción profesional o fotografía personalizada.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div lang-block data-lang="en">
+              <h4>Do you work with clients outside Colorado?</h4>
+              <p>Yes! While I'm based in Colorado, I work with clients across the United States and internationally. All communication can be done remotely.</p>
+            </div>
+            <div lang-block data-lang="es" data-active="true">
+              <h4>¿Trabajas con clientes fuera de Colorado?</h4>
+              <p>¡Sí! Aunque estoy basado en Colorado, trabajo con clientes en todos los Estados Unidos e internacionalmente. Toda la comunicación se puede hacer de forma remota.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-spacing">
+      <div class="container">
+        <div class="section-header">
+          <div lang-block data-lang="en">
+            <h3>Important Notes</h3>
+          </div>
+          <div lang-block data-lang="es" data-active="true">
+            <h3>Notas Importantes</h3>
+          </div>
+        </div>
+
+        <div class="important-notes">
+          <ul class="notes-list">
+            <li>
+              <span class="arrow">▸</span>
+              <span lang-block data-lang="en">Prices are estimates and may vary based on specific requirements</span>
+              <span lang-block data-lang="es" data-active="true">Los precios son estimados y pueden variar según los requisitos específicos</span>
+            </li>
+            <li>
+              <span class="arrow">▸</span>
+              <span lang-block data-lang="en">Domain registration ($10–$20/year) and hosting ($5–$30/month) are separate</span>
+              <span lang-block data-lang="es" data-active="true">El registro de dominio ($10–$20/año) y el hosting ($5–$30/mes) son separados</span>
+            </li>
+            <li>
+              <span class="arrow">▸</span>
+              <span lang-block data-lang="en">All prices are in USD</span>
+              <span lang-block data-lang="es" data-active="true">Todos los precios están en USD</span>
+            </li>
+            <li>
+              <span class="arrow">▸</span>
+              <span lang-block data-lang="en">Custom features and third-party integrations may incur additional costs</span>
+              <span lang-block data-lang="es" data-active="true">Funciones personalizadas e integraciones de terceros pueden incurrir en costos adicionales</span>
+            </li>
+            <li>
+              <span class="arrow">▸</span>
+              <span lang-block data-lang="en">Rush projects (less than 2 weeks) may have a 25% surcharge</span>
+              <span lang-block data-lang="es" data-active="true">Proyectos urgentes (menos de 2 semanas) pueden tener un recargo del 25%</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
     <section class="section-spacing">
       <div class="container">
         <div class="section-header">
@@ -433,7 +473,6 @@
       </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="section-spacing">
       <div class="container">
         <div data-lang="en" lang-block>
@@ -462,7 +501,7 @@
                 303-500-4122
               </a>
 
-              <a href="mailto:david@example.com" class="contact-link-btn">
+              <a href="/cdn-cgi/l/email-protection#117570677875517469707c617d743f727e7c" class="contact-link-btn">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                 Email
               </a>
@@ -496,7 +535,7 @@
                 303-500-4122
               </a>
 
-              <a href="mailto:david@example.com" class="contact-link-btn">
+              <a href="/cdn-cgi/l/email-protection#b6d2d7c0dfd2f6d3ced7dbc6dad398d5d9db" class="contact-link-btn">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                 Correo
               </a>
@@ -508,52 +547,31 @@
   </main>
 
   <footer class="portfolio-footer site-footer">
-  <div class="container">
+    <div class="container">
+      <p>
+        <span lang-block data-lang="en">David Quintana Dev is a registered trade name of Servicios Quintana LLC.</span>
+        <span lang-block data-lang="es" data-active="true">David Quintana Dev es un nombre comercial registrado de Servicios Quintana LLC.</span>
+      </p>
 
-    <!-- Brand Line -->
-    <p>
-      <span lang-block data-lang="en" data-active="true">
-        © 2026 David Quintana Dev. All Rights Reserved.
-        A brand of 
-        <a href="https://serviciosquintana.com" target="_blank" rel="noopener">
-          Servicios Quintana LLC
-        </a>.
-      </span>
+      <p class="legal-notice">
+        <span lang-block data-lang="en">Mandatory Disclosure: I am not an attorney licensed to practice law in the State of Colorado and I may not give legal advice or accept fees for legal advice.</span>
+        <span lang-block data-lang="es" data-active="true">Aviso Obligatorio: No soy un abogado licenciado para ejercer el derecho en el Estado de Colorado y no puedo dar asesoría legal ni aceptar honorarios por asesoría legal.</span>
+      </p>
 
-      <span lang-block data-lang="es">
-        © 2026 David Quintana Dev. Todos los derechos reservados.
-        Una marca de 
-        <a href="https://serviciosquintana.com" target="_blank" rel="noopener">
-          Servicios Quintana LLC
-        </a>.
-      </span>
-    </p>
+      <p>
+        <span lang-block data-lang="en">© 2026 Servicios Quintana LLC. All Rights Reserved.</span>
+        <span lang-block data-lang="es" data-active="true">© 2026 Servicios Quintana LLC. Todos los derechos reservados.</span>
+      </p>
 
-    <!-- Tagline -->
-    <p>
-      <span lang-block data-lang="en" data-active="true">
-        Bilingual Web Development · Accessible Design · Community Focused
-      </span>
+      <p class="footer-links">
+        <a href="index.html">
+          <span lang-block data-lang="en">Back to Portfolio</span>
+          <span lang-block data-lang="es" data-active="true">Volver al Portafolio</span>
+        </a>
+      </p>
+    </div>
+  </footer>
 
-      <span lang-block data-lang="es">
-        Desarrollo Web Bilingüe · Diseño Accesible · Enfoque Comunitario
-      </span>
-    </p>
-
-    <!-- Contact -->
-    <p>
-      <span lang-block data-lang="en" data-active="true">
-        Contact: <a href="mailto:admin@serviciosquintana.com">admin@serviciosquintana.com</a> · (303) 500‑4122
-      </span>
-
-      <span lang-block data-lang="es">
-        Contacto: <a href="mailto:admin@serviciosquintana.com">admin@serviciosquintana.com</a> · (303) 500‑4122
-      </span>
-    </p>
-
-  </div>
-</footer>
-
-<script src="main.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
