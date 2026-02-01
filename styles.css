@@ -794,7 +794,7 @@ span[lang-block][data-active="true"] { display: inline !important; }
 @media (min-width: 768px) {
   .hero { grid-template-columns: 1.2fr 1fr; align-items: center; }
   .about-content { grid-template-columns: 1.5fr 1fr; align-items: center; }
-  .profile-photo { max-width: 320px; height: auto; }
+  .profile-photo { max-width: 320px; height: auto; } /* FIXED: was width: 320px; height: 320px */
 
   .intake-project-layout .feature-section,
   .cds-project-layout .feature-section,
@@ -828,7 +828,7 @@ span[lang-block][data-active="true"] { display: inline !important; }
 @media (min-width: 1024px) {
   .container { padding: 0 var(--space-8); }
   .tienda-case-study-page .tienda-breakpoint-grid { grid-template-columns: repeat(3, 1fr); }
-  .profile-photo { max-width: 360px; height: auto; }
+  .profile-photo { max-width: 360px; height: auto; } /* FIXED: was width: 360px; height: 360px */
 }
 
 /* MOBILE OVERFLOW FIXES (< 767px) */
@@ -889,26 +889,26 @@ span[lang-block][data-active="true"] { display: inline !important; }
 }
 
 /* ============================================
-   12. IMAGE-SIZING PATCH (index.html fixes)
+   12. IMAGE-SIZING PATCH
    ============================================ */
 
-/* A) .home-img-wrapper — center portrait photos in their grid column */
+/* Centers portrait photos inside their grid column */
 .home-img-wrapper {
   display: flex;
   justify-content: center;
 }
 
-/* B) .about-photo img — mirror the profile-photo treatment so the about
-      image is capped and cropped the same way instead of growing to its
-      full native height */
+/* About photo: constrain to same 3:4 portrait treatment as .profile-photo
+   so it doesn't blow up vertically inside the 1.5fr/1fr grid */
 .about-photo img {
   aspect-ratio: 3 / 4;
   object-fit: cover;
 }
 
-/* C) .project-image-container — the only wrapper around the five project
-      screenshots; had zero rules. Cap height, contain the image, and add
-      the same subtle border treatment used elsewhere in the design system. */
+/* Project screenshot containers: had zero rules — screenshots were rendering
+   at full native size inside each card. Cap height, clip overflow, and style
+   consistently with the rest of the design system. object-position: top keeps
+   the top of each screenshot (the most meaningful part) visible. */
 .project-image-container {
   width: 100%;
   max-height: 340px;
@@ -932,7 +932,7 @@ span[lang-block][data-active="true"] { display: inline !important; }
   transform: scale(1.03);
 }
 
-/* D) Responsive overrides for the patch above */
+/* Responsive adjustments for the patch above */
 @media (min-width: 768px) {
   .project-image-container { max-height: 380px; }
   .about-photo img { max-width: 320px; }
