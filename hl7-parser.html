@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en" data-language="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HL7 v2 Infectious Disease Parser: Clinical Data Visualization Tool by David Quintana">
+  <title>HL7 v2 Infectious Disease Parser | David Quintana</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  
+  <style>
+    /* ============================================
+       HEADER CONTACT BUTTON OVERRIDE
+       ============================================ */
+    .site-header .nav ul li:last-child a {
+      border: 2px solid #ff6b00;
+      padding: 0.5rem 1.25rem;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+    
+    .site-header .nav ul li:last-child a:hover {
+      background-color: #ff6b00;
+      color: #ffffff;
+    }
+    
+    /* Hero meta link styling */
+    .project-hero .hero-link {
+      color: #ff6b00;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      margin-top: 1rem;
+    }
+    
+    .project-hero .hero-link:hover {
+      color: #ff7a1a;
+      transform: translateX(4px);
+    }
+    
+    /* ============================================
+       SCOPED HL7 PROJECT LAYOUT STYLES
+       ============================================ */
+    
+    /* Main scoping container */
+    .hl7-project-layout {
+      width: 100%;
+    }
+    
+    /* Feature section with image + text side by side */
+    .hl7-project-layout .feature-section {
+      background: rgba(17, 17, 17, 0.5);
+      border: 1px solid rgba(255, 107, 0, 0.2);
+      border-radius: 8px;
+      padding: 2.5rem;
+      margin: 3rem 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    
+    @media (min-width: 900px) {
+      .hl7-project-layout .feature-section {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+      }
+      
+      /* Alternate image position for visual variety */
+      .hl7-project-layout .feature-section.reverse {
+        direction: rtl;
+      }
+      
+      .hl7-project-layout .feature-section.reverse > * {
+        direction: ltr;
+      }
+    }
+    
+    /* Image container */
+    .hl7-project-layout .feature-image {
+      width: 100%;
+      position: relative;
+    }
+    
+    .hl7-project-layout .feature-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 107, 0, 0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: block;
+    }
+    
+    .hl7-project-layout .feature-image img:hover {
+      border-color: #ff6b00;
+      box-shadow: 0 8px 24px rgba(255, 107, 0, 0.4);
+      transform: translateY(-4px);
+    }
+    
+    .hl7-project-layout .feature-image img:focus {
+      outline: 2px solid #ff6b00;
+      outline-offset: 4px;
+    }
+    
+    /* Text content */
+    .hl7-project-layout .feature-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .hl7-project-layout .feature-content h3 {
+      color: #ff6b00;
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+    
+    .hl7-project-layout .feature-content h4 {
+      color: #ffffff;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+      line-height: 1.4;
+    }
+    
+    .hl7-project-layout .feature-content p {
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+    
+    .hl7-project-layout .feature-content p:last-child {
+      margin-bottom: 0;
+    }
+    
+    /* Highlight box for key features */
+    .hl7-project-layout .highlight-box {
+      background: rgba(13, 13, 13, 0.6);
+      border-left: 3px solid #ff6b00;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 4px;
+    }
+    
+    .hl7-project-layout .highlight-box p {
+      margin-bottom: 0;
+      color: rgba(255, 255, 255, 0.85);
+    }
+    
+    /* Technical details section */
+    .hl7-project-layout .tech-details {
+      background: rgba(13, 13, 13, 0.8);
+      border: 1px solid rgba(255, 107, 0, 0.15);
+      border-radius: 8px;
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+    
+    .hl7-project-layout .tech-details h3 {
+      color: #ff6b00;
+      font-size: 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .hl7-project-layout .tech-details h4 {
+      color: #ffffff;
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .hl7-project-layout .tech-details h4:first-of-type {
+      margin-top: 0;
+    }
+    
+    .hl7-project-layout .tech-details p {
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    
+    /* Impact metrics grid */
+    .hl7-project-layout .impact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    @media (min-width: 768px) {
+      .hl7-project-layout .impact-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    .hl7-project-layout .impact-item {
+      background: rgba(13, 13, 13, 0.6);
+      border: 1px solid rgba(255, 107, 0, 0.2);
+      border-radius: 6px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .hl7-project-layout .impact-item:hover {
+      border-color: rgba(255, 107, 0, 0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    }
+    
+    .hl7-project-layout .impact-item h4 {
+      color: #ff6b00;
+      font-size: 1.125rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .hl7-project-layout .impact-item p {
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: 0;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 899px) {
+      .hl7-project-layout .feature-section {
+        padding: 1.5rem;
+        margin: 2rem 0;
+      }
+      
+      .hl7-project-layout .feature-content h3 {
+        font-size: 1.5rem;
+      }
+      
+      .hl7-project-layout .feature-content h4 {
+        font-size: 1.125rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .hl7-project-layout .feature-section {
+        padding: 1.25rem;
+        margin: 1.5rem 0;
+      }
+      
+      .hl7-project-layout .tech-details,
+      .hl7-project-layout .highlight-box {
+        padding: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body data-language="en" class="case-study-page">
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="logo-background" aria-hidden="true">
+    <div class="bg-logo">DQ</div>
+  </div>
+
+  <button class="floating-toggle" type="button" aria-label="Toggle language">
+    <span data-lang="en">EN</span>
+    <span class="divider">|</span>
+    <span data-lang="es" class="inactive">ES</span>
+  </button>
+
+  <button id="back-to-top" class="back-to-top-btn" aria-label="Back to top">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <h1>
+          <a href="index.html">David Matthew Quintana</a>
+        </h1>
+        <p class="tagline">Bilingual Web Developer | Building practical, accessible solutions for small businesses and professionals</p>
+      </div>
+      <nav class="nav" aria-label="Primary">
+        <ul>
+          <li>
+            <a href="index.html">
+              <span lang-block data-lang="en" data-active="true">Home</span>
+              <span lang-block data-lang="es">Inicio</span>
+            </a>
+          </li>
+          <li>
+            <a href="hcis-portfolio.html">
+              <span lang-block data-lang="en" data-active="true">HCIS Portfolio</span>
+              <span lang-block data-lang="es">Portafolio HCIS</span>
+            </a>
+          </li>
+          <li>
+            <a href="pricing.html">
+              <span lang-block data-lang="en" data-active="true">Pricing</span>
+              <span lang-block data-lang="es">Precios</span>
+            </a>
+          </li>
+          <li>
+            <a href="contact.html">
+              <span lang-block data-lang="en" data-active="true">Contact</span>
+              <span lang-block data-lang="es">Contacto</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <section class="section-spacing">
+      <div class="container">
+        <div class="project-hero">
+          <h2>
+            <span lang-block data-lang="en" data-active="true">HL7 v2 Infectious Disease Parser: Clinical Data Visualization Tool</span>
+            <span lang-block data-lang="es" data-active="false">Analizador HL7 v2 de Enfermedades Infecciosas: Herramienta de Visualización de Datos Clínicos</span>
+          </h2>
+          <p class="project-intro">
+            <span lang-block data-lang="en" data-active="true">A specialized web‑based diagnostic utility designed to convert raw HL7 v2.x laboratory messages into a clean, human‑readable clinical summary. Built with a public‑health‑first mindset, the tool identifies infectious disease markers (COVID‑19, HIV, Hepatitis, TB, Flu A/B, RSV) and validates LOINC codes to ensure data integrity and clinical safety.</span>
+            <span lang-block data-lang="es" data-active="false">Una utilidad de diagnóstico especializada basada en web diseñada para convertir mensajes de laboratorio HL7 v2.x sin procesar en un resumen clínico limpio y legible. Construida con una mentalidad orientada a la salud pública, la herramienta identifica marcadores de enfermedades infecciosas (COVID‑19, VIH, Hepatitis, TB, Gripe A/B, RSV) y valida códigos LOINC para garantizar la integridad de los datos y la seguridad clínica.</span>
+          </p>
+          <p>
+            <a href="https://dquint32.github.io/hl7-infectious-disease-parser/" target="_blank" rel="noopener noreferrer" class="hero-link">
+              <span lang-block data-lang="en" data-active="true">View Live Demo →</span>
+              <span lang-block data-lang="es" data-active="false">Ver Demo en Vivo →</span>
+            </a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature 1: Raw HL7 Input -->
+    <section class="section-spacing">
+      <div class="container hl7-project-layout">
+        <div class="feature-section">
+          <div class="feature-image">
+            <img 
+              src="hl7-before-parsing.png" 
+              alt="HL7 v2 parser interface in dark mode showing raw HL7 message text input area with pipe-delimited segments including MSH, PID, OBR, and OBX segments before parsing"
+              class="clickable-img"
+              loading="lazy"
+            >
+          </div>
+          <div class="feature-content">
+            <h3>
+              <span lang-block data-lang="en" data-active="true">Raw HL7 Message Input</span>
+              <span lang-block data-lang="es" data-active="false">Entrada de Mensaje HL7 Sin Procesar</span>
+            </h3>
+            <p>
+              <span lang-block data-lang="en" data-active="true">The parser accepts raw HL7 v2 messages through multiple input methods: direct paste into the text area or upload of pipe-delimited .txt files. The interface is designed for rapid data entry in time-sensitive clinical scenarios.</span>
+              <span lang-block data-lang="es" data-active="false">El analizador acepta mensajes HL7 v2 sin procesar a través de múltiples métodos de entrada: pegado directo en el área de texto o carga de archivos .txt delimitados por barras. La interfaz está diseñada para entrada rápida de datos en escenarios clínicos sensibles al tiempo.</span>
+            </p>
+            <div class="highlight-box">
+              <p>
+                <span lang-block data-lang="en" data-active="true"><strong>Supported Format:</strong> HL7 v2.x pipe-delimited messages with MSH, PID, OBR, and OBX segments for laboratory results.</span>
+                <span lang-block data-lang="es" data-active="false"><strong>Formato Soportado:</strong> Mensajes HL7 v2.x delimitados por barras con segmentos MSH, PID, OBR y OBX para resultados de laboratorio.</span>
+              </p>
+            </div>
+            <h4>
+              <span lang-block data-lang="en" data-active="true">JavaScript-Based Regex Extraction</span>
+              <span lang-block data-lang="es" data-active="false">Extracción Basada en Regex de JavaScript</span>
+            </h4>
+            <p>
+              <span lang-block data-lang="en" data-active="true">The tool uses sophisticated regex patterns to extract critical segments (MSH, PID, OBR, OBX) and performs field-level validation (e.g., PID[5] for patient name, PID[7] for date of birth) to ensure data completeness.</span>
+              <span lang-block data-lang="es" data-active="false">La herramienta utiliza patrones regex sofisticados para extraer segmentos críticos (MSH, PID, OBR, OBX) y realiza validación a nivel de campo (por ejemplo, PID[5] para nombre del paciente, PID[7] para fecha de nacimiento) para garantizar la integridad de los datos.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature 2: Clinical Dashboard -->
+    <section class="section-spacing">
+      <div class="container hl7-project-layout">
+        <div class="feature-section reverse">
+          <div class="feature-image">
+            <img 
+              src="parsed-dashboard.png" 
+              alt="Clinical dashboard showing parsed HL7 data with patient demographics, color-coded disease status badges for COVID-19, Flu A/B, RSV, HIV, TB, and Hepatitis, and structured parsed output in dark mode"
+              class="clickable-img"
+              loading="lazy"
+            >
+          </div>
+          <div class="feature-content">
+            <h3>
+              <span lang-block data-lang="en" data-active="true">Clinical Dashboard Visualization</span>
+              <span lang-block data-lang="es" data-active="false">Visualización de Tablero Clínico</span>
+            </h3>
+            <p>
+              <span lang-block data-lang="en" data-active="true">Parsed results are immediately displayed in a color-coded clinical dashboard featuring patient demographics, disease status badges, and structured output. This instant visualization enables rapid triage and clinical decision-making.</span>
+              <span lang-block data-lang="es" data-active="false">Los resultados analizados se muestran inmediatamente en un tablero clínico codificado por colores con datos demográficos del paciente, insignias de estado de enfermedad y salida estructurada. Esta visualización instantánea permite triaje rápido y toma de decisiones clínicas.</span>
+            </p>
+            <h4>
+              <span lang-block data-lang="en" data-active="true">Disease-Specific Markers</span>
+              <span lang-block data-lang="es" data-active="false">Marcadores Específicos de Enfermedad</span>
+            </h4>
+            <p>
+              <span lang-block data-lang="en" data-active="true">The dashboard displays color-coded badges for six major infectious disease categories: COVID-19, Flu A/B, RSV, HIV, TB, and Hepatitis. Each badge provides instant visual feedback on patient status for rapid public health response.</span>
+              <span lang-block data-lang="es" data-active="false">El tablero muestra insignias codificadas por colores para seis categorías principales de enfermedades infecciosas: COVID-19, Gripe A/B, RSV, VIH, TB y Hepatitis. Cada insignia proporciona retroalimentación visual instantánea sobre el estado del paciente para una respuesta rápida de salud pública.</span>
+            </p>
+            <div class="highlight-box">
+              <p>
+                <span lang-block data-lang="en" data-active="true"><strong>Abnormal Result Highlighting:</strong> Critical or abnormal test results are automatically flagged in red for immediate clinical attention.</span>
+                <span lang-block data-lang="es" data-active="false"><strong>Resaltado de Resultados Anormales:</strong> Los resultados de pruebas críticos o anormales se marcan automáticamente en rojo para atención clínica inmediata.</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature 3: Bilingual Interface -->
+    <section class="section-spacing">
+      <div class="container hl7-project-layout">
+        <div class="feature-section">
+          <div class="feature-image">
+            <img 
+              src="bilingual-toggle-hl7.png" 
+              alt="Language toggle buttons showing English and Español options in blue on dark background, demonstrating bilingual interface capability"
+              class="clickable-img"
+              loading="lazy"
+            >
+          </div>
+          <div class="feature-content">
+            <h3>
+              <span lang-block data-lang="en" data-active="true">Bilingual Language Support</span>
+              <span lang-block data-lang="es" data-active="false">Soporte de Idioma Bilingüe</span>
+            </h3>
+            <p>
+              <span lang-block data-lang="en" data-active="true">Seamlessly switch between English and Spanish with instant translation updates. All interface elements—labels, error messages, clinical terms, and disease categories—adapt immediately to the selected language without page reload.</span>
+              <span lang-block data-lang="es" data-active="false">Cambie sin problemas entre inglés y español con actualizaciones de traducción instantáneas. Todos los elementos de la interfaz—etiquetas, mensajes de error, términos clínicos y categorías de enfermedades—se adaptan inmediatamente al idioma seleccionado sin recargar la página.</span>
+            </p>
+            <h4>
+              <span lang-block data-lang="en" data-active="true">Dynamic i18n Engine</span>
+              <span lang-block data-lang="es" data-active="false">Motor i18n Dinámico</span>
+            </h4>
+            <p>
+              <span lang-block data-lang="en" data-active="true">The system uses a centralized translation dictionary that updates all interface elements instantaneously. This reduces cognitive load for non-English-speaking clinicians during high-stress public health emergencies.</span>
+              <span lang-block data-lang="es" data-active="false">El sistema utiliza un diccionario de traducción centralizado que actualiza todos los elementos de la interfaz instantáneamente. Esto reduce la carga cognitiva para clínicos que no hablan inglés durante emergencias de salud pública de alto estrés.</span>
+            </p>
+            <div class="highlight-box">
+              <p>
+                <span lang-block data-lang="en" data-active="true"><strong>Health Equity:</strong> Bilingual support ensures equal access to critical diagnostic tools for Spanish-speaking healthcare workers and reduces language-related interpretation errors.</span>
+                <span lang-block data-lang="es" data-active="false"><strong>Equidad en Salud:</strong> El soporte bilingüe garantiza acceso equitativo a herramientas de diagnóstico críticas para trabajadores de salud de habla hispana y reduce errores de interpretación relacionados con el idioma.</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature 4 & 5: Light/Dark Mode -->
+    <section class="section-spacing">
+      <div class="container hl7-project-layout">
+        <div class="feature-section reverse">
+          <div class="feature-image">
+            <img 
+              src="hl7-light-mode.png" 
+              alt="HL7 parser interface in light mode showing the same clinical dashboard with white background and dark text for optimal daytime visibility"
+              class="clickable-img"
+              loading="lazy"
+            >
+          </div>
+          <div class="feature-content">
+            <h3>
+              <span lang-block data-lang="en" data-active="true">Adaptive Display Modes</span>
+              <span lang-block data-lang="es" data-active="false">Modos de Visualización Adaptativos</span>
+            </h3>
+            <p>
+              <span lang-block data-lang="en" data-active="true">Toggle between light and dark themes for optimal visibility across different clinical environments. Light mode provides excellent readability in bright office settings, while dark mode reduces eye strain during night shifts and emergency room use.</span>
+              <span lang-block data-lang="es" data-active="false">Cambie entre temas claros y oscuros para una visibilidad óptima en diferentes entornos clínicos. El modo claro proporciona excelente legibilidad en configuraciones de oficina brillantes, mientras que el modo oscuro reduce la fatiga visual durante turnos nocturnos y uso en salas de emergencia.</span>
+            </p>
+            <div class="highlight-box">
+              <p>
+                <span lang-block data-lang="en" data-active="true"><strong>High-Contrast Mode:</strong> Both themes maintain WCAG-compliant color contrast ratios for accessibility, ensuring disease badges and critical alerts remain clearly visible.</span>
+                <span lang-block data-lang="es" data-active="false"><strong>Modo de Alto Contraste:</strong> Ambos temas mantienen proporciones de contraste de color compatibles con WCAG para accesibilidad, asegurando que las insignias de enfermedades y alertas críticas permanezcan claramente visibles.</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="feature-section">
+          <div class="feature-image">
+            <img 
+              src="dark-mode-hl7.png" 
+              alt="HL7 parser interface in dark mode with black background showing parsed message summary with patient SMITH MARIA and test results for infectious diseases"
+              class="clickable-img"
+              loading="lazy"
+            >
+          </div>
+          <div class="feature-content">
+            <h3>
+              <span lang-block data-lang="en" data-active="true">Dark Mode for Extended Use</span>
+              <span lang-block data-lang="es" data-active="false">Modo Oscuro para Uso Prolongado</span>
+            </h3>
+            <p>
+              <span lang-block data-lang="en" data-active="true">Dark mode is specifically optimized for extended use during night shifts, emergency response scenarios, and low-light clinical environments. All status indicators, disease badges, and critical alerts maintain high visibility against the dark background.</span>
+              <span lang-block data-lang="es" data-active="false">El modo oscuro está específicamente optimizado para uso prolongado durante turnos nocturnos, escenarios de respuesta de emergencia y entornos clínicos de poca luz. Todos los indicadores de estado, insignias de enfermedades y alertas críticas mantienen alta visibilidad contra el fondo oscuro.</span>
+            </p>
+            <p>
+              <span lang-block data-lang="en" data-active="true">The theme preserves color-coding semantics across both modes, ensuring consistent interpretation of positive/negative results, abnormal flags, and validation warnings regardless of display preference.</span>
+              <span lang-block data-lang="es" data-active="false">El tema preserva la semántica de codificación por colores en ambos modos, asegurando interpretación consistente de resultados positivos/negativos, banderas anormales y advertencias de validación independientemente de la preferencia de visualización.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature 6: LOINC Validation -->
+    <section class="section-spacing">
+      <div class="container hl7-project-layout">
+        <div class="feature-section reverse">
+          <div class="feature-image">
+            <img 
+              src="LOINC-validation-hl7.png" 
+              alt="Parsed output section showing LOINC code validation with green highlighted field displaying COVID-19 PCR test code 94500-6 and test result interpretation"
+              class="clickable-img"
+              loading="lazy"
+            >
+          </div>
+          <div class="feature-content">
+            <h3>
+              <span lang-block data-lang="en" data-active="true">LOINC Code Validation System</span>
+              <span lang-block data-lang="es" data-active="false">Sistema de Validación de Código LOINC</span>
+            </h3>
+            <p>
+              <span lang-block data-lang="en" data-active="true">The parser includes a pre-loaded dictionary of valid LOINC codes specifically for infectious disease markers. When processing HL7 messages, the system automatically validates each LOINC code against this reference library to ensure data integrity.</span>
+              <span lang-block data-lang="es" data-active="false">El analizador incluye un diccionario precargado de códigos LOINC válidos específicamente para marcadores de enfermedades infecciosas. Al procesar mensajes HL7, el sistema valida automáticamente cada código LOINC contra esta biblioteca de referencia para garantizar la integridad de los datos.</span>
+            </p>
+            <h4>
+              <span lang-block data-lang="en" data-active="true">Validation Warnings</span>
+              <span lang-block data-lang="es" data-active="false">Advertencias de Validación</span>
+            </h4>
+            <p>
+              <span lang-block data-lang="en" data-active="true">Invalid or deprecated LOINC codes trigger immediate visual warnings with red text and inline error messages. This reduces the risk of incorrect diagnostic interpretation and prevents reporting errors in public health surveillance systems.</span>
+              <span lang-block data-lang="es" data-active="false">Los códigos LOINC inválidos u obsoletos desencadenan advertencias visuales inmediatas con texto rojo y mensajes de error en línea. Esto reduce el riesgo de interpretación diagnóstica incorrecta y previene errores de informes en sistemas de vigilancia de salud pública.</span>
+            </p>
+            <div class="highlight-box">
+              <p>
+                <span lang-block data-lang="en" data-active="true"><strong>Data Integrity:</strong> LOINC validation prevents misclassification of laboratory results, ensuring accurate disease surveillance and reporting to public health authorities.</span>
+                <span lang-block data-lang="es" data-active="false"><strong>Integridad de Datos:</strong> La validación LOINC previene la clasificación errónea de resultados de laboratorio, asegurando vigilancia y reporte preciso de enfermedades a autoridades de salud pública.</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature 7: PDF Export -->
+    <section class="section-spacing">
+      <div class="container hl7-project-layout">
+        <div class="feature-section">
+          <div class="feature-image">
+            <img 
+              src="download-summary-button-pdf-hl7.png" 
+              alt="Blue button labeled 'Download Summary (PDF)' for exporting parsed clinical data to PDF format"
+              class="clickable-img"
+              loading="lazy"
+            >
+          </div>
+          <div class="feature-content">
+            <h3>
+              <span lang-block data-lang="en" data-active="true">One-Click PDF Export</span>
+              <span lang-block data-lang="es" data-active="false">Exportación PDF con Un Clic</span>
+            </h3>
+            <p>
+              <span lang-block data-lang="en" data-active="true">Export parsed clinical summaries as professionally formatted PDF documents with a single click. The export function generates complete documentation suitable for patient charts, regulatory reporting, and inter-facility communication.</span>
+              <span lang-block data-lang="es" data-active="false">Exporte resúmenes clínicos analizados como documentos PDF formateados profesionalmente con un solo clic. La función de exportación genera documentación completa adecuada para gráficos de pacientes, informes regulatorios y comunicación entre instalaciones.</span>
+            </p>
+            <div class="highlight-box">
+              <p>
+                <span lang-block data-lang="en" data-active="true"><strong>Clinical Documentation:</strong> PDFs include complete patient demographics, disease markers, test results, parsed segments, and validation warnings—ready for immediate clinical use.</span>
+                <span lang-block data-lang="es" data-active="false"><strong>Documentación Clínica:</strong> Los PDF incluyen datos demográficos completos del paciente, marcadores de enfermedades, resultados de pruebas, segmentos analizados y advertencias de validación—listos para uso clínico inmediato.</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="feature-section reverse">
+          <div class="feature-image">
+            <img 
+              src="pdf-hl7-summary.png" 
+              alt="PDF print preview showing formatted clinical summary with patient information, LOINC validation warnings, and parsed HL7 segments ready for export"
+              class="clickable-img"
+              loading="lazy"
+            >
+          </div>
+          <div class="feature-content">
+            <h3>
+              <span lang-block data-lang="en" data-active="true">Professional PDF Output</span>
+              <span lang-block data-lang="es" data-active="false">Salida PDF Profesional</span>
+            </h3>
+            <p>
+              <span lang-block data-lang="en" data-active="true">Generated PDFs maintain professional formatting with clear section headers, organized data presentation, and complete clinical information. The output is designed for immediate integration into electronic health records and regulatory submissions.</span>
+              <span lang-block data-lang="es" data-active="false">Los PDF generados mantienen formato profesional con encabezados de sección claros, presentación de datos organizada e información clínica completa. La salida está diseñada para integración inmediata en registros electrónicos de salud y presentaciones regulatorias.</span>
+            </p>
+            <p>
+              <span lang-block data-lang="en" data-active="true">Each PDF includes all critical elements: patient demographics, test results with LOINC codes, disease status summaries, abnormal result flags, and validation warnings—providing a complete audit trail for quality assurance and compliance purposes.</span>
+              <span lang-block data-lang="es" data-active="false">Cada PDF incluye todos los elementos críticos: datos demográficos del paciente, resultados de pruebas con códigos LOINC, resúmenes de estado de enfermedad, banderas de resultados anormales y advertencias de validación—proporcionando una pista de auditoría completa para propósitos de aseguramiento de calidad y cumplimiento.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Executive Summary & Background -->
+    <section class="section-spacing">
+      <div class="container">
+        <div class="content-block">
+          <h3>
+            <span lang-block data-lang="en" data-active="true">Executive Summary</span>
+            <span lang-block data-lang="es" data-active="false">Resumen Ejecutivo</span>
+          </h3>
+          <p>
+            <span lang-block data-lang="en" data-active="true">The HL7 v2 Infectious Disease Parser is a lightweight, high‑impact application that transforms complex Electronic Lab Reporting (ELR) messages into an intuitive visual dashboard. By converting pipe‑delimited HL7 segments into color‑coded disease badges, abnormal result flags, and structured summaries, the tool enables rapid clinical triage and public health decision‑making.</span>
+            <span lang-block data-lang="es" data-active="false">El Analizador HL7 v2 de Enfermedades Infecciosas es una aplicación ligera de alto impacto que transforma mensajes complejos de Informes de Laboratorio Electrónico (ELR) en un tablero visual intuitivo. Al convertir segmentos HL7 delimitados por barras verticales en insignias de enfermedades codificadas por colores, banderas de resultados anormales y resúmenes estructurados, la herramienta permite triaje clínico rápido y toma de decisiones de salud pública.</span>
+          </p>
+          <p>
+            <span lang-block data-lang="en" data-active="true">The system includes a bilingual interface (English/Spanish), a LOINC‑driven validation engine, and a fully client‑side parsing model that protects patient privacy by keeping all PHI in the browser.</span>
+            <span lang-block data-lang="es" data-active="false">El sistema incluye una interfaz bilingüe (inglés/español), un motor de validación impulsado por LOINC y un modelo de análisis completamente del lado del cliente que protege la privacidad del paciente al mantener toda la PHI en el navegador.</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-spacing">
+      <div class="container">
+        <div class="content-block">
+          <h3>
+            <span lang-block data-lang="en" data-active="true">Background & Problem Statement</span>
+            <span lang-block data-lang="es" data-active="false">Antecedentes y Planteamiento del Problema</span>
+          </h3>
+          <p>
+            <span lang-block data-lang="en" data-active="true">HL7 v2 remains the dominant standard for lab reporting, yet it presents several challenges:</span>
+            <span lang-block data-lang="es" data-active="false">HL7 v2 sigue siendo el estándar dominante para informes de laboratorio, pero presenta varios desafíos:</span>
+          </p>
+          <p>
+            <span lang-block data-lang="en" data-active="true"><strong>Human unreadability:</strong> Messages like OBX|1|CWE|94500-6^COVID19^LN||POSITIVE are nearly impossible for non‑technical staff to interpret quickly.</span>
+            <span lang-block data-lang="es" data-active="false"><strong>Ilegibilidad humana:</strong> Mensajes como OBX|1|CWE|94500-6^COVID19^LN||POSITIVE son casi imposibles de interpretar rápidamente para el personal no técnico.</span>
+          </p>
+          <p>
+            <span lang-block data-lang="en" data-active="true"><strong>Validation risks:</strong> Incorrect or deprecated LOINC codes can misclassify lab results, leading to reporting errors.</span>
+            <span lang-block data-lang="es" data-active="false"><strong>Riesgos de validación:</strong> Los códigos LOINC incorrectos u obsoletos pueden clasificar erróneamente los resultados de laboratorio, lo que lleva a errores de informes.</span>
+          </p>
+          <p>
+            <span lang-block data-lang="en" data-active="true"><strong>Language barriers:</strong> Non‑English‑speaking clinicians face additional cognitive load interpreting English‑only technical data.</span>
+            <span lang-block data-lang="es" data-active="false"><strong>Barreras de idioma:</strong> Los clínicos que no hablan inglés enfrentan una carga cognitiva adicional al interpretar datos técnicos solo en inglés.</span>
+          </p>
+          <p>
+            <span lang-block data-lang="en" data-active="true"><strong>Time constraints:</strong> In public health emergencies, every second counts — manual HL7 interpretation can delay critical interventions.</span>
+            <span lang-block data-lang="es" data-active="false"><strong>Restricciones de tiempo:</strong> En emergencias de salud pública, cada segundo cuenta — la interpretación manual de HL7 puede retrasar intervenciones críticas.</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Features & Technical Details -->
+    <section class="section-spacing">
+      <div class="container hl7-project-layout">
+        <div class="tech-details">
+          <h3>
+            <span lang-block data-lang="en" data-active="true">Technical Architecture</span>
+            <span lang-block data-lang="es" data-active="false">Arquitectura Técnica</span>
+          </h3>
+
+          <h4>
+            <span lang-block data-lang="en" data-active="true">HL7 v2 Message Parsing</span>
+            <span lang-block data-lang="es" data-active="false">Análisis de Mensajes HL7 v2</span>
+          </h4>
+          <p>
+            <span lang-block data-lang="en" data-active="true">JavaScript‑based regex extraction of critical segments (MSH, PID, OBR, OBX) with field‑level validation ensures accurate patient demographics and test result extraction. The parser supports both direct‑paste and .txt file upload workflows for maximum flexibility.</span>
+            <span lang-block data-lang="es" data-active="false">La extracción basada en regex de JavaScript de segmentos críticos (MSH, PID, OBR, OBX) con validación a nivel de campo asegura extracción precisa de datos demográficos del paciente y resultados de pruebas. El analizador soporta flujos de trabajo de pegado directo y carga de archivos .txt para máxima flexibilidad.</span>
+          </p>
+
+          <h4>
+            <span lang-block data-lang="en" data-active="true">Intelligent Result Mapping</span>
+            <span lang-block data-lang="es" data-active="false">Mapeo Inteligente de Resultados</span>
+          </h4>
+          <p>
+            <span lang-block data-lang="en" data-active="true">The system extracts patient demographics from PID segments, iterates through OBX segments to identify test results, automatically highlights abnormal results in red, and maps results to specific disease categories (COVID, HIV, Hepatitis, TB, Flu, RSV) for instant triage.</span>
+            <span lang-block data-lang="es" data-active="false">El sistema extrae datos demográficos del paciente de segmentos PID, itera a través de segmentos OBX para identificar resultados de pruebas, resalta automáticamente resultados anormales en rojo, y mapea resultados a categorías específicas de enfermedades (COVID, VIH, Hepatitis, TB, Gripe, RSV) para triaje instantáneo.</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Security & Accessibility -->
+    <section class="section-spacing">
+      <div class="container hl7-project-layout">
+        <div class="tech-details">
+          <h3>
+            <span lang-block data-lang="en" data-active="true">Security & Privacy</span>
+            <span lang-block data-lang="es" data-active="false">Seguridad y Privacidad</span>
+          </h3>
+          <p>
+            <span lang-block data-lang="en" data-active="true">Client‑side processing only — no PHI leaves the browser, ensuring complete data privacy and HIPAA compliance. Safe HTML injection with scoped span wrappers prevents XSS vulnerabilities. No external API calls means minimal attack surface, and the static‑file architecture eliminates backend security concerns.</span>
+            <span lang-block data-lang="es" data-active="false">Procesamiento solo del lado del cliente — ningún PHI sale del navegador, asegurando privacidad de datos completa y cumplimiento con HIPAA. La inyección HTML segura con envoltorios de span con alcance definido previene vulnerabilidades XSS. Sin llamadas a API externas significa superficie de ataque mínima, y la arquitectura de archivos estáticos elimina preocupaciones de seguridad del backend.</span>
+          </p>
+
+          <h4>
+            <span lang-block data-lang="en" data-active="true">Accessibility Features</span>
+            <span lang-block data-lang="es" data-active="false">Características de Accesibilidad</span>
+          </h4>
+          <p>
+            <span lang-block data-lang="en" data-active="true">Visual semantics using icons and color cues support rapid comprehension, error‑proofing for missing fields and invalid LOINC codes prevents data quality issues, high‑contrast mode ensures usability in low‑light clinical settings, and keyboard navigation support enables accessibility for users with motor disabilities.</span>
+            <span lang-block data-lang="es" data-active="false">La semántica visual usando iconos y señales de color soporta comprensión rápida, la protección contra errores para campos faltantes y códigos LOINC inválidos previene problemas de calidad de datos, el modo de alto contraste asegura usabilidad en entornos clínicos de poca luz, y el soporte de navegación por teclado permite accesibilidad para usuarios con discapacidades motoras.</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Measurable Impact -->
+    <section class="section-spacing">
+      <div class="container hl7-project-layout">
+        <div class="tech-details">
+          <h3>
+            <span lang-block data-lang="en" data-active="true">Measurable Impact</span>
+            <span lang-block data-lang="es" data-active="false">Impacto Medible</span>
+          </h3>
+          
+          <div class="impact-grid">
+            <div class="impact-item">
+              <h4>
+                <span lang-block data-lang="en" data-active="true">3-Second Interpretation</span>
+                <span lang-block data-lang="es" data-active="false">Interpretación en 3 Segundos</span>
+              </h4>
+              <p>
+                <span lang-block data-lang="en" data-active="true">Processes a 50‑line HL7 message in under 3 seconds, enabling rapid clinical response during public health emergencies.</span>
+                <span lang-block data-lang="es" data-active="false">Procesa un mensaje HL7 de 50 líneas en menos de 3 segundos, permitiendo respuesta clínica rápida durante emergencias de salud pública.</span>
+              </p>
+            </div>
+            
+            <div class="impact-item">
+              <h4>
+                <span lang-block data-lang="en" data-active="true">Enhanced Data Integrity</span>
+                <span lang-block data-lang="es" data-active="false">Integridad de Datos Mejorada</span>
+              </h4>
+              <p>
+                <span lang-block data-lang="en" data-active="true">Automated LOINC validation prevents misclassification errors and ensures accurate public health reporting.</span>
+                <span lang-block data-lang="es" data-active="false">La validación LOINC automatizada previene errores de clasificación y asegura informes de salud pública precisos.</span>
+              </p>
+            </div>
+            
+            <div class="impact-item">
+              <h4>
+                <span lang-block data-lang="en" data-active="true">Reduced Clinical Risk</span>
+                <span lang-block data-lang="es" data-active="false">Riesgo Clínico Reducido</span>
+              </h4>
+              <p>
+                <span lang-block data-lang="en" data-active="true">Immediate highlighting of abnormal results prevents oversight of critical findings in high‑volume lab reporting scenarios.</span>
+                <span lang-block data-lang="es" data-active="false">El resaltado inmediato de resultados anormales previene pasar por alto hallazgos críticos en escenarios de informes de laboratorio de alto volumen.</span>
+              </p>
+            </div>
+            
+            <div class="impact-item">
+              <h4>
+                <span lang-block data-lang="en" data-active="true">Improved Outbreak Response</span>
+                <span lang-block data-lang="es" data-active="false">Respuesta Mejorada a Brotes</span>
+              </h4>
+              <p>
+                <span lang-block data-lang="en" data-active="true">Color-coded disease badges enable rapid triage during outbreak scenarios, supporting faster public health interventions.</span>
+                <span lang-block data-lang="es" data-active="false">Las insignias de enfermedades codificadas por colores permiten triaje rápido durante escenarios de brotes, apoyando intervenciones de salud pública más rápidas.</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technology Stack -->
+    <section class="section-spacing">
+      <div class="container hl7-project-layout">
+        <div class="tech-details">
+          <h3>
+            <span lang-block data-lang="en" data-active="true">Technology Stack</span>
+            <span lang-block data-lang="es" data-active="false">Pila Tecnológica</span>
+          </h3>
+          <p>
+            <span lang-block data-lang="en" data-active="true"><strong>Languages:</strong> JavaScript (ES6+), Python 3.x, HTML5, CSS3</span>
+            <span lang-block data-lang="es" data-active="false"><strong>Lenguajes:</strong> JavaScript (ES6+), Python 3.x, HTML5, CSS3</span>
+          </p>
+          <p>
+            <span lang-block data-lang="en" data-active="true"><strong>Standards:</strong> HL7 v2.x (MSH, PID, OBR, OBX segments), LOINC code validation</span>
+            <span lang-block data-lang="es" data-active="false"><strong>Estándares:</strong> HL7 v2.x (segmentos MSH, PID, OBR, OBX), validación de código LOINC</span>
+          </p>
+          <p>
+            <span lang-block data-lang="en" data-active="true"><strong>Libraries:</strong> hl7apy (Python for HL7 parsing), regex patterns for segment extraction</span>
+            <span lang-block data-lang="es" data-active="false"><strong>Bibliotecas:</strong> hl7apy (Python para análisis HL7), patrones regex para extracción de segmentos</span>
+          </p>
+          <p>
+            <span lang-block data-lang="en" data-active="true"><strong>APIs:</strong> Web File API for .txt uploads, Print API for PDF generation</span>
+            <span lang-block data-lang="es" data-active="false"><strong>APIs:</strong> Web File API para cargas .txt, Print API para generación de PDF</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="portfolio-footer site-footer">
+    <div class="container">
+      <p>
+        <span lang-block data-lang="en" data-active="true">David Quintana Dev is a registered trade name of Servicios Quintana LLC.</span>
+        <span lang-block data-lang="es">David Quintana Dev es un nombre comercial registrado de Servicios Quintana LLC.</span>
+      </p>
+
+      <p class="legal-notice">
+        <span lang-block data-lang="en" data-active="true">Mandatory Disclosure: I am not an attorney licensed to practice law in the State of Colorado and I may not give legal advice or accept fees for legal advice.</span>
+        <span lang-block data-lang="es">Aviso Obligatorio: No soy un abogado licenciado para ejercer el derecho en el Estado de Colorado y no puedo dar asesoría legal ni aceptar honorarios por asesoría legal.</span>
+      </p>
+
+      <p>
+        <span lang-block data-lang="en" data-active="true">© 2026 Servicios Quintana LLC. All Rights Reserved.</span>
+        <span lang-block data-lang="es">© 2026 Servicios Quintana LLC. Todos los derechos reservados.</span>
+      </p>
+    </div>
+  </footer>
+
+  <div id="lightbox-modal" class="lightbox-modal" style="display: none;">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img" alt="Full screen project screenshot">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+
+  <script src="main.js"></script>
+
+</body>
+</html>

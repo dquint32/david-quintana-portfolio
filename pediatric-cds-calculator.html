@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en" data-language="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pediatric Clinical Decision Support (CDS) Dosage Calculator by David Quintana">
+  <title>Pediatric CDS Dosage Calculator | David Quintana</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  
+  <style>
+    /* ============================================
+       HEADER CONTACT BUTTON OVERRIDE
+       ============================================ */
+    .site-header .nav ul li:last-child a {
+      border: 2px solid #ff6b00;
+      padding: 0.5rem 1.25rem;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+    
+    .site-header .nav ul li:last-child a:hover {
+      background-color: #ff6b00;
+      color: #ffffff;
+    }
+    
+    /* Hero meta link styling */
+    .project-hero .hero-link {
+      color: #ff6b00;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      margin-top: 1rem;
+    }
+    
+    .project-hero .hero-link:hover {
+      color: #ff7a1a;
+      transform: translateX(4px);
+    }
+    
+    /* ============================================
+       SCOPED PEDIATRIC CDS LAYOUT STYLES
+       ============================================ */
+    
+    /* Main scoping container */
+    .cds-project-layout {
+      width: 100%;
+    }
+    
+    /* Feature section with image + text side by side */
+    .cds-project-layout .feature-section {
+      background: rgba(17, 17, 17, 0.5);
+      border: 1px solid rgba(255, 107, 0, 0.2);
+      border-radius: 8px;
+      padding: 2.5rem;
+      margin: 3rem 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    
+    @media (min-width: 900px) {
+      .cds-project-layout .feature-section {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+      }
+      
+      /* Alternate image position for visual variety */
+      .cds-project-layout .feature-section.reverse {
+        direction: rtl;
+      }
+      
+      .cds-project-layout .feature-section.reverse > * {
+        direction: ltr;
+      }
+    }
+    
+    /* Image container */
+    .cds-project-layout .feature-image {
+      width: 100%;
+      position: relative;
+    }
+    
+    .cds-project-layout .feature-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 107, 0, 0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: block;
+    }
+    
+    .cds-project-layout .feature-image img:hover {
+      border-color: #ff6b00;
+      box-shadow: 0 8px 24px rgba(255, 107, 0, 0.4);
+      transform: translateY(-4px);
+    }
+    
+    .cds-project-layout .feature-image img:focus {
+      outline: 2px solid #ff6b00;
+      outline-offset: 4px;
+    }
+    
+    /* Text content */
+    .cds-project-layout .feature-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .cds-project-layout .feature-content h3 {
+      color: #ff6b00;
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+    
+    .cds-project-layout .feature-content h4 {
+      color: #ffffff;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+      line-height: 1.4;
+    }
+    
+    .cds-project-layout .feature-content p {
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+    
+    .cds-project-layout .feature-content p:last-child {
+      margin-bottom: 0;
+    }
+    
+    /* Highlight box for key features */
+    .cds-project-layout .highlight-box {
+      background: rgba(13, 13, 13, 0.6);
+      border-left: 3px solid #ff6b00;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 4px;
+    }
+    
+    .cds-project-layout .highlight-box p {
+      margin-bottom: 0;
+      color: rgba(255, 255, 255, 0.85);
+    }
+    
+    /* Technical details section */
+    .cds-project-layout .tech-details {
+      background: rgba(13, 13, 13, 0.8);
+      border: 1px solid rgba(255, 107, 0, 0.15);
+      border-radius: 8px;
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+    
+    .cds-project-layout .tech-details h3 {
+      color: #ff6b00;
+      font-size: 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .cds-project-layout .tech-details h4 {
+      color: #ffffff;
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .cds-project-layout .tech-details h4:first-of-type {
+      margin-top: 0;
+    }
+    
+    .cds-project-layout .tech-details p {
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    
+    /* Impact metrics grid */
+    .cds-project-layout .impact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    @media (min-width: 768px) {
+      .cds-project-layout .impact-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    .cds-project-layout .impact-item {
+      background: rgba(13, 13, 13, 0.6);
+      border: 1px solid rgba(255, 107, 0, 0.2);
+      border-radius: 6px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .cds-project-layout .impact-item:hover {
+      border-color: rgba(255, 107, 0, 0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    }
+    
+    .cds-project-layout .impact-item h4 {
+      color: #ff6b00;
+      font-size: 1.125rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .cds-project-layout .impact-item p {
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: 0;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 899px) {
+      .cds-project-layout .feature-section {
+        padding: 1.5rem;
+        margin: 2rem 0;
+      }
+      
+      .cds-project-layout .feature-content h3 {
+        font-size: 1.5rem;
+      }
+      
+      .cds-project-layout .feature-content h4 {
+        font-size: 1.125rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .cds-project-layout .feature-section {
+        padding: 1.25rem;
+        margin: 1.5rem 0;
+      }
+      
+      .cds-project-layout .tech-details,
+      .cds-project-layout .highlight-box {
+        padding: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body data-language="en" class="case-study-page">
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="logo-background" aria-hidden="true">
+    <div class="bg-logo">DQ</div>
+  </div>
+
+  <button class="floating-toggle" type="button" aria-label="Toggle language">
+    <span data-lang="en">EN</span>
+    <span class="divider">|</span>
+    <span data-lang="es" class="inactive">ES</span>
+  </button>
+
+  <button id="back-to-top" class="back-to-top-btn" aria-label="Back to top">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <h1>
+          <a href="index.html">David Matthew Quintana</a>
+        </h1>
+        <p class="tagline">Bilingual Web Developer | Building practical, accessible solutions for small businesses and professionals</p>
+      </div>
+      <nav class="nav" aria-label="Primary">
+        <ul>
+          <li>
+            <a href="index.html">
+              <span lang-block data-lang="en" data-active="true">Home</span>
+              <span lang-block data-lang="es">Inicio</span>
+            </a>
+          </li>
+          <li>
+            <a href="hcis-portfolio.html">
+              <span lang-block data-lang="en" data-active="true">HCIS Portfolio</span>
+              <span lang-block data-lang="es">Portafolio HCIS</span>
+            </a>
+          </li>
+          <li>
+            <a href="pricing.html">
+              <span lang-block data-lang="en" data-active="true">Pricing</span>
+              <span lang-block data-lang="es">Precios</span>
+            </a>
+          </li>
+          <li>
+            <a href="contact.html">
+              <span lang-block data-lang="en" data-active="true">Contact</span>
+              <span lang-block data-lang="es">Contacto</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <section class="section-spacing">
+      <div class="container">
+        <div class="project-hero">
+          <h2>
+            <span lang-block data-lang="en" data-active="true">Pediatric Clinical Decision Support (CDS) Dosage Calculator</span>
+            <span lang-block data-lang="es" data-active="false">Calculadora de Dosis de Apoyo a Decisiones Clínicas (CDS) Pediátricas</span>
+          </h2>
+          <p class="project-intro">
+            <span lang-block data-lang="en" data-active="true">A safety‑critical pediatric medication dosing tool designed to reduce preventable errors in clinical care. The application integrates weight‑based dosing logic, strict clinical guardrails, and a bilingual interface to support safe medication administration for diverse patient populations. It provides validated dosing recommendations for common pediatric medications such as Acetaminophen, Ibuprofen, and Amoxicillin.</span>
+            <span lang-block data-lang="es" data-active="false">Una herramienta de dosificación de medicamentos pediátricos crítica para la seguridad diseñada para reducir errores prevenibles en la atención clínica. La aplicación integra lógica de dosificación basada en peso, barreras de seguridad clínicas estrictas y una interfaz bilingüe para apoyar la administración segura de medicamentos para poblaciones de pacientes diversas. Proporciona recomendaciones de dosificación validadas para medicamentos pediátricos comunes como Acetaminofeno, Ibuprofeno y Amoxicilina.</span>
+          </p>
+          <p>
+            <a href="https://pediatric-dosage-calculator.onrender.com/" target="_blank" rel="noopener noreferrer" class="hero-link">
+              <span lang-block data-lang="en" data-active="true">View Live Demo →</span>
+              <span lang-block data-lang="es" data-active="false">Ver Demo en Vivo →</span>
+            </a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature 1: Critical Safety Alert -->
+    <section class="section-spacing">
+      <div class="container cds-project-layout">
+        <div class="feature-section">
+          <div class="feature-image">
+            <img 
+              src="calc-red-safety-alert.png" 
+              alt="Critical safety alert with red border showing calculated dose of 1500mg exceeding maximum safe dose of 1000mg for Acetaminophen, with warning DO NOT ADMINISTER displayed"
+              class="clickable-img"
+              loading="lazy"
+            >
+          </div>
+          <div class="feature-content">
+            <h3>
+              <span lang-block data-lang="en" data-active="true">Critical Safety Alert System</span>
+              <span lang-block data-lang="es" data-active="false">Sistema de Alerta de Seguridad Crítica</span>
+            </h3>
+            <p>
+              <span lang-block data-lang="en" data-active="true">When a calculated dose exceeds maximum safe thresholds, the system immediately displays a critical red alert with explicit "DO NOT ADMINISTER" warnings. This hard stop prevents potential overdoses and sentinel events that could result in serious patient harm.</span>
+              <span lang-block data-lang="es" data-active="false">Cuando una dosis calculada excede los umbrales máximos de seguridad, el sistema muestra inmediatamente una alerta roja crítica con advertencias explícitas de "NO ADMINISTRAR". Esta parada completa previene posibles sobredosis y eventos centinela que podrían resultar en daño grave al paciente.</span>
+            </p>
+            <div class="highlight-box">
+              <p>
+                <span lang-block data-lang="en" data-active="true"><strong>Safety Level: CRITICAL</strong> — The most severe alert, indicating the calculated dose exceeds the medication's maximum safe limit. Administration is explicitly contraindicated.</span>
+                <span lang-block data-lang="es" data-active="false"><strong>Nivel de Seguridad: CRÍTICO</strong> — La alerta más severa, indicando que la dosis calculada excede el límite máximo seguro del medicamento. La administración está explícitamente contraindicada.</span>
+              </p>
+            </div>
+            <p>
+              <span lang-block data-lang="en" data-active="true">The red border and explicit warning language create an unmistakable visual cue that demands immediate attention and prevents accidental administration of unsafe doses.</span>
+              <span lang-block data-lang="es" data-active="false">El borde rojo y el lenguaje de advertencia explícito crean una señal visual inconfundible que exige atención inmediata y previene la administración accidental de dosis inseguras.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature 2: Caution Alert -->
+    <section class="section-spacing">
+      <div class="container cds-project-layout">
+        <div class="feature-section reverse">
+          <div class="feature-image">
+            <img 
+              src="calc-yellow-safety-alert.png" 
+              alt="Caution safety alert with yellow border showing recommended dose of 855mg at 86% of maximum safe dose, requiring double-check of calculation"
+              class="clickable-img"
+              loading="lazy"
+            >
+          </div>
+          <div class="feature-content">
+            <h3>
+              <span lang-block data-lang="en" data-active="true">Caution Zone Alerts</span>
+              <span lang-block data-lang="es" data-active="false">Alertas de Zona de Precaución</span>
+            </h3>
+            <p>
+              <span lang-block data-lang="en" data-active="true">Yellow caution alerts appear when doses approach safety limits (typically 75-90% of maximum safe dose). These alerts prompt clinicians to double-check calculations and verify patient weight before administration, adding an important layer of verification without completely blocking the workflow.</span>
+              <span lang-block data-lang="es" data-active="false">Las alertas de precaución amarillas aparecen cuando las dosis se acercan a los límites de seguridad (típicamente 75-90% de la dosis máxima segura). Estas alertas solicitan a los clínicos que verifiquen los cálculos y confirmen el peso del paciente antes de la administración, agregando una capa importante de verificación sin bloquear completamente el flujo de trabajo.</span>
+            </p>
+            <div class="highlight-box">
+              <p>
+                <span lang-block data-lang="en" data-active="true"><strong>Safety Level: CAUTION</strong> — Dose is within safe parameters but approaching the upper limit. Requires careful verification before administration.</span>
+                <span lang-block data-lang="es" data-active="false"><strong>Nivel de Seguridad: PRECAUCIÓN</strong> — La dosis está dentro de los parámetros seguros pero se acerca al límite superior. Requiere verificación cuidadosa antes de la administración.</span>
+              </p>
+            </div>
+            <p>
+              <span lang-block data-lang="en" data-active="true">This graduated alert system helps reduce alert fatigue while maintaining critical safety checks for high-risk dosing scenarios.</span>
+              <span lang-block data-lang="es" data-active="false">Este sistema de alerta graduado ayuda a reducir la fatiga de alertas mientras mantiene controles de seguridad críticos para escenarios de dosificación de alto riesgo.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature 3: Safe Dosage -->
+    <section class="section-spacing">
+      <div class="container cds-project-layout">
+        <div class="feature-section">
+          <div class="feature-image">
+            <img 
+              src="green-recommended-dosage-calc.png" 
+              alt="Safe dosage recommendation with green border showing 225mg dose for 15kg patient with checkmark, safety assessment marked as Safe"
+              class="clickable-img"
+              loading="lazy"
+            >
+          </div>
+          <div class="feature-content">
+            <h3>
+              <span lang-block data-lang="en" data-active="true">Safe Dosage Confirmation</span>
+              <span lang-block data-lang="es" data-active="false">Confirmación de Dosis Segura</span>
+            </h3>
+            <p>
+              <span lang-block data-lang="en" data-active="true">Green indicators confirm safe dosing within therapeutic ranges, providing clear administration instructions and confidence to clinicians during medication preparation. The checkmark icon and green border create positive reinforcement for correct dosing.</span>
+              <span lang-block data-lang="es" data-active="false">Los indicadores verdes confirman la dosificación segura dentro de los rangos terapéuticos, proporcionando instrucciones de administración claras y confianza a los clínicos durante la preparación de medicamentos. El ícono de verificación y el borde verde crean refuerzo positivo para la dosificación correcta.</span>
+            </p>
+            <h4>
+              <span lang-block data-lang="en" data-active="true">Weight-Based Dosing Logic</span>
+              <span lang-block data-lang="es" data-active="false">Lógica de Dosificación Basada en Peso</span>
+            </h4>
+            <p>
+              <span lang-block data-lang="en" data-active="true">The calculator accepts patient weight in kg or lb, automatically converts to standardized units, and enforces strict validation (pediatric weight range: 2–100 kg). The dose is calculated using the formula: dose = weight (kg) × dosing rate (mg/kg), with automatic capping at maximum safe limits.</span>
+              <span lang-block data-lang="es" data-active="false">La calculadora acepta el peso del paciente en kg o lb, convierte automáticamente a unidades estandarizadas y aplica validación estricta (rango de peso pediátrico: 2–100 kg). La dosis se calcula usando la fórmula: dosis = peso (kg) × tasa de dosificación (mg/kg), con limitación automática en los límites máximos seguros.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature 4: Bilingual Calculator Interface -->
+    <section class="section-spacing">
+      <div class="container cds-project-layout">
+        <div class="feature-section reverse">
+          <div class="feature-image">
+            <img 
+              src="calc-bilingual-15-acet.png" 
+              alt="Full calculator interface showing patient weight input of 15kg, Acetaminophen selection, and purpose statement in both English and Spanish with language toggle"
+              class="clickable-img"
+              loading="lazy"
+            >
+          </div>
+          <div class="feature-content">
+            <h3>
+              <span lang-block data-lang="en" data-active="true">Complete Clinical Interface</span>
+              <span lang-block data-lang="es" data-active="false">Interfaz Clínica Completa</span>
+            </h3>
+            <p>
+              <span lang-block data-lang="en" data-active="true">The full calculator interface includes weight-based input with unit selection (kg/lb), medication dropdown with common pediatric drugs (Acetaminophen, Ibuprofen, Amoxicillin), and a bilingual purpose statement explaining the Clinical Decision Support logic for reducing medication errors.</span>
+              <span lang-block data-lang="es" data-active="false">La interfaz completa de la calculadora incluye entrada basada en peso con selección de unidades (kg/lb), menú desplegable de medicamentos con medicamentos pediátricos comunes (Acetaminofeno, Ibuprofeno, Amoxicilina) y una declaración de propósito bilingüe que explica la lógica de Apoyo a Decisiones Clínicas para reducir errores de medicación.</span>
+            </p>
+            <div class="highlight-box">
+              <p>
+                <span lang-block data-lang="en" data-active="true"><strong>Supported Medications:</strong> Acetaminophen (15 mg/kg, max 1000mg), Ibuprofen (10 mg/kg, max 600mg), Amoxicillin (20 mg/kg, max 500mg)</span>
+                <span lang-block data-lang="es" data-active="false"><strong>Medicamentos Soportados:</strong> Acetaminofeno (15 mg/kg, máx 1000mg), Ibuprofeno (10 mg/kg, máx 600mg), Amoxicilina (20 mg/kg, máx 500mg)</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature 5: Language Toggle -->
+    <section class="section-spacing">
+      <div class="container cds-project-layout">
+        <div class="feature-section">
+          <div class="feature-image">
+            <img 
+              src="dosage-calc-bilingual-button.png" 
+              alt="Language toggle buttons showing English and Español options in orange and gray, demonstrating instant language switching capability"
+              class="clickable-img"
+              loading="lazy"
+            >
+          </div>
+          <div class="feature-content">
+            <h3>
+              <span lang-block data-lang="en" data-active="true">Instant Language Switching</span>
+              <span lang-block data-lang="es" data-active="false">Cambio de Idioma Instantáneo</span>
+            </h3>
+            <p>
+              <span lang-block data-lang="en" data-active="true">The bilingual toggle enables instant switching between English and Spanish without losing form state or calculated results. This feature improves health equity and reduces communication-related medication errors for diverse patient populations, particularly in emergency settings where clear communication is critical.</span>
+              <span lang-block data-lang="es" data-active="false">El cambio bilingüe permite el cambio instantáneo entre inglés y español sin perder el estado del formulario o los resultados calculados. Esta característica mejora la equidad en salud y reduce errores de medicación relacionados con la comunicación para poblaciones de pacientes diversas, particularmente en entornos de emergencia donde la comunicación clara es crítica.</span>
+            </p>
+            <h4>
+              <span lang-block data-lang="en" data-active="true">Bilingual Instruction Generation</span>
+              <span lang-block data-lang="es" data-active="false">Generación de Instrucciones Bilingües</span>
+            </h4>
+            <p>
+              <span lang-block data-lang="en" data-active="true">The system generates dosing instructions in both English and Spanish simultaneously, ensuring families and caregivers receive clear guidance in their preferred language. This is particularly important for discharge instructions and home medication administration.</span>
+              <span lang-block data-lang="es" data-active="false">El sistema genera instrucciones de dosificación en inglés y español simultáneamente, asegurando que las familias y cuidadores reciban orientación clara en su idioma preferido. Esto es particularmente importante para instrucciones de alta y administración de medicamentos en el hogar.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Executive Summary & Background -->
+    <section class="section-spacing">
+      <div class="container">
+        <div class="content-block">
+          <h3>
+            <span lang-block data-lang="en" data-active="true">Executive Summary</span>
+            <span lang-block data-lang="es" data-active="false">Resumen Ejecutivo</span>
+          </h3>
+          <p>
+            <span lang-block data-lang="en" data-active="true">The Pediatric CDS Dosage Calculator is a human‑centered, bilingual clinical tool that automates complex pediatric dosing calculations. It enforces strict safety guardrails — including weight validation, mg/kg logic, and maximum dose capping — to prevent sentinel events such as 10‑fold overdoses.</span>
+            <span lang-block data-lang="es" data-active="false">La Calculadora de Dosis CDS Pediátrica es una herramienta clínica bilingüe centrada en el ser humano que automatiza cálculos complejos de dosificación pediátrica. Aplica barreras de seguridad estrictas, incluyendo validación de peso, lógica de mg/kg y limitación de dosis máxima, para prevenir eventos centinela como sobredosis de 10 veces.</span>
+          </p>
+          <p>
+            <span lang-block data-lang="en" data-active="true">The interface is built using a WCAG 2.1 AA compliant Electric Tangerine dark‑mode theme, optimized for high‑stress clinical environments. The system outputs simultaneous English and Spanish instructions, improving health equity and reducing communication‑related medication errors.</span>
+            <span lang-block data-lang="es" data-active="false">La interfaz está construida usando un tema de modo oscuro Electric Tangerine compatible con WCAG 2.1 AA, optimizado para entornos clínicos de alto estrés. El sistema genera instrucciones simultáneas en inglés y español, mejorando la equidad en salud y reduciendo errores de medicación relacionados con la comunicación.</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-spacing">
+      <div class="container">
+        <div class="content-block">
+          <h3>
+            <span lang-block data-lang="en" data-active="true">Background & Problem Statement</span>
+            <span lang-block data-lang="es" data-active="false">Antecedentes y Planteamiento del Problema</span>
+          </h3>
+          <p>
+            <span lang-block data-lang="en" data-active="true">Pediatric medication dosing is uniquely error‑prone because nearly all medications require weight‑based calculations. Common failure points include:</span>
+            <span lang-block data-lang="es" data-active="false">La dosificación de medicamentos pediátricos es particularmente propensa a errores porque casi todos los medicamentos requieren cálculos basados en peso. Los puntos de falla comunes incluyen:</span>
+          </p>
+          <p>
+            <span lang-block data-lang="en" data-active="true"><strong>Decimal point misplacement</strong> leading to 10× overdoses.</span>
+            <span lang-block data-lang="es" data-active="false"><strong>Desplazamiento del punto decimal</strong> que lleva a sobredosis de 10×.</span>
+          </p>
+          <p>
+            <span lang-block data-lang="en" data-active="true"><strong>Failure to cap doses</strong> at safe adult maximums.</span>
+            <span lang-block data-lang="es" data-active="false"><strong>Falta de limitación de dosis</strong> en máximos seguros para adultos.</span>
+          </p>
+          <p>
+            <span lang-block data-lang="en" data-active="true"><strong>Language barriers</strong> between clinicians and non‑English‑speaking families.</span>
+            <span lang-block data-lang="es" data-active="false"><strong>Barreras de idioma</strong> entre clínicos y familias que no hablan inglés.</span>
+          </p>
+          <p>
+            <span lang-block data-lang="en" data-active="true"><strong>Cognitive overload</strong> in emergency settings, where manual calculations are error‑prone.</span>
+            <span lang-block data-lang="es" data-active="false"><strong>Sobrecarga cognitiva</strong> en entornos de emergencia, donde los cálculos manuales son propensos a errores.</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Clinical Guardrails -->
+    <section class="section-spacing">
+      <div class="container cds-project-layout">
+        <div class="tech-details">
+          <h3>
+            <span lang-block data-lang="en" data-active="true">Clinical Guardrails & Safety Features</span>
+            <span lang-block data-lang="es" data-active="false">Barreras de Seguridad Clínicas y Características de Seguridad</span>
+          </h3>
+
+          <h4>
+            <span lang-block data-lang="en" data-active="true">Guardrail 1 — Input Sanitization</span>
+            <span lang-block data-lang="es" data-active="false">Barrera de Seguridad 1 — Sanitización de Entrada</span>
+          </h4>
+          <p>
+            <span lang-block data-lang="en" data-active="true">Validates weight is positive and within pediatric range (2-100 kg), converts lb to kg if necessary, and rejects malformed or malicious inputs via strict Pydantic validation. This prevents calculation errors from invalid data.</span>
+            <span lang-block data-lang="es" data-active="false">Valida que el peso sea positivo y esté dentro del rango pediátrico (2-100 kg), convierte lb a kg si es necesario y rechaza entradas malformadas o maliciosas a través de validación estricta de Pydantic. Esto previene errores de cálculo por datos inválidos.</span>
+          </p>
+
+          <h4>
+            <span lang-block data-lang="en" data-active="true">Guardrail 2 — Dose Calculation and Capping</span>
+            <span lang-block data-lang="es" data-active="false">Barrera de Seguridad 2 — Cálculo y Limitación de Dosis</span>
+          </h4>
+          <p>
+            <span lang-block data-lang="en" data-active="true">Calculates mg/kg dose using standardized formulas, automatically caps dose at medication's maximum safe limit, and assigns a safety level (SAFE, CAUTION, or CRITICAL) based on percentage of maximum dose. This multi-layered approach prevents both underdosing and overdosing.</span>
+            <span lang-block data-lang="es" data-active="false">Calcula la dosis de mg/kg usando fórmulas estandarizadas, limita automáticamente la dosis al límite máximo seguro del medicamento y asigna un nivel de seguridad (SAFE, CAUTION o CRITICAL) basado en el porcentaje de la dosis máxima. Este enfoque multicapa previene tanto la subdosificación como la sobredosificación.</span>
+          </p>
+
+          <h4>
+            <span lang-block data-lang="en" data-active="true">Result Display</span>
+            <span lang-block data-lang="es" data-active="false">Visualización de Resultados</span>
+          </h4>
+          <p>
+            <span lang-block data-lang="en" data-active="true">Color‑coded safety indicators (green, yellow, red), clear dosing instructions with explicit warnings for CAUTION or CRITICAL states, and bilingual output ensure clinicians can quickly assess safety and communicate clearly with families.</span>
+            <span lang-block data-lang="es" data-active="false">Indicadores de seguridad codificados por colores (verde, amarillo, rojo), instrucciones de dosificación claras con advertencias explícitas para estados de PRECAUCIÓN o CRÍTICO, y salida bilingüe aseguran que los clínicos puedan evaluar rápidamente la seguridad y comunicarse claramente con las familias.</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Security & UX Features -->
+    <section class="section-spacing">
+      <div class="container cds-project-layout">
+        <div class="tech-details">
+          <h3>
+            <span lang-block data-lang="en" data-active="true">Security & Accessibility</span>
+            <span lang-block data-lang="es" data-active="false">Seguridad y Accesibilidad</span>
+          </h3>
+
+          <h4>
+            <span lang-block data-lang="en" data-active="true">Security Considerations</span>
+            <span lang-block data-lang="es" data-active="false">Consideraciones de Seguridad</span>
+          </h4>
+          <p>
+            <span lang-block data-lang="en" data-active="true">Stateless API design ensures no PHI is stored or logged. Strict Pydantic validation prevents malformed or malicious inputs. SafetyLevel enforcement ensures the UI must handle CAUTION/CRITICAL states explicitly, and no external data transmission occurs beyond the calculation request.</span>
+            <span lang-block data-lang="es" data-active="false">El diseño de API sin estado garantiza que ningún PHI se almacene o registre. La validación estricta de Pydantic previene entradas malformadas o maliciosas. La aplicación de SafetyLevel garantiza que la interfaz debe manejar estados de PRECAUCIÓN/CRÍTICO explícitamente, y no ocurre transmisión de datos externa más allá de la solicitud de cálculo.</span>
+          </p>
+
+          <h4>
+            <span lang-block data-lang="en" data-active="true">Accessibility Features</span>
+            <span lang-block data-lang="es" data-active="false">Características de Accesibilidad</span>
+          </h4>
+          <p>
+            <span lang-block data-lang="en" data-active="true">WCAG 2.1 AA compliant dark mode reduces eye strain in clinical environments, JSON‑based i18n system (en.json / es.json) enables instant language switching without losing form state, clear visual hierarchy supports rapid clinical scanning, and inclusive instructions are designed for Spanish‑speaking families.</span>
+            <span lang-block data-lang="es" data-active="false">Modo oscuro compatible con WCAG 2.1 AA reduce la fatiga ocular en entornos clínicos, sistema i18n basado en JSON (en.json / es.json) permite cambio de idioma instantáneo sin perder el estado del formulario, jerarquía visual clara soporta escaneo clínico rápido, y las instrucciones inclusivas están diseñadas para familias de habla hispana.</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Measurable Impact -->
+    <section class="section-spacing">
+      <div class="container cds-project-layout">
+        <div class="tech-details">
+          <h3>
+            <span lang-block data-lang="en" data-active="true">Measurable Impact</span>
+            <span lang-block data-lang="es" data-active="false">Impacto Medible</span>
+          </h3>
+          
+          <div class="impact-grid">
+            <div class="impact-item">
+              <h4>
+                <span lang-block data-lang="en" data-active="true">Eliminates Calculation Fatigue</span>
+                <span lang-block data-lang="es" data-active="false">Elimina la Fatiga de Cálculo</span>
+              </h4>
+              <p>
+                <span lang-block data-lang="en" data-active="true">Automates complex weight-based calculations in high‑volume pediatric settings, reducing cognitive load and human error.</span>
+                <span lang-block data-lang="es" data-active="false">Automatiza cálculos complejos basados en peso en entornos pediátricos de alto volumen, reduciendo la carga cognitiva y el error humano.</span>
+              </p>
+            </div>
+            
+            <div class="impact-item">
+              <h4>
+                <span lang-block data-lang="en" data-active="true">Standardizes Care</span>
+                <span lang-block data-lang="es" data-active="false">Estandariza la Atención</span>
+              </h4>
+              <p>
+                <span lang-block data-lang="en" data-active="true">Enforces consistent clinical rules across all providers, eliminating practice variation and ensuring evidence-based dosing.</span>
+                <span lang-block data-lang="es" data-active="false">Aplica reglas clínicas consistentes en todos los proveedores, eliminando variación de práctica y asegurando dosificación basada en evidencia.</span>
+              </p>
+            </div>
+            
+            <div class="impact-item">
+              <h4>
+                <span lang-block data-lang="en" data-active="true">Improves Health Equity</span>
+                <span lang-block data-lang="es" data-active="false">Mejora la Equidad en Salud</span>
+              </h4>
+              <p>
+                <span lang-block data-lang="en" data-active="true">Provides bilingual instructions that reduce communication-related medication errors for Spanish-speaking families.</span>
+                <span lang-block data-lang="es" data-active="false">Proporciona instrucciones bilingües que reducen errores de medicación relacionados con la comunicación para familias de habla hispana.</span>
+              </p>
+            </div>
+            
+            <div class="impact-item">
+              <h4>
+                <span lang-block data-lang="en" data-active="true">Prevents Sentinel Events</span>
+                <span lang-block data-lang="es" data-active="false">Previene Eventos Centinela</span>
+              </h4>
+              <p>
+                <span lang-block data-lang="en" data-active="true">Critical alerts prevent overdoses and unsafe doses before administration, reducing risk of serious patient harm.</span>
+                <span lang-block data-lang="es" data-active="false">Las alertas críticas previenen sobredosis y dosis inseguras antes de la administración, reduciendo el riesgo de daño grave al paciente.</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technology Stack -->
+    <section class="section-spacing">
+      <div class="container cds-project-layout">
+        <div class="tech-details">
+          <h3>
+            <span lang-block data-lang="en" data-active="true">Technology Stack</span>
+            <span lang-block data-lang="es" data-active="false">Pila Tecnológica</span>
+          </h3>
+          <p>
+            <span lang-block data-lang="en" data-active="true"><strong>Frontend:</strong> HTML5, CSS3 (Custom Properties for theming), JavaScript (ES6+), Inter font family for readability</span>
+            <span lang-block data-lang="es" data-active="false"><strong>Frontend:</strong> HTML5, CSS3 (Propiedades Personalizadas para tematización), JavaScript (ES6+), Familia de fuentes Inter para legibilidad</span>
+          </p>
+          <p>
+            <span lang-block data-lang="en" data-active="true"><strong>Backend:</strong> FastAPI (Python 3.x), Pydantic for validation, Uvicorn ASGI server</span>
+            <span lang-block data-lang="es" data-active="false"><strong>Backend:</strong> FastAPI (Python 3.x), Pydantic para validación, servidor ASGI Uvicorn</span>
+          </p>
+          <p>
+            <span lang-block data-lang="en" data-active="true"><strong>Data Structures:</strong> JSON‑based localization files (en.json / es.json), RESTful API responses with safety metadata</span>
+            <span lang-block data-lang="es" data-active="false"><strong>Estructuras de Datos:</strong> Archivos de localización basados en JSON (en.json / es.json), Respuestas de API RESTful con metadatos de seguridad</span>
+          </p>
+          <p>
+            <span lang-block data-lang="en" data-active="true"><strong>Standards:</strong> WCAG 2.1 AA compliance, pediatric dosing guidelines from AAP and FDA</span>
+            <span lang-block data-lang="es" data-active="false"><strong>Estándares:</strong> Cumplimiento WCAG 2.1 AA, pautas de dosificación pediátrica de AAP y FDA</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="portfolio-footer site-footer">
+    <div class="container">
+      <p>
+        <span lang-block data-lang="en" data-active="true">David Quintana Dev is a registered trade name of Servicios Quintana LLC.</span>
+        <span lang-block data-lang="es">David Quintana Dev es un nombre comercial registrado de Servicios Quintana LLC.</span>
+      </p>
+
+      <p class="legal-notice">
+        <span lang-block data-lang="en" data-active="true">Mandatory Disclosure: I am not an attorney licensed to practice law in the State of Colorado and I may not give legal advice or accept fees for legal advice.</span>
+        <span lang-block data-lang="es">Aviso Obligatorio: No soy un abogado licenciado para ejercer el derecho en el Estado de Colorado y no puedo dar asesoría legal ni aceptar honorarios por asesoría legal.</span>
+      </p>
+
+      <p>
+        <span lang-block data-lang="en" data-active="true">© 2026 Servicios Quintana LLC. All Rights Reserved.</span>
+        <span lang-block data-lang="es">© 2026 Servicios Quintana LLC. Todos los derechos reservados.</span>
+      </p>
+    </div>
+  </footer>
+
+  <div id="lightbox-modal" class="lightbox-modal" style="display: none;">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img" alt="Full screen project screenshot">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+
+  <script src="main.js"></script>
+
+</body>
+</html>
