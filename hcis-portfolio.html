@@ -74,18 +74,24 @@
     <section id="top" class="section-spacing" aria-labelledby="hero-title">
       <div class="container hero">
         <div class="hero-left">
-          <h2 id="hero-title">David Quintana</h2>
+          <h2 id="hero-title">David M. Quintana</h2>
           
           <div lang-block data-lang="en" data-active="true">
             <p style="font-size: 1.25rem; font-weight: 600; color: var(--cyber-orange); margin-bottom: 1rem;">
-              Senior HCIS Student & Bilingual Developer
+              HCIS Professional | Bilingual Systems Developer
             </p>
             <p style="font-size: 1.125rem; line-height: 1.7; margin-bottom: 1.5rem;">
-              Bridging the gap between technical data standards and equitable patient care.
+              Bridging the gap between clinical data standards and equitable patient care.
             </p>
             <p style="font-size: 1rem; line-height: 1.7; opacity: 0.9;">
               I design bilingual, standards‑based healthcare applications that transform raw clinical data into structured, interoperable, and safe information. My work focuses on interoperability, workflow optimization, clinical safety guardrails, and bilingual accessibility.
             </p>
+          </div>
+
+          <div class="project-links" style="margin-top: 1.5rem; gap: 1rem;">
+            <a href="https://github.com/dquint32" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size: 0.9rem; padding: 0.5rem 1.1rem;">GitHub</a>
+            <a href="https://www.linkedin.com/in/quintanadm95" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size: 0.9rem; padding: 0.5rem 1.1rem;">LinkedIn</a>
+            <a href="mailto:david@quintanadev.com" class="btn btn-secondary" style="font-size: 0.9rem; padding: 0.5rem 1.1rem;">Email</a>
           </div>
 
           <div lang-block data-lang="es">
@@ -123,12 +129,12 @@
         <h3 style="text-align: center; margin-bottom: 0.5rem;" lang-block data-lang="en" data-active="true">🏆 Featured HCIS Projects</h3>
         <h3 style="text-align: center; margin-bottom: 0.5rem;" lang-block data-lang="es">🏆 Proyectos HCIS Destacados</h3>
         
-        <p style="text-align: center; font-size: 1.125rem; margin-bottom: 3rem; opacity: 0.85;" lang-block data-lang="en" data-active="true">Full‑stack architectures with deep integration of clinical standards.</p>
+        <p style="text-align: center; font-size: 1.125rem; margin-bottom: 3rem; opacity: 0.85;" lang-block data-lang="en" data-active="true">Full‑stack architectures demonstrating clinical data exchange and safety logic.</p>
         <p style="text-align: center; font-size: 1.125rem; margin-bottom: 3rem; opacity: 0.85;" lang-block data-lang="es">Arquitecturas full-stack con integración profunda de estándares clínicos.</p>
 
         <article class="project-card">
           <div class="project-number">01</div>
-          <h4 class="project-title" lang-block data-lang="en" data-active="true">Bilingual Patient Intake (FHIR)</h4>
+          <h4 class="project-title" lang-block data-lang="en" data-active="true">i18n Patient Intake & FHIR Resource Generator</h4>
           <h4 class="project-title" lang-block data-lang="es">Admisión de Pacientes Bilingüe (FHIR)</h4>
           
           <div class="project-links" style="margin-top: 1rem;">
@@ -155,17 +161,17 @@
             <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">El Problema</h5>
             
             <p style="margin-bottom: 1.5rem; line-height: 1.7;" lang-block data-lang="en" data-active="true">
-              Language barriers in intake lead to incomplete clinical histories and demographic errors, while manual data entry creates administrative burnout and data silos.
+              Language barriers during intake lead to "dirty data" and incomplete clinical histories. Standardizing this data into a format EHRs can actually read (FHIR) is often a manual, error-prone hurdle.
             </p>
             <p style="margin-bottom: 1.5rem; line-height: 1.7;" lang-block data-lang="es">
               Las barreras lingüísticas en la admisión provocan historiales clínicos incompletos y errores demográficos, mientras que la entrada manual de datos crea agotamiento administrativo y silos de información.
             </p>
 
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en" data-active="true">The Solution</h5>
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">La Solución</h5>
+            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en" data-active="true">The Action</h5>
+            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">La Acción</h5>
             
             <p style="margin-bottom: 1.5rem; line-height: 1.7;" lang-block data-lang="en" data-active="true">
-              A full‑stack system with real‑time English/Spanish toggling. The frontend captures Patient‑Generated Health Data (PGHD), which a FastAPI backend maps into HL7 FHIR R4 Patient and Observation resources for native EHR interoperability.
+              I engineered a full‑stack application with an i18n‑enabled frontend (English/Spanish). The system captures Patient‑Generated Health Data (PGHD) and uses a FastAPI backend to map raw inputs into validated HL7 FHIR R4 Patient and Observation resources.
             </p>
             <p style="margin-bottom: 1.5rem; line-height: 1.7;" lang-block data-lang="es">
               Un sistema full-stack con alternancia inglés/español en tiempo real. El frontend captura Datos de Salud Generados por Pacientes (PGHD), que un backend FastAPI mapea a recursos HL7 FHIR R4 de Paciente y Observación para interoperabilidad nativa con EHR.
@@ -184,13 +190,13 @@
             <pre style="background: rgba(255, 107, 0, 0.05); border-left: 3px solid var(--cyber-orange); padding: 1rem; margin-bottom: 1.5rem; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; line-height: 1.6;" lang-block data-lang="en" data-active="true">Patient → Bilingual Intake Form → FastAPI Validation → FHIR Mapping → JSON Output → EHR Integration</pre>
             <pre style="background: rgba(255, 107, 0, 0.05); border-left: 3px solid var(--cyber-orange); padding: 1rem; margin-bottom: 1.5rem; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; line-height: 1.6;" lang-block data-lang="es">Paciente → Formulario Bilingüe → Validación FastAPI → Mapeo FHIR → Salida JSON → Integración EHR</pre>
 
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en" data-active="true">Clinical Impact</h5>
+            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en" data-active="true">The Impact</h5>
             <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">Impacto Clínico</h5>
             
             <ul style="margin-bottom: 1.5rem; line-height: 1.7; padding-left: 1.5rem;" lang-block data-lang="en" data-active="true">
-              <li><strong>Interoperability:</strong> Generates FHIR‑compliant JSON at the point of care</li>
-              <li><strong>Health Equity:</strong> Enables Spanish‑speaking patients to provide history in their primary language</li>
-              <li><strong>Workflow:</strong> Reduces clerical errors and re‑entry time</li>
+              <li><strong>Interoperability:</strong> Produces production‑ready JSON payloads for native EHR integration.</li>
+              <li><strong>Health Equity:</strong> Empowers Spanish‑speaking patients to provide history in their primary language without data loss.</li>
+              <li><strong>Data Integrity:</strong> Implements strict Pydantic schema validation to eliminate malformed clinical data at the source.</li>
             </ul>
             <ul style="margin-bottom: 1.5rem; line-height: 1.7; padding-left: 1.5rem;" lang-block data-lang="es">
               <li><strong>Interoperabilidad:</strong> Genera JSON compatible con FHIR en el punto de atención</li>
@@ -240,7 +246,7 @@
 
         <article class="project-card">
           <div class="project-number">02</div>
-          <h4 class="project-title" lang-block data-lang="en" data-active="true">HL7 Infectious Disease Parser</h4>
+          <h4 class="project-title" lang-block data-lang="en" data-active="true">HL7 v2.x Infectious Disease & LOINC Parser</h4>
           <h4 class="project-title" lang-block data-lang="es">Analizador de Enfermedades Infecciosas HL7</h4>
           
           <div class="project-links" style="margin-top: 1rem;">
@@ -273,11 +279,11 @@
               Los mensajes heredados HL7 v2.x son "cajas negras" para muchos equipos de salud pública, requiriendo interpretación manual durante brotes sensibles al tiempo.
             </p>
 
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en" data-active="true">The Solution</h5>
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">La Solución</h5>
+            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en" data-active="true">The Action</h5>
+            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">La Acción</h5>
 
             <p style="margin-bottom: 1.5rem; line-height: 1.7;" lang-block data-lang="en" data-active="true">
-              A specialized parsing engine for ORU (Observation Result) messages. It extracts PID and OBX segments, validates LOINC codes, and flags abnormal findings for high-priority infectious diseases.
+              Built a specialized parsing engine to process ORU (Observation Result) messages. I utilized Regex‑based extraction and hl7apy to isolate PID and OBX segments, then integrated a LOINC dictionary to validate test codes and flag abnormal findings.
             </p>
             <p style="margin-bottom: 1.5rem; line-height: 1.7;" lang-block data-lang="es">
               Un motor de análisis especializado para mensajes ORU (Resultados de Observación). Extrae segmentos PID y OBX, valida códigos LOINC y marca hallazgos anormales para enfermedades infecciosas de alta prioridad.
@@ -296,13 +302,13 @@
             <pre style="background: rgba(255, 107, 0, 0.05); border-left: 3px solid var(--cyber-orange); padding: 1rem; margin-bottom: 1.5rem; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; line-height: 1.6;" lang-block data-lang="en" data-active="true">Lab System → HL7 Segments → Regex Extraction → LOINC Validation → Clinical Summary</pre>
             <pre style="background: rgba(255, 107, 0, 0.05); border-left: 3px solid var(--cyber-orange); padding: 1rem; margin-bottom: 1.5rem; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; line-height: 1.6;" lang-block data-lang="es">Sistema de Laboratorio → Segmentos HL7 → Extracción Regex → Validación LOINC → Resumen Clínico</pre>
 
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en" data-active="true">Clinical Impact</h5>
+            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en" data-active="true">The Impact</h5>
             <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">Impacto Clínico</h5>
 
             <ul style="margin-bottom: 1.5rem; line-height: 1.7; padding-left: 1.5rem;" lang-block data-lang="en" data-active="true">
-              <li><strong>Surveillance:</strong> Accelerates triage of positive lab results</li>
-              <li><strong>Accuracy:</strong> Normalizes data using standardized LOINC terminology</li>
-              <li><strong>Robustness:</strong> Handles malformed messages gracefully</li>
+              <li><strong>Surveillance:</strong> Accelerates the triage of positive lab results for public health reporting.</li>
+              <li><strong>Normalization:</strong> Converts non‑standard lab strings into standardized LOINC/SNOMED‑CT terminology.</li>
+              <li><strong>Resilience:</strong> Includes a synthetic test suite to ensure the parser handles "broken" or edge‑case legacy messages.</li>
             </ul>
             <ul style="margin-bottom: 1.5rem; line-height: 1.7; padding-left: 1.5rem;" lang-block data-lang="es">
               <li><strong>Vigilancia:</strong> Acelera el triaje de resultados de laboratorio positivos</li>
@@ -380,17 +386,17 @@
             <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">El Problema</h5>
 
             <p style="margin-bottom: 1.5rem; line-height: 1.7;" lang-block data-lang="en" data-active="true">
-              Pediatric dosing errors are high‑risk sentinel events. Communication gaps with Spanish‑speaking caregivers increase outpatient medication risks.
+              Pediatric dosing errors are "Never Events" in clinical safety. Communication gaps with non‑English speaking caregivers significantly increase outpatient medication risks.
             </p>
             <p style="margin-bottom: 1.5rem; line-height: 1.7;" lang-block data-lang="es">
               Los errores de dosificación pediátrica son eventos centinela de alto riesgo. Las brechas de comunicación con cuidadores hispanohablantes aumentan los riesgos de medicación ambulatoria.
             </p>
 
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en" data-active="true">The Solution</h5>
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">La Solución</h5>
+            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en" data-active="true">The Action</h5>
+            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">La Acción</h5>
 
             <p style="margin-bottom: 1.5rem; line-height: 1.7;" lang-block data-lang="en" data-active="true">
-              A Clinical Decision Support (CDS) tool enforcing strict weight‑based guardrails and generating bilingual caregiver‑facing instructions.
+              Developed a Clinical Decision Support (CDS) tool with built‑in safety guardrails. I implemented weight‑based dose caps and an 80% maximum‑dose caution threshold. The system uses JSON Localization (L10n) to generate precise, bilingual instructions for caregivers.
             </p>
             <p style="margin-bottom: 1.5rem; line-height: 1.7;" lang-block data-lang="es">
               Una herramienta de Soporte a la Decisión Clínica (CDS) que impone límites estrictos basados en peso y genera instrucciones bilingües para los cuidadores.
@@ -409,13 +415,13 @@
             <pre style="background: rgba(255, 107, 0, 0.05); border-left: 3px solid var(--cyber-orange); padding: 1rem; margin-bottom: 1.5rem; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; line-height: 1.6;" lang-block data-lang="en" data-active="true">Patient Input → Safety Validation → Dose Calculation → Bilingual Instructions</pre>
             <pre style="background: rgba(255, 107, 0, 0.05); border-left: 3px solid var(--cyber-orange); padding: 1rem; margin-bottom: 1.5rem; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; line-height: 1.6;" lang-block data-lang="es">Entrada del Paciente → Validación de Seguridad → Cálculo de Dosis → Instrucciones Bilingües</pre>
 
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en" data-active="true">Clinical Impact</h5>
+            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en" data-active="true">The Impact</h5>
             <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">Impacto Clínico</h5>
 
             <ul style="margin-bottom: 1.5rem; line-height: 1.7; padding-left: 1.5rem;" lang-block data-lang="en" data-active="true">
-              <li><strong>Sentinel Event Prevention:</strong> Rejects unrealistic weights and caps doses</li>
-              <li><strong>Safety UI:</strong> Implements an 80% caution threshold</li>
-              <li><strong>Bilingual Safety:</strong> Reduces caregiver confusion</li>
+              <li><strong>Clinical Safety:</strong> Rejects physiologically impossible weights and caps doses to prevent sentinel events.</li>
+              <li><strong>Caregiver Adherence:</strong> Reduces "lost‑in‑translation" errors by providing native‑language instructions for complex liquid dosing.</li>
+              <li><strong>Technical Precision:</strong> Demonstrates a stateless architecture capable of being embedded into larger clinical workflows.</li>
             </ul>
             <ul style="margin-bottom: 1.5rem; line-height: 1.7; padding-left: 1.5rem;" lang-block data-lang="es">
               <li><strong>Prevención de Eventos Centinela:</strong> Rechaza pesos poco realistas y limita dosis</li>
@@ -493,22 +499,19 @@
             </div>
             
             <p style="margin-bottom: 0.75rem; line-height: 1.7;" lang-block data-lang="en" data-active="true">
-              Tracks Preventive Maintenance (PM) status for high‑risk clinical assets.
+              A utility for tracking PM (Preventive Maintenance) status for high‑risk clinical assets to support Joint Commission/CMS compliance.
             </p>
             <p style="margin-bottom: 0.75rem; line-height: 1.7;" lang-block data-lang="es">
               Rastrea el estado de Mantenimiento Preventivo (PM) para activos clínicos de alto riesgo.
             </p>
 
-            <p style="line-height: 1.7;" lang-block data-lang="en" data-active="true">
-              Supports Joint Commission & CMS compliance.
-            </p>
             <p style="line-height: 1.7;" lang-block data-lang="es">
               Apoya el cumplimiento de Joint Commission y CMS.
             </p>
           </div>
 
           <div class="service-card">
-            <h4 style="color: var(--cyber-orange); font-size: 1.5rem; margin-bottom: 1rem; font-weight: 600;">05. FHIR Patient Converter</h4>
+            <h4 style="color: var(--cyber-orange); font-size: 1.5rem; margin-bottom: 1rem; font-weight: 600;">05. US Core FHIR Converter</h4>
             <div class="project-links" style="margin-bottom: 1.25rem;">
               <a href="https://dquint32.github.io/fhir-patient-converter/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.4rem 0.9rem;">
                 <span lang-block data-lang="en" data-active="true">Live Demo</span>
@@ -517,7 +520,7 @@
             </div>
             
             <p style="margin-bottom: 0.75rem; line-height: 1.7;" lang-block data-lang="en" data-active="true">
-              Transforms demographic data into US Core–compliant FHIR Patient JSON.
+              A focused script that transforms flat demographic CSVs into US Core–compliant FHIR Patient JSON.
             </p>
             <p style="margin-bottom: 0.75rem; line-height: 1.7;" lang-block data-lang="es">
               Transforma datos demográficos en JSON de Paciente FHIR compatible con US Core.
@@ -537,37 +540,46 @@
 
     <section id="skills" class="section-spacing">
       <div class="container">
-        <h3 style="text-align: center; margin-bottom: 3rem;" lang-block data-lang="en" data-active="true">🛠 Skills at a Glance</h3>
-        <h3 style="text-align: center; margin-bottom: 3rem;" lang-block data-lang="es">🛠 Habilidades de un Vistazo</h3>
+        <h3 style="text-align: center; margin-bottom: 3rem;" lang-block data-lang="en" data-active="true">🛠 Technical Core Competencies</h3>
+        <h3 style="text-align: center; margin-bottom: 3rem;" lang-block data-lang="es">🛠 Competencias Técnicas Principales</h3>
         
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
-          
-          <div class="skill-detail-card">
-            <h5 style="color: var(--cyber-orange); font-size: 1.25rem; margin-bottom: 1rem; font-weight: 600;" lang-block data-lang="en" data-active="true">Interoperability</h5>
-            <h5 style="color: var(--cyber-orange); font-size: 1.25rem; margin-bottom: 1rem; font-weight: 600;" lang-block data-lang="es">Interoperabilidad</h5>
-            <p style="line-height: 1.8;">HL7 FHIR R4, HL7 v2.x, US Core, JSON Schema</p>
-          </div>
-
-          <div class="skill-detail-card">
-            <h5 style="color: var(--cyber-orange); font-size: 1.25rem; margin-bottom: 1rem; font-weight: 600;" lang-block data-lang="en" data-active="true">Terminology</h5>
-            <h5 style="color: var(--cyber-orange); font-size: 1.25rem; margin-bottom: 1rem; font-weight: 600;" lang-block data-lang="es">Terminología</h5>
-            <p style="line-height: 1.8;">LOINC, ICD‑10, SNOMED‑CT (Basic), UCUM</p>
-          </div>
-
-          <div class="skill-detail-card">
-            <h5 style="color: var(--cyber-orange); font-size: 1.25rem; margin-bottom: 1rem; font-weight: 600;" lang-block data-lang="en" data-active="true">Development</h5>
-            <h5 style="color: var(--cyber-orange); font-size: 1.25rem; margin-bottom: 1rem; font-weight: 600;" lang-block data-lang="es">Desarrollo</h5>
-            <p style="line-height: 1.8;">FastAPI, Python, JavaScript (ES6+), API Design, i18n</p>
-          </div>
-
-          <div class="skill-detail-card">
-            <h5 style="color: var(--cyber-orange); font-size: 1.25rem; margin-bottom: 1rem; font-weight: 600;" lang-block data-lang="en" data-active="true">Regulatory & Accessibility</h5>
-            <h5 style="color: var(--cyber-orange); font-size: 1.25rem; margin-bottom: 1rem; font-weight: 600;" lang-block data-lang="es">Regulación y Accesibilidad</h5>
-            
-            <p style="line-height: 1.8;" lang-block data-lang="en" data-active="true">ONC/CMS, WCAG 2.1, HIPAA‑aligned design</p>
-            <p style="line-height: 1.8;" lang-block data-lang="es">ONC/CMS, WCAG 2.1, Diseño alineado con HIPAA</p>
-          </div>
-
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; max-width: 780px; margin: 0 auto;">
+            <thead>
+              <tr>
+                <th lang-block data-lang="en" data-active="true" style="text-align: left; padding: 0.85rem 1.25rem; border-bottom: 2px solid var(--cyber-orange); color: var(--cyber-orange); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Domain</th>
+                <th lang-block data-lang="es" style="text-align: left; padding: 0.85rem 1.25rem; border-bottom: 2px solid var(--cyber-orange); color: var(--cyber-orange); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Dominio</th>
+                <th lang-block data-lang="en" data-active="true" style="text-align: left; padding: 0.85rem 1.25rem; border-bottom: 2px solid var(--cyber-orange); color: var(--cyber-orange); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Skills &amp; Standards</th>
+                <th lang-block data-lang="es" style="text-align: left; padding: 0.85rem 1.25rem; border-bottom: 2px solid var(--cyber-orange); color: var(--cyber-orange); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Habilidades &amp; Estándares</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid rgba(255,107,0,0.15);">
+                <td lang-block data-lang="en" data-active="true" style="padding: 0.85rem 1.25rem; font-weight: 600; color: var(--cyber-orange); font-size: 0.95rem; white-space: nowrap;">Interoperability</td>
+                <td lang-block data-lang="es" style="padding: 0.85rem 1.25rem; font-weight: 600; color: var(--cyber-orange); font-size: 0.95rem; white-space: nowrap;">Interoperabilidad</td>
+                <td lang-block data-lang="en" data-active="true" style="padding: 0.85rem 1.25rem; line-height: 1.7;">HL7 FHIR R4, HL7 v2.x, US Core Profiles, JSON Schema</td>
+                <td lang-block data-lang="es" style="padding: 0.85rem 1.25rem; line-height: 1.7;">HL7 FHIR R4, HL7 v2.x, Perfiles US Core, JSON Schema</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255,107,0,0.15); background: rgba(255,107,0,0.03);">
+                <td lang-block data-lang="en" data-active="true" style="padding: 0.85rem 1.25rem; font-weight: 600; color: var(--cyber-orange); font-size: 0.95rem; white-space: nowrap;">Clinical Terminology</td>
+                <td lang-block data-lang="es" style="padding: 0.85rem 1.25rem; font-weight: 600; color: var(--cyber-orange); font-size: 0.95rem; white-space: nowrap;">Terminología Clínica</td>
+                <td lang-block data-lang="en" data-active="true" style="padding: 0.85rem 1.25rem; line-height: 1.7;">LOINC, ICD‑10, SNOMED‑CT (Basic), UCUM</td>
+                <td lang-block data-lang="es" style="padding: 0.85rem 1.25rem; line-height: 1.7;">LOINC, ICD‑10, SNOMED‑CT (Básico), UCUM</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255,107,0,0.15);">
+                <td lang-block data-lang="en" data-active="true" style="padding: 0.85rem 1.25rem; font-weight: 600; color: var(--cyber-orange); font-size: 0.95rem; white-space: nowrap;">Development</td>
+                <td lang-block data-lang="es" style="padding: 0.85rem 1.25rem; font-weight: 600; color: var(--cyber-orange); font-size: 0.95rem; white-space: nowrap;">Desarrollo</td>
+                <td lang-block data-lang="en" data-active="true" style="padding: 0.85rem 1.25rem; line-height: 1.7;">Python (FastAPI, Pydantic), JavaScript (ES6+), API Design, i18n/L10n</td>
+                <td lang-block data-lang="es" style="padding: 0.85rem 1.25rem; line-height: 1.7;">Python (FastAPI, Pydantic), JavaScript (ES6+), Diseño de API, i18n/L10n</td>
+              </tr>
+              <tr>
+                <td lang-block data-lang="en" data-active="true" style="padding: 0.85rem 1.25rem; font-weight: 600; color: var(--cyber-orange); font-size: 0.95rem; white-space: nowrap;">Clinical Workflow</td>
+                <td lang-block data-lang="es" style="padding: 0.85rem 1.25rem; font-weight: 600; color: var(--cyber-orange); font-size: 0.95rem; white-space: nowrap;">Flujo de Trabajo Clínico</td>
+                <td lang-block data-lang="en" data-active="true" style="padding: 0.85rem 1.25rem; line-height: 1.7;">CDS Logic, PGHD Integration, Error Reduction, WCAG 2.1</td>
+                <td lang-block data-lang="es" style="padding: 0.85rem 1.25rem; line-height: 1.7;">Lógica CDS, Integración PGHD, Reducción de Errores, WCAG 2.1</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
