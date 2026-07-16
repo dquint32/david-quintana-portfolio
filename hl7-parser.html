@@ -7,7 +7,27 @@
   <title>Pediatric CDS Dosage Calculator | David Quintana</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#0B0C10">
+
+  <!-- Pre-paint: apply saved theme + language BEFORE first paint (no FOUC / no layout shift) -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('preferred-theme');
+        if (!t) {
+          t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        document.documentElement.setAttribute('data-theme', t);
+        var l = localStorage.getItem('preferred-language');
+        if (l) {
+          document.documentElement.setAttribute('data-language', l);
+          document.documentElement.setAttribute('lang', l);
+        }
+      } catch (e) { /* localStorage unavailable — fall back to defaults */ }
+    })();
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   
   <style>
@@ -47,7 +67,17 @@
     <div class="bg-logo">DQ</div>
   </div>
 
-  <button class="floating-toggle" type="button" aria-label="Toggle language">
+  <button class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="false">
+    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </svg>
+    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"></circle>
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+    </svg>
+  </button>
+
+  <button class="floating-toggle" type="button" aria-label="Switch to Spanish" aria-pressed="false">
     <span data-lang="en">EN</span>
     <span class="divider">|</span>
     <span data-lang="es" class="inactive">ES</span>
@@ -71,25 +101,25 @@
         <ul>
           <li>
             <a href="index.html">
-              <span lang-block data-lang="en" data-active="true">Home</span>
+              <span lang-block data-lang="en">Home</span>
               <span lang-block data-lang="es">Inicio</span>
             </a>
           </li>
           <li>
             <a href="hcis-portfolio.html">
-              <span lang-block data-lang="en" data-active="true">HCIS Portfolio</span>
+              <span lang-block data-lang="en">HCIS Portfolio</span>
               <span lang-block data-lang="es">Portafolio HCIS</span>
             </a>
           </li>
           <li>
             <a href="pricing.html">
-              <span lang-block data-lang="en" data-active="true">Pricing</span>
+              <span lang-block data-lang="en">Pricing</span>
               <span lang-block data-lang="es">Precios</span>
             </a>
           </li>
           <li>
             <a href="contact.html">
-              <span lang-block data-lang="en" data-active="true">Contact</span>
+              <span lang-block data-lang="en">Contact</span>
               <span lang-block data-lang="es">Contacto</span>
             </a>
           </li>
@@ -104,42 +134,42 @@
       <div class="container">
         <div class="project-hero">
           <h2>
-            <span lang-block data-lang="en" data-active="true">Pediatric CDS Dosage Calculator</span>
-            <span lang-block data-lang="es" data-active="false">Calculadora de Dosis de Apoyo a Decisiones Clínicas (CDS) Pediátricas</span>
+            <span lang-block data-lang="en">Pediatric CDS Dosage Calculator</span>
+            <span lang-block data-lang="es">Calculadora de Dosis de Apoyo a Decisiones Clínicas (CDS) Pediátricas</span>
           </h2>
 
           <ul class="project-meta-list">
             <li>
               <span class="label">
-                <span lang-block data-lang="en" data-active="true">Role</span>
-                <span lang-block data-lang="es" data-active="false">Rol</span>
+                <span lang-block data-lang="en">Role</span>
+                <span lang-block data-lang="es">Rol</span>
               </span>
               <span>Lead Developer</span>
             </li>
             <li>
                <span class="label">
-                <span lang-block data-lang="en" data-active="true">Stack</span>
-                <span lang-block data-lang="es" data-active="false">Tecnología</span>
+                <span lang-block data-lang="en">Stack</span>
+                <span lang-block data-lang="es">Tecnología</span>
               </span>
               <span>Python (FastAPI), JS, Pydantic</span>
             </li>
             <li>
                <span class="label">
-                <span lang-block data-lang="en" data-active="true">Context</span>
-                <span lang-block data-lang="es" data-active="false">Contexto</span>
+                <span lang-block data-lang="en">Context</span>
+                <span lang-block data-lang="es">Contexto</span>
               </span>
               <span>Clinical Safety Tool</span>
             </li>
           </ul>
 
           <p class="project-intro">
-            <span lang-block data-lang="en" data-active="true">A fail-safe clinical decision support tool designed to eliminate pediatric dosing errors. It uses rigid backend logic to enforce maximum dosage caps, visual "hard stops" for toxic amounts, and bilingual instruction generation to improve health equity.</span>
-            <span lang-block data-lang="es" data-active="false">Una herramienta de apoyo a la decisión clínica a prueba de fallos diseñada para eliminar errores de dosificación pediátrica. Utiliza lógica de backend rígida para imponer límites máximos de dosis, "paradas duras" visuales para cantidades tóxicas y generación de instrucciones bilingües para mejorar la equidad en salud.</span>
+            <span lang-block data-lang="en">A fail-safe clinical decision support tool designed to eliminate pediatric dosing errors. It uses rigid backend logic to enforce maximum dosage caps, visual "hard stops" for toxic amounts, and bilingual instruction generation to improve health equity.</span>
+            <span lang-block data-lang="es">Una herramienta de apoyo a la decisión clínica a prueba de fallos diseñada para eliminar errores de dosificación pediátrica. Utiliza lógica de backend rígida para imponer límites máximos de dosis, "paradas duras" visuales para cantidades tóxicas y generación de instrucciones bilingües para mejorar la equidad en salud.</span>
           </p>
           <p>
             <a href="https://dquint32.github.io/hl7-infectious-disease-parser/" target="_blank" rel="noopener noreferrer" class="hero-link">
-              <span lang-block data-lang="en" data-active="true">View Live Demo →</span>
-              <span lang-block data-lang="es" data-active="false">Ver Demo en Vivo →</span>
+              <span lang-block data-lang="en">View Live Demo →</span>
+              <span lang-block data-lang="es">Ver Demo en Vivo →</span>
             </a>
           </p>
         </div>
@@ -150,12 +180,12 @@
       <div class="container">
         <div class="content-block">
           <h3>
-            <span lang-block data-lang="en" data-active="true">[S] Situation: The High Stakes of Pediatric Dosing</span>
-            <span lang-block data-lang="es" data-active="false">[S] Situación: Los Altos Riesgos de la Dosificación Pediátrica</span>
+            <span lang-block data-lang="en">[S] Situation: The High Stakes of Pediatric Dosing</span>
+            <span lang-block data-lang="es">[S] Situación: Los Altos Riesgos de la Dosificación Pediátrica</span>
           </h3>
           <p>
-            <span lang-block data-lang="en" data-active="true">Pediatric dosing errors are among the most dangerous "Never Events" in healthcare. Because children require weight-based dosing (mg/kg), a simple math error or decimal displacement can lead to a 10-fold overdose. Furthermore, language barriers between non-English speaking caregivers and providers significantly increase the risk of outpatient medication errors.</span>
-            <span lang-block data-lang="es" data-active="false">Los errores de dosificación pediátrica están entre los "Eventos de Nunca Ocurrir" más peligrosos en la atención médica. Debido a que los niños requieren dosificación basada en peso (mg/kg), un simple error matemático o desplazamiento decimal puede llevar a una sobredosis de 10 veces. Además, las barreras del idioma entre cuidadores que no hablan inglés y proveedores aumentan significativamente el riesgo de errores de medicación ambulatoria.</span>
+            <span lang-block data-lang="en">Pediatric dosing errors are among the most dangerous "Never Events" in healthcare. Because children require weight-based dosing (mg/kg), a simple math error or decimal displacement can lead to a 10-fold overdose. Furthermore, language barriers between non-English speaking caregivers and providers significantly increase the risk of outpatient medication errors.</span>
+            <span lang-block data-lang="es">Los errores de dosificación pediátrica están entre los "Eventos de Nunca Ocurrir" más peligrosos en la atención médica. Debido a que los niños requieren dosificación basada en peso (mg/kg), un simple error matemático o desplazamiento decimal puede llevar a una sobredosis de 10 veces. Además, las barreras del idioma entre cuidadores que no hablan inglés y proveedores aumentan significativamente el riesgo de errores de medicación ambulatoria.</span>
           </p>
         </div>
       </div>
@@ -165,12 +195,12 @@
       <div class="container">
         <div class="content-block">
           <h3>
-            <span lang-block data-lang="en" data-active="true">[T] Task: Fail-Safe Logic & Equity</span>
-            <span lang-block data-lang="es" data-active="false">[T] Tarea: Lógica a Prueba de Fallos y Equidad</span>
+            <span lang-block data-lang="en">[T] Task: Fail-Safe Logic & Equity</span>
+            <span lang-block data-lang="es">[T] Tarea: Lógica a Prueba de Fallos y Equidad</span>
           </h3>
           <p>
-            <span lang-block data-lang="en" data-active="true">My goal was to engineer a safety-critical Clinical Decision Support (CDS) tool that would: 1) Eliminate math errors through automated, validated calculations, 2) Enforce strict "hard stops" for unsafe doses, and 3) Bridge the health equity gap by providing native-language instructions for Spanish-speaking families.</span>
-            <span lang-block data-lang="es" data-active="false">Mi objetivo fue diseñar una herramienta de Apoyo a la Decisión Clínica (CDS) crítica para la seguridad que: 1) Eliminara errores matemáticos mediante cálculos automatizados y validados, 2) Impusiera "paradas estrictas" para dosis inseguras, y 3) Cerrara la brecha de equidad en salud proporcionando instrucciones en el idioma nativo para familias de habla hispana.</span>
+            <span lang-block data-lang="en">My goal was to engineer a safety-critical Clinical Decision Support (CDS) tool that would: 1) Eliminate math errors through automated, validated calculations, 2) Enforce strict "hard stops" for unsafe doses, and 3) Bridge the health equity gap by providing native-language instructions for Spanish-speaking families.</span>
+            <span lang-block data-lang="es">Mi objetivo fue diseñar una herramienta de Apoyo a la Decisión Clínica (CDS) crítica para la seguridad que: 1) Eliminara errores matemáticos mediante cálculos automatizados y validados, 2) Impusiera "paradas estrictas" para dosis inseguras, y 3) Cerrara la brecha de equidad en salud proporcionando instrucciones en el idioma nativo para familias de habla hispana.</span>
           </p>
         </div>
       </div>
@@ -190,17 +220,17 @@
           </div>
           <div class="feature-content">
             <h3>
-              <span lang-block data-lang="en" data-active="true">[A] Action: Hard-Stop Guardrails</span>
-              <span lang-block data-lang="es" data-active="false">[A] Acción: Barreras de Parada Estricta</span>
+              <span lang-block data-lang="en">[A] Action: Hard-Stop Guardrails</span>
+              <span lang-block data-lang="es">[A] Acción: Barreras de Parada Estricta</span>
             </h3>
             <p>
-              <span lang-block data-lang="en" data-active="true">I programmed "Hard Stop" logic into the Python backend. If a calculated dose exceeds the clinical maximum (e.g., Acetaminophen > 1000mg), the system triggers a <strong>CRITICAL</strong> state. This explicitly blocks the workflow with a "DO NOT ADMINISTER" warning, preventing sentinel events before they happen.</span>
-              <span lang-block data-lang="es" data-active="false">Programé una lógica de "Parada Estricta" en el backend de Python. Si una dosis calculada excede el máximo clínico (p. ej., Acetaminofeno > 1000mg), el sistema activa un estado <strong>CRÍTICO</strong>. Esto bloquea explícitamente el flujo de trabajo con una advertencia de "NO ADMINISTRAR", previniendo eventos centinela antes de que sucedan.</span>
+              <span lang-block data-lang="en">I programmed "Hard Stop" logic into the Python backend. If a calculated dose exceeds the clinical maximum (e.g., Acetaminophen > 1000mg), the system triggers a <strong>CRITICAL</strong> state. This explicitly blocks the workflow with a "DO NOT ADMINISTER" warning, preventing sentinel events before they happen.</span>
+              <span lang-block data-lang="es">Programé una lógica de "Parada Estricta" en el backend de Python. Si una dosis calculada excede el máximo clínico (p. ej., Acetaminofeno > 1000mg), el sistema activa un estado <strong>CRÍTICO</strong>. Esto bloquea explícitamente el flujo de trabajo con una advertencia de "NO ADMINISTRAR", previniendo eventos centinela antes de que sucedan.</span>
             </p>
             <div class="highlight-box">
               <p>
-                <span lang-block data-lang="en" data-active="true"><strong>Safety Logic:</strong> <code>if dose > max_dose: return Status.CRITICAL</code>. This simple but rigid logic ensures no user can accidentally validate a toxic dose.</span>
-                <span lang-block data-lang="es" data-active="false"><strong>Lógica de Seguridad:</strong> <code>if dose > max_dose: return Status.CRITICAL</code>. Esta lógica simple pero rígida asegura que ningún usuario pueda validar accidentalmente una dosis tóxica.</span>
+                <span lang-block data-lang="en"><strong>Safety Logic:</strong> <code>if dose > max_dose: return Status.CRITICAL</code>. This simple but rigid logic ensures no user can accidentally validate a toxic dose.</span>
+                <span lang-block data-lang="es"><strong>Lógica de Seguridad:</strong> <code>if dose > max_dose: return Status.CRITICAL</code>. Esta lógica simple pero rígida asegura que ningún usuario pueda validar accidentalmente una dosis tóxica.</span>
               </p>
             </div>
           </div>
@@ -217,12 +247,12 @@
           </div>
           <div class="feature-content">
             <h3>
-              <span lang-block data-lang="en" data-active="true">[A] Action: Human Factors Engineering</span>
-              <span lang-block data-lang="es" data-active="false">[A] Acción: Ingeniería de Factores Humanos</span>
+              <span lang-block data-lang="en">[A] Action: Human Factors Engineering</span>
+              <span lang-block data-lang="es">[A] Acción: Ingeniería de Factores Humanos</span>
             </h3>
             <p>
-              <span lang-block data-lang="en" data-active="true">Safety isn't just about blocking errors; it's about awareness. I implemented an 80% caution threshold. If a dose is safe but high, the UI shifts to yellow. This prompts the clinician to "Double Check" the weight input, reducing "Alert Fatigue" by only escalating when necessary.</span>
-              <span lang-block data-lang="es" data-active="false">La seguridad no se trata solo de bloquear errores; se trata de conciencia. Implementé un umbral de precaución del 80%. Si una dosis es segura pero alta, la interfaz cambia a amarillo. Esto incita al médico a "Verificar Doblemente" el peso ingresado, reduciendo la "Fatiga de Alerta" al escalar solo cuando es necesario.</span>
+              <span lang-block data-lang="en">Safety isn't just about blocking errors; it's about awareness. I implemented an 80% caution threshold. If a dose is safe but high, the UI shifts to yellow. This prompts the clinician to "Double Check" the weight input, reducing "Alert Fatigue" by only escalating when necessary.</span>
+              <span lang-block data-lang="es">La seguridad no se trata solo de bloquear errores; se trata de conciencia. Implementé un umbral de precaución del 80%. Si una dosis es segura pero alta, la interfaz cambia a amarillo. Esto incita al médico a "Verificar Doblemente" el peso ingresado, reduciendo la "Fatiga de Alerta" al escalar solo cuando es necesario.</span>
             </p>
           </div>
         </div>
@@ -238,12 +268,12 @@
           </div>
           <div class="feature-content">
             <h3>
-              <span lang-block data-lang="en" data-active="true">[A] Action: Algorithmic Precision</span>
-              <span lang-block data-lang="es" data-active="false">[A] Acción: Precisión Algorítmica</span>
+              <span lang-block data-lang="en">[A] Action: Algorithmic Precision</span>
+              <span lang-block data-lang="es">[A] Acción: Precisión Algorítmica</span>
             </h3>
             <p>
-              <span lang-block data-lang="en" data-active="true">The core calculation uses Pydantic models to standardize units (converting lbs to kg automatically). It applies the formula <code>Weight(kg) * Rate(mg/kg)</code> while validating the input against pediatric norms (2kg–100kg), ensuring the math is flawless every time.</span>
-              <span lang-block data-lang="es" data-active="false">El cálculo central utiliza modelos Pydantic para estandarizar unidades (convirtiendo lbs a kg automáticamente). Aplica la fórmula <code>Peso(kg) * Tasa(mg/kg)</code> mientras valida la entrada contra normas pediátricas (2kg–100kg), asegurando que las matemáticas sean impecables cada vez.</span>
+              <span lang-block data-lang="en">The core calculation uses Pydantic models to standardize units (converting lbs to kg automatically). It applies the formula <code>Weight(kg) * Rate(mg/kg)</code> while validating the input against pediatric norms (2kg–100kg), ensuring the math is flawless every time.</span>
+              <span lang-block data-lang="es">El cálculo central utiliza modelos Pydantic para estandarizar unidades (convirtiendo lbs a kg automáticamente). Aplica la fórmula <code>Peso(kg) * Tasa(mg/kg)</code> mientras valida la entrada contra normas pediátricas (2kg–100kg), asegurando que las matemáticas sean impecables cada vez.</span>
             </p>
           </div>
         </div>
@@ -259,12 +289,12 @@
           </div>
           <div class="feature-content">
             <h3>
-              <span lang-block data-lang="en" data-active="true">[A] Action: UX for High-Stress Ops</span>
-              <span lang-block data-lang="es" data-active="false">[A] Acción: UX para Operaciones de Alto Estrés</span>
+              <span lang-block data-lang="en">[A] Action: UX for High-Stress Ops</span>
+              <span lang-block data-lang="es">[A] Acción: UX para Operaciones de Alto Estrés</span>
             </h3>
             <p>
-              <span lang-block data-lang="en" data-active="true">Emergency departments are chaotic. I designed the interface with a "Dark Mode" theme (Electric Tangerine) compliant with <strong>WCAG 2.1 AA</strong> standards. High contrast ensures readability in dimly lit rooms, reducing cognitive load for tired clinicians.</span>
-              <span lang-block data-lang="es" data-active="false">Los departamentos de emergencia son caóticos. Diseñé la interfaz con un tema de "Modo Oscuro" (Electric Tangerine) que cumple con los estándares <strong>WCAG 2.1 AA</strong>. El alto contraste asegura la legibilidad en habitaciones con poca luz, reduciendo la carga cognitiva para médicos cansados.</span>
+              <span lang-block data-lang="en">Emergency departments are chaotic. I designed the interface with a "Dark Mode" theme (Electric Tangerine) compliant with <strong>WCAG 2.1 AA</strong> standards. High contrast ensures readability in dimly lit rooms, reducing cognitive load for tired clinicians.</span>
+              <span lang-block data-lang="es">Los departamentos de emergencia son caóticos. Diseñé la interfaz con un tema de "Modo Oscuro" (Electric Tangerine) que cumple con los estándares <strong>WCAG 2.1 AA</strong>. El alto contraste asegura la legibilidad en habitaciones con poca luz, reduciendo la carga cognitiva para médicos cansados.</span>
             </p>
           </div>
         </div>
@@ -280,17 +310,17 @@
           </div>
           <div class="feature-content">
             <h3>
-              <span lang-block data-lang="en" data-active="true">[A] Action: i18n for Equity</span>
-              <span lang-block data-lang="es" data-active="false">[A] Acción: i18n para la Equidad</span>
+              <span lang-block data-lang="en">[A] Action: i18n for Equity</span>
+              <span lang-block data-lang="es">[A] Acción: i18n para la Equidad</span>
             </h3>
             <p>
-              <span lang-block data-lang="en" data-active="true">I built a client-side <strong>i18n (Internationalization)</strong> engine. This allows instant toggling between English and Spanish without reloading the page or losing clinical data. It generates discharge instructions in the family's native language, closing the communication loop.</span>
-              <span lang-block data-lang="es" data-active="false">Construí un motor de <strong>i18n (Internacionalización)</strong> del lado del cliente. Esto permite cambiar instantáneamente entre inglés y español sin recargar la página ni perder datos clínicos. Genera instrucciones de alta en el idioma nativo de la familia, cerrando el ciclo de comunicación.</span>
+              <span lang-block data-lang="en">I built a client-side <strong>i18n (Internationalization)</strong> engine. This allows instant toggling between English and Spanish without reloading the page or losing clinical data. It generates discharge instructions in the family's native language, closing the communication loop.</span>
+              <span lang-block data-lang="es">Construí un motor de <strong>i18n (Internacionalización)</strong> del lado del cliente. Esto permite cambiar instantáneamente entre inglés y español sin recargar la página ni perder datos clínicos. Genera instrucciones de alta en el idioma nativo de la familia, cerrando el ciclo de comunicación.</span>
             </p>
             <div class="highlight-box">
               <p>
-                <span lang-block data-lang="en" data-active="true"><strong>Technical Note:</strong> State preservation during language switching is critical in clinical tools—you never want to force a doctor to re-type data.</span>
-                <span lang-block data-lang="es" data-active="false"><strong>Nota Técnica:</strong> La preservación del estado durante el cambio de idioma es crítica en herramientas clínicas—nunca quieres obligar a un médico a volver a escribir datos.</span>
+                <span lang-block data-lang="en"><strong>Technical Note:</strong> State preservation during language switching is critical in clinical tools—you never want to force a doctor to re-type data.</span>
+                <span lang-block data-lang="es"><strong>Nota Técnica:</strong> La preservación del estado durante el cambio de idioma es crítica en herramientas clínicas—nunca quieres obligar a un médico a volver a escribir datos.</span>
               </p>
             </div>
           </div>
@@ -303,75 +333,75 @@
       <div class="container cds-project-layout">
         <div class="tech-details">
           <h3>
-            <span lang-block data-lang="en" data-active="true">[R] Result: Measurable Safety Impact</span>
-            <span lang-block data-lang="es" data-active="false">[R] Resultado: Impacto de Seguridad Medible</span>
+            <span lang-block data-lang="en">[R] Result: Measurable Safety Impact</span>
+            <span lang-block data-lang="es">[R] Resultado: Impacto de Seguridad Medible</span>
           </h3>
           
           <div class="impact-grid">
             <div class="impact-item">
               <h4>
-                <span lang-block data-lang="en" data-active="true">Prevents Overdoses</span>
-                <span lang-block data-lang="es" data-active="false">Previene Sobredosis</span>
+                <span lang-block data-lang="en">Prevents Overdoses</span>
+                <span lang-block data-lang="es">Previene Sobredosis</span>
               </h4>
               <p>
-                <span lang-block data-lang="en" data-active="true">Hard-coded caps eliminate the possibility of "10x dosing" errors common with manual math.</span>
-                <span lang-block data-lang="es" data-active="false">Los límites codificados eliminan la posibilidad de errores de "dosis 10x" comunes con matemáticas manuales.</span>
+                <span lang-block data-lang="en">Hard-coded caps eliminate the possibility of "10x dosing" errors common with manual math.</span>
+                <span lang-block data-lang="es">Los límites codificados eliminan la posibilidad de errores de "dosis 10x" comunes con matemáticas manuales.</span>
               </p>
             </div>
             
             <div class="impact-item">
               <h4>
-                <span lang-block data-lang="en" data-active="true">Standardizes Care</span>
-                <span lang-block data-lang="es" data-active="false">Estandariza la Atención</span>
+                <span lang-block data-lang="en">Standardizes Care</span>
+                <span lang-block data-lang="es">Estandariza la Atención</span>
               </h4>
               <p>
-                <span lang-block data-lang="en" data-active="true">Ensures every clinician uses the exact same evidence-based formula, reducing practice variation.</span>
-                <span lang-block data-lang="es" data-active="false">Asegura que cada médico use exactamente la misma fórmula basada en evidencia, reduciendo la variación en la práctica.</span>
+                <span lang-block data-lang="en">Ensures every clinician uses the exact same evidence-based formula, reducing practice variation.</span>
+                <span lang-block data-lang="es">Asegura que cada médico use exactamente la misma fórmula basada en evidencia, reduciendo la variación en la práctica.</span>
               </p>
             </div>
             
             <div class="impact-item">
               <h4>
-                <span lang-block data-lang="en" data-active="true">Improves Health Equity</span>
-                <span lang-block data-lang="es" data-active="false">Mejora la Equidad en Salud</span>
+                <span lang-block data-lang="en">Improves Health Equity</span>
+                <span lang-block data-lang="es">Mejora la Equidad en Salud</span>
               </h4>
               <p>
-                <span lang-block data-lang="en" data-active="true">Spanish-speaking families receive the same high-quality instructions as English speakers.</span>
-                <span lang-block data-lang="es" data-active="false">Las familias de habla hispana reciben las mismas instrucciones de alta calidad que los hablantes de inglés.</span>
+                <span lang-block data-lang="en">Spanish-speaking families receive the same high-quality instructions as English speakers.</span>
+                <span lang-block data-lang="es">Las familias de habla hispana reciben las mismas instrucciones de alta calidad que los hablantes de inglés.</span>
               </p>
             </div>
             
             <div class="impact-item">
               <h4>
-                <span lang-block data-lang="en" data-active="true">Reduces Cognitive Load</span>
-                <span lang-block data-lang="es" data-active="false">Reduce Carga Cognitiva</span>
+                <span lang-block data-lang="en">Reduces Cognitive Load</span>
+                <span lang-block data-lang="es">Reduce Carga Cognitiva</span>
               </h4>
               <p>
-                <span lang-block data-lang="en" data-active="true">Automates the math, allowing clinicians to focus on the patient rather than the calculator.</span>
-                <span lang-block data-lang="es" data-active="false">Automatiza las matemáticas, permitiendo a los médicos enfocarse en el paciente en lugar de la calculadora.</span>
+                <span lang-block data-lang="en">Automates the math, allowing clinicians to focus on the patient rather than the calculator.</span>
+                <span lang-block data-lang="es">Automatiza las matemáticas, permitiendo a los médicos enfocarse en el paciente en lugar de la calculadora.</span>
               </p>
             </div>
           </div>
           
           <h3 style="margin-top: 3rem;">
-            <span lang-block data-lang="en" data-active="true">Technical Architecture</span>
-            <span lang-block data-lang="es" data-active="false">Arquitectura Técnica</span>
+            <span lang-block data-lang="en">Technical Architecture</span>
+            <span lang-block data-lang="es">Arquitectura Técnica</span>
           </h3>
           <p>
-            <span lang-block data-lang="en" data-active="true"><strong>Frontend:</strong> HTML5, CSS3, JavaScript (ES6+)</span>
-            <span lang-block data-lang="es" data-active="false"><strong>Frontend:</strong> HTML5, CSS3, JavaScript (ES6+)</span>
+            <span lang-block data-lang="en"><strong>Frontend:</strong> HTML5, CSS3, JavaScript (ES6+)</span>
+            <span lang-block data-lang="es"><strong>Frontend:</strong> HTML5, CSS3, JavaScript (ES6+)</span>
           </p>
           <p>
-            <span lang-block data-lang="en" data-active="true"><strong>Backend Logic:</strong> Python (FastAPI), Pydantic for data validation</span>
-            <span lang-block data-lang="es" data-active="false"><strong>Lógica Backend:</strong> Python (FastAPI), Pydantic para validación de datos</span>
+            <span lang-block data-lang="en"><strong>Backend Logic:</strong> Python (FastAPI), Pydantic for data validation</span>
+            <span lang-block data-lang="es"><strong>Lógica Backend:</strong> Python (FastAPI), Pydantic para validación de datos</span>
           </p>
           <p>
-            <span lang-block data-lang="en" data-active="true"><strong>Security:</strong> Stateless API (No PHI stored/logged)</span>
-            <span lang-block data-lang="es" data-active="false"><strong>Seguridad:</strong> API sin estado (No se almacena/registra PHI)</span>
+            <span lang-block data-lang="en"><strong>Security:</strong> Stateless API (No PHI stored/logged)</span>
+            <span lang-block data-lang="es"><strong>Seguridad:</strong> API sin estado (No se almacena/registra PHI)</span>
           </p>
           <p>
-            <span lang-block data-lang="en" data-active="true"><strong>Standards:</strong> WCAG 2.1 AA, AAP Pediatric Dosing Guidelines</span>
-            <span lang-block data-lang="es" data-active="false"><strong>Estándares:</strong> WCAG 2.1 AA, Pautas de Dosificación Pediátrica de la AAP</span>
+            <span lang-block data-lang="en"><strong>Standards:</strong> WCAG 2.1 AA, AAP Pediatric Dosing Guidelines</span>
+            <span lang-block data-lang="es"><strong>Estándares:</strong> WCAG 2.1 AA, Pautas de Dosificación Pediátrica de la AAP</span>
           </p>
 
         </div>
@@ -383,17 +413,17 @@
   <footer class="portfolio-footer site-footer">
     <div class="container">
       <p>
-        <span lang-block data-lang="en" data-active="true">David Quintana Dev is a registered trade name of Servicios Quintana LLC.</span>
+        <span lang-block data-lang="en">David Quintana Dev is a registered trade name of Servicios Quintana LLC.</span>
         <span lang-block data-lang="es">David Quintana Dev es un nombre comercial registrado de Servicios Quintana LLC.</span>
       </p>
 
       <p class="legal-notice">
-        <span lang-block data-lang="en" data-active="true">Mandatory Disclosure: I am not an attorney licensed to practice law in the State of Colorado and I may not give legal advice or accept fees for legal advice.</span>
+        <span lang-block data-lang="en">Mandatory Disclosure: I am not an attorney licensed to practice law in the State of Colorado and I may not give legal advice or accept fees for legal advice.</span>
         <span lang-block data-lang="es">Aviso Obligatorio: No soy un abogado licenciado para ejercer el derecho en el Estado de Colorado y no puedo dar asesoría legal ni aceptar honorarios por asesoría legal.</span>
       </p>
 
       <p>
-        <span lang-block data-lang="en" data-active="true">© 2026 Servicios Quintana LLC. All Rights Reserved.</span>
+        <span lang-block data-lang="en">© 2026 Servicios Quintana LLC. All Rights Reserved.</span>
         <span lang-block data-lang="es">© 2026 Servicios Quintana LLC. Todos los derechos reservados.</span>
       </p>
     </div>
