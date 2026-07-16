@@ -7,7 +7,27 @@
   <title>Intake Web App – Bilingual & FHIR-Ready Patient Portal | David Quintana</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#0B0C10">
+
+  <!-- Pre-paint: apply saved theme + language BEFORE first paint (no FOUC / no layout shift) -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('preferred-theme');
+        if (!t) {
+          t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        document.documentElement.setAttribute('data-theme', t);
+        var l = localStorage.getItem('preferred-language');
+        if (l) {
+          document.documentElement.setAttribute('data-language', l);
+          document.documentElement.setAttribute('lang', l);
+        }
+      } catch (e) { /* localStorage unavailable — fall back to defaults */ }
+    })();
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   
   <style>
@@ -266,7 +286,17 @@
     <div class="bg-logo">DQ</div>
   </div>
 
-  <button class="floating-toggle" type="button" aria-label="Toggle language">
+  <button class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="false">
+    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </svg>
+    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"></circle>
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+    </svg>
+  </button>
+
+  <button class="floating-toggle" type="button" aria-label="Switch to Spanish" aria-pressed="false">
     <span data-lang="en">EN</span>
     <span class="divider">|</span>
     <span data-lang="es" class="inactive">ES</span>
@@ -290,25 +320,25 @@
         <ul>
           <li>
             <a href="index.html">
-              <span lang-block data-lang="en" data-active="true">Home</span>
+              <span lang-block data-lang="en">Home</span>
               <span lang-block data-lang="es">Inicio</span>
             </a>
           </li>
           <li>
             <a href="hcis-portfolio.html">
-              <span lang-block data-lang="en" data-active="true">HCIS Portfolio</span>
+              <span lang-block data-lang="en">HCIS Portfolio</span>
               <span lang-block data-lang="es">Portafolio HCIS</span>
             </a>
           </li>
           <li>
             <a href="legal-assistant-portfolio.html">
-              <span lang-block data-lang="en" data-active="true">Legal Portfolio</span>
+              <span lang-block data-lang="en">Legal Portfolio</span>
               <span lang-block data-lang="es">Portafolio Legal</span>
             </a>
           </li>
           <li>
             <a href="contact.html">
-              <span lang-block data-lang="en" data-active="true">Contact</span>
+              <span lang-block data-lang="en">Contact</span>
               <span lang-block data-lang="es">Contacto</span>
             </a>
           </li>
@@ -321,64 +351,64 @@
     <section class="case-study-hero">
       <div class="container">
         <h1 class="hero-title">
-          <span lang-block data-lang="en" data-active="true">Bilingual Patient Intake Portal with FHIR Integration</span>
-          <span lang-block data-lang="es" data-active="false">Portal de Registro de Pacientes Bilingüe con Integración FHIR</span>
+          <span lang-block data-lang="en">Bilingual Patient Intake Portal with FHIR Integration</span>
+          <span lang-block data-lang="es">Portal de Registro de Pacientes Bilingüe con Integración FHIR</span>
         </h1>
 
         <div class="hero-meta">
           <div class="meta-item">
             <span class="meta-label">
-              <span lang-block data-lang="en" data-active="true">Role:</span>
-              <span lang-block data-lang="es" data-active="false">Rol:</span>
+              <span lang-block data-lang="en">Role:</span>
+              <span lang-block data-lang="es">Rol:</span>
             </span>
             <span class="meta-value">
-              <span lang-block data-lang="en" data-active="true">Full‑Stack Developer & FHIR Architect</span>
-              <span lang-block data-lang="es" data-active="false">Desarrollador Full-Stack y Arquitecto FHIR</span>
+              <span lang-block data-lang="en">Full‑Stack Developer & FHIR Architect</span>
+              <span lang-block data-lang="es">Desarrollador Full-Stack y Arquitecto FHIR</span>
             </span>
           </div>
 
           <div class="meta-item">
             <span class="meta-label">
-              <span lang-block data-lang="en" data-active="true">Client:</span>
-              <span lang-block data-lang="es" data-active="false">Cliente:</span>
+              <span lang-block data-lang="en">Client:</span>
+              <span lang-block data-lang="es">Cliente:</span>
             </span>
             <span class="meta-value">
-              <span lang-block data-lang="en" data-active="true">Personal Project (Portfolio Prototype)</span>
-              <span lang-block data-lang="es" data-active="false">Proyecto Personal (Prototipo de Portafolio)</span>
+              <span lang-block data-lang="en">Personal Project (Portfolio Prototype)</span>
+              <span lang-block data-lang="es">Proyecto Personal (Prototipo de Portafolio)</span>
             </span>
           </div>
 
           <div class="meta-item">
             <span class="meta-label">
-              <span lang-block data-lang="en" data-active="true">Timeline:</span>
-              <span lang-block data-lang="es" data-active="false">Plazo:</span>
+              <span lang-block data-lang="en">Timeline:</span>
+              <span lang-block data-lang="es">Plazo:</span>
             </span>
             <span class="meta-value">
-              <span lang-block data-lang="en" data-active="true">2 weeks (December 2024 – January 2025)</span>
-              <span lang-block data-lang="es" data-active="false">2 semanas (Diciembre 2024 – Enero 2025)</span>
+              <span lang-block data-lang="en">2 weeks (December 2024 – January 2025)</span>
+              <span lang-block data-lang="es">2 semanas (Diciembre 2024 – Enero 2025)</span>
             </span>
           </div>
 
           <div class="meta-item">
             <span class="meta-label">
-              <span lang-block data-lang="en" data-active="true">Technologies:</span>
-              <span lang-block data-lang="es" data-active="false">Tecnologías:</span>
+              <span lang-block data-lang="en">Technologies:</span>
+              <span lang-block data-lang="es">Tecnologías:</span>
             </span>
             <span class="meta-value">
-              <span lang-block data-lang="en" data-active="true">HTML5, CSS3, JavaScript, Python, FastAPI, FHIR R4, SNOMED CT</span>
-              <span lang-block data-lang="es" data-active="false">HTML5, CSS3, JavaScript, Python, FastAPI, FHIR R4, SNOMED CT</span>
+              <span lang-block data-lang="en">HTML5, CSS3, JavaScript, Python, FastAPI, FHIR R4, SNOMED CT</span>
+              <span lang-block data-lang="es">HTML5, CSS3, JavaScript, Python, FastAPI, FHIR R4, SNOMED CT</span>
             </span>
           </div>
 
           <div class="meta-item">
             <span class="meta-label">
-              <span lang-block data-lang="en" data-active="true">Live Site:</span>
-              <span lang-block data-lang="es" data-active="false">Sitio en Vivo:</span>
+              <span lang-block data-lang="en">Live Site:</span>
+              <span lang-block data-lang="es">Sitio en Vivo:</span>
             </span>
             <span class="meta-value">
               <a href="https://dquint32.github.io/bilingual-patient-intake-fhir/" target="_blank" rel="noopener noreferrer">
-                <span lang-block data-lang="en" data-active="true">View Live Demo →</span>
-                <span lang-block data-lang="es" data-active="false">Ver Demo en Vivo →</span>
+                <span lang-block data-lang="en">View Live Demo →</span>
+                <span lang-block data-lang="es">Ver Demo en Vivo →</span>
               </a>
             </span>
           </div>
@@ -390,12 +420,12 @@
       <div class="container">
         <div class="content-block">
           <h2>
-            <span lang-block data-lang="en" data-active="true">Project Summary</span>
-            <span lang-block data-lang="es" data-active="false">Resumen del Proyecto</span>
+            <span lang-block data-lang="en">Project Summary</span>
+            <span lang-block data-lang="es">Resumen del Proyecto</span>
           </h2>
           <p>
-            <span lang-block data-lang="en" data-active="true">This patient intake portal automates data collection and directly transforms form inputs into HL7 FHIR R4 resources. The interface is fully bilingual (English + Spanish) and features instant language switching. The FastAPI backend validates and structures all data into a FHIR Bundle containing Patient, Encounter, Coverage, Condition, and AllergyIntolerance resources, ready for immediate ingestion into EHR or FHIR servers.</span>
-            <span lang-block data-lang="es" data-active="false">Este portal de registro de pacientes automatiza la recopilación de datos y transforma directamente las entradas del formulario en recursos HL7 FHIR R4. La interfaz es completamente bilingüe (inglés + español) y cuenta con cambio de idioma instantáneo. El backend de FastAPI valida y estructura todos los datos en un Bundle FHIR que contiene recursos Patient, Encounter, Coverage, Condition y AllergyIntolerance, listos para ingestión inmediata en servidores EHR o FHIR.</span>
+            <span lang-block data-lang="en">This patient intake portal automates data collection and directly transforms form inputs into HL7 FHIR R4 resources. The interface is fully bilingual (English + Spanish) and features instant language switching. The FastAPI backend validates and structures all data into a FHIR Bundle containing Patient, Encounter, Coverage, Condition, and AllergyIntolerance resources, ready for immediate ingestion into EHR or FHIR servers.</span>
+            <span lang-block data-lang="es">Este portal de registro de pacientes automatiza la recopilación de datos y transforma directamente las entradas del formulario en recursos HL7 FHIR R4. La interfaz es completamente bilingüe (inglés + español) y cuenta con cambio de idioma instantáneo. El backend de FastAPI valida y estructura todos los datos en un Bundle FHIR que contiene recursos Patient, Encounter, Coverage, Condition y AllergyIntolerance, listos para ingestión inmediata en servidores EHR o FHIR.</span>
           </p>
         </div>
       </div>
@@ -405,12 +435,12 @@
       <div class="container">
         <div class="content-block">
           <h3>
-            <span lang-block data-lang="en" data-active="true">Business Context</span>
-            <span lang-block data-lang="es" data-active="false">Contexto Empresarial</span>
+            <span lang-block data-lang="en">Business Context</span>
+            <span lang-block data-lang="es">Contexto Empresarial</span>
           </h3>
           <p>
-            <span lang-block data-lang="en" data-active="true">Manual patient registration at healthcare facilities introduces inefficiencies, transcription errors, and language barriers that compromise both care quality and operational flow. This prototype demonstrates how structured data capture combined with FHIR compliance eliminates redundant paperwork, improves data accuracy, and ensures interoperability across clinical systems.</span>
-            <span lang-block data-lang="es" data-active="false">El registro manual de pacientes en instalaciones de atención médica introduce ineficiencias, errores de transcripción y barreras lingüísticas que comprometen tanto la calidad de la atención como el flujo operativo. Este prototipo demuestra cómo la captura de datos estructurada combinada con el cumplimiento de FHIR elimina el papeleo redundante, mejora la precisión de los datos y garantiza la interoperabilidad entre sistemas clínicos.</span>
+            <span lang-block data-lang="en">Manual patient registration at healthcare facilities introduces inefficiencies, transcription errors, and language barriers that compromise both care quality and operational flow. This prototype demonstrates how structured data capture combined with FHIR compliance eliminates redundant paperwork, improves data accuracy, and ensures interoperability across clinical systems.</span>
+            <span lang-block data-lang="es">El registro manual de pacientes en instalaciones de atención médica introduce ineficiencias, errores de transcripción y barreras lingüísticas que comprometen tanto la calidad de la atención como el flujo operativo. Este prototipo demuestra cómo la captura de datos estructurada combinada con el cumplimiento de FHIR elimina el papeleo redundante, mejora la precisión de los datos y garantiza la interoperabilidad entre sistemas clínicos.</span>
           </p>
         </div>
       </div>
@@ -430,17 +460,17 @@
           </div>
           <div class="feature-content">
             <h3>
-              <span lang-block data-lang="en" data-active="true">Real-Time Language Switching</span>
-              <span lang-block data-lang="es" data-active="false">Cambio de Idioma en Tiempo Real</span>
+              <span lang-block data-lang="en">Real-Time Language Switching</span>
+              <span lang-block data-lang="es">Cambio de Idioma en Tiempo Real</span>
             </h3>
             <p>
-              <span lang-block data-lang="en" data-active="true">The bilingual toggle button allows instant switching between English and Spanish without page reload. Every element of the interface—labels, placeholders, validation messages, and instructions—updates simultaneously.</span>
-              <span lang-block data-lang="es" data-active="false">El botón de alternancia bilingüe permite el cambio instantáneo entre inglés y español sin recargar la página. Cada elemento de la interfaz—etiquetas, marcadores de posición, mensajes de validación e instrucciones—se actualiza simultáneamente.</span>
+              <span lang-block data-lang="en">The bilingual toggle button allows instant switching between English and Spanish without page reload. Every element of the interface—labels, placeholders, validation messages, and instructions—updates simultaneously.</span>
+              <span lang-block data-lang="es">El botón de alternancia bilingüe permite el cambio instantáneo entre inglés y español sin recargar la página. Cada elemento de la interfaz—etiquetas, marcadores de posición, mensajes de validación e instrucciones—se actualiza simultáneamente.</span>
             </p>
             <div class="highlight-box">
               <p>
-                <span lang-block data-lang="en" data-active="true"><strong>Persistent Preference:</strong> Language selection is saved to browser storage, ensuring patients return to their preferred language.</span>
-                <span lang-block data-lang="es" data-active="false"><strong>Preferencia Persistente:</strong> La selección de idioma se guarda en el almacenamiento del navegador, asegurando que los pacientes regresen a su idioma preferido.</span>
+                <span lang-block data-lang="en"><strong>Persistent Preference:</strong> Language selection is saved to browser storage, ensuring patients return to their preferred language.</span>
+                <span lang-block data-lang="es"><strong>Preferencia Persistente:</strong> La selección de idioma se guarda en el almacenamiento del navegador, asegurando que los pacientes regresen a su idioma preferido.</span>
               </p>
             </div>
           </div>
@@ -457,12 +487,12 @@
           </div>
           <div class="feature-content">
             <h3>
-              <span lang-block data-lang="en" data-active="true">One-Click Demo Data</span>
-              <span lang-block data-lang="es" data-active="false">Datos de Demostración con Un Clic</span>
+              <span lang-block data-lang="en">One-Click Demo Data</span>
+              <span lang-block data-lang="es">Datos de Demostración con Un Clic</span>
             </h3>
             <p>
-              <span lang-block data-lang="en" data-active="true">The "Load Demo Data" button pre-populates the entire form with realistic patient information in a single click. This feature is essential for testing, training staff, conducting live demonstrations, and validating end-to-end workflows.</span>
-              <span lang-block data-lang="es" data-active="false">El botón "Cargar Datos de Demostración" rellena previamente todo el formulario con información realista de pacientes con un solo clic. Esta función es esencial para pruebas, capacitación de personal, demostraciones en vivo y validación de flujos de trabajo de extremo a extremo.</span>
+              <span lang-block data-lang="en">The "Load Demo Data" button pre-populates the entire form with realistic patient information in a single click. This feature is essential for testing, training staff, conducting live demonstrations, and validating end-to-end workflows.</span>
+              <span lang-block data-lang="es">El botón "Cargar Datos de Demostración" rellena previamente todo el formulario con información realista de pacientes con un solo clic. Esta función es esencial para pruebas, capacitación de personal, demostraciones en vivo y validación de flujos de trabajo de extremo a extremo.</span>
             </p>
           </div>
         </div>
@@ -478,17 +508,17 @@
           </div>
           <div class="feature-content">
             <h3>
-              <span lang-block data-lang="en" data-active="true">Comprehensive Test Data</span>
-              <span lang-block data-lang="es" data-active="false">Datos de Prueba Completos</span>
+              <span lang-block data-lang="en">Comprehensive Test Data</span>
+              <span lang-block data-lang="es">Datos de Prueba Completos</span>
             </h3>
             <p>
-              <span lang-block data-lang="en" data-active="true">Once loaded, demo data fills every field with realistic information including patient demographics, insurance details, medical conditions, allergies, and emergency contacts. This ensures consistent testing scenarios and helps identify any validation or workflow issues.</span>
-              <span lang-block data-lang="es" data-active="false">Una vez cargados, los datos de demostración llenan cada campo con información realista que incluye datos demográficos del paciente, detalles de seguro, condiciones médicas, alergias y contactos de emergencia. Esto asegura escenarios de prueba consistentes y ayuda a identificar cualquier problema de validación o flujo de trabajo.</span>
+              <span lang-block data-lang="en">Once loaded, demo data fills every field with realistic information including patient demographics, insurance details, medical conditions, allergies, and emergency contacts. This ensures consistent testing scenarios and helps identify any validation or workflow issues.</span>
+              <span lang-block data-lang="es">Una vez cargados, los datos de demostración llenan cada campo con información realista que incluye datos demográficos del paciente, detalles de seguro, condiciones médicas, alergias y contactos de emergencia. Esto asegura escenarios de prueba consistentes y ayuda a identificar cualquier problema de validación o flujo de trabajo.</span>
             </p>
             <div class="highlight-box">
               <p>
-                <span lang-block data-lang="en" data-active="true"><strong>Time Savings:</strong> Eliminates manual data entry during demos and testing, reducing setup time from 5+ minutes to under 5 seconds.</span>
-                <span lang-block data-lang="es" data-active="false"><strong>Ahorro de Tiempo:</strong> Elimina la entrada manual de datos durante demostraciones y pruebas, reduciendo el tiempo de configuración de más de 5 minutos a menos de 5 segundos.</span>
+                <span lang-block data-lang="en"><strong>Time Savings:</strong> Eliminates manual data entry during demos and testing, reducing setup time from 5+ minutes to under 5 seconds.</span>
+                <span lang-block data-lang="es"><strong>Ahorro de Tiempo:</strong> Elimina la entrada manual de datos durante demostraciones y pruebas, reduciendo el tiempo de configuración de más de 5 minutos a menos de 5 segundos.</span>
               </p>
             </div>
           </div>
@@ -514,17 +544,17 @@
           </div>
           <div class="feature-content">
             <h3>
-              <span lang-block data-lang="en" data-active="true">Complete Form Interface</span>
-              <span lang-block data-lang="es" data-active="false">Interfaz de Formulario Completo</span>
+              <span lang-block data-lang="en">Complete Form Interface</span>
+              <span lang-block data-lang="es">Interfaz de Formulario Completo</span>
             </h3>
             <p>
-              <span lang-block data-lang="en" data-active="true">The full intake form captures comprehensive patient information including demographics, insurance coverage, medical history, current conditions, allergies, and emergency contacts. Every field is validated in real-time to ensure data quality before submission.</span>
-              <span lang-block data-lang="es" data-active="false">El formulario de registro completo captura información integral del paciente que incluye datos demográficos, cobertura de seguro, historial médico, condiciones actuales, alergias y contactos de emergencia. Cada campo se valida en tiempo real para garantizar la calidad de los datos antes del envío.</span>
+              <span lang-block data-lang="en">The full intake form captures comprehensive patient information including demographics, insurance coverage, medical history, current conditions, allergies, and emergency contacts. Every field is validated in real-time to ensure data quality before submission.</span>
+              <span lang-block data-lang="es">El formulario de registro completo captura información integral del paciente que incluye datos demográficos, cobertura de seguro, historial médico, condiciones actuales, alergias y contactos de emergencia. Cada campo se valida en tiempo real para garantizar la calidad de los datos antes del envío.</span>
             </p>
             <div class="highlight-box">
               <p>
-                <span lang-block data-lang="en" data-active="true"><strong>Smart Validation:</strong> Real-time field validation prevents errors and guides patients to provide complete, accurate information.</span>
-                <span lang-block data-lang="es" data-active="false"><strong>Validación Inteligente:</strong> La validación de campos en tiempo real previene errores y guía a los pacientes para proporcionar información completa y precisa.</span>
+                <span lang-block data-lang="en"><strong>Smart Validation:</strong> Real-time field validation prevents errors and guides patients to provide complete, accurate information.</span>
+                <span lang-block data-lang="es"><strong>Validación Inteligente:</strong> La validación de campos en tiempo real previene errores y guía a los pacientes para proporcionar información completa y precisa.</span>
               </p>
             </div>
           </div>
@@ -546,17 +576,17 @@
           </div>
           <div class="feature-content">
             <h3>
-              <span lang-block data-lang="en" data-active="true">Clear User Feedback</span>
-              <span lang-block data-lang="es" data-active="false">Retroalimentación Clara al Usuario</span>
+              <span lang-block data-lang="en">Clear User Feedback</span>
+              <span lang-block data-lang="es">Retroalimentación Clara al Usuario</span>
             </h3>
             <p>
-              <span lang-block data-lang="en" data-active="true">Upon successful submission, users receive immediate visual confirmation with a timestamp showing when their intake was processed. The green success banner provides reassurance that their data was received and FHIR resources were created successfully.</span>
-              <span lang-block data-lang="es" data-active="false">Tras el envío exitoso, los usuarios reciben confirmación visual inmediata con una marca de tiempo que muestra cuándo se procesó su registro. El banner verde de éxito proporciona seguridad de que sus datos fueron recibidos y los recursos FHIR se crearon exitosamente.</span>
+              <span lang-block data-lang="en">Upon successful submission, users receive immediate visual confirmation with a timestamp showing when their intake was processed. The green success banner provides reassurance that their data was received and FHIR resources were created successfully.</span>
+              <span lang-block data-lang="es">Tras el envío exitoso, los usuarios reciben confirmación visual inmediata con una marca de tiempo que muestra cuándo se procesó su registro. El banner verde de éxito proporciona seguridad de que sus datos fueron recibidos y los recursos FHIR se crearon exitosamente.</span>
             </p>
             <div class="highlight-box">
               <p>
-                <span lang-block data-lang="en" data-active="true"><strong>User Experience:</strong> Clear status indicators reduce patient anxiety and confirm successful completion of the intake process.</span>
-                <span lang-block data-lang="es" data-active="false"><strong>Experiencia del Usuario:</strong> Indicadores de estado claros reducen la ansiedad del paciente y confirman la finalización exitosa del proceso de registro.</span>
+                <span lang-block data-lang="en"><strong>User Experience:</strong> Clear status indicators reduce patient anxiety and confirm successful completion of the intake process.</span>
+                <span lang-block data-lang="es"><strong>Experiencia del Usuario:</strong> Indicadores de estado claros reducen la ansiedad del paciente y confirman la finalización exitosa del proceso de registro.</span>
               </p>
             </div>
           </div>
@@ -578,20 +608,20 @@
           </div>
           <div class="feature-content">
             <h3>
-              <span lang-block data-lang="en" data-active="true">FHIR R4 Bundle Generation</span>
-              <span lang-block data-lang="es" data-active="false">Generación de Bundle FHIR R4</span>
+              <span lang-block data-lang="en">FHIR R4 Bundle Generation</span>
+              <span lang-block data-lang="es">Generación de Bundle FHIR R4</span>
             </h3>
             <p>
-              <span lang-block data-lang="en" data-active="true">The FastAPI backend receives raw form data and assembles it into a structured FHIR Bundle containing standardized resources: Patient, Encounter, Coverage, Condition, and AllergyIntolerance.</span>
-              <span lang-block data-lang="es" data-active="false">El backend de FastAPI recibe datos de formulario sin procesar y los ensambla en un Bundle FHIR estructurado que contiene recursos estandarizados: Patient, Encounter, Coverage, Condition y AllergyIntolerance.</span>
+              <span lang-block data-lang="en">The FastAPI backend receives raw form data and assembles it into a structured FHIR Bundle containing standardized resources: Patient, Encounter, Coverage, Condition, and AllergyIntolerance.</span>
+              <span lang-block data-lang="es">El backend de FastAPI recibe datos de formulario sin procesar y los ensambla en un Bundle FHIR estructurado que contiene recursos estandarizados: Patient, Encounter, Coverage, Condition y AllergyIntolerance.</span>
             </p>
             <h4>
-              <span lang-block data-lang="en" data-active="true">Automatic SNOMED CT Encoding</span>
-              <span lang-block data-lang="es" data-active="false">Codificación SNOMED CT Automática</span>
+              <span lang-block data-lang="en">Automatic SNOMED CT Encoding</span>
+              <span lang-block data-lang="es">Codificación SNOMED CT Automática</span>
             </h4>
             <p>
-              <span lang-block data-lang="en" data-active="true">Conditions are automatically encoded using SNOMED CT terminology (e.g., Diabetes → 73211009). All clinical resources reference the Patient via subject.reference, ensuring proper linking across the FHIR ecosystem.</span>
-              <span lang-block data-lang="es" data-active="false">Las condiciones se codifican automáticamente usando terminología SNOMED CT (por ejemplo, Diabetes → 73211009). Todos los recursos clínicos referencian al paciente a través de subject.reference, asegurando vinculación apropiada en el ecosistema FHIR.</span>
+              <span lang-block data-lang="en">Conditions are automatically encoded using SNOMED CT terminology (e.g., Diabetes → 73211009). All clinical resources reference the Patient via subject.reference, ensuring proper linking across the FHIR ecosystem.</span>
+              <span lang-block data-lang="es">Las condiciones se codifican automáticamente usando terminología SNOMED CT (por ejemplo, Diabetes → 73211009). Todos los recursos clínicos referencian al paciente a través de subject.reference, asegurando vinculación apropiada en el ecosistema FHIR.</span>
             </p>
           </div>
         </div>
@@ -612,17 +642,17 @@
           </div>
           <div class="feature-content">
             <h3>
-              <span lang-block data-lang="en" data-active="true">JSON Preview & Review</span>
-              <span lang-block data-lang="es" data-active="false">Vista Previa y Revisión JSON</span>
+              <span lang-block data-lang="en">JSON Preview & Review</span>
+              <span lang-block data-lang="es">Vista Previa y Revisión JSON</span>
             </h3>
             <p>
-              <span lang-block data-lang="en" data-active="true">After submission, the fully formed FHIR Bundle is displayed in a syntax‑highlighted format. Clinical staff or administrators can verify data integrity before pushing to EHR or FHIR server.</span>
-              <span lang-block data-lang="es" data-active="false">Después del envío, el Bundle FHIR completamente formado se muestra en un formato con resaltado de sintaxis. El personal clínico o los administradores pueden verificar la integridad de los datos antes de enviarlos al servidor EHR/FHIR.</span>
+              <span lang-block data-lang="en">After submission, the fully formed FHIR Bundle is displayed in a syntax‑highlighted format. Clinical staff or administrators can verify data integrity before pushing to EHR or FHIR server.</span>
+              <span lang-block data-lang="es">Después del envío, el Bundle FHIR completamente formado se muestra en un formato con resaltado de sintaxis. El personal clínico o los administradores pueden verificar la integridad de los datos antes de enviarlos al servidor EHR/FHIR.</span>
             </p>
             <div class="highlight-box">
               <p>
-                <span lang-block data-lang="en" data-active="true"><strong>Quality Control:</strong> Human-in-the-loop review ensures data accuracy before it enters clinical systems.</span>
-                <span lang-block data-lang="es" data-active="false"><strong>Control de Calidad:</strong> La revisión humana en el bucle asegura la precisión de los datos antes de que entren en los sistemas clínicos.</span>
+                <span lang-block data-lang="en"><strong>Quality Control:</strong> Human-in-the-loop review ensures data accuracy before it enters clinical systems.</span>
+                <span lang-block data-lang="es"><strong>Control de Calidad:</strong> La revisión humana en el bucle asegura la precisión de los datos antes de que entren en los sistemas clínicos.</span>
               </p>
             </div>
           </div>
@@ -644,12 +674,12 @@
           </div>
           <div class="feature-content">
             <h3>
-              <span lang-block data-lang="en" data-active="true">Bundle Download & Export</span>
-              <span lang-block data-lang="es" data-active="false">Descarga y Exportación de Bundle</span>
+              <span lang-block data-lang="en">Bundle Download & Export</span>
+              <span lang-block data-lang="es">Descarga y Exportación de Bundle</span>
             </h3>
             <p>
-              <span lang-block data-lang="en" data-active="true">Download the complete FHIR Bundle as a JSON file for immediate integration, archiving, or manual upload to FHIR-compliant systems. The export is standards-compliant and ready for production use.</span>
-              <span lang-block data-lang="es" data-active="false">Descargue el Bundle FHIR completo como archivo JSON para integración inmediata, archivo o carga manual a sistemas compatibles con FHIR. La exportación cumple con estándares y está lista para uso en producción.</span>
+              <span lang-block data-lang="en">Download the complete FHIR Bundle as a JSON file for immediate integration, archiving, or manual upload to FHIR-compliant systems. The export is standards-compliant and ready for production use.</span>
+              <span lang-block data-lang="es">Descargue el Bundle FHIR completo como archivo JSON para integración inmediata, archivo o carga manual a sistemas compatibles con FHIR. La exportación cumple con estándares y está lista para uso en producción.</span>
             </p>
           </div>
         </div>
@@ -665,17 +695,17 @@
           </div>
           <div class="feature-content">
             <h3>
-              <span lang-block data-lang="en" data-active="true">Developer-Ready Output</span>
-              <span lang-block data-lang="es" data-active="false">Salida Lista para Desarrolladores</span>
+              <span lang-block data-lang="en">Developer-Ready Output</span>
+              <span lang-block data-lang="es">Salida Lista para Desarrolladores</span>
             </h3>
             <p>
-              <span lang-block data-lang="en" data-active="true">The downloaded FHIR Bundle opens cleanly in any JSON editor, showing proper structure, resource linking, and SNOMED CT encoding for immediate development or API integration.</span>
-              <span lang-block data-lang="es" data-active="false">El Bundle FHIR descargado se abre limpiamente en cualquier editor JSON, mostrando estructura apropiada, vinculación de recursos y codificación SNOMED CT para desarrollo inmediato o integración API.</span>
+              <span lang-block data-lang="en">The downloaded FHIR Bundle opens cleanly in any JSON editor, showing proper structure, resource linking, and SNOMED CT encoding for immediate development or API integration.</span>
+              <span lang-block data-lang="es">El Bundle FHIR descargado se abre limpiamente en cualquier editor JSON, mostrando estructura apropiada, vinculación de recursos y codificación SNOMED CT para desarrollo inmediato o integración API.</span>
             </p>
             <div class="highlight-box">
               <p>
-                <span lang-block data-lang="en" data-active="true"><strong>Standards Compliance:</strong> Structures follow HL7 FHIR R4 guidelines for Patient, Encounter, Coverage, Condition, and AllergyIntolerance.</span>
-                <span lang-block data-lang="es" data-active="false"><strong>Cumplimiento de Estándares:</strong> Las estructuras siguen las directrices HL7 FHIR R4 para Patient, Encounter, Coverage, Condition y AllergyIntolerance.</span>
+                <span lang-block data-lang="en"><strong>Standards Compliance:</strong> Structures follow HL7 FHIR R4 guidelines for Patient, Encounter, Coverage, Condition, and AllergyIntolerance.</span>
+                <span lang-block data-lang="es"><strong>Cumplimiento de Estándares:</strong> Las estructuras siguen las directrices HL7 FHIR R4 para Patient, Encounter, Coverage, Condition y AllergyIntolerance.</span>
               </p>
             </div>
           </div>
@@ -688,35 +718,35 @@
       <div class="container intake-project-layout">
         <div class="tech-details">
           <h3>
-            <span lang-block data-lang="en" data-active="true">FHIR Integration Details</span>
-            <span lang-block data-lang="es" data-active="false">Detalles de Integración FHIR</span>
+            <span lang-block data-lang="en">FHIR Integration Details</span>
+            <span lang-block data-lang="es">Detalles de Integración FHIR</span>
           </h3>
 
           <h4>
-            <span lang-block data-lang="en" data-active="true">Bundle Structure</span>
-            <span lang-block data-lang="es" data-active="false">Estructura del Bundle</span>
+            <span lang-block data-lang="en">Bundle Structure</span>
+            <span lang-block data-lang="es">Estructura del Bundle</span>
           </h4>
           <p>
-            <span lang-block data-lang="en" data-active="true">A FHIR Bundle (type: collection) contains all resources as separate entries, allowing for atomic transactions and proper resource versioning.</span>
-            <span lang-block data-lang="es" data-active="false">Un Bundle FHIR (tipo: collection) contiene todos los recursos como entradas separadas, permitiendo transacciones atómicas y versionado apropiado de recursos.</span>
+            <span lang-block data-lang="en">A FHIR Bundle (type: collection) contains all resources as separate entries, allowing for atomic transactions and proper resource versioning.</span>
+            <span lang-block data-lang="es">Un Bundle FHIR (tipo: collection) contiene todos los recursos como entradas separadas, permitiendo transacciones atómicas y versionado apropiado de recursos.</span>
           </p>
 
           <h4>
-            <span lang-block data-lang="en" data-active="true">Resource Linking</span>
-            <span lang-block data-lang="es" data-active="false">Vinculación de Recursos</span>
+            <span lang-block data-lang="en">Resource Linking</span>
+            <span lang-block data-lang="es">Vinculación de Recursos</span>
           </h4>
           <p>
-            <span lang-block data-lang="en" data-active="true">All clinical resources (Condition, AllergyIntolerance, Encounter) reference the Patient resource via subject.reference, creating a complete clinical record graph.</span>
-            <span lang-block data-lang="es" data-active="false">Todos los recursos clínicos (Condition, AllergyIntolerance, Encounter) referencian al recurso Patient a través de subject.reference, creando un grafo completo de registro clínico.</span>
+            <span lang-block data-lang="en">All clinical resources (Condition, AllergyIntolerance, Encounter) reference the Patient resource via subject.reference, creating a complete clinical record graph.</span>
+            <span lang-block data-lang="es">Todos los recursos clínicos (Condition, AllergyIntolerance, Encounter) referencian al recurso Patient a través de subject.reference, creando un grafo completo de registro clínico.</span>
           </p>
 
           <h4>
-            <span lang-block data-lang="en" data-active="true">Validation & Security</span>
-            <span lang-block data-lang="es" data-active="false">Validación y Seguridad</span>
+            <span lang-block data-lang="en">Validation & Security</span>
+            <span lang-block data-lang="es">Validación y Seguridad</span>
           </h4>
           <p>
-            <span lang-block data-lang="en" data-active="true">Strict Pydantic validation prevents malformed or malicious data. Scoped CORS policy ensures production-ready security. Human-in-the-loop review via JSON preview before data enters clinical systems.</span>
-            <span lang-block data-lang="es" data-active="false">La validación estricta de Pydantic previene datos malformados o maliciosos. La política CORS con alcance definido asegura seguridad lista para producción. Revisión humana en el bucle a través de vista previa JSON antes de que los datos entren en sistemas clínicos.</span>
+            <span lang-block data-lang="en">Strict Pydantic validation prevents malformed or malicious data. Scoped CORS policy ensures production-ready security. Human-in-the-loop review via JSON preview before data enters clinical systems.</span>
+            <span lang-block data-lang="es">La validación estricta de Pydantic previene datos malformados o maliciosos. La política CORS con alcance definido asegura seguridad lista para producción. Revisión humana en el bucle a través de vista previa JSON antes de que los datos entren en sistemas clínicos.</span>
           </p>
         </div>
       </div>
@@ -727,52 +757,52 @@
       <div class="container intake-project-layout">
         <div class="tech-details">
           <h3>
-            <span lang-block data-lang="en" data-active="true">Measurable Impact</span>
-            <span lang-block data-lang="es" data-active="false">Impacto Medible</span>
+            <span lang-block data-lang="en">Measurable Impact</span>
+            <span lang-block data-lang="es">Impacto Medible</span>
           </h3>
           
           <div class="impact-grid">
             <div class="impact-item">
               <h4>
-                <span lang-block data-lang="en" data-active="true">100% FHIR-Native</span>
-                <span lang-block data-lang="es" data-active="false">100% Nativo de FHIR</span>
+                <span lang-block data-lang="en">100% FHIR-Native</span>
+                <span lang-block data-lang="es">100% Nativo de FHIR</span>
               </h4>
               <p>
-                <span lang-block data-lang="en" data-active="true">Direct output ready for EHR ingestion without manual transformation or data mapping.</span>
-                <span lang-block data-lang="es" data-active="false">Salida directa lista para ingestión en EHR sin transformación manual o mapeo de datos.</span>
+                <span lang-block data-lang="en">Direct output ready for EHR ingestion without manual transformation or data mapping.</span>
+                <span lang-block data-lang="es">Salida directa lista para ingestión en EHR sin transformación manual o mapeo de datos.</span>
               </p>
             </div>
             
             <div class="impact-item">
               <h4>
-                <span lang-block data-lang="en" data-active="true">50% Time Reduction</span>
-                <span lang-block data-lang="es" data-active="false">Reducción del 50% en Tiempo</span>
+                <span lang-block data-lang="en">50% Time Reduction</span>
+                <span lang-block data-lang="es">Reducción del 50% en Tiempo</span>
               </h4>
               <p>
-                <span lang-block data-lang="en" data-active="true">Automation and demo loading cut intake time in half compared to manual paper forms.</span>
-                <span lang-block data-lang="es" data-active="false">La automatización y carga de demostración reducen el tiempo de registro a la mitad en comparación con formularios en papel manuales.</span>
+                <span lang-block data-lang="en">Automation and demo loading cut intake time in half compared to manual paper forms.</span>
+                <span lang-block data-lang="es">La automatización y carga de demostración reducen el tiempo de registro a la mitad en comparación con formularios en papel manuales.</span>
               </p>
             </div>
             
             <div class="impact-item">
               <h4>
-                <span lang-block data-lang="en" data-active="true">Zero Transcription Errors</span>
-                <span lang-block data-lang="es" data-active="false">Cero Errores de Transcripción</span>
+                <span lang-block data-lang="en">Zero Transcription Errors</span>
+                <span lang-block data-lang="es">Cero Errores de Transcripción</span>
               </h4>
               <p>
-                <span lang-block data-lang="en" data-active="true">Direct patient-to-FHIR workflow eliminates manual data entry and associated errors.</span>
-                <span lang-block data-lang="es" data-active="false">El flujo de trabajo directo de paciente a FHIR elimina la entrada manual de datos y errores asociados.</span>
+                <span lang-block data-lang="en">Direct patient-to-FHIR workflow eliminates manual data entry and associated errors.</span>
+                <span lang-block data-lang="es">El flujo de trabajo directo de paciente a FHIR elimina la entrada manual de datos y errores asociados.</span>
               </p>
             </div>
             
             <div class="impact-item">
               <h4>
-                <span lang-block data-lang="en" data-active="true">Improved Health Equity</span>
-                <span lang-block data-lang="es" data-active="false">Equidad en Salud Mejorada</span>
+                <span lang-block data-lang="en">Improved Health Equity</span>
+                <span lang-block data-lang="es">Equidad en Salud Mejorada</span>
               </h4>
               <p>
-                <span lang-block data-lang="en" data-active="true">Full Spanish support removes language barriers for non-English speaking patients.</span>
-                <span lang-block data-lang="es" data-active="false">El soporte completo en español elimina las barreras lingüísticas para pacientes que no hablan inglés.</span>
+                <span lang-block data-lang="en">Full Spanish support removes language barriers for non-English speaking patients.</span>
+                <span lang-block data-lang="es">El soporte completo en español elimina las barreras lingüísticas para pacientes que no hablan inglés.</span>
               </p>
             </div>
           </div>
@@ -785,24 +815,24 @@
       <div class="container intake-project-layout">
         <div class="tech-details">
           <h3>
-            <span lang-block data-lang="en" data-active="true">Technology Stack</span>
-            <span lang-block data-lang="es" data-active="false">Pila Tecnológica</span>
+            <span lang-block data-lang="en">Technology Stack</span>
+            <span lang-block data-lang="es">Pila Tecnológica</span>
           </h3>
           <p>
-            <span lang-block data-lang="en" data-active="true"><strong>Frontend:</strong> HTML5, CSS3, JavaScript (ES6+) with real-time language switching and form validation</span>
-            <span lang-block data-lang="es" data-active="false"><strong>Frontend:</strong> HTML5, CSS3, JavaScript (ES6+) con cambio de idioma en tiempo real y validación de formularios</span>
+            <span lang-block data-lang="en"><strong>Frontend:</strong> HTML5, CSS3, JavaScript (ES6+) with real-time language switching and form validation</span>
+            <span lang-block data-lang="es"><strong>Frontend:</strong> HTML5, CSS3, JavaScript (ES6+) con cambio de idioma en tiempo real y validación de formularios</span>
           </p>
           <p>
-            <span lang-block data-lang="en" data-active="true"><strong>Backend:</strong> FastAPI (Python 3.x), Uvicorn ASGI server for async processing</span>
-            <span lang-block data-lang="es" data-active="false"><strong>Backend:</strong> FastAPI (Python 3.x), servidor ASGI Uvicorn para procesamiento asíncrono</span>
+            <span lang-block data-lang="en"><strong>Backend:</strong> FastAPI (Python 3.x), Uvicorn ASGI server for async processing</span>
+            <span lang-block data-lang="es"><strong>Backend:</strong> FastAPI (Python 3.x), servidor ASGI Uvicorn para procesamiento asíncrono</span>
           </p>
           <p>
-            <span lang-block data-lang="en" data-active="true"><strong>Standards:</strong> HL7 FHIR R4 (Patient, Encounter, Coverage, Condition, AllergyIntolerance), SNOMED CT coding</span>
-            <span lang-block data-lang="es" data-active="false"><strong>Estándares:</strong> HL7 FHIR R4 (Patient, Encounter, Coverage, Condition, AllergyIntolerance), codificación SNOMED CT</span>
+            <span lang-block data-lang="en"><strong>Standards:</strong> HL7 FHIR R4 (Patient, Encounter, Coverage, Condition, AllergyIntolerance), SNOMED CT coding</span>
+            <span lang-block data-lang="es"><strong>Estándares:</strong> HL7 FHIR R4 (Patient, Encounter, Coverage, Condition, AllergyIntolerance), codificación SNOMED CT</span>
           </p>
           <p>
-            <span lang-block data-lang="en" data-active="true"><strong>Validation:</strong> Pydantic models, CORS Middleware, comprehensive error handling</span>
-            <span lang-block data-lang="es" data-active="false"><strong>Validación:</strong> Modelos Pydantic, Middleware CORS, manejo integral de errores</span>
+            <span lang-block data-lang="en"><strong>Validation:</strong> Pydantic models, CORS Middleware, comprehensive error handling</span>
+            <span lang-block data-lang="es"><strong>Validación:</strong> Modelos Pydantic, Middleware CORS, manejo integral de errores</span>
           </p>
         </div>
       </div>
@@ -813,17 +843,17 @@
   <footer class="portfolio-footer site-footer">
     <div class="container">
       <p>
-        <span lang-block data-lang="en" data-active="true">David Quintana Dev is a registered trade name of Servicios Quintana LLC.</span>
+        <span lang-block data-lang="en">David Quintana Dev is a registered trade name of Servicios Quintana LLC.</span>
         <span lang-block data-lang="es">David Quintana Dev es un nombre comercial registrado de Servicios Quintana LLC.</span>
       </p>
 
       <p class="legal-notice">
-        <span lang-block data-lang="en" data-active="true">Mandatory Disclosure: I am not an attorney licensed to practice law in the State of Colorado and I may not give legal advice or accept fees for legal advice.</span>
+        <span lang-block data-lang="en">Mandatory Disclosure: I am not an attorney licensed to practice law in the State of Colorado and I may not give legal advice or accept fees for legal advice.</span>
         <span lang-block data-lang="es">Aviso Obligatorio: No soy un abogado licenciado para ejercer el derecho en el Estado de Colorado y no puedo dar asesoría legal ni aceptar honorarios por asesoría legal.</span>
       </p>
 
       <p>
-        <span lang-block data-lang="en" data-active="true">© 2026 Servicios Quintana LLC. All Rights Reserved.</span>
+        <span lang-block data-lang="en">© 2026 Servicios Quintana LLC. All Rights Reserved.</span>
         <span lang-block data-lang="es">© 2026 Servicios Quintana LLC. Todos los derechos reservados.</span>
       </p>
     </div>
