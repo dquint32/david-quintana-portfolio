@@ -7,7 +7,27 @@
   <meta name="description" content="Transparent pricing for bilingual web development services. Mobile-first websites for small businesses and professionals in Colorado.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#0B0C10">
+
+  <!-- Pre-paint: apply saved theme + language BEFORE first paint (no FOUC / no layout shift) -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('preferred-theme');
+        if (!t) {
+          t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        document.documentElement.setAttribute('data-theme', t);
+        var l = localStorage.getItem('preferred-language');
+        if (l) {
+          document.documentElement.setAttribute('data-language', l);
+          document.documentElement.setAttribute('lang', l);
+        }
+      } catch (e) { /* localStorage unavailable — fall back to defaults */ }
+    })();
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="pricing-page" data-language="en">
@@ -17,7 +37,17 @@
     <div class="bg-logo">DMQ</div>
   </div>
 
-  <button class="floating-toggle" type="button" aria-label="Toggle language">
+  <button class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="false">
+    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </svg>
+    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"></circle>
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+    </svg>
+  </button>
+
+  <button class="floating-toggle" type="button" aria-label="Switch to Spanish" aria-pressed="false">
     <span data-lang="en">EN</span>
     <span data-lang="es" class="inactive">ES</span>
   </button>
@@ -40,25 +70,25 @@
         <ul>
           <li>
             <a href="index.html">
-              <span lang-block data-lang="en" data-active="true">Home</span>
+              <span lang-block data-lang="en">Home</span>
               <span lang-block data-lang="es">Inicio</span>
             </a>
           </li>
           <li>
             <a href="index.html">
-              <span lang-block data-lang="en" data-active="true">HCIS Portfolio</span>
+              <span lang-block data-lang="en">HCIS Portfolio</span>
               <span lang-block data-lang="es">Portafolio HCIS</span>
             </a>
           </li>
           <li>
             <a href="pricing.html" class="active">
-              <span lang-block data-lang="en" data-active="true">Pricing</span>
+              <span lang-block data-lang="en">Pricing</span>
               <span lang-block data-lang="es">Precios</span>
             </a>
           </li>
           <li>
             <a href="#contact" class="cta">
-              <span lang-block data-lang="en" data-active="true">Contact</span>
+              <span lang-block data-lang="en">Contact</span>
               <span lang-block data-lang="es">Contacto</span>
             </a>
           </li>
@@ -75,7 +105,7 @@
             <h2>Simple & Clear Website Pricing</h2>
             <p>Transparent packages for small businesses · Bilingual available</p>
           </div>
-          <div lang-block data-lang="es" data-active="true">
+          <div lang-block data-lang="es">
             <h2>Precios Claros y Sencillos</h2>
             <p>Paquetes transparentes para negocios pequeños · Bilingüe disponible</p>
           </div>
@@ -90,7 +120,7 @@
             <h3>Website Packages</h3>
             <p>Choose the package that fits your business needs</p>
           </div>
-          <div lang-block data-lang="es" data-active="true">
+          <div lang-block data-lang="es">
             <h3>Paquetes de Sitios Web</h3>
             <p>Elige el paquete que se adapte a las necesidades de tu negocio</p>
           </div>
@@ -103,7 +133,7 @@
               <p class="service-price">$350–$700 <span class="price-avg">· ~$500</span></p>
               <p>A sharp, single-page presence designed to make your business findable, credible, and mobile-ready.</p>
             </div>
-            <div lang-block data-lang="es" data-active="true">
+            <div lang-block data-lang="es">
               <h4>Landing Page</h4>
               <p class="service-price">$350–$700 <span class="price-avg">· ~$500</span></p>
               <p>Una presencia de una sola página diseñada para hacer que tu negocio sea encontrable, creíble y optimizado para móvil.</p>
@@ -116,7 +146,7 @@
               <p class="service-price">$700–$1,500 <span class="price-avg">· ~$1,000</span></p>
               <p>3–5 pages (Home, About, Services, Contact). Clean structure, bilingual optional, built for clarity and trust.</p>
             </div>
-            <div lang-block data-lang="es" data-active="true">
+            <div lang-block data-lang="es">
               <h4>Sitio Web Básico</h4>
               <p class="service-price">$700–$1,500 <span class="price-avg">· ~$1,000</span></p>
               <p>3–5 páginas (Inicio, Sobre Nosotros, Servicios, Contacto). Estructura limpia, bilingüe opcional, construido para claridad y confianza.</p>
@@ -129,7 +159,7 @@
               <p class="service-price">$1,500–$3,000 <span class="price-avg">· ~$2,200</span></p>
               <p>6–10 pages with custom layouts, contact forms, bilingual UX, and integrated business tools.</p>
             </div>
-            <div lang-block data-lang="es" data-active="true">
+            <div lang-block data-lang="es">
               <h4>Sitio de Negocio</h4>
               <p class="service-price">$1,500–$3,000 <span class="price-avg">· ~$2,200</span></p>
               <p>6–10 páginas con diseños personalizados, formularios de contacto, UX bilingüe y herramientas de negocio integradas.</p>
@@ -142,7 +172,7 @@
               <p class="service-price">$3,000–$7,000 <span class="price-avg">· ~$4,500</span></p>
               <p>A full online store with product management, secure checkout, shipping setup, and mobile-first design.</p>
             </div>
-            <div lang-block data-lang="es" data-active="true">
+            <div lang-block data-lang="es">
               <h4>Sitio de Comercio Electrónico</h4>
               <p class="service-price">$3,000–$7,000 <span class="price-avg">· ~$4,500</span></p>
               <p>Una tienda en línea completa con manejo de productos, checkout seguro, configuración de envío y diseño optimizado para móvil.</p>
@@ -159,7 +189,7 @@
             <h3>Advanced Builds</h3>
             <p>For businesses that need more than a website</p>
           </div>
-          <div lang-block data-lang="es" data-active="true">
+          <div lang-block data-lang="es">
             <h3>Construcciones Avanzadas</h3>
             <p>Para negocios que necesitan más que un sitio web</p>
           </div>
@@ -172,7 +202,7 @@
               <p class="service-price">$3,500–$12,000+</p>
               <p>Custom dashboards, booking systems, bilingual intake forms, client portals, API-driven tools, and more.</p>
             </div>
-            <div lang-block data-lang="es" data-active="true">
+            <div lang-block data-lang="es">
               <h4>Aplicaciones Web Full-Stack</h4>
               <p class="service-price">$3,500–$12,000+</p>
               <p>Tableros personalizados, sistemas de reservación, formularios de recepción bilingüe, portales de clientes, herramientas impulsadas por API y más.</p>
@@ -185,7 +215,7 @@
               <p class="service-price">$1,500–$8,000+</p>
               <p>For clinics, consultants, and health-adjacent businesses. Includes bilingual patient intake, secure validation workflows, and FHIR-ready JSON output.</p>
             </div>
-            <div lang-block data-lang="es" data-active="true">
+            <div lang-block data-lang="es">
               <h4>Herramientas Web Alineadas al Sector Salud</h4>
               <p class="service-price">$1,500–$8,000+</p>
               <p>Para clínicas, consultores y negocios relacionados con la salud. Incluye recepción de pacientes bilingüe, flujos de validación seguros y salida JSON compatible con FHIR.</p>
@@ -202,7 +232,7 @@
             <h3>Professional Services</h3>
             <p>Additional support to strengthen your online presence</p>
           </div>
-          <div lang-block data-lang="es" data-active="true">
+          <div lang-block data-lang="es">
             <h3>Servicios Profesionales</h3>
             <p>Soporte adicional para fortalecer tu presencia en línea</p>
           </div>
@@ -215,7 +245,7 @@
               <p class="service-price">$75–$150/hr</p>
               <p>Strategy, UX, technical planning, or bilingual content guidance.</p>
             </div>
-            <div lang-block data-lang="es" data-active="true">
+            <div lang-block data-lang="es">
               <h4>Consultoría y Planificación</h4>
               <p class="service-price">$75–$150/hr</p>
               <p>Estrategia, UX, planificación técnica o orientación de contenido bilingüe.</p>
@@ -228,7 +258,7 @@
               <p class="service-price">$150–$500</p>
               <p>A full diagnostic report with clear, actionable fixes.</p>
             </div>
-            <div lang-block data-lang="es" data-active="true">
+            <div lang-block data-lang="es">
               <h4>Auditorías y Solución de Problemas</h4>
               <p class="service-price">$150–$500</p>
               <p>Un informe diagnóstico completo con soluciones claras y accionables.</p>
@@ -241,7 +271,7 @@
               <p class="service-price">Variable</p>
               <p>API integrations, booking systems, advanced forms, or custom workflows.</p>
             </div>
-            <div lang-block data-lang="es" data-active="true">
+            <div lang-block data-lang="es">
               <h4>Funciones y Integraciones Personalizadas</h4>
               <p class="service-price">Variable</p>
               <p>Integraciones de API, sistemas de reservación, formularios avanzados o flujos de trabajo personalizados.</p>
@@ -254,7 +284,7 @@
               <p class="service-price">$100–$300/month</p>
               <p>Security updates, content changes, backups, and ongoing support.</p>
             </div>
-            <div lang-block data-lang="es" data-active="true">
+            <div lang-block data-lang="es">
               <h4>Mantenimiento de Sitio Web</h4>
               <p class="service-price">$100–$300/mes</p>
               <p>Actualizaciones de seguridad, cambios de contenido, copias de respaldo y soporte continuo.</p>
@@ -270,7 +300,7 @@
           <div lang-block data-lang="en">
             <h3>What's Included</h3>
           </div>
-          <div lang-block data-lang="es" data-active="true">
+          <div lang-block data-lang="es">
             <h3>Qué Está Incluido</h3>
           </div>
         </div>
@@ -280,47 +310,47 @@
             <li>
               <span class="checkmark">✓</span>
               <span lang-block data-lang="en">Mobile-first responsive design that works on all devices</span>
-              <span lang-block data-lang="es" data-active="true">Diseño responsivo optimizado para móvil que funciona en todos los dispositivos</span>
+              <span lang-block data-lang="es">Diseño responsivo optimizado para móvil que funciona en todos los dispositivos</span>
             </li>
             <li>
               <span class="checkmark">✓</span>
               <span lang-block data-lang="en">Search Engine Optimization (SEO) fundamentals</span>
-              <span lang-block data-lang="es" data-active="true">Fundamentos de Optimización para Motores de Búsqueda (SEO)</span>
+              <span lang-block data-lang="es">Fundamentos de Optimización para Motores de Búsqueda (SEO)</span>
             </li>
             <li>
               <span class="checkmark">✓</span>
               <span lang-block data-lang="en">Fast loading times and clean code</span>
-              <span lang-block data-lang="es" data-active="true">Tiempos de carga rápidos y código limpio</span>
+              <span lang-block data-lang="es">Tiempos de carga rápidos y código limpio</span>
             </li>
             <li>
               <span class="checkmark">✓</span>
               <span lang-block data-lang="en">Basic security measures (SSL, HTTPS)</span>
-              <span lang-block data-lang="es" data-active="true">Medidas básicas de seguridad (SSL, HTTPS)</span>
+              <span lang-block data-lang="es">Medidas básicas de seguridad (SSL, HTTPS)</span>
             </li>
             <li>
               <span class="checkmark">✓</span>
               <span lang-block data-lang="en">Contact forms and business information</span>
-              <span lang-block data-lang="es" data-active="true">Formularios de contacto e información del negocio</span>
+              <span lang-block data-lang="es">Formularios de contacto e información del negocio</span>
             </li>
             <li>
               <span class="checkmark">✓</span>
               <span lang-block data-lang="en">Social media integration</span>
-              <span lang-block data-lang="es" data-active="true">Integración con redes sociales</span>
+              <span lang-block data-lang="es">Integración con redes sociales</span>
             </li>
             <li>
               <span class="checkmark">✓</span>
               <span lang-block data-lang="en">Google Analytics setup (optional)</span>
-              <span lang-block data-lang="es" data-active="true">Configuración de Google Analytics (opcional)</span>
+              <span lang-block data-lang="es">Configuración de Google Analytics (opcional)</span>
             </li>
             <li>
               <span class="checkmark">✓</span>
               <span lang-block data-lang="en">Training on how to update basic content</span>
-              <span lang-block data-lang="es" data-active="true">Capacitación sobre cómo actualizar contenido básico</span>
+              <span lang-block data-lang="es">Capacitación sobre cómo actualizar contenido básico</span>
             </li>
             <li>
               <span class="checkmark">✓</span>
               <span lang-block data-lang="en">60 days of post-launch support</span>
-              <span lang-block data-lang="es" data-active="true">60 días de soporte después del lanzamiento</span>
+              <span lang-block data-lang="es">60 días de soporte después del lanzamiento</span>
             </li>
           </ul>
         </div>
@@ -335,7 +365,7 @@
             <h3>Domain & Hosting Setup</h3>
             <p>I handle the domain. You own it forever.</p>
           </div>
-          <div lang-block data-lang="es" data-active="true">
+          <div lang-block data-lang="es">
             <h3>Configuración de Dominio y Hosting</h3>
             <p>Yo me encargo del dominio. Tú lo posees para siempre.</p>
           </div>
@@ -348,7 +378,7 @@
               <p class="service-price">Included</p>
               <p>I register your domain, configure DNS, and connect it to your website. You pay the registrar's yearly fee ($10–$20/year). Everything else is handled for you.</p>
             </div>
-            <div lang-block data-lang="es" data-active="true">
+            <div lang-block data-lang="es">
               <h4>Registro de Dominio</h4>
               <p class="service-price">Incluido</p>
               <p>Yo registro tu dominio, configuro el DNS y lo conecto a tu sitio web. Tú pagas la tarifa anual del registrador ($10–$20/año). Todo lo demás lo manejo yo.</p>
@@ -361,7 +391,7 @@
               <p class="service-price">Included</p>
               <p>I set up your hosting environment, connect your domain, configure SSL, and deploy your site. You pay the hosting provider ($5–$30/month). You keep full ownership of your hosting account.</p>
             </div>
-            <div lang-block data-lang="es" data-active="true">
+            <div lang-block data-lang="es">
               <h4>Configuración de Hosting</h4>
               <p class="service-price">Incluido</p>
               <p>Yo configuro tu entorno de hosting, conecto tu dominio, configuro SSL y despliego tu sitio. Tú pagas al proveedor de hosting ($5–$30/mes). Tú conservas la propiedad completa de tu cuenta de hosting.</p>
@@ -373,7 +403,7 @@
           <div lang-block data-lang="en">
             <h4 style="margin-bottom: 12px;">What I Manage vs. What You Pay</h4>
           </div>
-          <div lang-block data-lang="es" data-active="true">
+          <div lang-block data-lang="es">
             <h4 style="margin-bottom: 12px;">Qué Manejo Yo vs. Qué Pagas Tú</h4>
           </div>
 
@@ -383,7 +413,7 @@
                 <li>
                   <span class="checkmark">✓</span>
                   <span lang-block data-lang="en"><strong>I manage:</strong> Domain setup, DNS configuration, SSL/HTTPS, Hosting setup, Deployment, Technical admin access (unless full ownership is purchased)</span>
-                  <span lang-block data-lang="es" data-active="true"><strong>Yo manejo:</strong> Configuración del dominio, configuración de DNS, SSL/HTTPS, configuración de hosting, despliegue, acceso administrativo técnico (a menos que se compre la propiedad completa)</span>
+                  <span lang-block data-lang="es"><strong>Yo manejo:</strong> Configuración del dominio, configuración de DNS, SSL/HTTPS, configuración de hosting, despliegue, acceso administrativo técnico (a menos que se compre la propiedad completa)</span>
                 </li>
               </ul>
             </div>
@@ -392,7 +422,7 @@
                 <li>
                   <span class="checkmark">💳</span>
                   <span lang-block data-lang="en"><strong>You pay:</strong> Domain yearly fee, Hosting monthly fee</span>
-                  <span lang-block data-lang="es" data-active="true"><strong>Tú pagas:</strong> Tarifa anual del dominio, tarifa mensual de hosting</span>
+                  <span lang-block data-lang="es"><strong>Tú pagas:</strong> Tarifa anual del dominio, tarifa mensual de hosting</span>
                 </li>
               </ul>
             </div>
@@ -409,7 +439,7 @@
             <h3>Maintenance Plans</h3>
             <p>Keep your website secure, updated, and running — without lifting a finger.</p>
           </div>
-          <div lang-block data-lang="es" data-active="true">
+          <div lang-block data-lang="es">
             <h3>Planes de Mantenimiento</h3>
             <p>Mantén tu sitio web seguro, actualizado y funcionando — sin que tengas que hacer nada.</p>
           </div>
@@ -422,7 +452,7 @@
               <p class="service-price">$100–$300/month</p>
               <p>Includes: Security patches & uptime monitoring, monthly content updates, performance tuning, backups & restoration, priority fixes, broken-link checks, and technical support.</p>
             </div>
-            <div lang-block data-lang="es" data-active="true">
+            <div lang-block data-lang="es">
               <h4>Plan de Mantenimiento Mensual</h4>
               <p class="service-price">$100–$300/mes</p>
               <p>Incluye: Parches de seguridad y monitoreo de tiempo de actividad, actualizaciones de contenido mensuales, ajuste de rendimiento, copias de respaldo y restauración, correcciones prioritarias, verificación de enlaces rotos y soporte técnico.</p>
@@ -435,7 +465,7 @@
               <p class="service-price">$1,000–$2,500/year</p>
               <p>Everything in the monthly plan, plus: annual performance audit, annual SEO tune-up, and priority scheduling for major updates.</p>
             </div>
-            <div lang-block data-lang="es" data-active="true">
+            <div lang-block data-lang="es">
               <h4>Plan de Cuidado Anual</h4>
               <p class="service-price">$1,000–$2,500/año</p>
               <p>Todo lo incluido en el plan mensual, más: auditoría de rendimiento anual, ajuste anual de SEO y programación prioritaria para actualizaciones importantes.</p>
@@ -453,7 +483,7 @@
             <h3>Ownership & Admin Access</h3>
             <p>Your content. Your domain. My technical protection.</p>
           </div>
-          <div lang-block data-lang="es" data-active="true">
+          <div lang-block data-lang="es">
             <h3>Propiedad y Acceso de Administrador</h3>
             <p>Tu contenido. Tu dominio. Mi protección técnica.</p>
           </div>
@@ -463,7 +493,7 @@
           <div lang-block data-lang="en">
             <h4 style="margin-bottom: 12px;">Default Ownership (Included)</h4>
           </div>
-          <div lang-block data-lang="es" data-active="true">
+          <div lang-block data-lang="es">
             <h4 style="margin-bottom: 12px;">Propiedad por Defecto (Incluida)</h4>
           </div>
 
@@ -471,29 +501,29 @@
             <li>
               <span class="checkmark">✓</span>
               <span lang-block data-lang="en">You own your domain, content, and branding</span>
-              <span lang-block data-lang="es" data-active="true">Tú eres propietario de tu dominio, contenido y marca</span>
+              <span lang-block data-lang="es">Tú eres propietario de tu dominio, contenido y marca</span>
             </li>
             <li>
               <span class="checkmark">✓</span>
               <span lang-block data-lang="en">I manage technical admin access for stability & security</span>
-              <span lang-block data-lang="es" data-active="true">Yo manejo el acceso administrativo técnico para estabilidad y seguridad</span>
+              <span lang-block data-lang="es">Yo manejo el acceso administrativo técnico para estabilidad y seguridad</span>
             </li>
             <li>
               <span class="checkmark">✓</span>
               <span lang-block data-lang="en">You get full access for basic updates</span>
-              <span lang-block data-lang="es" data-active="true">Tú obtienes acceso completo para actualizaciones básicas</span>
+              <span lang-block data-lang="es">Tú obtienes acceso completo para actualizaciones básicas</span>
             </li>
             <li>
               <span class="checkmark">✓</span>
               <span lang-block data-lang="en">My developer credit stays in the footer</span>
-              <span lang-block data-lang="es" data-active="true">Mi crédito de desarrollador permanece en el pie de página</span>
+              <span lang-block data-lang="es">Mi crédito de desarrollador permanece en el pie de página</span>
             </li>
           </ul>
 
           <div lang-block data-lang="en">
             <p style="margin: 16px 0 8px; font-style: italic; opacity: 0.8;">This keeps your site stable, fast, and protected.</p>
           </div>
-          <div lang-block data-lang="es" data-active="true">
+          <div lang-block data-lang="es">
             <p style="margin: 16px 0 8px; font-style: italic; opacity: 0.8;">Esto mantiene tu sitio estable, rápido y protegido.</p>
           </div>
 
@@ -520,7 +550,7 @@
             </ul>
             <p style="margin-top: 12px; font-style: italic; opacity: 0.8;">Once transferred, you assume responsibility for updates and security unless you choose a maintenance plan.</p>
           </div>
-          <div lang-block data-lang="es" data-active="true" style="margin-top: 24px;">
+          <div lang-block data-lang="es" style="margin-top: 24px;">
             <h4 style="margin-bottom: 8px;">⭐ Actualización de Propiedad Completa (Opcional)</h4>
             <p class="service-price" style="margin-bottom: 8px;">+$300–$1,000 <span class="price-avg">dependiendo del tamaño del proyecto</span></p>
             <ul class="included-list">
@@ -554,7 +584,7 @@
           <div lang-block data-lang="en">
             <h3>FAQ — Straight Answers. No Jargon.</h3>
           </div>
-          <div lang-block data-lang="es" data-active="true">
+          <div lang-block data-lang="es">
             <h3>Preguntas Frecuentes — Respuestas directas. Sin jerga.</h3>
           </div>
         </div>
@@ -565,7 +595,7 @@
               <h4>Do you keep my website active every year?</h4>
               <p>Hosting and domain fees are paid directly to the provider. If you want me to keep everything updated and secure, join a Maintenance Plan.</p>
             </div>
-            <div lang-block data-lang="es" data-active="true">
+            <div lang-block data-lang="es">
               <h4>¿Mantienes mi sitio web activo cada año?</h4>
               <p>Las tarifas de hosting y dominio se pagan directamente al proveedor. Si quieres que yo mantenga todo actualizado y seguro, únete a un Plan de Mantenimiento.</p>
             </div>
@@ -576,7 +606,7 @@
               <h4>Can you make my site bilingual?</h4>
               <p>Yes — bilingual development (EN/ES) is one of my specialties.</p>
             </div>
-            <div lang-block data-lang="es" data-active="true">
+            <div lang-block data-lang="es">
               <h4>¿Puedes hacer mi sitio bilingüe?</h4>
               <p>Sí — el desarrollo bilingüe (EN/ES) es una de mis especialidades.</p>
             </div>
@@ -587,7 +617,7 @@
               <h4>Do you offer payment plans?</h4>
               <p>Yes — 50% upfront, 50% at launch. Large projects can use milestone payments.</p>
             </div>
-            <div lang-block data-lang="es" data-active="true">
+            <div lang-block data-lang="es">
               <h4>¿Ofreces planes de pago?</h4>
               <p>Sí — 50% por adelantado, 50% al lanzamiento. Los proyectos grandes pueden usar pagos por hitos.</p>
             </div>
@@ -598,7 +628,7 @@
               <h4>Will I be able to update the site myself?</h4>
               <p>Yes. You'll be trained on basic updates. For advanced changes, I offer maintenance or hourly updates.</p>
             </div>
-            <div lang-block data-lang="es" data-active="true">
+            <div lang-block data-lang="es">
               <h4>¿Podré actualizar el sitio yo mismo?</h4>
               <p>Sí. Te capacitaré en actualizaciones básicas. Para cambios avanzados, ofrezco mantenimiento o actualizaciones por hora.</p>
             </div>
@@ -613,7 +643,7 @@
           <div lang-block data-lang="en">
             <h3>Important Notes</h3>
           </div>
-          <div lang-block data-lang="es" data-active="true">
+          <div lang-block data-lang="es">
             <h3>Notas Importantes</h3>
           </div>
         </div>
@@ -623,27 +653,27 @@
             <li>
               <span class="arrow">▸</span>
               <span lang-block data-lang="en">Prices are estimates and may vary based on specific requirements</span>
-              <span lang-block data-lang="es" data-active="true">Los precios son estimados y pueden variar según los requisitos específicos</span>
+              <span lang-block data-lang="es">Los precios son estimados y pueden variar según los requisitos específicos</span>
             </li>
             <li>
               <span class="arrow">▸</span>
               <span lang-block data-lang="en">Domain registration ($10–$20/year) and hosting ($5–$30/month) are separate</span>
-              <span lang-block data-lang="es" data-active="true">El registro de dominio ($10–$20/año) y el hosting ($5–$30/mes) son separados</span>
+              <span lang-block data-lang="es">El registro de dominio ($10–$20/año) y el hosting ($5–$30/mes) son separados</span>
             </li>
             <li>
               <span class="arrow">▸</span>
               <span lang-block data-lang="en">All prices are in USD</span>
-              <span lang-block data-lang="es" data-active="true">Todos los precios están en USD</span>
+              <span lang-block data-lang="es">Todos los precios están en USD</span>
             </li>
             <li>
               <span class="arrow">▸</span>
               <span lang-block data-lang="en">Custom features and third-party integrations may incur additional costs</span>
-              <span lang-block data-lang="es" data-active="true">Funciones personalizadas e integraciones de terceros pueden incurrir en costos adicionales</span>
+              <span lang-block data-lang="es">Funciones personalizadas e integraciones de terceros pueden incurrir en costos adicionales</span>
             </li>
             <li>
               <span class="arrow">▸</span>
               <span lang-block data-lang="en">Rush projects (less than 2 weeks) may have a 25% surcharge</span>
-              <span lang-block data-lang="es" data-active="true">Proyectos urgentes (menos de 2 semanas) pueden tener un recargo del 25%</span>
+              <span lang-block data-lang="es">Proyectos urgentes (menos de 2 semanas) pueden tener un recargo del 25%</span>
             </li>
           </ul>
         </div>
@@ -656,7 +686,7 @@
           <div lang-block data-lang="en">
             <h3>Why People Choose Me</h3>
           </div>
-          <div lang-block data-lang="es" data-active="true">
+          <div lang-block data-lang="es">
             <h3>Por Qué la Gente Me Elige</h3>
           </div>
         </div>
@@ -666,37 +696,37 @@
             <li>
               <span class="arrow">▸</span>
               <span lang-block data-lang="en">I build everything <strong>from scratch</strong>, not with cheap templates</span>
-              <span lang-block data-lang="es" data-active="true">Construyo todo <strong>desde cero</strong>, no uso plantillas baratas</span>
+              <span lang-block data-lang="es">Construyo todo <strong>desde cero</strong>, no uso plantillas baratas</span>
             </li>
             <li>
               <span class="arrow">▸</span>
               <span lang-block data-lang="en">Your site will be <strong>fast</strong>, <strong>clean</strong>, and <strong>easy to use</strong></span>
-              <span lang-block data-lang="es" data-active="true">Tu sitio será <strong>rápido</strong>, <strong>limpio</strong> y <strong>fácil de usar</strong></span>
+              <span lang-block data-lang="es">Tu sitio será <strong>rápido</strong>, <strong>limpio</strong> y <strong>fácil de usar</strong></span>
             </li>
             <li>
               <span class="arrow">▸</span>
               <span lang-block data-lang="en">I make it <strong>bilingual</strong> so you reach more customers</span>
-              <span lang-block data-lang="es" data-active="true">Lo hago <strong>bilingüe</strong> para que llegues a más clientes</span>
+              <span lang-block data-lang="es">Lo hago <strong>bilingüe</strong> para que llegues a más clientes</span>
             </li>
             <li>
               <span class="arrow">▸</span>
               <span lang-block data-lang="en">I explain everything in <strong>simple language</strong></span>
-              <span lang-block data-lang="es" data-active="true">Explico todo en <strong>palabras sencillas</strong></span>
+              <span lang-block data-lang="es">Explico todo en <strong>palabras sencillas</strong></span>
             </li>
             <li>
               <span class="arrow">▸</span>
               <span lang-block data-lang="en">I help small businesses get online <strong>without breaking the bank</strong></span>
-              <span lang-block data-lang="es" data-active="true">Ayudo a negocios pequeños a estar en línea <strong>sin gastar demasiado</strong></span>
+              <span lang-block data-lang="es">Ayudo a negocios pequeños a estar en línea <strong>sin gastar demasiado</strong></span>
             </li>
             <li>
               <span class="arrow">▸</span>
               <span lang-block data-lang="en">You <strong>own your content and domain</strong></span>
-              <span lang-block data-lang="es" data-active="true">Tú eres <strong>propietario de tu contenido y dominio</strong></span>
+              <span lang-block data-lang="es">Tú eres <strong>propietario de tu contenido y dominio</strong></span>
             </li>
             <li>
               <span class="arrow">▸</span>
               <span lang-block data-lang="en">I <strong>protect your site's stability and security</strong></span>
-              <span lang-block data-lang="es" data-active="true">Yo <strong>protejo la estabilidad y seguridad de tu sitio</strong></span>
+              <span lang-block data-lang="es">Yo <strong>protejo la estabilidad y seguridad de tu sitio</strong></span>
             </li>
           </ul>
         </div>
@@ -739,7 +769,7 @@
           </div>
         </div>
 
-        <div data-lang="es" lang-block data-active="true">
+        <div data-lang="es" lang-block>
           <h3>Contacto</h3>
           <div class="contact-card">
             <p class="contact-intro">¿Tienes un proyecto o necesitas asesoría bilingüe? Puedes escribir en inglés o español; respondo en ambos idiomas.</p>
@@ -780,23 +810,23 @@
     <div class="container">
       <p>
         <span lang-block data-lang="en">David Quintana Dev is a registered trade name of Servicios Quintana LLC.</span>
-        <span lang-block data-lang="es" data-active="true">David Quintana Dev es un nombre comercial registrado de Servicios Quintana LLC.</span>
+        <span lang-block data-lang="es">David Quintana Dev es un nombre comercial registrado de Servicios Quintana LLC.</span>
       </p>
 
       <p class="legal-notice">
         <span lang-block data-lang="en">Mandatory Disclosure: I am not an attorney licensed to practice law in the State of Colorado and I may not give legal advice or accept fees for legal advice.</span>
-        <span lang-block data-lang="es" data-active="true">Aviso Obligatorio: No soy un abogado licenciado para ejercer el derecho en el Estado de Colorado y no puedo dar asesoría legal ni aceptar honorarios por asesoría legal.</span>
+        <span lang-block data-lang="es">Aviso Obligatorio: No soy un abogado licenciado para ejercer el derecho en el Estado de Colorado y no puedo dar asesoría legal ni aceptar honorarios por asesoría legal.</span>
       </p>
 
       <p>
         <span lang-block data-lang="en">© 2026 Servicios Quintana LLC. All Rights Reserved.</span>
-        <span lang-block data-lang="es" data-active="true">© 2026 Servicios Quintana LLC. Todos los derechos reservados.</span>
+        <span lang-block data-lang="es">© 2026 Servicios Quintana LLC. Todos los derechos reservados.</span>
       </p>
 
       <p class="footer-links">
         <a href="index.html">
           <span lang-block data-lang="en">Back to Portfolio</span>
-          <span lang-block data-lang="es" data-active="true">Volver al Portafolio</span>
+          <span lang-block data-lang="es">Volver al Portafolio</span>
         </a>
       </p>
     </div>
