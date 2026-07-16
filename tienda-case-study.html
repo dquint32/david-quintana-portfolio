@@ -7,7 +7,27 @@
   <meta name="description" content="Case study: Tienda — modernizing local commerce with a bilingual interface, inventory management, and a streamlined mobile shopping experience.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#0B0C10">
+
+  <!-- Pre-paint: apply saved theme + language BEFORE first paint (no FOUC / no layout shift) -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('preferred-theme');
+        if (!t) {
+          t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        document.documentElement.setAttribute('data-theme', t);
+        var l = localStorage.getItem('preferred-language');
+        if (l) {
+          document.documentElement.setAttribute('data-language', l);
+          document.documentElement.setAttribute('lang', l);
+        }
+      } catch (e) { /* localStorage unavailable — fall back to defaults */ }
+    })();
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="tienda-case-study-images.css">
 </head>
@@ -18,7 +38,17 @@
     <div class="bg-logo">DMQ</div>
   </div>
 
-  <button class="floating-toggle" type="button" aria-label="Toggle language">
+  <button class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="false">
+    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </svg>
+    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"></circle>
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+    </svg>
+  </button>
+
+  <button class="floating-toggle" type="button" aria-label="Switch to Spanish" aria-pressed="false">
     <span data-lang="en">EN</span>
     <span data-lang="es" class="inactive">ES</span>
   </button>
@@ -41,25 +71,25 @@
         <ul>
           <li>
             <a href="index.html">
-              <span lang-block data-lang="en" data-active="true">Home</span>
+              <span lang-block data-lang="en">Home</span>
               <span lang-block data-lang="es">Inicio</span>
             </a>
           </li>
           <li>
             <a href="index.html#projects">
-              <span lang-block data-lang="en" data-active="true">HCIS Portfolio</span>
+              <span lang-block data-lang="en">HCIS Portfolio</span>
               <span lang-block data-lang="es">Portafolio HCIS</span>
             </a>
           </li>
           <li>
             <a href="pricing.html">
-              <span lang-block data-lang="en" data-active="true">Pricing</span>
+              <span lang-block data-lang="en">Pricing</span>
               <span lang-block data-lang="es">Precios</span>
             </a>
           </li>
           <li>
             <a href="#contact" class="cta">
-              <span lang-block data-lang="en" data-active="true">Contact</span>
+              <span lang-block data-lang="en">Contact</span>
               <span lang-block data-lang="es">Contacto</span>
             </a>
           </li>
@@ -72,7 +102,7 @@
     <section class="case-study-hero section-spacing">
       <div class="container">
         <div class="case-hero-content">
-          <div lang-block data-lang="en" data-active="true">
+          <div lang-block data-lang="en">
             <h2>Tienda Case Study<br />Modernizing Community Commerce</h2>
             <p class="lead">Exploring how a bilingual digital marketplace connects local vendors with their community through intuitive UX and streamlined inventory management.</p>
             <div class="hero-cta-group">
@@ -102,7 +132,7 @@
                 <h2>Tienda Salvadorea<br>Digital Preservation of a 30-Year Legacy</h2>
                 <p class="lead">A comprehensive case study exploring the technical architecture, design decisions, and cultural impact of Denver's oldest Salvadoran grocery store website.</p>
               </div>
-              <div lang-block data-lang="es" data-active="true">
+              <div lang-block data-lang="es">
                 <h2>Tienda Salvadorea<br>Preservación Digital de un Legado de 30 Años</h2>
                 <p class="lead">Un caso de estudio exhaustivo que explora la arquitectura técnica, las decisiones de diseño y el impacto cultural del sitio web de la tienda de comestibles salvadorea más antigua de Denver.</p>
               </div>
@@ -129,7 +159,7 @@
               </div>
             </div>
 
-            <div lang-block data-lang="es" data-active="true" class="meta-group-wrapper">
+            <div lang-block data-lang="es" class="meta-group-wrapper">
               <div class="meta-group">
                 <span class="meta-label">Mi Rol</span>
                 <span class="meta-value">Desarrollador Principal, Diseñador UI, Ing. de Accesibilidad</span>
@@ -163,7 +193,7 @@
                 </div>
               </div>
             </div>
-            <div lang-block data-lang="es" data-active="true">
+            <div lang-block data-lang="es">
               <h3>Descripción del Proyecto</h3>
               <div class="two-col-text">
                 <div>
@@ -193,7 +223,7 @@
                 <figcaption class="img-caption">Full homepage design showing integrated bilingual layout - click to zoom</figcaption>
               </figure>
             </div>
-            <div lang-block data-lang="es" data-active="true">
+            <div lang-block data-lang="es">
               <h3>Diseño Completo de la Página Principal</h3>
               <p class="feature-intro">La página principal combina contenido bilingüe, imágenes culturales y navegación intuitiva para crear una experiencia digital acogedora que refleja el legado de 30+ años de la tienda en la comunidad hispana de Denver.</p>
               <figure class="tienda-full-width-container">
@@ -240,17 +270,17 @@
                 <figure class="tienda-comparison-container">
                   <img src="tienda-language-spanish.png" alt="Website in Spanish" class="comparison-img clickable-img tienda-language-screenshot">
                   <figcaption class="img-caption lang-block" data-lang="en">Spanish Version - click to zoom</figcaption>
-                  <figcaption class="img-caption lang-block" data-lang="es" data-active="true">Versión en Español - clic para ampliar</figcaption>
+                  <figcaption class="img-caption lang-block" data-lang="es">Versión en Español - clic para ampliar</figcaption>
                 </figure>
                 <figure class="tienda-comparison-container">
                   <img src="tienda-language-english.png" alt="Website in English" class="comparison-img clickable-img tienda-language-screenshot">
                   <figcaption class="img-caption lang-block" data-lang="en">English Version - click to zoom</figcaption>
-                  <figcaption class="img-caption lang-block" data-lang="es" data-active="true">Versión en Inglés - clic para ampliar</figcaption>
+                  <figcaption class="img-caption lang-block" data-lang="es">Versión en Inglés - clic para ampliar</figcaption>
                 </figure>
               </div>
             </div>
 
-            <div lang-block data-lang="es" data-active="true">
+            <div lang-block data-lang="es">
               <h3>Motor de Traducción Personalizado (500+ Claves)</h3>
               <p class="feature-intro">Construí un sistema de traducción bilingüe completo utilizando JavaScript puro sin librerías externas. El sistema gestiona más de 500 claves de traducción en 6 páginas y persiste la preferencia de idioma usando localStorage.</p>
               <div class="tienda-feature-grid">
@@ -280,12 +310,12 @@
                 <figure class="tienda-comparison-container">
                   <img src="tienda-language-spanish.png" alt="Website in Spanish" class="comparison-img clickable-img tienda-language-screenshot">
                   <figcaption class="img-caption lang-block" data-lang="en">Spanish Version - click to zoom</figcaption>
-                  <figcaption class="img-caption lang-block" data-lang="es" data-active="true">Versión en Español - clic para ampliar</figcaption>
+                  <figcaption class="img-caption lang-block" data-lang="es">Versión en Español - clic para ampliar</figcaption>
                 </figure>
                 <figure class="tienda-comparison-container">
                   <img src="tienda-language-english.png" alt="Website in English" class="comparison-img clickable-img tienda-language-screenshot">
                   <figcaption class="img-caption lang-block" data-lang="en">English Version - click to zoom</figcaption>
-                  <figcaption class="img-caption lang-block" data-lang="es" data-active="true">Versión en Inglés - clic para ampliar</figcaption>
+                  <figcaption class="img-caption lang-block" data-lang="es">Versión en Inglés - clic para ampliar</figcaption>
                 </figure>
               </div>
             </div>
@@ -306,7 +336,7 @@
                 <figcaption class="img-caption">HTML structure with lang-block implementation - click to zoom</figcaption>
               </figure>
             </div>
-            <div lang-block data-lang="es" data-active="true">
+            <div lang-block data-lang="es">
               <h3>Estructura HTML Bilingüe</h3>
               <p class="feature-intro">La arquitectura HTML utiliza contenedores lang-block semánticos para gestionar ambas versiones de idioma simultáneamente. Cada sección mantiene una estructura DOM idéntica con atributos de datos de idioma separados, permitiendo cambios instantáneos sin recargas de página.</p>
               <figure class="tienda-feature-image-container">
@@ -365,7 +395,7 @@
               </div>
             </div>
 
-            <div lang-block data-lang="es" data-active="true">
+            <div lang-block data-lang="es">
               <h3>Sistema de Cuadrícula CSS Adaptable</h3>
               <div class="tienda-feature-grid">
                 <div class="feature-content">
@@ -425,7 +455,7 @@
                 <figcaption class="img-caption">Official color palette with hex values - click to zoom</figcaption>
               </figure>
             </div>
-            <div lang-block data-lang="es" data-active="true">
+            <div lang-block data-lang="es">
               <h3>Sistema de Diseño y Paleta de Colores</h3>
               <p class="feature-intro">Una paleta de colores cuidadosamente seleccionada inspirada en la bandera salvadoreña—con azul cobalto, amarillo tangerina y verde Lincoln—crea una identidad visual cohesiva que celebra la herencia cultural mientras mantiene estándares modernos de accesibilidad.</p>
               <figure class="tienda-feature-image-container">
@@ -462,7 +492,7 @@
               </div>
             </div>
 
-            <div lang-block data-lang="es" data-active="true">
+            <div lang-block data-lang="es">
               <h3>Galería de Imágenes Interactiva y Filtrado de Productos</h3>
               <div class="tienda-feature-grid">
                 <div class="feature-content">
@@ -498,7 +528,7 @@
                 <figcaption class="img-caption">Full-screen image modal with close button - click to zoom</figcaption>
               </figure>
             </div>
-            <div lang-block data-lang="es" data-active="true">
+            <div lang-block data-lang="es">
               <h3>Modal de Zoom de Imagen y Lightbox</h3>
               <p class="feature-intro">Un modal lightbox completamente accesible permite a los usuarios ver imágenes de productos y fotos de galería en resolución completa. La implementación incluye navegación por teclado, gestión del enfoque y animaciones suaves para una mejor experiencia de usuario.</p>
               <figure class="tienda-feature-image-container">
@@ -523,7 +553,7 @@
                 <figcaption class="img-caption">Location map with integrated contact details - click to zoom</figcaption>
               </figure>
             </div>
-            <div lang-block data-lang="es" data-active="true">
+            <div lang-block data-lang="es">
               <h3>Integración de Mapa de Contacto y Ubicación</h3>
               <p class="feature-intro">Un mapa de Google integrado muestra la ubicación exacta de Tienda Salvadorea con indicaciones, horario comercial e información de contacto. La página de contacto proporciona múltiples canales de comunicación incluidos teléfono, correo electrónico, WhatsApp y Facebook para comodidad de los clientes.</p>
               <figure class="tienda-feature-image-container">
@@ -546,7 +576,7 @@
                 <figcaption class="img-caption">Featured media mentions and press coverage - click to zoom</figcaption>
               </figure>
             </div>
-            <div lang-block data-lang="es" data-active="true">
+            <div lang-block data-lang="es">
               <h3>Cobertura de Prensa y Reconocimiento Comunitario</h3>
               <p class="feature-intro">Tienda Salvadorea ha sido presentada en destacados medios de comunicación de Denver incluyendo El Diario El Salvadoreno, Denverite y publicaciones de periodismo local. El sitio web documenta esta presencia mediática, mostrando la importancia de la tienda como ancla cultural en la comunidad hispana de Denver.</p>
               <figure class="tienda-feature-image-container">
@@ -567,7 +597,7 @@
               <h3>Engineering Challenges & Solutions</h3>
               <p class="feature-intro">Overcoming constraints to deliver a high-performance application.</p>
             </div>
-            <div lang-block data-lang="es" data-active="true">
+            <div lang-block data-lang="es">
               <h3>Desafíos de Ingeniería y Soluciones</h3>
               <p class="feature-intro">Superando restricciones para entregar una aplicación de alto rendimiento.</p>
             </div>
@@ -587,7 +617,7 @@
                     <p><strong>Custom Observer Pattern</strong><br>Architected a lightweight vanilla JS state engine that hot-swaps text content and ARIA labels instantly without reloads.</p>
                   </div>
                 </div>
-                <div lang-block data-lang="es" data-active="true">
+                <div lang-block data-lang="es">
                   <div class="ch-block ch-problem">
                     <span class="ch-icon">⚠️</span>
                     <h4>Desafío</h4>
@@ -614,7 +644,7 @@
                     <p><strong>Focus Management Logic</strong><br>Implemented a JS focus trap that cycles tab index strictly within open modals and restores focus on close.</p>
                   </div>
                 </div>
-                <div lang-block data-lang="es" data-active="true">
+                <div lang-block data-lang="es">
                   <div class="ch-block ch-problem">
                     <span class="ch-icon">⚠️</span>
                     <h4>Desafío</h4>
@@ -641,7 +671,7 @@
                     <p><strong>Semantic Structure</strong><br>Utilized distinct <code>lang</code> attributes and semantic HTML5 to ensure crawlers understand context changes.</p>
                   </div>
                 </div>
-                <div lang-block data-lang="es" data-active="true">
+                <div lang-block data-lang="es">
                   <div class="ch-block ch-problem">
                     <span class="ch-icon">⚠️</span>
                     <h4>Desafío</h4>
@@ -693,7 +723,7 @@
               </div>
             </div>
 
-            <div lang-block data-lang="es" data-active="true">
+            <div lang-block data-lang="es">
               <h3>Impacto y Resultados Cuantitativos</h3>
               <div class="results-grid">
                 <div class="result-card">
@@ -770,7 +800,7 @@
             </div>
           </div>
 
-          <div data-lang="es" lang-block data-active="true">
+          <div data-lang="es" lang-block>
             <h3>Contacto</h3>
             <div class="contact-card">
               <p class="contact-intro">¿Tienes un proyecto o necesitas asesoría bilingüe? Puedes escribir en inglés o español; respondo en ambos idiomas.</p>
@@ -820,16 +850,16 @@
   <footer class="portfolio-footer site-footer">
     <div class="container">
       <p>
-        <span lang-block data-lang="en" data-active="true">David Quintana Dev is a registered trade name of Servicios Quintana LLC.</span>
+        <span lang-block data-lang="en">David Quintana Dev is a registered trade name of Servicios Quintana LLC.</span>
         <span lang-block data-lang="es">David Quintana Dev es un nombre comercial registrado de Servicios Quintana LLC.</span>
       </p>
       <p class="legal-notice">
-        <span lang-block data-lang="en" data-active="true">Mandatory Disclosure: I am not an attorney licensed to practice law in the State of Colorado and I may not give legal advice or accept fees for legal advice.</span>
+        <span lang-block data-lang="en">Mandatory Disclosure: I am not an attorney licensed to practice law in the State of Colorado and I may not give legal advice or accept fees for legal advice.</span>
         <span lang-block data-lang="es">Aviso Obligatorio: No soy un abogado licenciado para ejercer el derecho en el Estado de Colorado y no puedo dar asesoría legal ni aceptar honorarios por asesoría legal.</span>
       </p>
       <p>
-        <span lang-block data-lang="en" data-active="true">&copy; 2026 Servicios Quintana LLC. All Rights Reserved.</span>
-        <span lang-block data-lang="es" data-active="true">&copy; 2026 Servicios Quintana LLC. Todos los derechos reservados.</span>
+        <span lang-block data-lang="en">&copy; 2026 Servicios Quintana LLC. All Rights Reserved.</span>
+        <span lang-block data-lang="es">&copy; 2026 Servicios Quintana LLC. Todos los derechos reservados.</span>
       </p>
     </div>
   </footer>
