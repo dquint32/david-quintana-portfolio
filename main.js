@@ -1,344 +1,396 @@
-/* ============================================================
-   DAVID QUINTANA — PORTFOLIO INTERACTIVE LAYER
-   Vanilla ES6+, IIFE-scoped, no dependencies.
-   ------------------------------------------------------------
-   Modules:
-     - Theme engine (light/dark, persisted, flicker-free)
-     - i18n engine (EN/ES, persisted, syncs <html lang>)
-     - Accessible lightbox (focus trap + restore)
-     - Scroll reveal (IntersectionObserver)
-     - Consolidated, rAF-throttled scroll handling
-     - Smooth in-page scroll, back-to-top, footer year
-   Note: a tiny pre-paint snippet in each page's <head> applies
-   the saved theme/language BEFORE first paint to avoid FOUC.
-   This file then wires up the interactive behavior.
-   ============================================================ */
+/* ============================================
+   DAVID QUINTANA PORTFOLIO
+   Enhanced JavaScript with Cyber-Minimalist Features
+   ============================================ */
 
-(function () {
-  'use strict';
+(function() {
+'use strict';
 
-  const root = document.documentElement;
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ============================================
+   LANGUAGE TOGGLE
+   ============================================ */
+function initLanguageToggle() {
+  const toggle = document.querySelector('.floating-toggle');
   const body = document.body;
-  const prefersReducedMotion =
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  
+  if (!toggle) return;
 
-  const LANG_KEY = 'preferred-language';
-  const THEME_KEY = 'preferred-theme';
+  const switchLanguage = (lang) => {
+    const root = document.documentElement;
 
-  /* ============================================================
-     THEME ENGINE
-     ============================================================ */
-  function getStoredTheme() {
-    try { return localStorage.getItem(THEME_KEY); } catch (e) { return null; }
-  }
-  function storeTheme(theme) {
-    try { localStorage.setItem(THEME_KEY, theme); } catch (e) { /* private mode */ }
-  }
+    // Root-level language state — CSS shows the matching [lang-block] elements.
+    root.setAttribute('data-language', lang);
+    root.setAttribute('lang', lang); // WCAG 3.1.1/3.1.2: keep page language accurate
+    body.setAttribute('data-language', lang);
 
-  function applyTheme(theme, toggleBtn) {
+    // Update toggle button UI + expose state to assistive tech
+    const spans = toggle.querySelectorAll('span[data-lang]');
+    spans.forEach(span => {
+      span.classList.toggle('inactive', span.getAttribute('data-lang') !== lang);
+    });
+    toggle.setAttribute('aria-pressed', String(lang === 'es'));
+
+    // Persist preference (read back by the pre-paint script on next load)
+    localStorage.setItem('preferred-language', lang);
+  };
+
+  // Click event
+  toggle.addEventListener('click', () => {
+    const currentLang = body.getAttribute('data-language') || 'en';
+    const newLang = currentLang === 'en' ? 'es' : 'en';
+    switchLanguage(newLang);
+  });
+
+  // Initialize with saved preference or default to English
+  const savedLang = localStorage.getItem('preferred-language') || 'en';
+  switchLanguage(savedLang);
+}
+
+/* ============================================
+   THEME TOGGLE (dark/light · root attribute · pre-paint friendly)
+   ============================================ */
+function initThemeToggle() {
+  const root = document.documentElement;
+  const btn = document.querySelector('.theme-toggle');
+
+  const apply = (theme) => {
     root.setAttribute('data-theme', theme);
-    if (toggleBtn) {
+    if (btn) {
       const isLight = theme === 'light';
-      toggleBtn.setAttribute('aria-pressed', String(isLight));
-      toggleBtn.setAttribute(
-        'aria-label',
-        isLight ? 'Switch to dark mode' : 'Switch to light mode'
-      );
+      btn.setAttribute('aria-pressed', String(isLight));
+      btn.setAttribute('aria-label', isLight ? 'Switch to dark theme' : 'Switch to light theme');
     }
-  }
+  };
 
-  function initThemeToggle() {
-    const toggleBtn = document.querySelector('.theme-toggle');
+  // Honor the value the pre-paint snippet set, else stored pref, else dark.
+  let theme = root.getAttribute('data-theme');
+  if (!theme) { try { theme = localStorage.getItem('preferred-theme'); } catch (e) {} }
+  apply(theme || 'dark');
 
-    // Resolve the initial theme: stored > OS preference > dark default.
-    // (The pre-paint snippet may already have set data-theme; honor it.)
-    let theme = root.getAttribute('data-theme') || getStoredTheme();
-    if (!theme) {
-      theme = window.matchMedia('(prefers-color-scheme: light)').matches
-        ? 'light'
-        : 'dark';
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    apply(next);
+    try { localStorage.setItem('preferred-theme', next); } catch (e) {}
+  });
+}
+
+/* ============================================
+   LIGHTBOX MODAL - Enhanced Version
+   ============================================ */
+function initLightbox() {
+  const modal = document.getElementById('lightbox-modal');
+  const modalImg = document.getElementById('lightbox-img');
+  const captionText = document.getElementById('lightbox-caption');
+  const closeBtn = document.querySelector('.lightbox-close');
+
+  if (!modal || !modalImg || !closeBtn) return;
+
+  // Get all clickable images
+  const clickableImages = document.querySelectorAll('.clickable-img');
+
+  // Open lightbox
+  function openLightbox(img) {
+    modal.style.display = 'flex';
+    modalImg.src = img.src;
+    modalImg.alt = img.alt;
+    
+    if (captionText) {
+      captionText.textContent = img.alt || 'Project Screenshot';
     }
-    applyTheme(theme, toggleBtn);
-
-    // Enable smooth color transitions only AFTER first paint,
-    // so the initial theme never animates in.
-    requestAnimationFrame(() => root.classList.add('theme-ready'));
-
-    if (!toggleBtn) return;
-    toggleBtn.addEventListener('click', () => {
-      const next =
-        root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-      applyTheme(next, toggleBtn);
-      storeTheme(next);
-    });
-  }
-
-  /* ============================================================
-     i18n ENGINE (EN / ES)
-     ============================================================ */
-  function getStoredLang() {
-    try { return localStorage.getItem(LANG_KEY); } catch (e) { return null; }
-  }
-  function storeLang(lang) {
-    try { localStorage.setItem(LANG_KEY, lang); } catch (e) { /* private mode */ }
-  }
-
-  function initLanguageToggle() {
-    const toggle = document.querySelector('.floating-toggle');
-    if (!toggle) return;
-
-    const langBlocks = document.querySelectorAll('[lang-block]');
-    const toggleSpans = toggle.querySelectorAll('span[data-lang]');
-
-    const switchLanguage = (lang) => {
-      // 1. Reflect on <html> + <body>. Setting html[data-language] keeps the
-      //    flicker-free CSS mechanism in sync; setting <html lang> is required
-      //    for correct screen-reader pronunciation (WCAG 3.1.1/3.1.2).
-      root.setAttribute('data-language', lang);
-      root.setAttribute('lang', lang);
-      body.setAttribute('data-language', lang);
-
-      // 2. Show/hide the matching language blocks.
-      langBlocks.forEach((el) => {
-        el.setAttribute(
-          'data-active',
-          el.getAttribute('data-lang') === lang ? 'true' : 'false'
-        );
-      });
-
-      // 3. Update the toggle's own visual state.
-      toggleSpans.forEach((span) => {
-        span.classList.toggle(
-          'inactive',
-          span.getAttribute('data-lang') !== lang
-        );
-      });
-
-      // 4. Expose state to assistive tech + persist.
-      toggle.setAttribute('aria-pressed', String(lang === 'es'));
-      toggle.setAttribute(
-        'aria-label',
-        lang === 'es' ? 'Cambiar a inglés' : 'Switch to Spanish'
-      );
-      storeLang(lang);
-    };
-
-    toggle.addEventListener('click', () => {
-      const current = body.getAttribute('data-language') || 'en';
-      switchLanguage(current === 'en' ? 'es' : 'en');
+    
+    // Trigger animation
+    requestAnimationFrame(() => {
+      modal.classList.add('active');
     });
 
-    // Initialize from storage (pre-paint may already have set it).
-    switchLanguage(getStoredLang() || body.getAttribute('data-language') || 'en');
+    // Prevent body scroll
+    document.body.style.overflow = 'hidden';
   }
 
-  /* ============================================================
-     ACCESSIBLE LIGHTBOX
-     ============================================================ */
-  function initLightbox() {
-    const modal = document.getElementById('lightbox-modal');
-    const modalImg = document.getElementById('lightbox-img');
-    const caption = document.getElementById('lightbox-caption');
-    const closeBtn = modal && modal.querySelector('.lightbox-close');
-    if (!modal || !modalImg || !closeBtn) return;
+  // Close lightbox
+  function closeLightbox() {
+    modal.classList.remove('active');
+    
+    setTimeout(() => {
+      modal.style.display = 'none';
+      modalImg.src = '';
+      document.body.style.overflow = '';
+    }, 300);
+  }
 
-    const images = Array.from(document.querySelectorAll('.clickable-img'));
-    if (!images.length) return;
-
-    let lastFocused = null;
-    let currentIndex = -1;
-
-    modal.setAttribute('role', 'dialog');
-    modal.setAttribute('aria-modal', 'true');
-    modal.setAttribute('aria-label', 'Image viewer');
-
-    const show = (index) => {
-      const img = images[index];
-      if (!img) return;
-      currentIndex = index;
-      modalImg.src = img.src;
-      modalImg.alt = img.alt || '';
-      if (caption) caption.textContent = img.alt || 'Project screenshot';
-    };
-
-    const open = (index, trigger) => {
-      lastFocused = trigger || document.activeElement;
-      show(index);
-      modal.style.display = 'flex';
-      requestAnimationFrame(() => modal.classList.add('active'));
-      body.style.overflow = 'hidden';
-      closeBtn.focus();
-    };
-
-    const close = () => {
-      modal.classList.remove('active');
-      const finish = () => {
-        modal.style.display = 'none';
-        modalImg.src = '';
-        body.style.overflow = '';
-        if (lastFocused && typeof lastFocused.focus === 'function') {
-          lastFocused.focus();
-        }
-      };
-      if (prefersReducedMotion) finish();
-      else setTimeout(finish, 240);
-    };
-
-    images.forEach((img, i) => {
-      img.setAttribute('role', 'button');
-      img.setAttribute('tabindex', '0');
-      img.addEventListener('click', () => open(i, img));
-      img.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          open(i, img);
-        }
-      });
+  // Add click listeners to all clickable images
+  clickableImages.forEach(img => {
+    img.addEventListener('click', () => {
+      openLightbox(img);
     });
+  });
 
-    closeBtn.addEventListener('click', close);
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) close();
-    });
+  // Close button
+  closeBtn.addEventListener('click', closeLightbox);
 
-    // Keyboard: Esc closes, arrows navigate, Tab is trapped on the close button.
-    modal.addEventListener('keydown', (e) => {
-      if (!modal.classList.contains('active')) return;
-      if (e.key === 'Escape') {
-        close();
-      } else if (e.key === 'ArrowRight' && currentIndex < images.length - 1) {
-        show(currentIndex + 1);
-      } else if (e.key === 'ArrowLeft' && currentIndex > 0) {
-        show(currentIndex - 1);
-      } else if (e.key === 'Tab') {
-        e.preventDefault();
-        closeBtn.focus();
+  // Click outside image to close
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeLightbox();
+    }
+  });
+
+  // Escape key to close
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeLightbox();
+    }
+  });
+
+  // Arrow keys for navigation (if multiple images)
+  document.addEventListener('keydown', (e) => {
+    if (!modal.classList.contains('active')) return;
+
+    const currentImg = modalImg.src;
+    const allImages = Array.from(clickableImages);
+    const currentIndex = allImages.findIndex(img => img.src === currentImg);
+
+    if (e.key === 'ArrowRight' && currentIndex < allImages.length - 1) {
+      openLightbox(allImages[currentIndex + 1]);
+    } else if (e.key === 'ArrowLeft' && currentIndex > 0) {
+      openLightbox(allImages[currentIndex - 1]);
+    }
+  });
+}
+
+/* ============================================
+   SCROLL REVEAL ANIMATIONS
+   ============================================ */
+function initScrollReveal() {
+  if (prefersReducedMotion) return;
+
+  const revealElements = document.querySelectorAll(`
+    .project-card,
+    .skill-detail-card,
+    .service-card
+  `);
+
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px 0px -100px 0px',
+    threshold: 0.1
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
       }
     });
-  }
+  }, observerOptions);
 
-  /* ============================================================
-     SCROLL REVEAL
-     ============================================================ */
-  function initScrollReveal() {
-    const targets = document.querySelectorAll(
-      '.project-card, .skill-detail-card, .service-card, .content-block'
-    );
-    if (!targets.length) return;
+  revealElements.forEach((el, index) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+    observer.observe(el);
+  });
+}
 
-    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
-      targets.forEach((el) => el.classList.add('reveal', 'is-visible'));
-      return;
-    }
+/* ============================================
+   SMOOTH SCROLL FOR ANCHOR LINKS
+   ============================================ */
+function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (!href || href === '#') return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { rootMargin: '0px 0px -80px 0px', threshold: 0.08 }
-    );
-
-    targets.forEach((el, i) => {
-      el.classList.add('reveal');
-      el.style.transitionDelay = Math.min(i * 60, 300) + 'ms';
-      observer.observe(el);
-    });
-  }
-
-  /* ============================================================
-     SMOOTH IN-PAGE SCROLL
-     ============================================================ */
-  function initSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-      anchor.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        if (!href || href === '#') return;
-        const target = document.querySelector(href);
-        if (!target) return;
+      const target = document.querySelector(href);
+      if (target) {
         e.preventDefault();
-        const top =
-          target.getBoundingClientRect().top + window.pageYOffset - 80;
+        const headerOffset = 80;
+        const elementPosition = target.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
         window.scrollTo({
-          top,
-          behavior: prefersReducedMotion ? 'auto' : 'smooth',
+          top: offsetPosition,
+          behavior: prefersReducedMotion ? 'auto' : 'smooth'
         });
+      }
+    });
+  });
+}
+
+/* ============================================
+   PARALLAX SCROLL EFFECT (Subtle)
+   ============================================ */
+function initParallaxEffect() {
+  if (prefersReducedMotion) return;
+
+  const parallaxElements = document.querySelectorAll('.project-screenshot img');
+  
+  window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+
+    parallaxElements.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      const elementTop = rect.top + window.pageYOffset;
+      const elementHeight = rect.height;
+      
+      if (scrolled + window.innerHeight > elementTop && scrolled < elementTop + elementHeight) {
+        const parallaxOffset = (scrolled - elementTop) * 0.1;
+        el.style.transform = `translateY(${parallaxOffset}px)`;
+      }
+    });
+  });
+}
+
+/* ============================================
+   HEADER SHADOW ON SCROLL
+   ============================================ */
+function initHeaderScroll() {
+  const header = document.querySelector('.site-header');
+  if (!header) return;
+
+  let lastScroll = 0;
+
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.pageYOffset > 100);
+  });
+}
+
+/* ============================================
+   BACK TO TOP BUTTON
+   ============================================ */
+function initBackToTop() {
+  const backToTopBtn = document.getElementById('back-to-top');
+
+  if (backToTopBtn) {
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
+    
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: prefersReducedMotion ? 'auto' : 'smooth'
       });
     });
   }
+}
 
-  /* ============================================================
-     CONSOLIDATED SCROLL HANDLER (rAF-throttled)
-     Handles header shadow + back-to-top in one listener.
-     ============================================================ */
-  function initScrollEffects() {
-    const header = document.querySelector('.site-header');
-    const backToTop = document.getElementById('back-to-top');
-    if (!header && !backToTop) return;
+/* ============================================
+   CYBER CURSOR TRAIL (Subtle)
+   ============================================ */
+function initCyberCursor() {
+  if (prefersReducedMotion) return;
+  if (!window.matchMedia('(hover: hover)').matches) return;
 
-    let ticking = false;
-    const update = () => {
-      const y = window.pageYOffset;
-      if (header) header.classList.toggle('scrolled', y > 40);
-      if (backToTop) backToTop.classList.toggle('visible', y > 320);
-      ticking = false;
-    };
+  const trailElements = [];
+  const maxTrails = 5;
 
-    window.addEventListener(
-      'scroll',
-      () => {
-        if (!ticking) {
-          window.requestAnimationFrame(update);
-          ticking = true;
-        }
-      },
-      { passive: true }
-    );
-    update();
+  document.addEventListener('mousemove', (e) => {
+    // Create trail element
+    const trail = document.createElement('div');
+    trail.className = 'cursor-trail';
+    trail.style.cssText = `
+      position: fixed;
+      width: 4px;
+      height: 4px;
+      background: var(--cyber-orange);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      left: ${e.clientX}px;
+      top: ${e.clientY}px;
+      opacity: 0.6;
+      transform: translate(-50%, -50%);
+      animation: trailFade 0.5s ease-out forwards;
+    `;
 
-    if (backToTop) {
-      backToTop.addEventListener('click', () => {
-        window.scrollTo({
-          top: 0,
-          behavior: prefersReducedMotion ? 'auto' : 'smooth',
-        });
-      });
+    document.body.appendChild(trail);
+    trailElements.push(trail);
+
+    // Remove old trails
+    if (trailElements.length > maxTrails) {
+      const oldTrail = trailElements.shift();
+      oldTrail.remove();
     }
+
+    // Auto-remove after animation
+    setTimeout(() => {
+      trail.remove();
+      const index = trailElements.indexOf(trail);
+      if (index > -1) {
+        trailElements.splice(index, 1);
+      }
+    }, 500);
+  });
+
+  // Add keyframes dynamically
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes trailFade {
+      to {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0);
+      }
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+/* ============================================
+   DYNAMIC YEAR IN FOOTER
+   ============================================ */
+function updateFooterYear() {
+  const yearElements = document.querySelectorAll('#year, [data-year]');
+  yearElements.forEach(el => {
+    el.textContent = new Date().getFullYear();
+  });
+}
+
+/* ============================================
+   INITIALIZE ALL FEATURES
+   ============================================ */
+function init() {
+  console.log('🚀 HCIS Portfolio Interactive Systems Initialized');
+  console.log('🎨 Cyber-Minimalist Design Active');
+
+  initLanguageToggle();
+  initThemeToggle();
+  initLightbox();
+  initScrollReveal();
+  initSmoothScroll();
+  initParallaxEffect();
+  initHeaderScroll();
+  initBackToTop();
+  initCyberCursor();
+  updateFooterYear();
+
+  if (prefersReducedMotion) {
+    console.log('⚠️ Reduced motion mode active - animations disabled');
   }
 
-  /* ============================================================
-     FOOTER YEAR
-     ============================================================ */
-  function updateFooterYear() {
-    document.querySelectorAll('#year, [data-year]').forEach((el) => {
-      el.textContent = new Date().getFullYear();
-    });
-  }
+  document.body.classList.add('loaded');
+}
 
-  /* ============================================================
-     INIT
-     ============================================================ */
-  function init() {
-    initThemeToggle();
-    initLanguageToggle();
-    initLightbox();
-    initScrollReveal();
-    initSmoothScroll();
-    initScrollEffects();
-    updateFooterYear();
-    body.classList.add('loaded');
-  }
+// Run initialization when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
+// Expose debug object
+window.portfolioDebug = {
+  prefersReducedMotion,
+  reinitialize: init
+};
 
-  // Minimal debug surface.
-  window.portfolioDebug = { prefersReducedMotion, reinitialize: init };
 })();
