@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-language="en">
+<html lang="en" data-language="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,27 +7,18 @@
   <meta name="description" content="Case study: Tienda — modernizing local commerce with a bilingual interface, inventory management, and a streamlined mobile shopping experience.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <meta name="theme-color" content="#0B0C10">
-
-  <!-- Pre-paint: apply saved theme + language BEFORE first paint (no FOUC / no layout shift) -->
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <script>
     (function () {
       try {
-        var t = localStorage.getItem('preferred-theme');
-        if (!t) {
-          t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-        }
-        document.documentElement.setAttribute('data-theme', t);
-        var l = localStorage.getItem('preferred-language');
-        if (l) {
-          document.documentElement.setAttribute('data-language', l);
-          document.documentElement.setAttribute('lang', l);
-        }
-      } catch (e) { /* localStorage unavailable — fall back to defaults */ }
+        var d = document.documentElement;
+        var lang = localStorage.getItem('preferred-language');
+        if (lang) { d.setAttribute('data-language', lang); d.setAttribute('lang', lang); }
+        var theme = localStorage.getItem('preferred-theme');
+        if (theme) { d.setAttribute('data-theme', theme); }
+      } catch (e) { /* localStorage unavailable — defaults render */ }
     })();
   </script>
-
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="tienda-case-study-images.css">
 </head>
@@ -38,19 +29,14 @@
     <div class="bg-logo">DMQ</div>
   </div>
 
-  <button class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="false">
-    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-    </svg>
-    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <circle cx="12" cy="12" r="4"></circle>
-      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
-    </svg>
-  </button>
-
-  <button class="floating-toggle" type="button" aria-label="Switch to Spanish" aria-pressed="false">
+  <button class="floating-toggle" type="button" aria-label="Toggle language">
     <span data-lang="en">EN</span>
     <span data-lang="es" class="inactive">ES</span>
+  </button>
+
+  <button class="theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false" title="Toggle theme">
+    <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
   </button>
 
   <button id="back-to-top" class="back-to-top-btn" aria-label="Back to top">
