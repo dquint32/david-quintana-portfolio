@@ -1,33 +1,24 @@
 <!DOCTYPE html>
-<html lang="en" data-language="en">
+<html lang="en" data-language="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>David Matthew Quintana | Bilingual Web Developer</title>
   <meta name="description" content="Bilingual web developer creating practical, mobile-first websites for small businesses and professionals in Colorado.">
-  <meta name="theme-color" content="#0B0C10">
-
-  <!-- Pre-paint: apply saved theme + language BEFORE first paint (no FOUC / no layout shift) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <script>
     (function () {
       try {
-        var t = localStorage.getItem('preferred-theme');
-        if (!t) {
-          t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-        }
-        document.documentElement.setAttribute('data-theme', t);
-        var l = localStorage.getItem('preferred-language');
-        if (l) {
-          document.documentElement.setAttribute('data-language', l);
-          document.documentElement.setAttribute('lang', l);
-        }
-      } catch (e) { /* localStorage unavailable — fall back to defaults */ }
+        var d = document.documentElement;
+        var lang = localStorage.getItem('preferred-language');
+        if (lang) { d.setAttribute('data-language', lang); d.setAttribute('lang', lang); }
+        var theme = localStorage.getItem('preferred-theme');
+        if (theme) { d.setAttribute('data-theme', theme); }
+      } catch (e) { /* localStorage unavailable — defaults render */ }
     })();
   </script>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="home-page" data-language="en">
@@ -37,25 +28,19 @@
     <div class="bg-logo">DQ</div>
   </div>
 
-  <!-- Floating controls -->
-  <button class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="false">
-    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-    </svg>
-    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <circle cx="12" cy="12" r="4"></circle>
-      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
-    </svg>
-  </button>
-
-  <button class="floating-toggle" type="button" aria-label="Switch to Spanish" aria-pressed="false">
+  <button class="floating-toggle" type="button" aria-label="Toggle language">
     <span data-lang="en">EN</span>
     <span class="divider">|</span>
     <span data-lang="es" class="inactive">ES</span>
   </button>
 
-  <button id="back-to-top" class="back-to-top-btn" type="button" aria-label="Back to top">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <button class="theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false" title="Toggle theme">
+    <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+  </button>
+
+  <button id="back-to-top" class="back-to-top-btn" aria-label="Back to top">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <polyline points="18 15 12 9 6 15"></polyline>
     </svg>
   </button>
@@ -66,7 +51,7 @@
         <h1>
           <a href="index.html">David Matthew Quintana</a>
         </h1>
-        <p class="tagline">Bilingual Web Developer | Building practical, accessible solutions for small businesses and professionals</p>
+        <p class="tagline">HCIS & Regulatory Compliance | Clinical data integrity, HL7/FHIR interoperability, and bilingual patient protection</p>
       </div>
       <nav class="nav" aria-label="Primary">
         <ul>
@@ -98,36 +83,35 @@
       </nav>
     </div>
   </header>
-
   <main id="main-content">
     <section id="top" class="section-spacing" aria-labelledby="hero-title">
       <div class="container hero">
         <div class="hero-left">
           <div data-lang="en" lang-block>
-            <h2 id="hero-title">I design and build web platforms that don't just look good — they solve real problems.</h2>
+            <h2 id="hero-title-en">I protect the integrity of clinical data — from the raw HL7 message to the audit‑ready record.</h2>
             <p>
-              Specialized in bilingual content (English/Spanish), accessibility, and community‑centered UX, I help local businesses communicate clearly, build trust, and project professional authority.
+              I'm a Health Care Information Systems professional specializing in clinical data integrity and regulatory compliance — validating trial data against GCP, HIPAA, and human‑subjects standards, and building the crosswalks, validation reports, and audit trails that keep records defensible.
             </p>
             <p>
-              Alongside my client work, I'm also a Senior Health Care Information Systems student at MSU Denver, where I study interoperability, workflow design, and structured data standards. That training influences how I build websites: with clarity, structure, and accessibility at the core.
+              My work sits at the intersection of HL7/FHIR data mastery, medical‑legal regulation, and bilingual patient/subject protection. As a bilingual Notary Public and compliance founder, I extend those same safeguards to the Spanish‑speaking patients too often left out of the record.
             </p>
             <div class="hero-cta-group">
-              <a href="#projects" class="btn btn-primary">View projects</a>
-              <a href="#contact" class="btn btn-secondary">Work together</a>
+              <a href="#projects" class="btn btn-primary">View compliance projects</a>
+              <a href="hcis-portfolio.html" class="btn btn-secondary">HCIS portfolio</a>
             </div>
           </div>
 
           <div data-lang="es" lang-block>
-            <h2 id="hero-title-es">Diseño y construyo plataformas web que no solo se ven bien, sino que resuelven problemas reales.</h2>
+            <h2 id="hero-title-es">Protejo la integridad de los datos clínicos — desde el mensaje HL7 sin procesar hasta el registro listo para auditoría.</h2>
             <p>
-              Especializado en contenido bilingüe (inglés/español), accesibilidad y UX centrado en la comunidad, ayudo a negocios locales a comunicarse claramente, construir confianza y proyectar autoridad profesional.
+              Soy un profesional de Sistemas de Información de Salud especializado en integridad de datos clínicos y cumplimiento regulatorio — validando datos de ensayos según los estándares de GCP, HIPAA y protección de sujetos humanos, y construyendo los crosswalks, reportes de validación y registros de auditoría que mantienen los datos defendibles.
             </p>
             <p>
-              Junto con mi trabajo de cliente, también soy estudiante de último año de Sistemas de Información de Salud en MSU Denver, donde estudio interoperabilidad, diseño de flujo de trabajo y estándares de datos estructurados. Esa formación influye en cómo construyo sitios web: con claridad, estructura y accesibilidad como base.
+              Mi trabajo se sitúa en la intersección del dominio de datos HL7/FHIR, la regulación médico‑legal y la protección bilingüe de pacientes y sujetos. Como Notario Público bilingüe y fundador de cumplimiento, extiendo esas mismas protecciones a los pacientes hispanohablantes que con demasiada frecuencia quedan fuera del registro.
             </p>
             <div class="hero-cta-group">
-              <a href="#projects" class="btn btn-primary">Ver proyectos</a>
-              <a href="#contact" class="btn btn-secondary">Trabajemos juntos</a>
+              <a href="#projects" class="btn btn-primary">Ver proyectos de cumplimiento</a>
+              <a href="hcis-portfolio.html" class="btn btn-secondary">Portafolio HCIS</a>
             </div>
           </div>
         </div>
@@ -139,7 +123,6 @@
               alt="Portrait of David Matthew Quintana"
               class="profile-photo clickable-img"
               loading="lazy"
-              width="320" height="427"
             />
           </div>
         </div>
@@ -152,28 +135,28 @@
           <div class="about-content">
             <div class="about-text">
               <div data-lang="en" lang-block>
-                <h3 id="about-title" class="text-center">About Me</h3>
+                <h3 id="about-title-en" class="text-center">About Me</h3>
                 <p>
-                  I'm David Quintana — a community‑focused developer, bilingual Notary Public in Colorado, and senior at MSU Denver studying Health Care Information Systems.
+                  I'm David Quintana — a Health Care Information Systems professional focused on where clinical data, regulation, and patient safety converge. My work rests on three reinforcing pillars.
                 </p>
                 <p>
-                  As founder of Quintana Notary & Signing, I understand the real challenges small businesses face. My approach blends technical precision with cultural sensitivity, allowing me to build platforms that are both technically robust and emotionally resonant.
+                  <strong>Clinical data mastery:</strong> I work directly with HL7 v2.x and FHIR R4, engineering the parsing, validation, and migration logic that turns messy legacy data into structured, interoperable, audit‑ready records. At Western States Cancer Research NCORP, that means safeguarding thousands of trial documents and patient records through a controlled, HIPAA‑compliant migration.
                 </p>
                 <p>
-                  My background in healthcare systems and legal processes adds an extra layer of structure, clarity, and trust to every project I take on. Whether I'm building a bilingual website or designing a workflow for a community service, my goal is the same: make information accessible, accurate, and easy to navigate.
+                  <strong>Regulatory fluency:</strong> I hold FDA Good Clinical Practice (GCP), HIPAA, and human‑subjects certifications through the CITI Program, and I'm beginning a Paralegal Certificate with a medical‑legal focus. <strong>Bilingual protection:</strong> as founder of Servicios Quintana LLC and a commissioned Colorado Notary Public, I've spent a decade preparing, translating, and auditing regulated healthcare and legal documents — because a compliance gap and a language gap are so often the same gap.
                 </p>
               </div>
 
               <div data-lang="es" lang-block>
                 <h3 id="about-title-es" class="text-center">Sobre mí</h3>
                 <p>
-                  Soy David Quintana, un desarrollador enfocado en el impacto comunitario, Notario Público bilingüe en Colorado y estudiante de último año en Health Care Information Systems en MSU Denver.
+                  Soy David Quintana — un profesional de Sistemas de Información de Salud enfocado en el punto donde convergen los datos clínicos, la regulación y la seguridad del paciente. Mi trabajo se apoya en tres pilares que se refuerzan entre sí.
                 </p>
                 <p>
-                  Como fundador de Quintana Notary & Signing, entiendo los desafíos reales que enfrentan las pequeñas empresas. Mi enfoque combina precisión técnica con sensibilidad cultural, lo que me permite construir plataformas que son tanto técnicamente sólidas como emocionalmente resonantes.
+                  <strong>Dominio de datos clínicos:</strong> trabajo directamente con HL7 v2.x y FHIR R4, diseñando la lógica de análisis, validación y migración que convierte datos heredados desordenados en registros estructurados, interoperables y listos para auditoría. En Western States Cancer Research NCORP, eso significa proteger miles de documentos de ensayos y registros de pacientes mediante una migración controlada y conforme a HIPAA.
                 </p>
                 <p>
-                  Mi experiencia en sistemas de salud y procesos legales agrega una capa adicional de estructura, claridad y confianza a cada proyecto que emprendo. Ya sea que esté construyendo un sitio web bilingüe o diseñando un flujo de trabajo para un servicio comunitario, mi objetivo es el mismo: hacer que la información sea accesible, precisa y fácil de navegar.
+                  <strong>Fluidez regulatoria:</strong> poseo certificaciones de FDA Good Clinical Practice (GCP), HIPAA y protección de sujetos humanos a través del Programa CITI, y estoy comenzando un Certificado de Paralegal con enfoque médico‑legal. <strong>Protección bilingüe:</strong> como fundador de Servicios Quintana LLC y Notario Público comisionado de Colorado, he dedicado una década a preparar, traducir y auditar documentos médicos y legales regulados — porque una brecha de cumplimiento y una brecha de idioma son, con demasiada frecuencia, la misma brecha.
                 </p>
               </div>
             </div>
@@ -185,7 +168,6 @@
                   alt="David Quintana in professional attire with Colorado landscape background"
                   class="clickable-img"
                   loading="lazy"
-                  width="320" height="427"
                 />
               </div>
             </div>
@@ -197,13 +179,13 @@
     <section id="projects" class="section-spacing" aria-labelledby="projects-title">
       <div class="container">
         <div data-lang="en" lang-block>
-          <h3 id="projects-title" class="text-center">Selected Projects</h3>
-          <p class="section-intro text-center mb-8">Click a card to visit the live site or review the code on GitHub.</p>
+          <h3 id="projects-title-en" class="text-center">Production‑Grade Compliance Architectures</h3>
+          <p class="mb-8 text-center" style="color: var(--muted-silver); font-size: 1.125rem;">Live, real‑world systems handling regulated data under HIPAA‑aware, accessibility (WCAG 2.1 AA), and document‑integrity constraints — not demos. Click a card for the live site or the source on GitHub.</p>
         </div>
 
         <div data-lang="es" lang-block>
-          <h3 id="projects-title-es" class="text-center">Proyectos Destacados</h3>
-          <p class="section-intro text-center mb-8">Haz clic en una tarjeta para visitar el sitio en vivo o revisar el código en GitHub.</p>
+          <h3 id="projects-title-es" class="text-center">Arquitecturas de Cumplimiento de Nivel Producción</h3>
+          <p class="mb-8 text-center" style="color: var(--muted-silver); font-size: 1.125rem;">Sistemas reales en producción que manejan datos regulados bajo restricciones de conciencia de HIPAA, accesibilidad (WCAG 2.1 AA) e integridad documental — no son demos. Haz clic en una tarjeta para ver el sitio en vivo o el código en GitHub.</p>
         </div>
 
         <article class="project-card mb-8">
@@ -218,16 +200,16 @@
 
           <div data-lang="en" lang-block>
             <h4>Servicios Quintana LLC Platform</h4>
-            <p class="project-subtitle">Corporate Infrastructure & Multi‑Brand Strategy</p>
-            <p>A high‑performance parent‑company portal unifying multiple service brands under one authoritative digital identity.</p>
-
+            <p class="project-subtitle">Production‑Grade Compliance Architecture · Regulated‑Document Platform</p>
+            <p>A live platform supporting a bilingual agency that prepares, translates, and audits regulated Medicaid/Medicare and medical‑legal documents — engineered for secure intake and PHI‑aware document handling.</p>
+            
             <div class="project-details">
               <h5>Technical Achievement:</h5>
-              <p>Engineered a Neo‑Brutalist Latino Tech design system with a centralized, lightweight i18n framework powered by a single translations object. Built with modular IIFE architecture, a custom Scroll Reveal engine, a high‑contrast cursor system, and Reduced Motion logic to maintain WCAG 2.1 AA compliance.</p>
-
+              <p>Built a centralized bilingual (EN/ES) architecture with crosswalk logic that reconciles client information across government eligibility systems, enforced WCAG 2.1 AA accessibility throughout, and structured a modular, dependency‑free codebase to support confidential document workflows.</p>
+              
               <h5>Impact:</h5>
-              <p>Created a professional "Corporate HQ" that bridges community‑focused services with legal compliance. Centralized three brands — Quintana Notary, Ayuda DMV, and David Quintana Dev — into a unified hub with clear hierarchy and hard‑shadow visual structure.</p>
-
+              <p>Operates under real confidentiality and regulatory‑submission constraints — reducing the eligibility‑denial and audit‑finding risk that language and data‑quality gaps introduce. Unifies three service brands under one governed digital identity.</p>
+              
               <h5>Stack:</h5>
               <pre><code>Vanilla JavaScript (ES6+, IIFE Modules), Semantic HTML5, CSS3 (Custom Variables, Flexbox, Grid), FontAwesome, Google Fonts.</code></pre>
             </div>
@@ -240,16 +222,16 @@
 
           <div data-lang="es" lang-block>
             <h4>Plataforma Servicios Quintana LLC</h4>
-            <p class="project-subtitle">Infraestructura Corporativa y Estrategia Multi‑Marca</p>
-            <p>Un portal de empresa matriz de alto rendimiento que unifica múltiples marcas de servicios bajo una identidad digital autorizada.</p>
-
+            <p class="project-subtitle">Arquitectura de Cumplimiento de Nivel Producción · Plataforma de Documentos Regulados</p>
+            <p>Una plataforma en producción que apoya a una agencia bilingüe que prepara, traduce y audita documentos regulados de Medicaid/Medicare y médico‑legales — diseñada para una admisión segura y un manejo de documentos consciente de la PHI.</p>
+            
             <div class="project-details">
               <h5>Logro Técnico:</h5>
-              <p>Diseñé un sistema de diseño Neo‑Brutalista Latino Tech con un marco i18n ligero centralizado alimentado por un único objeto de traducciones. Construido con arquitectura IIFE modular, un motor Scroll Reveal personalizado, un sistema de cursor de alto contraste y lógica Reduced Motion para mantener el cumplimiento de WCAG 2.1 AA.</p>
-
+              <p>Construí una arquitectura bilingüe (EN/ES) centralizada con lógica de crosswalk que reconcilia la información del cliente entre sistemas gubernamentales de elegibilidad, con accesibilidad WCAG 2.1 AA en todo el sitio y una base de código modular y sin dependencias para flujos de trabajo de documentos confidenciales.</p>
+              
               <h5>Impacto:</h5>
-              <p>Creé una "Sede Corporativa" profesional que conecta servicios enfocados en la comunidad con el cumplimiento legal. Centralicé tres marcas — Quintana Notary, Ayuda DMV y David Quintana Dev — en un centro unificado con jerarquía clara y estructura visual de sombras duras.</p>
-
+              <p>Opera bajo restricciones reales de confidencialidad y de presentación regulatoria — reduciendo el riesgo de denegaciones de elegibilidad y hallazgos de auditoría que introducen las brechas de idioma y de calidad de datos. Unifica tres marcas de servicio bajo una identidad digital gobernada.</p>
+              
               <h5>Stack:</h5>
               <pre><code>Vanilla JavaScript (ES6+, Módulos IIFE), HTML5 Semántico, CSS3 (Variables Personalizadas, Flexbox, Grid), FontAwesome, Google Fonts.</code></pre>
             </div>
@@ -257,63 +239,6 @@
             <div class="project-links">
               <a href="https://serviciosquintana.com" target="_blank" rel="noopener noreferrer">Sitio en vivo</a>
               <a href="https://github.com/dquint32/servicios-quintana-llc" target="_blank" rel="noopener noreferrer">Código en GitHub</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card mb-8">
-          <div class="project-image-container">
-            <img
-              src="tienda-salvadorena-homepage-sc.png"
-              alt="Tienda Salvadoreña homepage screenshot"
-              class="clickable-img"
-              loading="lazy"
-            />
-          </div>
-
-          <div data-lang="en" lang-block>
-            <h4>Tienda Salvadoreña — Denver</h4>
-            <p class="project-subtitle">Digital Preservation of a 30‑Year Legacy</p>
-            <p>Digitized Denver's oldest Salvadoran grocery store with a focus on cultural identity and bilingual UX.</p>
-
-            <div class="project-details">
-              <h5>Technical Achievement:</h5>
-              <p>Built a custom, object‑oriented translation engine in Vanilla JS using a dictionary‑key system for instant bilingual switching without reloads. Implemented a "Critical Fix" architecture for nested data attributes and session‑based language persistence.</p>
-
-              <h5>Impact:</h5>
-              <p>Preserved the digital presence of a 30‑year community landmark. The bilingual UX connects older diaspora members with younger English‑dominant generations through nostalgic visual storytelling.</p>
-
-              <h5>Stack:</h5>
-              <pre><code>Vanilla JavaScript (ES6), Semantic HTML5, CSS3 (Variables, Flexbox, Grid), Google Maps API.</code></pre>
-            </div>
-
-            <div class="project-links">
-              <a href="https://tiendasalvadorena.com" target="_blank" rel="noopener noreferrer">Live site</a>
-              <a href="tienda-case-study.html">Case Study</a>
-              <a href="https://github.com/dquint32/tienda-salvadorena" target="_blank" rel="noopener noreferrer">Code on GitHub</a>
-            </div>
-          </div>
-
-          <div data-lang="es" lang-block>
-            <h4>Tienda Salvadoreña — Denver</h4>
-            <p class="project-subtitle">Preservación Digital de un Legado de 30 Años</p>
-            <p>Digitalicé la tienda salvadoreña más antigua de Denver con un enfoque en la identidad cultural y UX bilingüe.</p>
-
-            <div class="project-details">
-              <h5>Logro Técnico:</h5>
-              <p>Construí un motor de traducción orientado a objetos personalizado en Vanilla JS usando un sistema de clave de diccionario para cambio bilingüe instantáneo sin recargas. Implementé una arquitectura "Critical Fix" para atributos de datos anidados y persistencia de idioma basada en sesión.</p>
-
-              <h5>Impacto:</h5>
-              <p>Preservé la presencia digital de un punto de referencia comunitario de 30 años. La UX bilingüe conecta a miembros de la diáspora mayores con generaciones más jóvenes dominantes en inglés a través de narración visual nostálgica.</p>
-
-              <h5>Stack:</h5>
-              <pre><code>Vanilla JavaScript (ES6), HTML5 Semántico, CSS3 (Variables, Flexbox, Grid), Google Maps API.</code></pre>
-            </div>
-
-            <div class="project-links">
-              <a href="https://tiendasalvadorena.com" target="_blank" rel="noopener noreferrer">Sitio en vivo</a>
-              <a href="tienda-case-study.html">Estudio de caso</a>
-              <a href="https://github.com/dquint32/tienda-salvadorena" target="_blank" rel="noopener noreferrer">Código en GitHub</a>
             </div>
           </div>
         </article>
@@ -330,16 +255,16 @@
 
           <div data-lang="en" lang-block>
             <h4>Quintana Notary & Signing</h4>
-            <p class="project-subtitle">Legal Authority & Mobile Conversion</p>
-            <p>A professional, bilingual notary services platform built for trust, clarity, and mobile‑first conversion.</p>
-
+            <p class="project-subtitle">Production‑Grade Compliance Architecture · Notarial Trust & Chain‑of‑Custody</p>
+            <p>A bilingual notarial‑services platform engineered for legal authority, verifiable trust, and document‑integrity awareness.</p>
+            
             <div class="project-details">
               <h5>Technical Achievement:</h5>
-              <p>Developed a persistent translation system using LocalStorage + HTML lang synchronization across a 7‑page platform. Engineered a mobile‑first Action Bar and a refactored CSS Grid system that transforms complex legal pricing tables into readable mobile cards.</p>
-
+              <p>Engineered persistent state management with HTML lang synchronization for audit‑consistent bilingual delivery across a 7‑page platform, plus a refactored responsive CSS Grid that renders complex legal pricing as clear, accessible mobile cards.</p>
+              
               <h5>Impact:</h5>
-              <p>Simplified access to essential legal and notarial services for bilingual clients. Integrated WhatsApp, click‑to‑call, and a transparent bilingual FAQ to reduce client anxiety and improve conversion.</p>
-
+              <p>Simplifies access to regulated legal and notarial services for bilingual clients while reinforcing chain‑of‑custody clarity and trust. Integrated secure contact pathways (WhatsApp, click‑to‑call) and a transparent bilingual FAQ.</p>
+              
               <h5>Stack:</h5>
               <pre><code>Vanilla JavaScript (ES6), Semantic & SEO‑optimized HTML5, CSS3 (Custom Properties, Responsive Grid), FontAwesome, LocalStorage API.</code></pre>
             </div>
@@ -353,79 +278,24 @@
 
           <div data-lang="es" lang-block>
             <h4>Quintana Notary & Signing</h4>
-            <p class="project-subtitle">Autoridad Legal y Conversión Móvil</p>
-            <p>Una plataforma profesional y bilingüe de servicios notariales construida para confianza, claridad y conversión móvil‑primero.</p>
-
+            <p class="project-subtitle">Arquitectura de Cumplimiento de Nivel Producción · Confianza Notarial y Cadena de Custodia</p>
+            <p>Una plataforma bilingüe de servicios notariales diseñada para autoridad legal, confianza verificable y conciencia de integridad documental.</p>
+            
             <div class="project-details">
               <h5>Logro Técnico:</h5>
-              <p>Desarrollé un sistema de traducción persistente usando LocalStorage + sincronización de HTML lang en una plataforma de 7 páginas. Diseñé una Barra de Acción móvil‑primero y un sistema CSS Grid refactorizado que transforma tablas de precios legales complejas en tarjetas móviles legibles.</p>
-
+              <p>Diseñé una gestión de estado persistente con sincronización de HTML lang para una entrega bilingüe consistente y apta para auditoría en una plataforma de 7 páginas, más un CSS Grid responsivo refactorizado que presenta precios legales complejos como tarjetas móviles claras y accesibles.</p>
+              
               <h5>Impacto:</h5>
-              <p>Simplifiqué el acceso a servicios legales y notariales esenciales para clientes bilingües. Integré WhatsApp, clic para llamar y un FAQ bilingüe transparente para reducir la ansiedad del cliente y mejorar la conversión.</p>
-
+              <p>Simplifica el acceso a servicios legales y notariales regulados para clientes bilingües, reforzando la claridad de la cadena de custodia y la confianza. Integré vías de contacto seguras (WhatsApp, clic para llamar) y un FAQ bilingüe transparente.</p>
+              
               <h5>Stack:</h5>
               <pre><code>Vanilla JavaScript (ES6), HTML5 Semántico y Optimizado para SEO, CSS3 (Propiedades Personalizadas, Grid Responsivo), FontAwesome, API LocalStorage.</code></pre>
             </div>
 
             <div class="project-links">
               <a href="https://quintananotary.com" target="_blank" rel="noopener noreferrer">Sitio en vivo</a>
-              <a href="quintana-notary-signing-case-study.html">Estudio de caso</a>
+              <a href="case-study-notary.html">Estudio de caso</a>
               <a href="https://github.com/dquint32/quintana-notary" target="_blank" rel="noopener noreferrer">Código en GitHub</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card mb-8">
-          <div class="project-image-container">
-            <img
-              src="exam3-sc.png"
-              alt="HTML/CSS/JS Exam Practice Quiz screenshot"
-              class="clickable-img"
-              loading="lazy"
-            />
-          </div>
-
-          <div data-lang="en" lang-block>
-            <h4>HTML/CSS/JS Exam Practice Quiz</h4>
-            <p class="project-subtitle">Interactive Educational Assessment Tool</p>
-            <p>A 75‑question exam simulator with real‑time feedback, progress tracking, and detailed explanations.</p>
-
-            <div class="project-details">
-              <h5>Technical Achievement:</h5>
-              <p>Advanced state management using arrays, dynamic DOM manipulation, and regex‑based code detection.</p>
-
-              <h5>Impact:</h5>
-              <p>A self‑paced learning platform with instant visual feedback and a three‑panel answer system (code, console output, visual representation).</p>
-
-              <h5>Stack:</h5>
-              <pre><code>Vanilla JavaScript (ES6+), CSS Grid/Flexbox, HTML5.</code></pre>
-            </div>
-
-            <div class="project-links">
-              <a href="https://htmlcssjs-quiz.netlify.app" target="_blank" rel="noopener noreferrer">Live site</a>
-              <a href="https://github.com/dquint32/htmlcssjs-quiz" target="_blank" rel="noopener noreferrer">Code on GitHub</a>
-            </div>
-          </div>
-
-          <div data-lang="es" lang-block>
-            <h4>Cuestionario de Práctica HTML/CSS/JS</h4>
-            <p class="project-subtitle">Herramienta de Evaluación Educativa Interactiva</p>
-            <p>Un simulador de examen de 75 preguntas con retroalimentación en tiempo real, seguimiento de progreso y explicaciones detalladas.</p>
-
-            <div class="project-details">
-              <h5>Logro Técnico:</h5>
-              <p>Gestión de estado avanzada usando matrices, manipulación dinámica del DOM y detección de código basada en regex.</p>
-
-              <h5>Impacto:</h5>
-              <p>Una plataforma de aprendizaje a ritmo propio con retroalimentación visual instantánea y un sistema de respuesta de tres paneles (código, salida de consola, representación visual).</p>
-
-              <h5>Stack:</h5>
-              <pre><code>Vanilla JavaScript (ES6+), CSS Grid/Flexbox, HTML5.</code></pre>
-            </div>
-
-            <div class="project-links">
-              <a href="https://htmlcssjs-quiz.netlify.app" target="_blank" rel="noopener noreferrer">Sitio en vivo</a>
-              <a href="https://github.com/dquint32/htmlcssjs-quiz" target="_blank" rel="noopener noreferrer">Código en GitHub</a>
             </div>
           </div>
         </article>
@@ -442,16 +312,16 @@
 
           <div data-lang="en" lang-block>
             <h4>Ayuda DMV Platform</h4>
-            <p class="project-subtitle">Bilingual Digital Hub for Government & Legal Services</p>
-            <p>A fully responsive, multi‑page platform designed to bridge the language gap for Colorado residents.</p>
-
+            <p class="project-subtitle">Production‑Grade Compliance Architecture · Government‑Services Crosswalk Hub</p>
+            <p>A fully responsive, multi‑page platform that translates complex government and notarial requirements into plain‑language bilingual guidance for Colorado residents.</p>
+            
             <div class="project-details">
               <h5>Technical Achievement:</h5>
-              <p>Built a lightweight, dependency‑free i18n system using Vanilla JS for instant, flicker‑free bilingual toggling.</p>
-
+              <p>Built a lightweight, dependency‑free i18n engine for instant, flicker‑free EN/ES delivery, with requirement‑crosswalk logic mapping regulated DMV workflows to accessible (WCAG 2.1 AA) step‑by‑step guidance.</p>
+              
               <h5>Impact:</h5>
-              <p>Improves accessibility for Spanish‑speaking residents by simplifying complex DMV and notarial workflows through a dual‑language interface.</p>
-
+              <p>Reduces the error and eligibility‑denial risk that language barriers introduce into regulated processes, improving access for Spanish‑speaking residents.</p>
+              
               <h5>Stack:</h5>
               <pre><code>Vanilla JavaScript (ES6+, IIFE Modules), Semantic HTML5, CSS3 (Variables, Flexbox, Grid), FontAwesome, LocalStorage API.</code></pre>
             </div>
@@ -464,16 +334,16 @@
 
           <div data-lang="es" lang-block>
             <h4>Plataforma Ayuda DMV</h4>
-            <p class="project-subtitle">Centro Digital Bilingüe para Servicios Gubernamentales y Legales</p>
-            <p>Una plataforma multipágina totalmente responsiva diseñada para cerrar la brecha del idioma para los residentes de Colorado.</p>
-
+            <p class="project-subtitle">Arquitectura de Cumplimiento de Nivel Producción · Centro de Crosswalk de Servicios Gubernamentales</p>
+            <p>Una plataforma multipágina totalmente responsiva que traduce requisitos gubernamentales y notariales complejos en orientación bilingüe en lenguaje sencillo para los residentes de Colorado.</p>
+            
             <div class="project-details">
               <h5>Logro Técnico:</h5>
-              <p>Construí un sistema i18n ligero y sin dependencias usando Vanilla JS para alternancia bilingüe instantánea y sin parpadeos.</p>
-
+              <p>Construí un motor i18n ligero y sin dependencias para una entrega EN/ES instantánea y sin parpadeos, con lógica de crosswalk de requisitos que mapea flujos de trabajo regulados del DMV a una guía paso a paso accesible (WCAG 2.1 AA).</p>
+              
               <h5>Impacto:</h5>
-              <p>Mejora la accesibilidad para residentes de habla hispana al simplificar flujos de trabajo complejos de DMV y notariales a través de una interfaz de doble idioma.</p>
-
+              <p>Reduce el riesgo de errores y denegaciones de elegibilidad que las barreras del idioma introducen en procesos regulados, mejorando el acceso para residentes hispanohablantes.</p>
+              
               <h5>Stack:</h5>
               <pre><code>Vanilla JavaScript (ES6+, Módulos IIFE), HTML5 Semántico, CSS3 (Variables, Flexbox, Grid), FontAwesome, API LocalStorage.</code></pre>
             </div>
@@ -491,7 +361,7 @@
             <p>Before building bilingual platforms for real businesses, I completed formal training in semantic HTML5, modern CSS, responsive design, multimedia integration, JavaScript fundamentals, and standards‑based development through CIS‑3030: Business Web Page Development at Metropolitan State University of Denver.</p>
             <p>This curriculum emphasized clean architecture, accessibility, and professional coding practices — principles that now shape both my client work and my HCIS projects.</p>
             <p>I've published a complete archive of all tutorials, reviews, and case problems from the New Perspectives on HTML5 & CSS curriculum to demonstrate mastery in:</p>
-            <ul class="feature-list">
+            <ul style="color: var(--muted-silver); margin-left: var(--space-6); margin-top: var(--space-3); line-height: 1.8;">
               <li>Semantic HTML5</li>
               <li>CSS Grid, Flexbox, Floats, Positioning</li>
               <li>Responsive & Print Media Design</li>
@@ -500,7 +370,7 @@
               <li>Multimedia & WebVTT captions</li>
               <li>JavaScript Logic & DOM manipulation</li>
             </ul>
-            <p class="mt-4"><a href="https://dquintanaweb.netlify.app" target="_blank" rel="noopener noreferrer" class="archive-link">→ Foundational Web Development Projects (CIS‑3030 Archive)</a></p>
+            <p style="margin-top: var(--space-4);"><strong style="color: var(--cyber-orange);">👉</strong> <a href="https://dquintanaweb.netlify.app" target="_blank" rel="noopener noreferrer" style="color: var(--cyber-orange); font-weight: 600;">Foundational Web Development Projects (CIS‑3030 Archive)</a></p>
           </div>
 
           <div data-lang="es" lang-block>
@@ -508,7 +378,7 @@
             <p>Antes de construir plataformas bilingües para empresas reales, completé formación formal en HTML5 semántico, CSS moderno, diseño responsivo, integración multimedia, fundamentos de JavaScript y desarrollo basado en estándares a través de CIS‑3030: Desarrollo de Páginas Web Comerciales en Metropolitan State University of Denver.</p>
             <p>Este plan de estudios enfatizó arquitectura limpia, accesibilidad y prácticas profesionales de codificación — principios que ahora dan forma tanto a mi trabajo de cliente como a mis proyectos HCIS.</p>
             <p>He publicado un archivo completo de todos los tutoriales, revisiones y problemas de casos del plan de estudios New Perspectives on HTML5 & CSS para demostrar dominio en:</p>
-            <ul class="feature-list">
+            <ul style="color: var(--muted-silver); margin-left: var(--space-6); margin-top: var(--space-3); line-height: 1.8;">
               <li>HTML5 Semántico</li>
               <li>CSS Grid, Flexbox, Floats, Posicionamiento</li>
               <li>Diseño Responsivo y de Medios de Impresión</li>
@@ -517,7 +387,7 @@
               <li>Multimedia y subtítulos WebVTT</li>
               <li>Lógica JavaScript y manipulación DOM</li>
             </ul>
-            <p class="mt-4"><a href="https://dquintanaweb.netlify.app" target="_blank" rel="noopener noreferrer" class="archive-link">→ Proyectos Fundamentales de Desarrollo Web (Archivo CIS‑3030)</a></p>
+            <p style="margin-top: var(--space-4);"><strong style="color: var(--cyber-orange);">👉</strong> <a href="https://dquintanaweb.netlify.app" target="_blank" rel="noopener noreferrer" style="color: var(--cyber-orange); font-weight: 600;">Proyectos Fundamentales de Desarrollo Web (Archivo CIS‑3030)</a></p>
           </div>
         </div>
       </div>
@@ -526,16 +396,16 @@
     <section id="skills" class="section-spacing" aria-labelledby="skills-title">
       <div class="container">
         <div data-lang="en" lang-block>
-          <h3 id="skills-title" class="text-center">Technical Skills</h3>
-          <p class="section-intro text-center mb-8">Core competencies for building bilingual, accessible, and results‑driven web experiences.</p>
+          <h3 id="skills-title-en" class="text-center">Technical Skills</h3>
+          <p class="mb-8 text-center" style="color: var(--muted-silver); font-size: 1.125rem;">Core competencies for building bilingual, accessible, and results‑driven web experiences.</p>
         </div>
 
         <div data-lang="es" lang-block>
           <h3 id="skills-title-es" class="text-center">Habilidades Técnicas</h3>
-          <p class="section-intro text-center mb-8">Competencias básicas para construir experiencias web bilingües, accesibles y orientadas a resultados.</p>
+          <p class="mb-8 text-center" style="color: var(--muted-silver); font-size: 1.125rem;">Competencias básicas para construir experiencias web bilingües, accesibles y orientadas a resultados.</p>
         </div>
 
-        <div class="card-grid">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-6);">
           <div class="skill-detail-card">
             <div data-lang="en" lang-block>
               <h5>Modern Frontend</h5>
@@ -594,85 +464,119 @@
       </div>
     </section>
 
-    <section id="services" class="section-spacing" aria-labelledby="services-title">
+    <section id="services" class="section-spacing" style="background: var(--gunmetal);">
       <div class="container">
         <div class="content-block">
           <div data-lang="en" lang-block>
-            <h3 id="services-title" class="text-center">Why Choose Me</h3>
-            <p class="section-intro text-center mb-8">More than code — I deliver platforms that protect your business and connect with your community.</p>
+            <h3 class="text-center">What I Bring to a Compliance Team</h3>
+            <p class="mb-8 text-center" style="color: var(--muted-silver); font-size: 1.125rem;">More than documentation — engineered, defensible data integrity.</p>
           </div>
 
           <div data-lang="es" lang-block>
-            <h3 id="services-title-es" class="text-center">Por Qué Elegirme</h3>
-            <p class="section-intro text-center mb-8">Más que código — entrego plataformas que protegen tu negocio y conectan con tu comunidad.</p>
+            <h3 class="text-center">Lo Que Aporto a un Equipo de Cumplimiento</h3>
+            <p class="mb-8 text-center" style="color: var(--muted-silver); font-size: 1.125rem;">Más que documentación — integridad de datos diseñada y defendible.</p>
           </div>
 
-          <div class="value-props">
+          <div style="text-align: center; max-width: 800px; margin: 0 auto;">
             <div data-lang="en" lang-block>
-              <p class="lead-strong"><strong>Bilingual Development (EN/ES)</strong></p>
-              <p>Professional Platforms for Notaries, Legal Services, Cultural Shops, Consultants</p>
-              <p>Simple, transparent pricing</p>
-              <p>You own your code, domain, and data</p>
+              <p style="font-size: 1.5rem; margin-bottom: var(--space-6); color: var(--soft-white);">
+                <strong style="color: var(--cyber-orange);">Regulatory &amp; Clinical Research Compliance</strong>
+              </p>
+              <p style="font-size: 1.25rem; margin-bottom: var(--space-6); color: var(--soft-white);">
+                Audit‑ready validation reports, crosswalks, and preserved audit trails
+              </p>
+              <p style="font-size: 1.25rem; margin-bottom: var(--space-6); color: var(--soft-white);">
+                GCP, HIPAA &amp; human‑subjects standards applied as testable requirements
+              </p>
+              <p style="font-size: 1.25rem; margin-bottom: var(--space-8); color: var(--soft-white);">
+                Bilingual (EN/ES) protection of patient &amp; subject data
+              </p>
 
-              <div class="badge-row">
-                <span class="badge"><span class="check">✓</span> 50/50 Payment Plan</span>
-                <span class="badge"><span class="check">✓</span> Bilingual Options</span>
-                <span class="badge"><span class="check">✓</span> SEO Included</span>
+              <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-6); margin-bottom: var(--space-8); color: var(--muted-silver);">
+                <span style="display: flex; align-items: center; gap: 8px;">
+                  <span style="color: var(--cyber-orange);">✓</span> GCP‑Trained
+                </span>
+                <span style="display: flex; align-items: center; gap: 8px;">
+                  <span style="color: var(--cyber-orange);">✓</span> HIPAA‑Certified
+                </span>
+                <span style="display: flex; align-items: center; gap: 8px;">
+                  <span style="color: var(--cyber-orange);">✓</span> HL7 / FHIR R4
+                </span>
               </div>
 
-              <a href="pricing.html" class="btn btn-primary">View Services & Pricing</a>
+              <a href="#contact" class="btn btn-primary">Get in touch</a>
+              <p style="margin-top: var(--space-6); font-size: 0.95rem; color: var(--muted-silver);">
+                Looking for bilingual web development services? <a href="pricing.html" style="color: var(--cyber-orange);">Visit Servicios Quintana &rarr;</a>
+              </p>
             </div>
 
             <div data-lang="es" lang-block>
-              <p class="lead-strong"><strong>Desarrollo Bilingüe (EN/ES)</strong></p>
-              <p>Plataformas Profesionales para Notarios, Servicios Legales, Tiendas Culturales, Consultores</p>
-              <p>Precios simples y transparentes</p>
-              <p>Tú eres dueño de tu código, tu dominio y tus datos</p>
+              <p style="font-size: 1.5rem; margin-bottom: var(--space-6); color: var(--soft-white);">
+                <strong style="color: var(--cyber-orange);">Cumplimiento Regulatorio y de Investigación Clínica</strong>
+              </p>
+              <p style="font-size: 1.25rem; margin-bottom: var(--space-6); color: var(--soft-white);">
+                Reportes de validación listos para auditoría, crosswalks y registros de auditoría preservados
+              </p>
+              <p style="font-size: 1.25rem; margin-bottom: var(--space-6); color: var(--soft-white);">
+                Estándares de GCP, HIPAA y sujetos humanos aplicados como requisitos verificables
+              </p>
+              <p style="font-size: 1.25rem; margin-bottom: var(--space-8); color: var(--soft-white);">
+                Protección bilingüe (EN/ES) de los datos del paciente y del sujeto
+              </p>
 
-              <div class="badge-row">
-                <span class="badge"><span class="check">✓</span> Plan de Pago 50/50</span>
-                <span class="badge"><span class="check">✓</span> Opciones Bilingües</span>
-                <span class="badge"><span class="check">✓</span> SEO Incluido</span>
+              <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-6); margin-bottom: var(--space-8); color: var(--muted-silver);">
+                <span style="display: flex; align-items: center; gap: 8px;">
+                  <span style="color: var(--cyber-orange);">✓</span> Formación en GCP
+                </span>
+                <span style="display: flex; align-items: center; gap: 8px;">
+                  <span style="color: var(--cyber-orange);">✓</span> Certificado en HIPAA
+                </span>
+                <span style="display: flex; align-items: center; gap: 8px;">
+                  <span style="color: var(--cyber-orange);">✓</span> HL7 / FHIR R4
+                </span>
               </div>
 
-              <a href="pricing.html" class="btn btn-primary">Ver Servicios y Precios</a>
+              <a href="#contact" class="btn btn-primary">Contáctame</a>
+              <p style="margin-top: var(--space-6); font-size: 0.95rem; color: var(--muted-silver);">
+                ¿Buscas servicios de desarrollo web bilingüe? <a href="pricing.html" style="color: var(--cyber-orange);">Visita Servicios Quintana &rarr;</a>
+              </p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="section-spacing" aria-labelledby="contact-title">
+    <section id="contact" class="section-spacing">
       <div class="container">
         <div data-lang="en" lang-block>
-          <h3 id="contact-title" class="text-center">Contact</h3>
+          <h3 class="text-center">Contact</h3>
           <div class="contact-card">
             <p class="contact-intro">Have a project in mind or need bilingual consulting?</p>
             <p class="contact-intro">You can write in English or Spanish.</p>
-
+            
             <div class="contact-links">
               <a href="https://www.linkedin.com/in/quintanadm95" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                 LinkedIn
               </a>
 
               <a href="https://github.com/dquint32" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                 GitHub
               </a>
 
               <a href="https://wa.me/13035004122" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
                 WhatsApp
               </a>
 
               <a href="tel:+13035004122" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.81 12.81 0 0 0 .63 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.63A2 2 0 0 1 22 16.92z"></path></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.81 12.81 0 0 0 .63 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.63A2 2 0 0 1 22 16.92z"></path></svg>
                 303‑500‑4122
               </a>
 
               <a href="/cdn-cgi/l/email-protection#4a2e3b3f23243e2b242b0a392f383c23292325393b3f23243e2b242b64292527" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                 Email
               </a>
             </div>
@@ -680,34 +584,34 @@
         </div>
 
         <div data-lang="es" lang-block>
-          <h3 id="contact-title-es" class="text-center">Contacto</h3>
+          <h3 class="text-center">Contacto</h3>
           <div class="contact-card">
             <p class="contact-intro">¿Tienes un proyecto o necesitas asesoría bilingüe?</p>
             <p class="contact-intro">Puedes escribir en inglés o español.</p>
-
+            
             <div class="contact-links">
               <a href="https://www.linkedin.com/in/quintanadm95" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                 LinkedIn
               </a>
 
               <a href="https://github.com/dquint32" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                 GitHub
               </a>
 
               <a href="https://wa.me/13035004122" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
                 WhatsApp
               </a>
 
               <a href="tel:+13035004122" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.81 12.81 0 0 0 .63 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.63A2 2 0 0 1 22 16.92z"></path></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.81 12.81 0 0 0 .63 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.63A2 2 0 0 1 22 16.92z"></path></svg>
                 303‑500‑4122
               </a>
 
               <a href="/cdn-cgi/l/email-protection#01657074686f75606f6041726473776862686e727074686f75606f602f626e6c" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                 Correo
               </a>
             </div>
@@ -730,14 +634,14 @@
       </p>
 
       <p>
-        <span lang-block data-lang="en">&copy; <span data-year>2026</span> Servicios Quintana LLC. All Rights Reserved.</span>
-        <span lang-block data-lang="es">&copy; <span data-year>2026</span> Servicios Quintana LLC. Todos los derechos reservados.</span>
+        <span lang-block data-lang="en">© 2026 Servicios Quintana LLC. All Rights Reserved.</span>
+        <span lang-block data-lang="es">© 2026 Servicios Quintana LLC. Todos los derechos reservados.</span>
       </p>
     </div>
   </footer>
 
   <div id="lightbox-modal" class="lightbox-modal" style="display: none;">
-    <span class="lightbox-close" role="button" tabindex="0" aria-label="Close image viewer">&times;</span>
+    <span class="lightbox-close">&times;</span>
     <img class="lightbox-content" id="lightbox-img" alt="Full screen project screenshot">
     <div class="lightbox-caption" id="lightbox-caption"></div>
   </div>
