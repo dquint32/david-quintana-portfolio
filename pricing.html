@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-language="en">
+<html lang="en" data-language="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,27 +7,18 @@
   <meta name="description" content="Transparent pricing for bilingual web development services. Mobile-first websites for small businesses and professionals in Colorado.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <meta name="theme-color" content="#0B0C10">
-
-  <!-- Pre-paint: apply saved theme + language BEFORE first paint (no FOUC / no layout shift) -->
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <script>
     (function () {
       try {
-        var t = localStorage.getItem('preferred-theme');
-        if (!t) {
-          t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-        }
-        document.documentElement.setAttribute('data-theme', t);
-        var l = localStorage.getItem('preferred-language');
-        if (l) {
-          document.documentElement.setAttribute('data-language', l);
-          document.documentElement.setAttribute('lang', l);
-        }
-      } catch (e) { /* localStorage unavailable — fall back to defaults */ }
+        var d = document.documentElement;
+        var lang = localStorage.getItem('preferred-language');
+        if (lang) { d.setAttribute('data-language', lang); d.setAttribute('lang', lang); }
+        var theme = localStorage.getItem('preferred-theme');
+        if (theme) { d.setAttribute('data-theme', theme); }
+      } catch (e) { /* localStorage unavailable — defaults render */ }
     })();
   </script>
-
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="pricing-page" data-language="en">
@@ -37,19 +28,14 @@
     <div class="bg-logo">DMQ</div>
   </div>
 
-  <button class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="false">
-    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-    </svg>
-    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <circle cx="12" cy="12" r="4"></circle>
-      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
-    </svg>
-  </button>
-
-  <button class="floating-toggle" type="button" aria-label="Switch to Spanish" aria-pressed="false">
+  <button class="floating-toggle" type="button" aria-label="Toggle language">
     <span data-lang="en">EN</span>
     <span data-lang="es" class="inactive">ES</span>
+  </button>
+
+  <button class="theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false" title="Toggle theme">
+    <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
   </button>
 
   <button id="back-to-top" class="back-to-top-btn" aria-label="Back to top">
@@ -75,7 +61,7 @@
             </a>
           </li>
           <li>
-            <a href="index.html">
+            <a href="hcis-portfolio.html">
               <span lang-block data-lang="en">HCIS Portfolio</span>
               <span lang-block data-lang="es">Portafolio HCIS</span>
             </a>
@@ -102,12 +88,14 @@
       <div class="container">
         <div class="section-header">
           <div lang-block data-lang="en">
-            <h2>Simple & Clear Website Pricing</h2>
-            <p>Transparent packages for small businesses · Bilingual available</p>
+            <h2>Bilingual Web Development — Simple, Transparent Pricing</h2>
+            <p>Professional, mobile‑first, accessible websites for notaries, legal services, cultural shops, and consultants · Bilingual (EN/ES) available.</p>
+            <p style="margin-top: 1rem; font-size: 0.95rem; color: var(--muted-silver);">The web‑development services arm of Servicios Quintana LLC. Looking for David's HCIS &amp; regulatory compliance profile? <a href="index.html" style="color: var(--cyber-orange);">Visit the main site &rarr;</a></p>
           </div>
           <div lang-block data-lang="es">
-            <h2>Precios Claros y Sencillos</h2>
-            <p>Paquetes transparentes para negocios pequeños · Bilingüe disponible</p>
+            <h2>Desarrollo Web Bilingüe — Precios Simples y Transparentes</h2>
+            <p>Sitios web profesionales, mobile‑first y accesibles para notarios, servicios legales, tiendas culturales y consultores · Bilingüe (EN/ES) disponible.</p>
+            <p style="margin-top: 1rem; font-size: 0.95rem; color: var(--muted-silver);">La división de servicios de desarrollo web de Servicios Quintana LLC. ¿Buscas el perfil de HCIS y cumplimiento regulatorio de David? <a href="index.html" style="color: var(--cyber-orange);">Visita el sitio principal &rarr;</a></p>
           </div>
         </div>
       </div>
@@ -730,6 +718,133 @@
             </li>
           </ul>
         </div>
+      </div>
+    </section>
+
+        <section class="section-spacing">
+      <div class="container">
+        <div class="section-header">
+          <div lang-block data-lang="en">
+            <h2>Selected Web Development Work</h2>
+            <p>Live bilingual platforms built for real businesses.</p>
+          </div>
+          <div lang-block data-lang="es">
+            <h2>Trabajo de Desarrollo Web Destacado</h2>
+            <p>Plataformas bilingües en vivo construidas para negocios reales.</p>
+          </div>
+        </div>
+
+<article class="project-card mb-8">
+          <div class="project-image-container">
+            <img
+              src="tienda-salvadorena-homepage-sc.png"
+              alt="Tienda Salvadoreña homepage screenshot"
+              class="clickable-img"
+              loading="lazy"
+            />
+          </div>
+
+          <div data-lang="en" lang-block>
+            <h4>Tienda Salvadoreña — Denver</h4>
+            <p class="project-subtitle">Digital Preservation of a 30‑Year Legacy</p>
+            <p>Digitized Denver's oldest Salvadoran grocery store with a focus on cultural identity and bilingual UX.</p>
+            
+            <div class="project-details">
+              <h5>Technical Achievement:</h5>
+              <p>Built a custom, object‑oriented translation engine in Vanilla JS using a dictionary‑key system for instant bilingual switching without reloads. Implemented a "Critical Fix" architecture for nested data attributes and session‑based language persistence.</p>
+              
+              <h5>Impact:</h5>
+              <p>Preserved the digital presence of a 30‑year community landmark. The bilingual UX connects older diaspora members with younger English‑dominant generations through nostalgic visual storytelling.</p>
+              
+              <h5>Stack:</h5>
+              <pre><code>Vanilla JavaScript (ES6), Semantic HTML5, CSS3 (Variables, Flexbox, Grid), Google Maps API.</code></pre>
+            </div>
+
+            <div class="project-links">
+              <a href="https://tiendasalvadorena.com" target="_blank" rel="noopener noreferrer">Live site</a>
+              <a href="tienda-case-study.html">Case Study</a>
+              <a href="https://github.com/dquint32/tienda-salvadorena" target="_blank" rel="noopener noreferrer">Code on GitHub</a>
+            </div>
+          </div>
+
+          <div data-lang="es" lang-block>
+            <h4>Tienda Salvadoreña — Denver</h4>
+            <p class="project-subtitle">Preservación Digital de un Legado de 30 Años</p>
+            <p>Digitalicé la tienda salvadoreña más antigua de Denver con un enfoque en la identidad cultural y UX bilingüe.</p>
+            
+            <div class="project-details">
+              <h5>Logro Técnico:</h5>
+              <p>Construí un motor de traducción orientado a objetos personalizado en Vanilla JS usando un sistema de clave de diccionario para cambio bilingüe instantáneo sin recargas. Implementé una arquitectura "Critical Fix" para atributos de datos anidados y persistencia de idioma basada en sesión.</p>
+              
+              <h5>Impacto:</h5>
+              <p>Preservé la presencia digital de un punto de referencia comunitario de 30 años. La UX bilingüe conecta a miembros de la diáspora mayores con generaciones más jóvenes dominantes en inglés a través de narración visual nostálgica.</p>
+              
+              <h5>Stack:</h5>
+              <pre><code>Vanilla JavaScript (ES6), HTML5 Semántico, CSS3 (Variables, Flexbox, Grid), Google Maps API.</code></pre>
+            </div>
+
+            <div class="project-links">
+              <a href="https://tiendasalvadorena.com" target="_blank" rel="noopener noreferrer">Sitio en vivo</a>
+              <a href="tienda-case-study.html">Estudio de caso</a>
+              <a href="https://github.com/dquint32/tienda-salvadorena" target="_blank" rel="noopener noreferrer">Código en GitHub</a>
+            </div>
+          </div>
+        </article>
+
+<article class="project-card mb-8">
+          <div class="project-image-container">
+            <img
+              src="exam3-sc.png"
+              alt="HTML/CSS/JS Exam Practice Quiz screenshot"
+              class="clickable-img"
+              loading="lazy"
+            />
+          </div>
+
+          <div data-lang="en" lang-block>
+            <h4>HTML/CSS/JS Exam Practice Quiz</h4>
+            <p class="project-subtitle">Interactive Educational Assessment Tool</p>
+            <p>A 75‑question exam simulator with real‑time feedback, progress tracking, and detailed explanations.</p>
+            
+            <div class="project-details">
+              <h5>Technical Achievement:</h5>
+              <p>Advanced state management using arrays, dynamic DOM manipulation, and regex‑based code detection.</p>
+              
+              <h5>Impact:</h5>
+              <p>A self‑paced learning platform with instant visual feedback and a three‑panel answer system (code, console output, visual representation).</p>
+              
+              <h5>Stack:</h5>
+              <pre><code>Vanilla JavaScript (ES6+), CSS Grid/Flexbox, HTML5.</code></pre>
+            </div>
+
+            <div class="project-links">
+              <a href="https://htmlcssjs-quiz.netlify.app" target="_blank" rel="noopener noreferrer">Live site</a>
+              <a href="https://github.com/dquint32/htmlcssjs-quiz" target="_blank" rel="noopener noreferrer">Code on GitHub</a>
+            </div>
+          </div>
+
+          <div data-lang="es" lang-block>
+            <h4>Cuestionario de Práctica HTML/CSS/JS</h4>
+            <p class="project-subtitle">Herramienta de Evaluación Educativa Interactiva</p>
+            <p>Un simulador de examen de 75 preguntas con retroalimentación en tiempo real, seguimiento de progreso y explicaciones detalladas.</p>
+            
+            <div class="project-details">
+              <h5>Logro Técnico:</h5>
+              <p>Gestión de estado avanzada usando matrices, manipulación dinámica del DOM y detección de código basada en regex.</p>
+              
+              <h5>Impacto:</h5>
+              <p>Una plataforma de aprendizaje a ritmo propio con retroalimentación visual instantánea y un sistema de respuesta de tres paneles (código, salida de consola, representación visual).</p>
+              
+              <h5>Stack:</h5>
+              <pre><code>Vanilla JavaScript (ES6+), CSS Grid/Flexbox, HTML5.</code></pre>
+            </div>
+
+            <div class="project-links">
+              <a href="https://htmlcssjs-quiz.netlify.app" target="_blank" rel="noopener noreferrer">Sitio en vivo</a>
+              <a href="https://github.com/dquint32/htmlcssjs-quiz" target="_blank" rel="noopener noreferrer">Código en GitHub</a>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
