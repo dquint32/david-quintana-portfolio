@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-language="en">
+<html lang="en" data-language="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,27 +7,18 @@
   <meta name="description" content="Healthcare Information Systems Portfolio - David Quintana | Senior HCIS Student & Bilingual Developer specializing in FHIR, HL7, and clinical workflow optimization">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <meta name="theme-color" content="#0B0C10">
-
-  <!-- Pre-paint: apply saved theme + language BEFORE first paint (no FOUC / no layout shift) -->
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <script>
     (function () {
       try {
-        var t = localStorage.getItem('preferred-theme');
-        if (!t) {
-          t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-        }
-        document.documentElement.setAttribute('data-theme', t);
-        var l = localStorage.getItem('preferred-language');
-        if (l) {
-          document.documentElement.setAttribute('data-language', l);
-          document.documentElement.setAttribute('lang', l);
-        }
-      } catch (e) { /* localStorage unavailable — fall back to defaults */ }
+        var d = document.documentElement;
+        var lang = localStorage.getItem('preferred-language');
+        if (lang) { d.setAttribute('data-language', lang); d.setAttribute('lang', lang); }
+        var theme = localStorage.getItem('preferred-theme');
+        if (theme) { d.setAttribute('data-theme', theme); }
+      } catch (e) { /* localStorage unavailable — defaults render */ }
     })();
   </script>
-
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="hcis-portfolio-images.css">
 </head>
@@ -38,23 +29,18 @@
     <div class="bg-logo">DQ</div>
   </div>
 
+  <button class="theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false" title="Toggle theme">
+    <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+  </button>
+
   <button id="back-to-top" class="back-to-top-btn" aria-label="Back to top">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <polyline points="18 15 12 9 6 15"></polyline>
     </svg>
   </button>
 
-  <button class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="false">
-    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-    </svg>
-    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <circle cx="12" cy="12" r="4"></circle>
-      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
-    </svg>
-  </button>
-
-  <button class="floating-toggle" type="button" aria-label="Switch to Spanish" aria-pressed="false">
+  <button class="floating-toggle" type="button" aria-label="Toggle language">
     <span data-lang="en">EN</span>
     <span data-lang="es" class="inactive">ES</span>
   </button>
@@ -66,8 +52,8 @@
           <a href="index.html">David Matthew Quintana</a>
         </h1>
         <p class="tagline">
-          <span lang-block data-lang="en">Bilingual Web Developer | Building practical, accessible solutions for small businesses and professionals</span>
-          <span lang-block data-lang="es">Desarrollador Web Bilingüe | Creando soluciones prácticas y accesibles para profesionales y pequeñas empresas</span>
+          <span lang-block data-lang="en">HCIS & Regulatory Compliance | Clinical data integrity, HL7/FHIR interoperability, and bilingual patient protection</span>
+          <span lang-block data-lang="es">HCIS y Cumplimiento Regulatorio | Integridad de datos clínicos, interoperabilidad HL7/FHIR y protección bilingüe del paciente</span>
         </p>
       </div>
       <nav class="nav" aria-label="Primary">
@@ -108,13 +94,13 @@
           
           <div lang-block data-lang="en">
             <p style="font-size: 1.25rem; font-weight: 600; color: var(--cyber-orange); margin-bottom: 1rem;">
-              HCIS Professional | Bilingual Systems Developer
+              Regulatory &amp; Clinical Research Compliance | HCIS
             </p>
             <p style="font-size: 1.125rem; line-height: 1.7; margin-bottom: 1.5rem;">
-              Bridging the gap between clinical data standards and equitable patient care.
+              Protecting the integrity of clinical data — from HL7 message to audit‑ready record.
             </p>
             <p style="font-size: 1rem; line-height: 1.7; opacity: 0.9;">
-              I design bilingual, standards‑based healthcare applications that transform raw clinical data into structured, interoperable, and safe information. My work focuses on interoperability, workflow optimization, clinical safety guardrails, and bilingual accessibility.
+              I engineer standards‑based, bilingual healthcare tools that transform raw clinical data into structured, interoperable, and audit‑ready information. My focus: HL7/FHIR interoperability, data‑integrity validation, clinical safety guardrails, and human‑subjects protection under GCP and HIPAA.
             </p>
           </div>
 
@@ -126,13 +112,13 @@
 
           <div lang-block data-lang="es">
             <p style="font-size: 1.25rem; font-weight: 600; color: var(--cyber-orange); margin-bottom: 1rem;">
-              Estudiante Senior de HCIS y Desarrollador Bilingüe
+              Cumplimiento Regulatorio y de Investigación Clínica | HCIS
             </p>
             <p style="font-size: 1.125rem; line-height: 1.7; margin-bottom: 1.5rem;">
-              Conectando estándares técnicos de datos con atención médica equitativa.
+              Protegiendo la integridad de los datos clínicos — desde el mensaje HL7 hasta el registro listo para auditoría.
             </p>
             <p style="font-size: 1rem; line-height: 1.7; opacity: 0.9;">
-              Diseño aplicaciones de salud bilingües basadas en estándares que transforman datos clínicos en información estructurada, interoperable y segura. Mi trabajo se enfoca en interoperabilidad, optimización de flujos de trabajo, protecciones de seguridad clínica y accesibilidad bilingüe.
+              Diseño herramientas de salud bilingües basadas en estándares que transforman datos clínicos sin procesar en información estructurada, interoperable y lista para auditoría. Mi enfoque: interoperabilidad HL7/FHIR, validación de integridad de datos, protecciones de seguridad clínica y protección de sujetos humanos bajo GCP y HIPAA.
             </p>
           </div>
         </div>
@@ -266,10 +252,10 @@
             <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">Lo que esto Demuestra</h5>
             
             <p style="line-height: 1.7;" lang-block data-lang="en">
-              I can design patient‑facing tools, implement interoperability standards, and support clinical efficiency and health equity.
+              Applied evidence of clinical data‑integrity engineering — enforcing HL7 FHIR R4 conformance, validating patient‑generated data at the source, and producing interoperable, audit‑ready records under a privacy‑by‑design (no‑PHI) architecture.
             </p>
             <p style="line-height: 1.7;" lang-block data-lang="es">
-              Puedo diseñar herramientas orientadas al paciente, implementar estándares de interoperabilidad y apoyar la eficiencia clínica y la equidad en salud.
+              Evidencia aplicada de ingeniería de integridad de datos clínicos — conformidad con HL7 FHIR R4, validación de los datos del paciente en el origen y generación de registros interoperables y listos para auditoría bajo una arquitectura centrada en la privacidad (sin PHI).
             </p>
           </div>
         </article>
@@ -379,10 +365,10 @@
             <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">Lo que esto Demuestra</h5>
 
             <p style="line-height: 1.7;" lang-block data-lang="en">
-              I can work with legacy standards, build validation logic, and support public health reporting workflows.
+              Applied evidence of standards‑based normalization and validation — converting legacy HL7 v2.x into LOINC/SNOMED‑CT‑coded records with defensible, testable logic that supports audit‑ready public‑health surveillance reporting.
             </p>
             <p style="line-height: 1.7;" lang-block data-lang="es">
-              Puedo trabajar con estándares heredados, construir lógica de validación y apoyar flujos de trabajo de informes de salud pública.
+              Evidencia aplicada de normalización y validación basada en estándares — conversión de HL7 v2.x heredado en registros codificados con LOINC/SNOMED‑CT mediante una lógica defendible y verificable que respalda informes de vigilancia de salud pública listos para auditoría.
             </p>
           </div>
         </article>
@@ -498,10 +484,10 @@
             <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">Lo que esto Demuestra</h5>
 
             <p style="line-height: 1.7;" lang-block data-lang="en">
-              I can build safety‑critical CDS tools that combine technical precision with cultural competency.
+              Applied evidence of safety‑critical compliance logic — enforcing weight‑based dose caps and caution thresholds as verifiable guardrails, delivered accessibly (WCAG 2.1 AA) and bilingually to protect patient safety across the language barrier.
             </p>
             <p style="line-height: 1.7;" lang-block data-lang="es">
-              Puedo construir herramientas CDS críticas para la seguridad que combinan precisión técnica con competencia cultural.
+              Evidencia aplicada de lógica de cumplimiento crítica para la seguridad — límites de dosis basados en peso y umbrales de precaución como salvaguardas verificables, entregados de forma accesible (WCAG 2.1 AA) y bilingüe para proteger la seguridad del paciente a través de la barrera del idioma.
             </p>
           </div>
         </article>
