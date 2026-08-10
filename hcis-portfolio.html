@@ -51,37 +51,15 @@
         <h1>
           <a href="index.html">David Matthew Quintana</a>
         </h1>
-        <p class="tagline">
-          <span lang-block data-lang="en">HCIS & Regulatory Compliance | Clinical data integrity, HL7/FHIR interoperability, and bilingual patient protection</span>
-          <span lang-block data-lang="es">HCIS y Cumplimiento Regulatorio | Integridad de datos clínicos, interoperabilidad HL7/FHIR y protección bilingüe del paciente</span>
-        </p>
+        <p class="tagline">Clinical Data Engineer · HCIS | Python/pandas ETL, data integrity, HL7/FHIR &amp; HIPAA/GCP compliance</p>
       </div>
       <nav class="nav" aria-label="Primary">
         <ul>
-          <li>
-            <a href="index.html">
-              <span lang-block data-lang="en">Home</span>
-              <span lang-block data-lang="es">Inicio</span>
-            </a>
-          </li>
-          <li>
-            <a href="portfolio.html" class="active">
-              <span lang-block data-lang="en">HCIS Portfolio</span>
-              <span lang-block data-lang="es">Portafolio HCIS</span>
-            </a>
-          </li>
-          <li>
-            <a href="pricing.html">
-              <span lang-block data-lang="en">Pricing</span>
-              <span lang-block data-lang="es">Precios</span>
-            </a>
-          </li>
-          <li>
-            <a href="contact.html" class="cta">
-              <span lang-block data-lang="en">Contact</span>
-              <span lang-block data-lang="es">Contacto</span>
-            </a>
-          </li>
+          <li><a href="index.html"><span lang-block data-lang="en">Home</span><span lang-block data-lang="es">Inicio</span></a></li>
+          <li><a href="hcis-portfolio.html" class="active"><span lang-block data-lang="en">Work</span><span lang-block data-lang="es">Trabajo</span></a></li>
+          <li><a href="eva-ctms-case-study.html"><span lang-block data-lang="en">EVA Case Study</span><span lang-block data-lang="es">Estudio EVA</span></a></li>
+          <li><a href="index.html#about"><span lang-block data-lang="en">About</span><span lang-block data-lang="es">Sobre mí</span></a></li>
+          <li><a href="index.html#contact" class="cta"><span lang-block data-lang="en">Contact</span><span lang-block data-lang="es">Contacto</span></a></li>
         </ul>
       </nav>
     </div>
@@ -150,6 +128,58 @@
 
         <article class="project-card">
           <div class="project-number">01</div>
+          <h4 class="project-title" lang-block data-lang="en">EVA CTMS Archive — Clinical Data ETL Pipeline</h4>
+          <h4 class="project-title" lang-block data-lang="es">Archivo EVA CTMS — Pipeline ETL de Datos Clínicos</h4>
+
+          <div class="project-links" style="margin-top: 1rem;">
+            <a href="eva-ctms-case-study.html" class="btn btn-primary" style="font-size: 0.9rem; padding: 0.5rem 1rem;">
+              <span lang-block data-lang="en">→ View Full Case Study</span>
+              <span lang-block data-lang="es">→ Ver Estudio de Caso Completo</span>
+            </a>
+          </div>
+
+          <div class="project-details" style="margin-top: 1.5rem;">
+            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en">The Problem</h5>
+            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">El Problema</h5>
+            <p style="margin-bottom: 1.5rem; line-height: 1.7;" lang-block data-lang="en">A decommissioned Clinical Trial Management System left ~9,925 documents in inconsistently named folders, plus a separate 6,830-record patient database — with no archive structure. Everything had to be understood, cleaned, and validated before migration, without ever exposing patient data to an external AI or cloud service.</p>
+            <p style="margin-bottom: 1.5rem; line-height: 1.7;" lang-block data-lang="es">Un Sistema de Gestión de Ensayos Clínicos desmantelado dejó ~9,925 documentos en carpetas con nombres inconsistentes, más una base de datos de 6,830 pacientes — sin estructura de archivo. Todo debía entenderse, limpiarse y validarse antes de migrar, sin exponer nunca datos de pacientes a una IA o nube externa.</p>
+
+            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en">The Action</h5>
+            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">La Acción</h5>
+            <p style="margin-bottom: 1.5rem; line-height: 1.7;" lang-block data-lang="en">I built a 10-stage local Python ETL pipeline: capture raw structure, crawl and classify every document, build a patient roster, clean the patient database, cross-validate documents against patients, generate a SharePoint build plan, and tag by study and deviation. The validation stage cross-checks each document's extracted patient ID against the real database.</p>
+            <p style="margin-bottom: 1.5rem; line-height: 1.7;" lang-block data-lang="es">Construí un pipeline ETL local de 10 etapas en Python: capturar la estructura, rastrear y clasificar cada documento, construir un registro de pacientes, limpiar la base de datos, validar los documentos contra los pacientes, generar un plan de SharePoint y etiquetar por estudio y desviación. La etapa de validación coteja el ID extraído de cada documento contra la base de datos real.</p>
+
+            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en">Tech Stack</h5>
+            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">Tecnologías</h5>
+            <p style="margin-bottom: 1.5rem; line-height: 1.7; font-family: 'JetBrains Mono', monospace; font-size: 0.95rem;">Python (pandas, openpyxl), Regex, JSON/YAML config, python-docx, SharePoint</p>
+
+            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en">Workflow</h5>
+            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">Flujo de Trabajo</h5>
+            <pre style="background: rgba(255, 107, 0, 0.05); border-left: 3px solid var(--cyber-orange); padding: 1rem; margin-bottom: 1.5rem; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; line-height: 1.6;" lang-block data-lang="en">Raw logs + patient DB → Clean &amp; classify → Cross-validate → SharePoint archive</pre>
+            <pre style="background: rgba(255, 107, 0, 0.05); border-left: 3px solid var(--cyber-orange); padding: 1rem; margin-bottom: 1.5rem; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; line-height: 1.6;" lang-block data-lang="es">Logs + base de datos → Limpiar y clasificar → Validar → Archivo SharePoint</pre>
+
+            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en">The Impact</h5>
+            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">Impacto</h5>
+            <ul style="margin-bottom: 1.5rem; line-height: 1.7; padding-left: 1.5rem;" lang-block data-lang="en">
+              <li><strong>Data integrity:</strong> caught 1,791 documents (18%) whose filename patient IDs matched no real patient — before migration, not after.</li>
+              <li><strong>Compliance:</strong> all processing local; PHI masked in every log; no patient data exposed to AI or cloud.</li>
+              <li><strong>Usability:</strong> delivered a searchable SharePoint archive with Patient Lookup and Deviation views staff had asked for.</li>
+            </ul>
+            <ul style="margin-bottom: 1.5rem; line-height: 1.7; padding-left: 1.5rem;" lang-block data-lang="es">
+              <li><strong>Integridad de datos:</strong> detectó 1,791 documentos (18%) cuyos IDs de nombre no coincidían con ningún paciente real — antes de migrar, no después.</li>
+              <li><strong>Cumplimiento:</strong> todo el procesamiento local; PHI enmascarado en cada registro; sin exponer datos a IA o nube.</li>
+              <li><strong>Usabilidad:</strong> un archivo SharePoint consultable con vistas de Búsqueda de Paciente y Desviaciones que el personal pedía.</li>
+            </ul>
+
+            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en">What This Demonstrates</h5>
+            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">Lo que esto Demuestra</h5>
+            <p style="line-height: 1.7;" lang-block data-lang="en">End-to-end ETL on messy, real-world clinical data — with validation that catches errors before they propagate, compliance built in by design, and a reproducible, documented, schema-driven pipeline.</p>
+            <p style="line-height: 1.7;" lang-block data-lang="es">ETL de extremo a extremo sobre datos clínicos reales y desordenados — con validación que detecta errores antes de que se propaguen, cumplimiento por diseño y un pipeline reproducible, documentado y guiado por esquema.</p>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-number">02</div>
           <h4 class="project-title" lang-block data-lang="en">i18n Patient Intake & FHIR Resource Generator</h4>
           <h4 class="project-title" lang-block data-lang="es">Admisión de Pacientes Bilingüe (FHIR)</h4>
           
@@ -261,7 +291,7 @@
         </article>
 
         <article class="project-card">
-          <div class="project-number">02</div>
+          <div class="project-number">03</div>
           <h4 class="project-title" lang-block data-lang="en">HL7 v2.x Infectious Disease & LOINC Parser</h4>
           <h4 class="project-title" lang-block data-lang="es">Analizador de Enfermedades Infecciosas HL7</h4>
           
@@ -374,7 +404,7 @@
         </article>
 
         <article class="project-card">
-          <div class="project-number">03</div>
+          <div class="project-number">04</div>
           <h4 class="project-title" lang-block data-lang="en">Bilingual Pediatric CDS Dosage Calculator</h4>
           <h4 class="project-title" lang-block data-lang="es">Calculadora de Dosis Pediátrica CDS Bilingüe</h4>
           
@@ -506,7 +536,7 @@
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
           
           <div class="service-card">
-            <h4 style="color: var(--cyber-orange); font-size: 1.5rem; margin-bottom: 1rem; font-weight: 600;">04. BioMed Inventory Tracker</h4>
+            <h4 style="color: var(--cyber-orange); font-size: 1.5rem; margin-bottom: 1rem; font-weight: 600;">05. BioMed Inventory Tracker</h4>
             <div class="project-links" style="margin-bottom: 1.25rem;">
               <a href="https://dquint32.github.io/biomed-inventory-tracker/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.4rem 0.9rem;">
                 <span lang-block data-lang="en">Live Demo</span>
@@ -518,16 +548,12 @@
               A utility for tracking PM (Preventive Maintenance) status for high‑risk clinical assets to support Joint Commission/CMS compliance.
             </p>
             <p style="margin-bottom: 0.75rem; line-height: 1.7;" lang-block data-lang="es">
-              Rastrea el estado de Mantenimiento Preventivo (PM) para activos clínicos de alto riesgo.
-            </p>
-
-            <p style="line-height: 1.7;" lang-block data-lang="es">
-              Apoya el cumplimiento de Joint Commission y CMS.
+              Rastrea el estado de Mantenimiento Preventivo (PM) para activos clínicos de alto riesgo, apoyando el cumplimiento de Joint Commission y CMS.
             </p>
           </div>
 
           <div class="service-card">
-            <h4 style="color: var(--cyber-orange); font-size: 1.5rem; margin-bottom: 1rem; font-weight: 600;">05. US Core FHIR Converter</h4>
+            <h4 style="color: var(--cyber-orange); font-size: 1.5rem; margin-bottom: 1rem; font-weight: 600;">06. US Core FHIR Converter</h4>
             <div class="project-links" style="margin-bottom: 1.25rem;">
               <a href="https://dquint32.github.io/fhir-patient-converter/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.4rem 0.9rem;">
                 <span lang-block data-lang="en">Live Demo</span>
