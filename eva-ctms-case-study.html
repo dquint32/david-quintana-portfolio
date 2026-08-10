@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en" data-language="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EVA CTMS Archive — Clinical Data ETL Pipeline | David Matthew Quintana</title>
+  <meta name="description" content="Case study: a local Python/pandas ETL pipeline that inventoried 9,925 clinical-trial documents, cleaned a 6,830-record patient database, and caught an 18% patient-ID integrity failure before migration to a compliant SharePoint archive — with zero PHI exposure.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <script>
+    (function () {
+      try {
+        var d = document.documentElement;
+        var lang = localStorage.getItem('preferred-language');
+        if (lang) { d.setAttribute('data-language', lang); d.setAttribute('lang', lang); }
+        var theme = localStorage.getItem('preferred-theme');
+        if (theme) { d.setAttribute('data-theme', theme); }
+      } catch (e) { /* localStorage unavailable — defaults render */ }
+    })();
+  </script>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ===== EVA case-study scoped styles (uses global design tokens) ===== */
+    .eva-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: var(--space-4);
+      margin: var(--space-8) 0;
+    }
+    .eva-stat {
+      background: var(--gunmetal);
+      border: 1px solid var(--steel-gray);
+      border-top: 3px solid var(--cyber-orange);
+      padding: var(--space-6);
+      text-align: center;
+    }
+    .eva-stat .num {
+      font-family: var(--font-headline);
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      color: var(--cyber-orange);
+      line-height: 1;
+    }
+    .eva-stat .label {
+      display: block;
+      margin-top: var(--space-2);
+      font-size: 0.85rem;
+      color: var(--muted-silver);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* Tech pills */
+    .eva-pills { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: var(--space-4) 0; }
+    .eva-pill {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      background: var(--steel-gray);
+      color: var(--soft-white);
+      border: 1px solid rgba(255,106,0,0.35);
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+
+    /* ===== ETL swim-lane diagram ===== */
+    .etl-diagram {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      align-items: stretch;
+      gap: var(--space-2);
+      margin: var(--space-8) 0;
+    }
+    .etl-lane {
+      background: var(--charcoal);
+      border: 1px solid var(--steel-gray);
+      padding: var(--space-4);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+    .etl-lane h4 {
+      font-family: var(--font-headline);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-align: center;
+      margin: 0 0 var(--space-2);
+      padding-bottom: var(--space-2);
+      border-bottom: 2px solid currentColor;
+      font-size: 1rem;
+    }
+    .lane-extract h4 { color: var(--muted-silver); }
+    .lane-transform h4 { color: var(--cyber-orange); }
+    .lane-load h4 { color: var(--warning-amber); }
+
+    .etl-box {
+      background: var(--gunmetal);
+      border-left: 3px solid var(--steel-gray);
+      padding: var(--space-3);
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--soft-white);
+    }
+    .etl-box small { color: var(--muted-silver); font-size: 0.72rem; display: block; }
+    .lane-extract .etl-box { border-left-color: var(--muted-silver); }
+    .lane-transform .etl-box { border-left-color: var(--cyber-orange); }
+    .lane-load .etl-box { border-left-color: var(--warning-amber); }
+
+    .etl-box.finding {
+      border: 2px solid var(--cyber-orange);
+      border-left: 3px solid var(--cyber-orange);
+      box-shadow: 0 0 18px var(--orange-glow);
+      background: rgba(255,106,0,0.08);
+    }
+    .etl-box.finding strong { color: var(--cyber-orange); }
+
+    .etl-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cyber-orange);
+      font-size: 1.6rem;
+      font-family: var(--font-mono);
+    }
+    .etl-caption { text-align: center; font-size: 0.75rem; color: var(--muted-silver); margin-top: var(--space-2); text-transform: uppercase; letter-spacing: 0.05em; }
+
+    @media (max-width: 800px) {
+      .etl-diagram { grid-template-columns: 1fr; }
+      .etl-arrow { transform: rotate(90deg); padding: var(--space-2) 0; }
+    }
+
+    /* ===== Finding table ===== */
+    .eva-table-wrap { overflow-x: auto; margin: var(--space-6) 0; }
+    table.eva-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+    table.eva-table th, table.eva-table td {
+      text-align: left;
+      padding: var(--space-3) var(--space-4);
+      border-bottom: 1px solid var(--steel-gray);
+    }
+    table.eva-table thead th {
+      background: var(--gunmetal);
+      color: var(--cyber-orange);
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+    }
+    table.eva-table td.num, table.eva-table th.num { text-align: right; font-family: var(--font-mono); }
+    table.eva-table tr.hold td { color: var(--warning-amber); }
+    table.eva-table tr.cleared td { color: var(--soft-white); }
+    table.eva-table tfoot td { font-weight: 700; color: var(--soft-white); border-top: 2px solid var(--cyber-orange); }
+
+    .callout {
+      border-left: 4px solid var(--cyber-orange);
+      background: var(--gunmetal);
+      padding: var(--space-4) var(--space-6);
+      margin: var(--space-6) 0;
+    }
+    .demonstrates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--space-4);
+      margin-top: var(--space-6);
+    }
+    .demonstrates-grid .service-card { background: var(--gunmetal); border: 1px solid var(--steel-gray); padding: var(--space-6); }
+    .privacy-banner {
+      border: 1px dashed var(--warning-amber);
+      padding: var(--space-4) var(--space-6);
+      margin: var(--space-8) 0;
+      color: var(--muted-silver);
+      font-size: 0.95rem;
+    }
+    .privacy-banner strong { color: var(--warning-amber); }
+  </style>
+</head>
+<body class="case-study-page" data-language="en">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="logo-background" aria-hidden="true">
+    <div class="bg-logo">DMQ</div>
+  </div>
+
+  <button class="floating-toggle" type="button" aria-label="Toggle language">
+    <span data-lang="en">EN</span>
+    <span class="divider">|</span>
+    <span data-lang="es" class="inactive">ES</span>
+  </button>
+
+  <button id="back-to-top" class="back-to-top-btn" aria-label="Back to top">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <h1><a href="index.html">David Matthew Quintana</a></h1>
+        <p class="tagline">HCIS &amp; Clinical Data Engineering | ETL pipelines, data integrity, and HIPAA/GCP compliance</p>
+      </div>
+      <nav class="nav" aria-label="Primary">
+        <ul>
+          <li><a href="index.html"><span lang-block data-lang="en">Home</span><span lang-block data-lang="es">Inicio</span></a></li>
+          <li><a href="hcis-portfolio.html"><span lang-block data-lang="en">Work</span><span lang-block data-lang="es">Trabajo</span></a></li>
+          <li><a href="eva-ctms-case-study.html" class="active"><span lang-block data-lang="en">EVA Case Study</span><span lang-block data-lang="es">Estudio EVA</span></a></li>
+          <li><a href="index.html#about"><span lang-block data-lang="en">About</span><span lang-block data-lang="es">Sobre mí</span></a></li>
+          <li><a href="index.html#contact" class="cta"><span lang-block data-lang="en">Contact</span><span lang-block data-lang="es">Contacto</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- HERO -->
+    <section class="case-study-hero section-spacing">
+      <div class="container">
+        <div class="case-hero-content">
+          <div lang-block data-lang="en">
+            <p class="project-subtitle" style="color:var(--cyber-orange);text-transform:uppercase;letter-spacing:0.08em;">Flagship Case Study · Clinical Data Engineering</p>
+            <h2>EVA CTMS Archive — Clinical Data ETL Pipeline</h2>
+            <p class="lead">Turning a decade of unstructured clinical-trial files into a validated, searchable, audit-ready archive — engineered locally in Python, with zero PHI exposure.</p>
+            <div class="eva-pills">
+              <span class="eva-pill">Python</span>
+              <span class="eva-pill">pandas</span>
+              <span class="eva-pill">openpyxl</span>
+              <span class="eva-pill">Regex</span>
+              <span class="eva-pill">JSON / YAML</span>
+              <span class="eva-pill">python-docx</span>
+              <span class="eva-pill">SharePoint</span>
+              <span class="eva-pill">Git</span>
+            </div>
+            <div class="hero-cta-group">
+              <a href="#pipeline" class="btn btn-primary">See the pipeline</a>
+              <a href="#finding" class="btn btn-secondary">The central finding</a>
+            </div>
+          </div>
+          <div lang-block data-lang="es">
+            <p class="project-subtitle" style="color:var(--cyber-orange);text-transform:uppercase;letter-spacing:0.08em;">Proyecto Destacado · Ingeniería de Datos Clínicos</p>
+            <h2>Archivo EVA CTMS — Pipeline ETL de Datos Clínicos</h2>
+            <p class="lead">Convertir una década de archivos de ensayos clínicos sin estructura en un archivo validado, consultable y listo para auditoría — construido localmente en Python, sin exponer PHI.</p>
+            <div class="eva-pills">
+              <span class="eva-pill">Python</span>
+              <span class="eva-pill">pandas</span>
+              <span class="eva-pill">openpyxl</span>
+              <span class="eva-pill">Regex</span>
+              <span class="eva-pill">JSON / YAML</span>
+              <span class="eva-pill">python-docx</span>
+              <span class="eva-pill">SharePoint</span>
+              <span class="eva-pill">Git</span>
+            </div>
+            <div class="hero-cta-group">
+              <a href="#pipeline" class="btn btn-primary">Ver el pipeline</a>
+              <a href="#finding" class="btn btn-secondary">El hallazgo central</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- META -->
+    <section class="meta-section">
+      <div class="container">
+        <div class="meta-grid">
+          <div lang-block data-lang="en" class="meta-group-wrapper" style="display:contents;">
+            <div class="meta-group"><h5>Role</h5><p>Clinical Systems Analyst Intern</p></div>
+            <div class="meta-group"><h5>Organization</h5><p>Western States Cancer Research NCORP</p></div>
+            <div class="meta-group"><h5>Focus</h5><p>ETL · Data Integrity · Compliance</p></div>
+            <div class="meta-group"><h5>Year</h5><p>2026</p></div>
+          </div>
+          <div lang-block data-lang="es" class="meta-group-wrapper" style="display:contents;">
+            <div class="meta-group"><h5>Rol</h5><p>Analista de Sistemas Clínicos (Prácticas)</p></div>
+            <div class="meta-group"><h5>Organización</h5><p>Western States Cancer Research NCORP</p></div>
+            <div class="meta-group"><h5>Enfoque</h5><p>ETL · Integridad de Datos · Cumplimiento</p></div>
+            <div class="meta-group"><h5>Año</h5><p>2026</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="section-spacing case-study" style="padding-top:0;">
+      <div class="container">
+        <div class="eva-stats">
+          <div class="eva-stat"><span class="num">9,925</span><span class="label" lang-block data-lang="en">Documents inventoried</span><span class="label" lang-block data-lang="es">Documentos inventariados</span></div>
+          <div class="eva-stat"><span class="num">6,830</span><span class="label" lang-block data-lang="en">Patient records cleaned</span><span class="label" lang-block data-lang="es">Registros de pacientes limpiados</span></div>
+          <div class="eva-stat"><span class="num">10</span><span class="label" lang-block data-lang="en">Pipeline stages</span><span class="label" lang-block data-lang="es">Etapas del pipeline</span></div>
+          <div class="eva-stat"><span class="num">18%</span><span class="label" lang-block data-lang="en">Integrity failures caught</span><span class="label" lang-block data-lang="es">Fallos de integridad detectados</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OVERVIEW / PROBLEM -->
+    <section id="overview" class="section-spacing case-study">
+      <div class="container">
+        <header class="section-header">
+          <h3 lang-block data-lang="en">The Problem</h3>
+          <h3 lang-block data-lang="es">El Problema</h3>
+        </header>
+        <div class="case-study-copy">
+          <div lang-block data-lang="en">
+            <p>A decommissioned Clinical Trial Management System (CTMS) left roughly <strong>9,925 documents</strong> in inconsistently named folders, alongside a separate <strong>6,830-record patient database</strong> — with no SharePoint architecture in place. Before anything could be migrated, it had to be understood, cleaned, and verified.</p>
+            <p>The tempting shortcut would have been to hand the entire archive to an AI tool and let it sort out the structure, categories, and patient links in one pass. But that would mean uploading thousands of records — names, dates of birth, clinical notes, patient IDs, and medical records — to a system outside the organization's control, putting a large amount of protected data at risk. <strong>Avoiding exactly that is why this pipeline was built.</strong> Every script, validation check, and classification runs locally, on the organization's machine only.</p>
+            <p>Staff reported two concrete pain points the design had to solve: <strong>slow document lookup</strong> and unreliable <strong>protocol-deviation tracking</strong>.</p>
+          </div>
+          <div lang-block data-lang="es">
+            <p>Un Sistema de Gestión de Ensayos Clínicos (CTMS) desmantelado dejó cerca de <strong>9,925 documentos</strong> en carpetas con nombres inconsistentes, junto a una <strong>base de datos de 6,830 pacientes</strong> — sin ninguna arquitectura de SharePoint. Antes de migrar nada, había que entenderlo, limpiarlo y verificarlo.</p>
+            <p>El atajo tentador habría sido entregar todo el archivo a una herramienta de IA para que ordenara la estructura, las categorías y los vínculos de pacientes de una sola vez. Pero eso significaría subir miles de registros — nombres, fechas de nacimiento, notas clínicas, IDs de pacientes y expedientes médicos — a un sistema fuera del control de la organización, poniendo en riesgo una gran cantidad de datos protegidos. <strong>Evitar precisamente eso es la razón por la que se construyó este pipeline.</strong> Cada script, verificación y clasificación se ejecuta localmente, únicamente en la máquina de la organización.</p>
+            <p>El personal reportó dos problemas concretos que el diseño debía resolver: <strong>búsqueda lenta de documentos</strong> y un <strong>seguimiento de desviaciones de protocolo</strong> poco fiable.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PIPELINE DIAGRAM -->
+    <section id="pipeline" class="section-spacing case-study" style="background:var(--gunmetal);">
+      <div class="container">
+        <header class="section-header">
+          <h3 lang-block data-lang="en">The Pipeline (Extract → Transform → Load)</h3>
+          <h3 lang-block data-lang="es">El Pipeline (Extraer → Transformar → Cargar)</h3>
+        </header>
+        <div lang-block data-lang="en">
+          <p>A 10-stage local Python ETL pipeline turns raw, messy inputs into a governed, validated schema. The <strong>cross-validation</strong> stage — highlighted below — is where the project's central finding was caught, before anything reached SharePoint.</p>
+        </div>
+        <div lang-block data-lang="es">
+          <p>Un pipeline ETL local de 10 etapas en Python convierte entradas crudas y desordenadas en un esquema gobernado y validado. La etapa de <strong>validación cruzada</strong> — resaltada abajo — es donde se detectó el hallazgo central del proyecto, antes de que nada llegara a SharePoint.</p>
+        </div>
+
+        <div class="etl-diagram" role="img" aria-label="ETL pipeline: Extract from raw Windows logs and legacy patient database; Transform through structure analysis, classification, roster building, database cleaning, cross-validation, cleanup and tagging; Load into a governed SharePoint archive.">
+          <div class="etl-lane lane-extract">
+            <h4>Extract</h4>
+            <div class="etl-box">Raw Windows logs<small>tree /f · dir /s /b</small></div>
+            <div class="etl-box">Legacy patient DB export<small>recovered database backup</small></div>
+          </div>
+          <div class="etl-arrow" aria-hidden="true">&rarr;</div>
+          <div class="etl-lane lane-transform">
+            <h4>Transform</h4>
+            <div class="etl-box">Structure analysis<small>flag naming / duplicates</small></div>
+            <div class="etl-box">Crawl &amp; classify<small>9,925 documents tagged</small></div>
+            <div class="etl-box">Build patient roster<small>de-duplicated IDs</small></div>
+            <div class="etl-box">Clean patient DB<small>6,830 records standardized</small></div>
+            <div class="etl-box finding"><strong>Cross-validate ◀ finding</strong><small>document ↔ patient match check</small></div>
+            <div class="etl-box">Filename / category cleanup<small>non-destructive triage</small></div>
+            <div class="etl-box">Study / deviation tagging<small>sponsor type &amp; tier</small></div>
+          </div>
+          <div class="etl-arrow" aria-hidden="true">&rarr;</div>
+          <div class="etl-lane lane-load">
+            <h4>Load</h4>
+            <div class="etl-box">SharePoint archive<small>governed schema</small></div>
+            <div class="etl-box">5 reference lists</div>
+            <div class="etl-box">Document library<small>11 metadata columns</small></div>
+            <div class="etl-box">3 lookups · 4 custom views</div>
+          </div>
+        </div>
+        <p class="etl-caption" lang-block data-lang="en">Raw &amp; messy → validate &amp; standardize → governed, audit-ready schema</p>
+        <p class="etl-caption" lang-block data-lang="es">Crudo y desordenado → validar y estandarizar → esquema gobernado y listo para auditoría</p>
+
+        <div class="eva-pills" style="justify-content:center;">
+          <span class="eva-pill">Python</span>
+          <span class="eva-pill">pandas</span>
+          <span class="eva-pill">openpyxl</span>
+          <span class="eva-pill">regex</span>
+          <span class="eva-pill">JSON / YAML config</span>
+          <span class="eva-pill">python-docx</span>
+          <span class="eva-pill">SharePoint</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CENTRAL FINDING -->
+    <section id="finding" class="section-spacing case-study">
+      <div class="container">
+        <header class="section-header">
+          <h3 lang-block data-lang="en">The Central Finding</h3>
+          <h3 lang-block data-lang="es">El Hallazgo Central</h3>
+        </header>
+        <div class="case-study-copy">
+          <div lang-block data-lang="en">
+            <p>The pipeline identifies which patient a document belongs to by extracting an ID from the filename. Checked against the real patient database, <strong>1,791 of 9,925 documents (18%)</strong> produced an ID that matched no patient in the database.</p>
+            <p>The cause is structural, not random. Filenames throughout the archive contain document control numbers, lab report numbers, dates, protocol codes, and sequential labels (like <span style="font-family:var(--font-mono);">DEVIATION5</span>) — many the same length and character mix as a genuine patient ID. <strong>Because real patient IDs and these incidental strings share the same structural signature, no pattern-matching rule can reliably separate them.</strong></p>
+            <div class="callout">
+              <p style="margin:0;"><strong>Why it matters:</strong> without this check, up to 1,791 documents could have been migrated tagged to the wrong patient — or to a patient who does not exist. In an archive meant to preserve accurate clinical records under HIPAA and ICH-GCP, that is a data-integrity risk, not a cosmetic one.</p>
+            </div>
+            <p><strong>Why it is a finding, not a failure:</strong> the validation step exists specifically to catch this class of problem before anything moves. It worked. Nothing was migrated on an unverified patient link — the system flagged the uncertainty and stopped rather than guessing. The underlying issue lives in the source data's naming conventions and predates the project entirely.</p>
+          </div>
+          <div lang-block data-lang="es">
+            <p>El pipeline identifica a qué paciente pertenece un documento extrayendo un ID del nombre del archivo. Al comparar con la base de datos real de pacientes, <strong>1,791 de 9,925 documentos (18%)</strong> produjeron un ID que no coincidía con ningún paciente.</p>
+            <p>La causa es estructural, no aleatoria. Los nombres de archivo del archivo contienen números de control de documentos, números de informes de laboratorio, fechas, códigos de protocolo y etiquetas secuenciales (como <span style="font-family:var(--font-mono);">DEVIATION5</span>) — muchos con la misma longitud y mezcla de caracteres que un ID real de paciente. <strong>Como los IDs reales y estas cadenas incidentales comparten la misma firma estructural, ninguna regla de coincidencia de patrones puede separarlos de forma fiable.</strong></p>
+            <div class="callout">
+              <p style="margin:0;"><strong>Por qué importa:</strong> sin esta verificación, hasta 1,791 documentos podrían haberse migrado etiquetados al paciente equivocado — o a un paciente que no existe. En un archivo destinado a preservar registros clínicos precisos bajo HIPAA e ICH-GCP, eso es un riesgo de integridad de datos, no algo cosmético.</p>
+            </div>
+            <p><strong>Por qué es un hallazgo, no un fallo:</strong> la etapa de validación existe específicamente para detectar este tipo de problema antes de mover nada. Funcionó. Nada se migró con un vínculo de paciente sin verificar — el sistema marcó la incertidumbre y se detuvo en lugar de adivinar. El problema de fondo vive en las convenciones de nombres de los datos originales y es anterior al proyecto.</p>
+          </div>
+        </div>
+
+        <div class="eva-table-wrap">
+          <table class="eva-table">
+            <thead>
+              <tr>
+                <th lang-block data-lang="en">Migration Clearance</th>
+                <th lang-block data-lang="es">Estado de Migración</th>
+                <th class="num" lang-block data-lang="en">Count</th>
+                <th class="num" lang-block data-lang="es">Cantidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="cleared"><td lang-block data-lang="en">Cleared for migration</td><td lang-block data-lang="es">Listo para migrar</td><td class="num">964</td></tr>
+              <tr><td lang-block data-lang="en">Valid — resolve first (rename, PHI review, duplicate, deviation)</td><td lang-block data-lang="es">Válido — resolver primero (renombrar, revisión PHI, duplicado, desviación)</td><td class="num">7,163</td></tr>
+              <tr class="hold"><td lang-block data-lang="en">Hold — orphaned: no match in patient database</td><td lang-block data-lang="es">Retenido — huérfano: sin coincidencia en la base de datos</td><td class="num">1,791</td></tr>
+              <tr><td lang-block data-lang="en">Hold — file flagged for delete</td><td lang-block data-lang="es">Retenido — archivo marcado para eliminar</td><td class="num">7</td></tr>
+            </tbody>
+            <tfoot>
+              <tr><td lang-block data-lang="en">Documents</td><td lang-block data-lang="es">Documentos</td><td class="num">9,925</td></tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPLIANCE -->
+    <section class="section-spacing case-study" style="background:var(--gunmetal);">
+      <div class="container">
+        <header class="section-header">
+          <h3 lang-block data-lang="en">The Compliance Approach</h3>
+          <h3 lang-block data-lang="es">El Enfoque de Cumplimiento</h3>
+        </header>
+        <div class="responsive-grid">
+          <div class="responsive-item">
+            <h4 lang-block data-lang="en">Local-only processing</h4>
+            <h4 lang-block data-lang="es">Procesamiento solo local</h4>
+            <p lang-block data-lang="en">Every script ran on the organization's machine. No document and no patient record was ever uploaded to the cloud or any external service.</p>
+            <p lang-block data-lang="es">Cada script se ejecutó en la máquina de la organización. Ningún documento ni registro de paciente se subió a la nube ni a ningún servicio externo.</p>
+          </div>
+          <div class="responsive-item">
+            <h4 lang-block data-lang="en">PHI masking in every log</h4>
+            <h4 lang-block data-lang="es">Enmascarado de PHI en cada registro</h4>
+            <p lang-block data-lang="en">A dedicated PHI-safe logger masks identifiers everywhere — letters to <span style="font-family:var(--font-mono);">X</span>, digits to <span style="font-family:var(--font-mono);">#</span> — so even routine troubleshooting never displays a real identifier.</p>
+            <p lang-block data-lang="es">Un registrador seguro para PHI enmascara los identificadores en todas partes — letras a <span style="font-family:var(--font-mono);">X</span>, dígitos a <span style="font-family:var(--font-mono);">#</span> — para que ni siquiera la depuración muestre un identificador real.</p>
+          </div>
+          <div class="responsive-item">
+            <h4 lang-block data-lang="en">No AI exposure to patient data</h4>
+            <h4 lang-block data-lang="es">Sin exposición de datos a la IA</h4>
+            <p lang-block data-lang="en">AI assisted only with writing and debugging code — never to view or process a real patient record. Debugging used masked shapes, aggregate counts, or synthetic fixtures.</p>
+            <p lang-block data-lang="es">La IA solo ayudó a escribir y depurar el código — nunca a ver ni procesar un registro real de paciente. La depuración usó formas enmascaradas, conteos agregados o datos sintéticos.</p>
+          </div>
+          <div class="responsive-item">
+            <h4 lang-block data-lang="en">Audit-ready by design</h4>
+            <h4 lang-block data-lang="es">Listo para auditoría por diseño</h4>
+            <p lang-block data-lang="en">Versioning was enabled before any upload, with a read-only staff / edit core-team permission model — configured for HIPAA and ICH-GCP audit-readiness.</p>
+            <p lang-block data-lang="es">El versionado se activó antes de cualquier carga, con un modelo de permisos de solo lectura para el personal y edición para el equipo central — configurado para auditorías HIPAA e ICH-GCP.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT WAS BUILT -->
+    <section class="section-spacing case-study">
+      <div class="container">
+        <header class="section-header">
+          <h3 lang-block data-lang="en">What Was Built</h3>
+          <h3 lang-block data-lang="es">Lo Que Se Construyó</h3>
+        </header>
+        <div class="case-study-copy">
+          <div lang-block data-lang="en">
+            <p>Beyond the pipeline, the project delivered a complete <strong>SharePoint archive architecture</strong>:</p>
+            <ul class="compact-list">
+              <li><strong>Five reference lists</strong> — the "phonebooks" documents link back to: Sites (69), Physicians (182), Coordinators (148), Disease Sites (125), Disease Categories (19).</li>
+              <li><strong>A document library</strong> ("Clinical Trial Documents") with <strong>11 metadata columns</strong> (category, patient ID, recommended action, junk flag, notes) and <strong>3 working lookups</strong> linking each document to its site, physician, and coordinator.</li>
+              <li><strong>Four custom views:</strong> Patient Lookup (one click shows a patient's whole history), Deviations Needing Review, Pending Cleanup, and By Category.</li>
+              <li><strong>A full documentation set</strong> — pipeline reference, generated-file guides, and the audit finding — so the process is reproducible by the next person.</li>
+            </ul>
+          </div>
+          <div lang-block data-lang="es">
+            <p>Más allá del pipeline, el proyecto entregó una <strong>arquitectura completa de archivo en SharePoint</strong>:</p>
+            <ul class="compact-list">
+              <li><strong>Cinco listas de referencia</strong> — las "guías telefónicas" a las que los documentos se vinculan: Sitios (69), Médicos (182), Coordinadores (148), Sitios de Enfermedad (125), Categorías de Enfermedad (19).</li>
+              <li><strong>Una biblioteca de documentos</strong> ("Clinical Trial Documents") con <strong>11 columnas de metadatos</strong> (categoría, ID de paciente, acción recomendada, marca de descarte, notas) y <strong>3 lookups funcionales</strong> que vinculan cada documento con su sitio, médico y coordinador.</li>
+              <li><strong>Cuatro vistas personalizadas:</strong> Búsqueda de Paciente (un clic muestra todo el historial de un paciente), Desviaciones por Revisar, Limpieza Pendiente y Por Categoría.</li>
+              <li><strong>Un conjunto completo de documentación</strong> — referencia del pipeline, guías de archivos generados y el hallazgo de auditoría — para que el proceso sea reproducible por la siguiente persona.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESULTS & RECOMMENDATIONS -->
+    <section class="section-spacing case-study" style="background:var(--gunmetal);">
+      <div class="container">
+        <header class="section-header">
+          <h3 lang-block data-lang="en">Results &amp; Recommendations</h3>
+          <h3 lang-block data-lang="es">Resultados y Recomendaciones</h3>
+        </header>
+        <div class="case-study-copy">
+          <div lang-block data-lang="en">
+            <ul class="compact-list">
+              <li><strong>964 documents cleared</strong> for a pilot migration with validated metadata.</li>
+              <li>The <strong>1,791 orphaned documents</strong> were handed off as a documented decision for the data owners — not forced through on an unverified link.</li>
+              <li><strong>Recommended next build:</strong> a second, authoritative deviation registry sourced directly from the structured deviation tables (which carry real relational links) rather than filename inference — a stronger long-term answer to the deviation-tracking requirement.</li>
+            </ul>
+          </div>
+          <div lang-block data-lang="es">
+            <ul class="compact-list">
+              <li><strong>964 documentos aprobados</strong> para una migración piloto con metadatos validados.</li>
+              <li>Los <strong>1,791 documentos huérfanos</strong> se entregaron como una decisión documentada para los dueños de los datos — no se forzaron con un vínculo sin verificar.</li>
+              <li><strong>Siguiente construcción recomendada:</strong> un segundo registro de desviaciones autoritativo, generado directamente desde las tablas estructuradas de desviaciones (que tienen vínculos relacionales reales) en lugar de inferir del nombre de archivo — una respuesta más sólida a largo plazo.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT THIS DEMONSTRATES -->
+    <section class="section-spacing case-study">
+      <div class="container">
+        <header class="section-header">
+          <h3 lang-block data-lang="en">What This Demonstrates</h3>
+          <h3 lang-block data-lang="es">Lo Que Esto Demuestra</h3>
+        </header>
+        <div class="demonstrates-grid">
+          <div class="service-card">
+            <h5 lang-block data-lang="en">End-to-end ETL</h5>
+            <h5 lang-block data-lang="es">ETL de extremo a extremo</h5>
+            <p lang-block data-lang="en">Extract, transform, and load on messy, real-world clinical data — at scale, reproducibly.</p>
+            <p lang-block data-lang="es">Extraer, transformar y cargar datos clínicos reales y desordenados — a escala y de forma reproducible.</p>
+          </div>
+          <div class="service-card">
+            <h5 lang-block data-lang="en">Data-integrity validation</h5>
+            <h5 lang-block data-lang="es">Validación de integridad</h5>
+            <p lang-block data-lang="en">Validation logic that catches errors before they propagate into a system of record.</p>
+            <p lang-block data-lang="es">Lógica de validación que detecta errores antes de que se propaguen a un sistema de registro.</p>
+          </div>
+          <div class="service-card">
+            <h5 lang-block data-lang="en">Compliance by design</h5>
+            <h5 lang-block data-lang="es">Cumplimiento por diseño</h5>
+            <p lang-block data-lang="en">HIPAA / ICH-GCP handling, PHI masking, and access control built in from the start.</p>
+            <p lang-block data-lang="es">Manejo HIPAA / ICH-GCP, enmascarado de PHI y control de acceso desde el inicio.</p>
+          </div>
+          <div class="service-card">
+            <h5 lang-block data-lang="en">Reproducible design</h5>
+            <h5 lang-block data-lang="es">Diseño reproducible</h5>
+            <p lang-block data-lang="en">Schema-driven, documented, multi-stage pipeline the next engineer can re-run.</p>
+            <p lang-block data-lang="es">Pipeline multietapa, documentado y guiado por esquema que el siguiente ingeniero puede re-ejecutar.</p>
+          </div>
+        </div>
+
+        <div class="privacy-banner">
+          <span lang-block data-lang="en"><strong>Privacy note:</strong> no real patient data, filenames, or archive files appear anywhere in this case study. It describes method, architecture, and aggregate counts only. All identifiers shown are masked or synthetic.</span>
+          <span lang-block data-lang="es"><strong>Nota de privacidad:</strong> ningún dato real de pacientes, nombre de archivo o archivo del repositorio aparece en este estudio de caso. Solo describe método, arquitectura y conteos agregados. Todos los identificadores mostrados están enmascarados o son sintéticos.</span>
+        </div>
+
+        <div class="hero-cta-group">
+          <a href="hcis-portfolio.html" class="btn btn-secondary" lang-block data-lang="en">← Back to all work</a>
+          <a href="hcis-portfolio.html" class="btn btn-secondary" lang-block data-lang="es">← Volver a todo el trabajo</a>
+          <a href="index.html#contact" class="btn btn-primary" lang-block data-lang="en">Get in touch</a>
+          <a href="index.html#contact" class="btn btn-primary" lang-block data-lang="es">Contáctame</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="portfolio-footer site-footer">
+    <div class="container">
+      <p>
+        <span lang-block data-lang="en">David Quintana Dev is a registered trade name of Servicios Quintana LLC.</span>
+        <span lang-block data-lang="es">David Quintana Dev es un nombre comercial registrado de Servicios Quintana LLC.</span>
+      </p>
+      <p>
+        <span lang-block data-lang="en">© 2026 Servicios Quintana LLC. All Rights Reserved.</span>
+        <span lang-block data-lang="es">© 2026 Servicios Quintana LLC. Todos los derechos reservados.</span>
+      </p>
+      <p class="footer-links">
+        <a href="index.html">
+          <span lang-block data-lang="en">Back to Portfolio</span>
+          <span lang-block data-lang="es">Volver al Portafolio</span>
+        </a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
