@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pediatric CDS Dosage Calculator | David Quintana</title>
-  <meta name="description" content="Case study: a bilingual pediatric clinical decision support tool with weight-based dosing, a hard stop above the maximum dose, and an 80% caution threshold. FastAPI + Pydantic.">
+  <meta name="description" content="Case study: a bilingual pediatric clinical decision support tool with weight-based dosing, a hard stop above the maximum dose, and an 80% caution threshold. Pydantic v2 + FastAPI, 58 tests, live demo running Python in the browser.">
   <link rel="canonical" href="https://davidquintana.dev/pediatric-cds-calculator.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="David Quintana">
   <meta property="og:title" content="Pediatric CDS Dosage Calculator | David Quintana">
-  <meta property="og:description" content="Case study: a bilingual pediatric clinical decision support tool with weight-based dosing, a hard stop above the maximum dose, and an 80% caution threshold. FastAPI + Pydantic.">
+  <meta property="og:description" content="Case study: a bilingual pediatric clinical decision support tool with weight-based dosing, a hard stop above the maximum dose, and an 80% caution threshold. Pydantic v2 + FastAPI, 58 tests, live demo running Python in the browser.">
   <meta property="og:url" content="https://davidquintana.dev/pediatric-cds-calculator.html">
   <meta property="og:image" content="https://davidquintana.dev/assets/img/og-card.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -65,15 +65,15 @@
 <h1 data-lang="es" lang="es">Calculadora pediátrica de dosis (CDS)</h1>
 <p data-lang="en" class="lead">A safety-critical, bilingual dosing tool that automates weight-based pediatric calculations and refuses to accept an unsafe dose: a hard stop above the maximum, a caution zone near it, and caregiver instructions in English and Spanish.</p>
 <p data-lang="es" lang="es" class="lead">Una herramienta de dosificación bilingüe y crítica para la seguridad que automatiza cálculos pediátricos por peso y se niega a aceptar una dosis insegura: parada estricta sobre el máximo, zona de precaución cerca de él e instrucciones en inglés y español.</p>
-<ul class="tags" aria-label="Technologies"><li><span class="tag">Python</span></li><li><span class="tag">FastAPI</span></li><li><span class="tag">Pydantic</span></li><li><span class="tag">JavaScript</span></li><li><span class="tag">JSON i18n</span></li></ul>
-<div class="btn-row"><a class="btn btn-primary" href="https://github.com/dquint32/bilingual-pediatric-CDS-dosage-calculator" target="_blank" rel="noopener"><span data-lang="en">Source code</span><span data-lang="es" lang="es">Código fuente</span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.3 1.9 1.3 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg></a><a class="btn btn-secondary" href="https://dquint32.github.io/bilingual-pediatric-CDS-dosage-calculator/" target="_blank" rel="noopener"><span data-lang="en">Interface demo</span><span data-lang="es" lang="es">Demo de la interfaz</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
-<dl class="meta-row"><div><dt><span data-lang="en">Role</span><span data-lang="es" lang="es">Rol</span></dt><dd><span data-lang="en">Lead developer</span><span data-lang="es" lang="es">Desarrollador principal</span></dd></div><div><dt><span data-lang="en">Context</span><span data-lang="es" lang="es">Contexto</span></dt><dd><span data-lang="en">Clinical safety prototype</span><span data-lang="es" lang="es">Prototipo de seguridad clínica</span></dd></div><div><dt><span data-lang="en">Backend</span><span data-lang="es" lang="es">Backend</span></dt><dd><span data-lang="en">Python · FastAPI · Pydantic</span><span data-lang="es" lang="es">Python · FastAPI · Pydantic</span></dd></div><div><dt><span data-lang="en">Languages</span><span data-lang="es" lang="es">Idiomas</span></dt><dd><span data-lang="en">English · Spanish (JSON i18n)</span><span data-lang="es" lang="es">Inglés · español (i18n JSON)</span></dd></div></dl>
+<ul class="tags" aria-label="Technologies"><li><span class="tag">Python</span></li><li><span class="tag">Pydantic v2</span></li><li><span class="tag">FastAPI</span></li><li><span class="tag">Pyodide</span></li><li><span class="tag">pytest</span></li><li><span class="tag">JavaScript</span></li><li><span class="tag">JSON i18n</span></li></ul>
+<div class="btn-row"><a class="btn btn-primary" href="https://dquint32.github.io/bilingual-pediatric-CDS-dosage-calculator/" target="_blank" rel="noopener"><span data-lang="en">Live demo</span><span data-lang="es" lang="es">Ver demo</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a><a class="btn btn-secondary" href="https://github.com/dquint32/bilingual-pediatric-CDS-dosage-calculator" target="_blank" rel="noopener"><span data-lang="en">Source code</span><span data-lang="es" lang="es">Código fuente</span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.3 1.9 1.3 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg></a></div>
+<dl class="meta-row"><div><dt><span data-lang="en">Role</span><span data-lang="es" lang="es">Rol</span></dt><dd><span data-lang="en">Lead developer</span><span data-lang="es" lang="es">Desarrollador principal</span></dd></div><div><dt><span data-lang="en">Context</span><span data-lang="es" lang="es">Contexto</span></dt><dd><span data-lang="en">Clinical safety prototype</span><span data-lang="es" lang="es">Prototipo de seguridad clínica</span></dd></div><div><dt><span data-lang="en">Backend</span><span data-lang="es" lang="es">Backend</span></dt><dd><span data-lang="en">Python · Pydantic v2 · FastAPI</span><span data-lang="es" lang="es">Python · Pydantic v2 · FastAPI</span></dd></div><div><dt><span data-lang="en">Quality</span><span data-lang="es" lang="es">Calidad</span></dt><dd><span data-lang="en">58 tests · 100% coverage · CI</span><span data-lang="es" lang="es">58 pruebas · 100% cobertura · CI</span></dd></div></dl>
 </div>
 </section>
 <section class="section pt-0 pb-tight">
 <div class="container">
-<p data-lang="en" class="callout warn"><strong>Note:</strong> the hosted demo shows the interface. Dose calculations come from the FastAPI service, which runs locally — setup steps are in the repository.</p>
-<p data-lang="es" lang="es" class="callout warn"><strong>Nota:</strong> la demo publicada muestra la interfaz. Los cálculos vienen del servicio FastAPI, que se ejecuta localmente — los pasos están en el repositorio.</p>
+<p data-lang="en" class="callout"><strong>Try it live:</strong> the demo runs the tested Python backend directly in your browser through Pyodide (WebAssembly), so every dose you see comes from the same code the test suite covers. No server is involved, and nothing you type leaves your device.</p>
+<p data-lang="es" lang="es" class="callout"><strong>Pruébela en vivo:</strong> la demo ejecuta el backend de Python probado directamente en su navegador mediante Pyodide (WebAssembly), así que cada dosis que ve viene del mismo código que cubren las pruebas. No hay servidor y nada de lo que escribe sale de su dispositivo.</p>
 </div>
 </section>
 <section class="section">
@@ -98,7 +98,7 @@
 <h2 data-lang="es" lang="es">Acciones</h2></div>
 <div class="feature">
 <figure>
-<div class="shot"><img src="assets/img/projects/cds-critical.webp" alt="Critical alert: calculated dose exceeds maximum safe dose" width="1600" height="923" loading="lazy" decoding="async" class="zoomable"></div>
+<div class="shot"><img src="assets/img/projects/cds-critical.webp" alt="Critical alert: calculated dose exceeds maximum safe dose" width="1600" height="1275" loading="lazy" decoding="async" class="zoomable"></div>
 <figcaption data-lang="en">80 kg × 15 mg/kg = 1,200 mg exceeds the 1,000 mg maximum: DO NOT ADMINISTER.</figcaption>
 <figcaption data-lang="es" lang="es">80 kg × 15 mg/kg = 1,200 mg supera el máximo de 1,000 mg: NO ADMINISTRAR.</figcaption>
 </figure>
@@ -110,9 +110,9 @@
 </div>
 </div><div class="feature flip">
 <figure>
-<div class="shot"><img src="assets/img/projects/cds-caution.webp" alt="Caution alert: dose is 82% of maximum" width="1600" height="1188" loading="lazy" decoding="async" class="zoomable"></div>
-<figcaption data-lang="en">825 mg is 82% of the maximum, so the result turns amber and asks for a double check.</figcaption>
-<figcaption data-lang="es" lang="es">825 mg es el 82% del máximo, así que el resultado se vuelve ámbar y pide verificar.</figcaption>
+<div class="shot"><img src="assets/img/projects/cds-caution.webp" alt="Caution alert: dose is 82% of maximum" width="1600" height="1427" loading="lazy" decoding="async" class="zoomable"></div>
+<figcaption data-lang="en">55 kg × 15 mg/kg = 825 mg, 82.5% of the maximum, so the result turns amber and asks for a double check.</figcaption>
+<figcaption data-lang="es" lang="es">55 kg × 15 mg/kg = 825 mg, el 82.5% del máximo, así que el resultado se vuelve ámbar y pide verificar.</figcaption>
 </figure>
 <div>
 <h3 data-lang="en">[A] Caution zone at 80%</h3>
@@ -122,27 +122,27 @@
 </div>
 </div><div class="feature">
 <figure>
-<div class="shot"><img src="assets/img/projects/cds-safe.webp" alt="Safe dose recommendation with instructions" width="1600" height="1162" loading="lazy" decoding="async" class="zoomable"></div>
+<div class="shot"><img src="assets/img/projects/cds-safe.webp" alt="Safe dose recommendation with instructions" width="1600" height="1351" loading="lazy" decoding="async" class="zoomable"></div>
 <figcaption data-lang="en">15 kg × 15 mg/kg = 225 mg every 6 hours, within limits.</figcaption>
 <figcaption data-lang="es" lang="es">15 kg × 15 mg/kg = 225 mg cada 6 horas, dentro de los límites.</figcaption>
 </figure>
 <div>
 <h3 data-lang="en">[A] Validated weight-based math</h3>
 <h3 data-lang="es" lang="es">[A] Cálculo por peso validado</h3>
-<div data-lang="en" class="prose"><p>The dose is <code>weight (kg) × rate (mg/kg)</code>, with pounds converted to kilograms first. Pydantic validates the request, and the weight must fall between <strong>1 and 200 kg</strong> before any calculation runs, which catches decimal and unit slips at the door.</p></div>
-<div data-lang="es" lang="es" class="prose"><p>La dosis es <code>peso (kg) × tasa (mg/kg)</code>, convirtiendo libras a kilogramos primero. Pydantic valida la solicitud y el peso debe estar entre <strong>1 y 200 kg</strong> antes de calcular, lo que detecta errores de decimal o de unidad desde el inicio.</p></div>
+<div data-lang="en" class="prose"><p>The dose is <code>weight (kg) × rate (mg/kg)</code>, rounded half-up to 0.1 mg. A Pydantic v2 model converts pounds with the exact factor and rejects any weight outside <strong>1–200 kg</strong> before a calculation runs, which catches decimal and unit slips at the door. The number of doses per 24 hours is capped by both the dosing interval and the maximum daily dose.</p></div>
+<div data-lang="es" lang="es" class="prose"><p>La dosis es <code>peso (kg) × tasa (mg/kg)</code>, redondeada a 0.1 mg. Un modelo Pydantic v2 convierte las libras con el factor exacto y rechaza cualquier peso fuera de <strong>1–200 kg</strong> antes de calcular, lo que detecta errores de decimal o de unidad desde el inicio. El número de dosis en 24 horas se limita tanto por el intervalo como por la dosis máxima diaria.</p></div>
 </div>
 </div><div class="feature flip">
 <figure>
-<div class="shot"><img src="assets/img/projects/cds-spanish.webp" alt="Calculator interface and result in Spanish" width="1600" height="1179" loading="lazy" decoding="async" class="zoomable"></div>
-<figcaption data-lang="en">The same tool in Spanish: ibuprofen for an 18 kg child.</figcaption>
-<figcaption data-lang="es" lang="es">La misma herramienta en español: ibuprofeno para un niño de 18 kg.</figcaption>
+<div class="shot"><img src="assets/img/projects/cds-spanish.webp" alt="Calculator interface and result in Spanish" width="1600" height="1600" loading="lazy" decoding="async" class="zoomable"></div>
+<figcaption data-lang="en">The same tool in Spanish: 40 lb is converted to 18.14 kg in Python, then ibuprofen 181.4 mg every 8 hours.</figcaption>
+<figcaption data-lang="es" lang="es">La misma herramienta en español: 40 lb se convierten a 18.14 kg en Python y luego ibuprofeno 181.4 mg cada 8 horas.</figcaption>
 </figure>
 <div>
 <h3 data-lang="en">[A] Bilingual instructions for equity</h3>
 <h3 data-lang="es" lang="es">[A] Instrucciones bilingües para la equidad</h3>
-<div data-lang="en" class="prose"><p>A JSON-based i18n layer (<code>en.json</code> / <code>es.json</code>) switches the whole interface without a reload or losing entered data, and the API returns instructions in both languages. Families receive discharge guidance in the language they actually read.</p></div>
-<div data-lang="es" lang="es" class="prose"><p>Una capa i18n basada en JSON (<code>en.json</code> / <code>es.json</code>) cambia toda la interfaz sin recargar ni perder datos, y la API devuelve instrucciones en ambos idiomas. Las familias reciben indicaciones en el idioma que realmente leen.</p></div>
+<div data-lang="en" class="prose"><p>A JSON-based i18n layer (<code>en.json</code> / <code>es.json</code>) switches the whole interface without a reload or losing entered data. The backend returns every message in both languages, so the last result switches language too, without a second calculation. Families receive discharge guidance in the language they actually read.</p></div>
+<div data-lang="es" lang="es" class="prose"><p>Una capa i18n basada en JSON (<code>en.json</code> / <code>es.json</code>) cambia toda la interfaz sin recargar ni perder datos. El backend devuelve cada mensaje en ambos idiomas, así que el último resultado también cambia de idioma sin recalcular. Las familias reciben indicaciones en el idioma que realmente leen.</p></div>
 </div>
 </div>
 </div>
@@ -153,8 +153,8 @@
 <h2 data-lang="es" lang="es">Reglas de dosificación del prototipo</h2><p data-lang="en">Values configured in the backend for demonstration — not clinical guidance.</p>
 <p data-lang="es" lang="es">Valores configurados en el backend para demostración — no son guía clínica.</p></div>
 <div class="table-wrap" tabindex="0" role="region" aria-label="Dosing rules table"><table>
-<thead><tr><th scope="col"><span data-lang="en">Medication</span><span data-lang="es" lang="es">Medicamento</span></th><th scope="col" class="num">mg/kg</th><th scope="col" class="num"><span data-lang="en">Max single dose</span><span data-lang="es" lang="es">Dosis máxima</span></th><th scope="col" class="num"><span data-lang="en">Every</span><span data-lang="es" lang="es">Cada</span></th></tr></thead>
-<tbody><tr><td><span data-lang="en">Acetaminophen</span><span data-lang="es" lang="es">Acetaminofén</span></td><td class="num">15</td><td class="num">1,000 mg</td><td class="num">6 h</td></tr><tr><td><span data-lang="en">Ibuprofen</span><span data-lang="es" lang="es">Ibuprofeno</span></td><td class="num">10</td><td class="num">800 mg</td><td class="num">8 h</td></tr><tr><td><span data-lang="en">Amoxicillin</span><span data-lang="es" lang="es">Amoxicilina</span></td><td class="num">20</td><td class="num">1,500 mg</td><td class="num">12 h</td></tr></tbody>
+<thead><tr><th scope="col"><span data-lang="en">Medication</span><span data-lang="es" lang="es">Medicamento</span></th><th scope="col" class="num">mg/kg</th><th scope="col" class="num"><span data-lang="en">Max single dose</span><span data-lang="es" lang="es">Dosis máxima</span></th><th scope="col" class="num"><span data-lang="en">Every</span><span data-lang="es" lang="es">Cada</span></th><th scope="col" class="num"><span data-lang="en">Max per day</span><span data-lang="es" lang="es">Máximo diario</span></th></tr></thead>
+<tbody><tr><td><span data-lang="en">Acetaminophen</span><span data-lang="es" lang="es">Acetaminofén</span></td><td class="num">15</td><td class="num">1,000 mg</td><td class="num">6 h</td><td class="num">4,000 mg</td></tr><tr><td><span data-lang="en">Ibuprofen</span><span data-lang="es" lang="es">Ibuprofeno</span></td><td class="num">10</td><td class="num">800 mg</td><td class="num">8 h</td><td class="num">3,200 mg</td></tr><tr><td><span data-lang="en">Amoxicillin</span><span data-lang="es" lang="es">Amoxicilina</span></td><td class="num">20</td><td class="num">1,500 mg</td><td class="num">12 h</td><td class="num">3,000 mg</td></tr></tbody>
 </table></div>
 <div class="table-wrap" tabindex="0" role="region" aria-label="Safety thresholds table"><table>
 <thead><tr><th scope="col"><span data-lang="en">Calculated dose</span><span data-lang="es" lang="es">Dosis calculada</span></th><th scope="col"><span data-lang="en">Result</span><span data-lang="es" lang="es">Resultado</span></th></tr></thead>
@@ -181,12 +181,12 @@
 <div class="grid grid-2 mt-8">
 <div class="card"><h3 data-lang="en">Architecture</h3>
 <h3 data-lang="es" lang="es">Arquitectura</h3>
-<ul data-lang="en" class="checklist mt-4"><li><strong>Frontend:</strong> HTML5, CSS3 custom properties, JavaScript (ES6+)</li><li><strong>Backend:</strong> FastAPI with Pydantic request/response models and a <code>SafetyLevel</code> enum the UI must handle</li><li><strong>Localization:</strong> <code>en.json</code> / <code>es.json</code></li></ul>
-<ul data-lang="es" lang="es" class="checklist mt-4"><li><strong>Frontend:</strong> HTML5, propiedades CSS, JavaScript (ES6+)</li><li><strong>Backend:</strong> FastAPI con modelos Pydantic y un enum <code>SafetyLevel</code> que la interfaz debe manejar</li><li><strong>Localización:</strong> <code>en.json</code> / <code>es.json</code></li></ul></div>
+<ul data-lang="en" class="checklist mt-4"><li><code>formulary.py</code> — reference data, immutable</li><li><code>models.py</code> — Pydantic v2 contracts, unit conversion, weight range</li><li><code>calculations.py</code> — pure clinical logic, no I/O</li><li><code>service.py</code> — validate → assess → bilingual response, shared by the API and the browser</li><li><code>api.py</code> — FastAPI routes and CORS only</li><li><strong>Quality:</strong> 58 pytest tests, 100% coverage, CI on Python 3.11–3.13</li></ul>
+<ul data-lang="es" lang="es" class="checklist mt-4"><li><code>formulary.py</code> — datos de referencia, inmutables</li><li><code>models.py</code> — contratos Pydantic v2, conversión de unidades, rango de peso</li><li><code>calculations.py</code> — lógica clínica pura, sin E/S</li><li><code>service.py</code> — validar → evaluar → respuesta bilingüe, compartido por la API y el navegador</li><li><code>api.py</code> — solo rutas FastAPI y CORS</li><li><strong>Calidad:</strong> 58 pruebas pytest, 100% de cobertura, CI en Python 3.11–3.13</li></ul></div>
 <div class="card"><h3 data-lang="en">Privacy</h3>
 <h3 data-lang="es" lang="es">Privacidad</h3>
-<p data-lang="en">Stateless API: each request carries only a weight, a medication, and a language. No patient identifiers are collected, stored, or logged.</p>
-<p data-lang="es" lang="es">API sin estado: cada solicitud lleva solo un peso, un medicamento y un idioma. No se recopilan, almacenan ni registran identificadores de pacientes.</p></div>
+<p data-lang="en">Stateless by design: each request carries only a weight, a medication, and a language. No patient identifiers are collected, stored, or logged, and in the live demo the calculation never leaves the browser.</p>
+<p data-lang="es" lang="es">Sin estado por diseño: cada solicitud lleva solo un peso, un medicamento y un idioma. No se recopilan, almacenan ni registran identificadores de pacientes, y en la demo el cálculo nunca sale del navegador.</p></div>
 </div>
 <div class="mt-10"><div class="card next-project">
 <div><span class="label"><span data-lang="en">Next case study</span><span data-lang="es" lang="es">Siguiente caso</span></span><a class="title" href="eva-ctms-case-study.html"><span data-lang="en">EVA CTMS Archive — clinical data ETL pipeline</span><span data-lang="es" lang="es">Archivo EVA CTMS — pipeline ETL de datos clínicos</span> →</a></div>

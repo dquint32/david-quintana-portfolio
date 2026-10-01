@@ -88,7 +88,7 @@
 <div class="stats">
 <div class="stat"><span class="stat-num">9,925</span><span class="stat-label"><span data-lang="en">clinical-trial documents inventoried and classified</span><span data-lang="es" lang="es">documentos de ensayos clínicos inventariados y clasificados</span></span></div>
 <div class="stat"><span class="stat-num">18%</span><span class="stat-label"><span data-lang="en">patient-ID integrity failures caught before migration</span><span data-lang="es" lang="es">fallos de integridad de IDs detectados antes de migrar</span></span></div>
-<div class="stat"><span class="stat-num">203</span><span class="stat-label"><span data-lang="en">automated tests across my HL7 &amp; FHIR projects</span><span data-lang="es" lang="es">pruebas automatizadas en mis proyectos HL7 y FHIR</span></span></div>
+<div class="stat"><span class="stat-num">272</span><span class="stat-label"><span data-lang="en">automated tests across my HL7, FHIR &amp; CDS projects</span><span data-lang="es" lang="es">pruebas automatizadas en mis proyectos HL7, FHIR y CDS</span></span></div>
 <div class="stat"><span class="stat-num">4</span><span class="stat-label"><span data-lang="en">CITI certifications: GCP, HIPAA, human subjects</span><span data-lang="es" lang="es">certificaciones CITI: GCP, HIPAA, sujetos humanos</span></span></div>
 </div>
 </div>
@@ -118,19 +118,19 @@
 </article>
 <div class="grid grid-projects">
 <article class="card project-card">
-<a class="thumb" href="intake-web-app.html" tabindex="-1" aria-hidden="true"><img src="assets/img/projects/intake-fhir-bundle.webp" alt="Intake app showing a generated FHIR R4 bundle" width="1600" height="2158" loading="lazy" decoding="async"></a>
+<a class="thumb" href="intake-web-app.html" tabindex="-1" aria-hidden="true"><img src="assets/img/projects/intake-fhir-bundle.webp" alt="Intake app showing a generated FHIR R4 bundle" width="1600" height="1574" loading="lazy" decoding="async"></a>
 <div class="body">
 <p class="eyebrow">FHIR R4 · FastAPI</p>
 <h3 data-lang="en"><a href="intake-web-app.html">Bilingual Patient Intake → FHIR</a></h3>
 <h3 data-lang="es" lang="es"><a href="intake-web-app.html">Admisión bilingüe → FHIR</a></h3>
-<p data-lang="en">Bilingual intake form whose API validates every submission with Pydantic v2 and returns a self-contained FHIR R4 Bundle.</p>
-<p data-lang="es" lang="es">Formulario bilingüe cuya API valida cada envío con Pydantic v2 y devuelve un Bundle FHIR R4 autocontenido.</p>
+<p data-lang="en">Bilingual intake form validated by Pydantic v2 and turned into a self-contained FHIR R4 Bundle. The live demo runs the tested Python in your browser.</p>
+<p data-lang="es" lang="es">Formulario bilingüe validado con Pydantic v2 y convertido en un Bundle FHIR R4 autocontenido. La demo ejecuta el Python probado en su navegador.</p>
 <ul class="tags" aria-label="Technologies"><li><span class="tag">Python</span></li><li><span class="tag">FastAPI</span></li><li><span class="tag">Pydantic v2</span></li><li><span class="tag">FHIR R4</span></li><li><span class="tag">pytest</span></li></ul>
 <div class="links"><a href="intake-web-app.html"><span data-lang="en">Case study</span><span data-lang="es" lang="es">Estudio de caso</span></a><a href="https://dquint32.github.io/bilingual-patient-intake-fhir/" target="_blank" rel="noopener"><span data-lang="en">Live demo</span><span data-lang="es" lang="es">Demo</span></a><a href="https://github.com/dquint32/bilingual-patient-intake-fhir" target="_blank" rel="noopener"><span data-lang="en">Code</span><span data-lang="es" lang="es">Código</span></a></div>
 </div>
 </article>
 <article class="card project-card">
-<a class="thumb" href="hl7-parser.html" tabindex="-1" aria-hidden="true"><img src="assets/img/projects/hl7-respiratory-panel.webp" alt="HL7 parser summarizing a respiratory panel" width="1600" height="1255" loading="lazy" decoding="async"></a>
+<a class="thumb" href="hl7-parser.html" tabindex="-1" aria-hidden="true"><img src="assets/img/projects/hl7-respiratory-panel.webp" alt="HL7 parser summarizing a respiratory panel" width="1600" height="1481" loading="lazy" decoding="async"></a>
 <div class="body">
 <p class="eyebrow">HL7 v2.x · LOINC</p>
 <h3 data-lang="en"><a href="hl7-parser.html">HL7 v2 Infectious Disease Parser</a></h3>
@@ -142,19 +142,19 @@
 </div>
 </article>
 <article class="card project-card">
-<a class="thumb" href="pediatric-cds-calculator.html" tabindex="-1" aria-hidden="true"><img src="assets/img/projects/cds-caution.webp" alt="Dosage calculator showing a caution-level result" width="1600" height="1188" loading="lazy" decoding="async"></a>
+<a class="thumb" href="pediatric-cds-calculator.html" tabindex="-1" aria-hidden="true"><img src="assets/img/projects/cds-caution.webp" alt="Dosage calculator showing a caution-level result" width="1600" height="1427" loading="lazy" decoding="async"></a>
 <div class="body">
 <p class="eyebrow">Clinical decision support</p>
 <h3 data-lang="en"><a href="pediatric-cds-calculator.html">Pediatric CDS Dosage Calculator</a></h3>
 <h3 data-lang="es" lang="es"><a href="pediatric-cds-calculator.html">Calculadora pediátrica de dosis (CDS)</a></h3>
 <p data-lang="en">Weight-based dosing with a hard stop above the maximum dose, an 80% caution threshold, and bilingual caregiver instructions.</p>
 <p data-lang="es" lang="es">Dosificación por peso con parada estricta sobre la dosis máxima, umbral de precaución del 80% e instrucciones bilingües.</p>
-<ul class="tags" aria-label="Technologies"><li><span class="tag">Python</span></li><li><span class="tag">FastAPI</span></li><li><span class="tag">Pydantic</span></li><li><span class="tag">JSON i18n</span></li></ul>
-<div class="links"><a href="pediatric-cds-calculator.html"><span data-lang="en">Case study</span><span data-lang="es" lang="es">Estudio de caso</span></a><a href="https://github.com/dquint32/bilingual-pediatric-CDS-dosage-calculator" target="_blank" rel="noopener"><span data-lang="en">Code</span><span data-lang="es" lang="es">Código</span></a></div>
+<ul class="tags" aria-label="Technologies"><li><span class="tag">Python</span></li><li><span class="tag">Pydantic v2</span></li><li><span class="tag">FastAPI</span></li><li><span class="tag">Pyodide</span></li><li><span class="tag">pytest</span></li></ul>
+<div class="links"><a href="pediatric-cds-calculator.html"><span data-lang="en">Case study</span><span data-lang="es" lang="es">Estudio de caso</span></a><a href="https://dquint32.github.io/bilingual-pediatric-CDS-dosage-calculator/" target="_blank" rel="noopener"><span data-lang="en">Live demo</span><span data-lang="es" lang="es">Demo</span></a><a href="https://github.com/dquint32/bilingual-pediatric-CDS-dosage-calculator" target="_blank" rel="noopener"><span data-lang="en">Code</span><span data-lang="es" lang="es">Código</span></a></div>
 </div>
 </article>
 <article class="card project-card">
-<a class="thumb" href="https://github.com/dquint32/fhir-patient-converter" tabindex="-1" aria-hidden="true"><img src="assets/img/projects/converter-output.webp" alt="FHIR converter showing US Core Patient JSON output" width="1600" height="1453" loading="lazy" decoding="async"></a>
+<a class="thumb" href="https://github.com/dquint32/fhir-patient-converter" tabindex="-1" aria-hidden="true"><img src="assets/img/projects/converter-output.webp" alt="FHIR converter showing US Core Patient JSON output" width="1600" height="1610" loading="lazy" decoding="async"></a>
 <div class="body">
 <p class="eyebrow">US Core · FHIR R4</p>
 <h3 data-lang="en"><a href="https://github.com/dquint32/fhir-patient-converter">FHIR Patient Converter</a></h3>

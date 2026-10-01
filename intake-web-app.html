@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bilingual Patient Intake → FHIR R4 | David Quintana</title>
-  <meta name="description" content="Case study: a bilingual intake portal whose FastAPI + Pydantic v2 backend validates each submission and returns a self-contained FHIR R4 Bundle. 69 tests, 100% coverage.">
+  <meta name="description" content="Case study: a bilingual intake portal whose FastAPI + Pydantic v2 backend validates each submission and returns a self-contained FHIR R4 Bundle. 80 tests, 100% coverage, live demo running Python in the browser.">
   <link rel="canonical" href="https://davidquintana.dev/intake-web-app.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="David Quintana">
   <meta property="og:title" content="Bilingual Patient Intake → FHIR R4 | David Quintana">
-  <meta property="og:description" content="Case study: a bilingual intake portal whose FastAPI + Pydantic v2 backend validates each submission and returns a self-contained FHIR R4 Bundle. 69 tests, 100% coverage.">
+  <meta property="og:description" content="Case study: a bilingual intake portal whose FastAPI + Pydantic v2 backend validates each submission and returns a self-contained FHIR R4 Bundle. 80 tests, 100% coverage, live demo running Python in the browser.">
   <meta property="og:url" content="https://davidquintana.dev/intake-web-app.html">
   <meta property="og:image" content="https://davidquintana.dev/assets/img/og-card.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -63,11 +63,11 @@
 <p data-lang="es" lang="es" class="kicker">Caso · Interoperabilidad FHIR R4</p>
 <h1 data-lang="en">Bilingual Patient Intake → FHIR R4</h1>
 <h1 data-lang="es" lang="es">Admisión bilingüe de pacientes → FHIR R4</h1>
-<p data-lang="en" class="lead">A bilingual (EN/ES) intake portal whose FastAPI backend validates every submission with Pydantic v2 and turns it into a self-contained FHIR R4 Bundle, ready for an EHR or FHIR server.</p>
-<p data-lang="es" lang="es" class="lead">Un portal de admisión bilingüe (EN/ES) cuyo backend FastAPI valida cada envío con Pydantic v2 y lo convierte en un Bundle FHIR R4 autocontenido, listo para un EHR o servidor FHIR.</p>
-<ul class="tags" aria-label="Technologies"><li><span class="tag">Python</span></li><li><span class="tag">FastAPI</span></li><li><span class="tag">Pydantic v2</span></li><li><span class="tag">FHIR R4</span></li><li><span class="tag">SNOMED CT</span></li><li><span class="tag">JavaScript</span></li><li><span class="tag">pytest</span></li></ul>
+<p data-lang="en" class="lead">A bilingual (EN/ES) intake portal whose Python backend validates every submission with Pydantic v2 and turns it into a self-contained FHIR R4 Bundle, ready for an EHR or FHIR server. The live demo runs that same tested backend in your browser.</p>
+<p data-lang="es" lang="es" class="lead">Un portal de admisión bilingüe (EN/ES) cuyo backend de Python valida cada envío con Pydantic v2 y lo convierte en un Bundle FHIR R4 autocontenido, listo para un EHR o servidor FHIR. La demo ejecuta ese mismo backend probado en su navegador.</p>
+<ul class="tags" aria-label="Technologies"><li><span class="tag">Python</span></li><li><span class="tag">FastAPI</span></li><li><span class="tag">Pydantic v2</span></li><li><span class="tag">FHIR R4</span></li><li><span class="tag">SNOMED CT</span></li><li><span class="tag">Pyodide</span></li><li><span class="tag">JavaScript</span></li><li><span class="tag">pytest</span></li></ul>
 <div class="btn-row"><a class="btn btn-primary" href="https://dquint32.github.io/bilingual-patient-intake-fhir/" target="_blank" rel="noopener"><span data-lang="en">Live demo</span><span data-lang="es" lang="es">Ver demo</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a><a class="btn btn-secondary" href="https://github.com/dquint32/bilingual-patient-intake-fhir" target="_blank" rel="noopener"><span data-lang="en">Source code</span><span data-lang="es" lang="es">Código fuente</span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.3 1.9 1.3 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg></a></div>
-<dl class="meta-row"><div><dt><span data-lang="en">Role</span><span data-lang="es" lang="es">Rol</span></dt><dd><span data-lang="en">Full-stack developer</span><span data-lang="es" lang="es">Desarrollador full-stack</span></dd></div><div><dt><span data-lang="en">Timeline</span><span data-lang="es" lang="es">Periodo</span></dt><dd><span data-lang="en">Dec 2024 – Jan 2025 · refactored 2026</span><span data-lang="es" lang="es">Dic 2024 – ene 2025 · refactorizado 2026</span></dd></div><div><dt><span data-lang="en">Standards</span><span data-lang="es" lang="es">Estándares</span></dt><dd><span data-lang="en">FHIR R4 · SNOMED CT · BCP-47</span><span data-lang="es" lang="es">FHIR R4 · SNOMED CT · BCP-47</span></dd></div><div><dt><span data-lang="en">Quality</span><span data-lang="es" lang="es">Calidad</span></dt><dd><span data-lang="en">69 tests · 100% coverage · CI</span><span data-lang="es" lang="es">69 pruebas · 100% cobertura · CI</span></dd></div></dl>
+<dl class="meta-row"><div><dt><span data-lang="en">Role</span><span data-lang="es" lang="es">Rol</span></dt><dd><span data-lang="en">Full-stack developer</span><span data-lang="es" lang="es">Desarrollador full-stack</span></dd></div><div><dt><span data-lang="en">Timeline</span><span data-lang="es" lang="es">Periodo</span></dt><dd><span data-lang="en">Dec 2024 – Jan 2025 · refactored 2026</span><span data-lang="es" lang="es">Dic 2024 – ene 2025 · refactorizado 2026</span></dd></div><div><dt><span data-lang="en">Standards</span><span data-lang="es" lang="es">Estándares</span></dt><dd><span data-lang="en">FHIR R4 · SNOMED CT · BCP-47</span><span data-lang="es" lang="es">FHIR R4 · SNOMED CT · BCP-47</span></dd></div><div><dt><span data-lang="en">Quality</span><span data-lang="es" lang="es">Calidad</span></dt><dd><span data-lang="en">80 tests · 100% coverage · CI</span><span data-lang="es" lang="es">80 pruebas · 100% cobertura · CI</span></dd></div></dl>
 </div>
 </section>
 <section class="section">
@@ -86,7 +86,7 @@
 <h2 data-lang="es" lang="es">Cómo funciona</h2></div>
 <div class="feature">
 <figure>
-<div class="shot"><img src="assets/img/projects/intake-form-spanish.webp" alt="Intake form in Spanish with demo data loaded" width="1600" height="2732" loading="lazy" decoding="async" class="zoomable"></div>
+<div class="shot"><img src="assets/img/projects/intake-form-spanish.webp" alt="Intake form in Spanish with demo data loaded" width="1600" height="2331" loading="lazy" decoding="async" class="zoomable"></div>
 <figcaption data-lang="en">The full form in Spanish, with one-click demo data.</figcaption>
 <figcaption data-lang="es" lang="es">El formulario completo en español, con datos de prueba en un clic.</figcaption>
 </figure>
@@ -100,9 +100,9 @@
 </div>
 </div><div class="feature flip">
 <figure>
-<div class="shot"><img src="assets/img/projects/intake-validation-error.webp" alt="Server-side validation error shown in the intake form" width="1600" height="370" loading="lazy" decoding="async" class="zoomable"></div>
-<figcaption data-lang="en">A future date of birth is rejected by the API, field by field.</figcaption>
-<figcaption data-lang="es" lang="es">La API rechaza una fecha de nacimiento futura, campo por campo.</figcaption>
+<div class="shot"><img src="assets/img/projects/intake-validation-error.webp" alt="Server-side validation error shown in the intake form" width="1600" height="299" loading="lazy" decoding="async" class="zoomable"></div>
+<figcaption data-lang="en">A future date of birth and a short phone number are rejected by the Pydantic model, field by field.</figcaption>
+<figcaption data-lang="es" lang="es">El modelo Pydantic rechaza una fecha de nacimiento futura y un teléfono corto, campo por campo.</figcaption>
 </figure>
 <div>
 <h3 data-lang="en">Validation at the source</h3>
@@ -124,7 +124,7 @@
 </div>
 </div><div class="feature">
 <figure>
-<div class="shot"><img src="assets/img/projects/intake-fhir-bundle.webp" alt="Generated FHIR R4 bundle with JSON preview" width="1600" height="2158" loading="lazy" decoding="async" class="zoomable"></div>
+<div class="shot"><img src="assets/img/projects/intake-fhir-bundle.webp" alt="Generated FHIR R4 bundle with JSON preview" width="1600" height="1574" loading="lazy" decoding="async" class="zoomable"></div>
 <figcaption data-lang="en">Nine resources from one Spanish-language submission, with a JSON preview and download.</figcaption>
 <figcaption data-lang="es" lang="es">Nueve recursos de un envío en español, con vista previa JSON y descarga.</figcaption>
 </figure>
@@ -170,28 +170,30 @@
 <li><code>schemas.py</code> — ingestion and validation (request/response contracts)</li>
 <li><code>fhir_builders.py</code> — pure functions from <code>IntakeForm</code> to FHIR resources</li>
 <li><code>terminology.py</code> — SNOMED CT and HL7 code systems in one place</li>
+<li><code>service.py</code> — the use case, shared by the API and the in-browser demo</li>
 <li><code>api.py</code> — routing, CORS, and error handling only</li>
 </ul>
-<p>The same Docker image runs on Railway, Render, or Fly.io as a non-root user.</p></div>
+<p>The live demo loads Pyodide (CPython on WebAssembly) and calls <code>service.submit_json</code> directly, so the form is validated and the FHIR Bundle is built by the tested code without a server, and no data leaves the browser. For a real deployment, the same package runs behind FastAPI in a non-root Docker image on Render, Fly.io, or Railway.</p></div>
 <div data-lang="es" lang="es" class="prose"><p>El backend es un paquete pequeño con una responsabilidad por módulo:</p>
 <ul class="checklist">
 <li><code>schemas.py</code> — ingesta y validación (contratos de entrada y salida)</li>
 <li><code>fhir_builders.py</code> — funciones puras de <code>IntakeForm</code> a recursos FHIR</li>
 <li><code>terminology.py</code> — sistemas de códigos SNOMED CT y HL7 en un solo lugar</li>
+<li><code>service.py</code> — el caso de uso, compartido por la API y la demo en el navegador</li>
 <li><code>api.py</code> — solo rutas, CORS y manejo de errores</li>
 </ul>
-<p>La misma imagen Docker corre en Railway, Render o Fly.io como usuario sin privilegios.</p></div>
-<pre class="code-block mt-8" tabindex="0" aria-label="Python code for the submit route"><code><span class="c"># backend/intake/api.py — the route only wires layers together</span>
-<span class="k">@app.post</span>(<span class="s">"/submit"</span>, response_model=SubmitResponse)
-<span class="k">def</span> submit(form: IntakeForm) -> SubmitResponse:   <span class="c"># Pydantic validates first</span>
-    ctx = BuildContext()                             <span class="c"># one UTC clock + ID factory</span>
-    bundle = build_bundle(form, ctx)                 <span class="c"># pure FHIR transformation</span>
-    <span class="k">return</span> SubmitResponse(
-        message=MESSAGES[form.language_preference],
-        timestamp=ctx.now.strftime(<span class="s">"%Y-%m-%d %H:%M:%S UTC"</span>),
-        patient_id=bundle[<span class="s">"entry"</span>][0][<span class="s">"resource"</span>][<span class="s">"id"</span>],
-        fhir_bundle=bundle,
-    )</code></pre>
+<p>La demo carga Pyodide (CPython en WebAssembly) y llama directamente a <code>service.submit_json</code>, así que el formulario se valida y el Bundle FHIR se genera con el código probado, sin servidor y sin que los datos salgan del navegador. Para un despliegue real, el mismo paquete corre detrás de FastAPI en una imagen Docker sin privilegios en Render, Fly.io o Railway.</p></div>
+<pre class="code-block mt-8" tabindex="0" aria-label="Python code for the shared submit use case"><code><span class="c"># backend/intake/service.py — one use case, two callers (FastAPI and the browser)</span>
+<span class="k">def</span> submit(payload, ctx=<span class="k">None</span>) -> tuple[int, dict]:
+    <span class="k">try</span>:
+        form = IntakeForm.model_validate(payload)    <span class="c"># Pydantic v2 validates first</span>
+    <span class="k">except</span> ValidationError <span class="k">as</span> exc:
+        <span class="k">return</span> 422, invalid_response(exc.errors()).model_dump(mode=<span class="s">"json"</span>)
+    <span class="k">return</span> 200, build_submission(form, ctx).model_dump(mode=<span class="s">"json"</span>)
+
+<span class="k">def</span> submit_json(payload_json: str) -> str:      <span class="c"># called from JavaScript via Pyodide</span>
+    status, body = submit(json.loads(payload_json))
+    <span class="k">return</span> json.dumps({<span class="s">"status"</span>: status, <span class="s">"body"</span>: body})</code></pre>
 </div>
 </div>
 </section>
@@ -200,7 +202,7 @@
 <div class="section-head"><h2 data-lang="en">Quality</h2>
 <h2 data-lang="es" lang="es">Calidad</h2><p data-lang="en">Tests use mock payloads that mirror the browser's real submissions, including the edge cases a form actually produces.</p>
 <p data-lang="es" lang="es">Las pruebas usan cargas simuladas que reflejan los envíos reales del navegador, incluidos los casos límite que produce un formulario.</p></div>
-<div class="stats"><div class="stat"><span class="stat-num">69</span><span class="stat-label"><span data-lang="en">automated tests</span><span data-lang="es" lang="es">pruebas automatizadas</span></span></div><div class="stat"><span class="stat-num">100%</span><span class="stat-label"><span data-lang="en">line coverage</span><span data-lang="es" lang="es">cobertura de líneas</span></span></div><div class="stat"><span class="stat-num">R4B</span><span class="stat-label"><span data-lang="en">structure checked with fhir.resources</span><span data-lang="es" lang="es">estructura verificada con fhir.resources</span></span></div><div class="stat"><span class="stat-num">3.11–3.13</span><span class="stat-label"><span data-lang="en">Python versions in CI</span><span data-lang="es" lang="es">versiones de Python en CI</span></span></div></div>
+<div class="stats"><div class="stat"><span class="stat-num">80</span><span class="stat-label"><span data-lang="en">automated tests</span><span data-lang="es" lang="es">pruebas automatizadas</span></span></div><div class="stat"><span class="stat-num">100%</span><span class="stat-label"><span data-lang="en">line coverage</span><span data-lang="es" lang="es">cobertura de líneas</span></span></div><div class="stat"><span class="stat-num">R4B</span><span class="stat-label"><span data-lang="en">structure checked with fhir.resources</span><span data-lang="es" lang="es">estructura verificada con fhir.resources</span></span></div><div class="stat"><span class="stat-num">3.11–3.13</span><span class="stat-label"><span data-lang="en">Python versions in CI</span><span data-lang="es" lang="es">versiones de Python en CI</span></span></div></div>
 <p data-lang="en" class="prose mt-6">Beyond the official FHIR model check, a test enforces the FHIR JSON rule that arrays, objects, and strings are never empty — something the library itself doesn't check.</p>
 <p data-lang="es" lang="es" class="prose mt-6">Además de la verificación con los modelos FHIR oficiales, una prueba aplica la regla de FHIR JSON de que los arreglos, objetos y cadenas nunca están vacíos — algo que la propia librería no revisa.</p>
 <div class="mt-10"><div class="card next-project">
