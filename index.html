@@ -2,490 +2,273 @@
 <html lang="en" data-language="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>David Matthew Quintana | Clinical Data Engineer — ETL, HL7/FHIR, HIPAA/GCP</title>
-  <meta name="description" content="HCIS professional and clinical data engineer specializing in Python/pandas ETL pipelines, clinical data integrity, HL7/FHIR interoperability, and HIPAA/GCP compliance. CITI-certified in GCP, Human Subjects, and HIPAA research.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>David Quintana | Clinical Data Engineer — ETL, HL7/FHIR, HIPAA/GCP</title>
+  <meta name="description" content="Clinical data engineer building Python/pandas ETL pipelines and HL7/FHIR tools that validate clinical data under HIPAA and GCP. CITI-certified in GCP, human subjects and HIPAA research.">
+  <link rel="canonical" href="https://davidquintana.dev/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="David Quintana">
+  <meta property="og:title" content="David Quintana | Clinical Data Engineer — ETL, HL7/FHIR, HIPAA/GCP">
+  <meta property="og:description" content="Clinical data engineer building Python/pandas ETL pipelines and HL7/FHIR tools that validate clinical data under HIPAA and GCP. CITI-certified in GCP, human subjects and HIPAA research.">
+  <meta property="og:url" content="https://davidquintana.dev/">
+  <meta property="og:image" content="https://davidquintana.dev/assets/img/og-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0d0d0d">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap">
   <script>
     (function () {
       try {
         var d = document.documentElement;
         var lang = localStorage.getItem('preferred-language');
-        if (lang) { d.setAttribute('data-language', lang); d.setAttribute('lang', lang); }
+        if (lang === 'en' || lang === 'es') { d.setAttribute('data-language', lang); d.setAttribute('lang', lang); }
         var theme = localStorage.getItem('preferred-theme');
-        if (theme) { d.setAttribute('data-theme', theme); }
-      } catch (e) { /* localStorage unavailable — defaults render */ }
+        if (theme === 'light' || theme === 'dark') { d.setAttribute('data-theme', theme); }
+      } catch (e) { /* storage unavailable: defaults apply */ }
     })();
   </script>
   <link rel="stylesheet" href="styles.css">
-  <style>
-    /* ===== Home scoped styles (uses global design tokens) ===== */
-    .eva-pills { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: var(--space-4) 0; }
-    .eva-pill {
-      font-family: var(--font-mono); font-size: 0.8rem;
-      background: var(--steel-gray); color: var(--soft-white);
-      border: 1px solid rgba(255,106,0,0.35); padding: 4px 10px; border-radius: 4px;
-    }
-    /* CITI credential badges */
-    .cert-badges { display: flex; flex-wrap: wrap; gap: var(--space-3); margin: var(--space-6) 0; }
-    .cert-badge {
-      display: flex; flex-direction: column; gap: 2px;
-      background: var(--gunmetal); border: 1px solid var(--steel-gray);
-      border-left: 3px solid var(--cyber-orange);
-      padding: var(--space-3) var(--space-4); min-width: 200px; flex: 1 1 220px;
-    }
-    .cert-badge .cert-name { color: var(--soft-white); font-weight: 600; font-size: 0.95rem; }
-    .cert-badge .cert-meta { color: var(--muted-silver); font-size: 0.78rem; }
-    .cert-badge a { font-size: 0.78rem; font-family: var(--font-mono); }
-    /* Featured EVA card */
-    .featured-eva {
-      background: var(--gunmetal); border: 1px solid var(--steel-gray);
-      border-top: 4px solid var(--cyber-orange); padding: var(--space-8);
-      box-shadow: 0 0 24px rgba(255,106,0,0.10); margin-bottom: var(--space-8);
-    }
-    .featured-eva .flag { color: var(--cyber-orange); text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.8rem; font-weight: 700; }
-    .featured-stats { display: flex; flex-wrap: wrap; gap: var(--space-6); margin: var(--space-4) 0; }
-    .featured-stats span { font-family: var(--font-mono); color: var(--muted-silver); font-size: 0.85rem; }
-    .featured-stats b { color: var(--cyber-orange); font-family: var(--font-headline); font-size: 1.4rem; display: block; }
-    /* Work cards */
-    .work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-6); }
-    .work-card { background: var(--gunmetal); border: 1px solid var(--steel-gray); padding: var(--space-6); display: flex; flex-direction: column; }
-    .work-card h4 { color: var(--soft-white); }
-    .work-card .work-links { margin-top: auto; padding-top: var(--space-4); }
-  </style>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "David Matthew Quintana", "jobTitle": "Clinical Data Engineer", "url": "https://davidquintana.dev", "image": "https://davidquintana.dev/assets/img/profile.webp", "alumniOf": {"@type": "CollegeOrUniversity", "name": "Metropolitan State University of Denver"}, "address": {"@type": "PostalAddress", "addressLocality": "Castle Rock", "addressRegion": "CO", "addressCountry": "US"}, "knowsLanguage": ["en", "es"], "knowsAbout": ["ETL", "Python", "pandas", "HL7 v2", "FHIR R4", "LOINC", "HIPAA", "ICH-GCP"], "sameAs": ["https://www.linkedin.com/in/quintanadm95", "https://github.com/dquint32"]}</script>
 </head>
-<body class="home-page" data-language="en">
-  <a href="#main-content" class="skip-link">Skip to main content</a>
-
-  <div class="logo-background" aria-hidden="true">
-    <div class="bg-logo">DQ</div>
-  </div>
-
-  <button class="floating-toggle" type="button" aria-label="Toggle language">
-    <span data-lang="en">EN</span>
-    <span class="divider">|</span>
-    <span data-lang="es" class="inactive">ES</span>
-  </button>
-
-  <button class="theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false" title="Toggle theme">
-    <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-    <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
-  </button>
-
-  <button id="back-to-top" class="back-to-top-btn" aria-label="Back to top">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="18 15 12 9 6 15"></polyline>
-    </svg>
-  </button>
-
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <h1><a href="index.html">David Matthew Quintana</a></h1>
-        <p class="tagline">Clinical Data Engineer · HCIS | Python/pandas ETL, data integrity, HL7/FHIR &amp; HIPAA/GCP compliance</p>
-      </div>
-      <nav class="nav" aria-label="Primary">
-        <ul>
-          <li><a href="index.html" class="active"><span lang-block data-lang="en">Home</span><span lang-block data-lang="es">Inicio</span></a></li>
-          <li><a href="hcis-portfolio.html"><span lang-block data-lang="en">Work</span><span lang-block data-lang="es">Trabajo</span></a></li>
-          <li><a href="eva-ctms-case-study.html"><span lang-block data-lang="en">EVA Case Study</span><span lang-block data-lang="es">Estudio EVA</span></a></li>
-          <li><a href="#about"><span lang-block data-lang="en">About</span><span lang-block data-lang="es">Sobre mí</span></a></li>
-          <li><a href="#contact" class="cta"><span lang-block data-lang="en">Contact</span><span lang-block data-lang="es">Contacto</span></a></li>
-        </ul>
-      </nav>
+<body>
+<a class="skip-link" href="#main"><span data-lang="en">Skip to main content</span><span data-lang="es" lang="es">Saltar al contenido principal</span></a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="David Quintana, home">
+      <span class="brand-mark" aria-hidden="true">DQ</span>
+      <span class="brand-text"><span class="brand-name">David Quintana</span><span class="brand-role"><span data-lang="en">Clinical Data Engineer · HCIS</span><span data-lang="es" lang="es">Ingeniero de Datos Clínicos · HCIS</span></span></span>
+    </a>
+    <nav id="site-nav" class="site-nav" aria-label="Primary">
+      <ul class="nav-list">
+        <li><a href="hcis-portfolio.html"><span data-lang="en">Work</span><span data-lang="es" lang="es">Trabajo</span></a></li>
+        <li><a href="eva-ctms-case-study.html"><span data-lang="en">EVA case study</span><span data-lang="es" lang="es">Caso EVA</span></a></li>
+        <li><a href="index.html#about"><span data-lang="en">About</span><span data-lang="es" lang="es">Sobre mí</span></a></li>
+        <li><a href="resume.pdf" target="_blank" rel="noopener"><span data-lang="en">Résumé</span><span data-lang="es" lang="es">Currículum</span></a></li>
+        <li><a class="nav-cta" href="index.html#contact"><span data-lang="en">Contact</span><span data-lang="es" lang="es">Contacto</span></a></li>
+      </ul>
+    </nav>
+    <div class="header-tools">
+      <button class="lang-switch" type="button" aria-label="Cambiar a español"><span class="opt opt-en">EN</span><span class="opt opt-es">ES</span></button>
+      <button class="icon-btn theme-toggle" type="button" aria-pressed="false" aria-label="Switch to light theme"><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></button>
+      <button class="icon-btn menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     </div>
-  </header>
-
-  <main id="main-content">
-
-    <!-- HERO -->
-    <section id="top" class="section-spacing" aria-labelledby="hero-title">
-      <div class="container hero">
-        <div class="hero-left">
-          <div data-lang="en" lang-block>
-            <h2 id="hero-title-en">I engineer Python/pandas ETL pipelines that move clinical data from legacy chaos to compliant, audit-ready architecture.</h2>
-            <p>
-              I'm a Health Care Information Systems professional and clinical data engineer. I extract, clean, and validate messy legacy clinical-trial data — building the pipelines, cross-checks, and audit trails that turn it into structured, interoperable, and defensible records under HIPAA and GCP.
-            </p>
-            <p>
-              My work sits at the intersection of <strong>ETL &amp; data integrity</strong>, <strong>HL7/FHIR interoperability</strong>, and <strong>clinical-research compliance</strong> — with real regulatory fluency in IRB, human-subjects protection, and ICH-GCP record integrity.
-            </p>
-            <div class="hero-cta-group">
-              <a href="eva-ctms-case-study.html" class="btn btn-primary">View the EVA pipeline</a>
-              <a href="hcis-portfolio.html" class="btn btn-secondary">See all work</a>
-              <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Résumé (PDF)</a>
-            </div>
-
-            <div class="cert-badges" aria-label="CITI Program certifications">
-              <div class="cert-badge">
-                <span class="cert-name">CITI — Good Clinical Practice (US FDA)</span>
-                <span class="cert-meta">CITI Program · ID 77289766</span>
-                <a href="https://www.citiprogram.org/verify/?wc8e3f9f7-8f06-47bd-ba08-80ac69449bc4-77289766" target="_blank" rel="noopener noreferrer">Verify →</a>
-              </div>
-              <div class="cert-badge">
-                <span class="cert-name">CITI — Biomedical Research (Human Subjects)</span>
-                <span class="cert-meta">CITI Program · ID 77289765</span>
-                <a href="https://www.citiprogram.org/verify/?w321cd296-9737-4dd8-a660-db4860e47611-77289765" target="_blank" rel="noopener noreferrer">Verify →</a>
-              </div>
-              <div class="cert-badge">
-                <span class="cert-name">CITI — HIPAA for Research</span>
-                <span class="cert-meta">CITI Program · ID 77289768</span>
-                <a href="https://www.citiprogram.org/verify/?w7ce7274a-9806-4e5c-94ec-9ea77af7a663-77289768" target="_blank" rel="noopener noreferrer">Verify →</a>
-              </div>
-              <div class="cert-badge">
-                <span class="cert-name">CITI — Clinical Research: An Introduction</span>
-                <span class="cert-meta">CITI Program · ID 77289767</span>
-                <a href="https://www.citiprogram.org/verify/?wc14ae6d7-351d-4e16-88f1-102b45af0def-77289767" target="_blank" rel="noopener noreferrer">Verify →</a>
-              </div>
-            </div>
-
-            <div class="eva-pills">
-              <span class="eva-pill">Python (pandas, openpyxl)</span>
-              <span class="eva-pill">SQL</span>
-              <span class="eva-pill">Regex</span>
-              <span class="eva-pill">HL7 v2.x / FHIR R4</span>
-              <span class="eva-pill">AWS (EC2, S3, IAM)</span>
-              <span class="eva-pill">Git</span>
-            </div>
-          </div>
-
-          <div data-lang="es" lang-block>
-            <h2 id="hero-title-es">Diseño pipelines ETL en Python/pandas que llevan los datos clínicos del caos heredado a una arquitectura conforme y lista para auditoría.</h2>
-            <p>
-              Soy un profesional de Sistemas de Información de Salud e ingeniero de datos clínicos. Extraigo, limpio y valido datos desordenados de ensayos clínicos heredados — construyendo los pipelines, verificaciones y registros de auditoría que los convierten en registros estructurados, interoperables y defendibles bajo HIPAA y GCP.
-            </p>
-            <p>
-              Mi trabajo se sitúa en la intersección de <strong>ETL e integridad de datos</strong>, <strong>interoperabilidad HL7/FHIR</strong> y <strong>cumplimiento de investigación clínica</strong> — con fluidez real en IRB, protección de sujetos humanos e integridad de registros ICH-GCP.
-            </p>
-            <div class="hero-cta-group">
-              <a href="eva-ctms-case-study.html" class="btn btn-primary">Ver el pipeline EVA</a>
-              <a href="hcis-portfolio.html" class="btn btn-secondary">Ver todo el trabajo</a>
-              <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Currículum (PDF)</a>
-            </div>
-
-            <div class="cert-badges" aria-label="Certificaciones del CITI Program">
-              <div class="cert-badge">
-                <span class="cert-name">CITI — Buenas Prácticas Clínicas (US FDA)</span>
-                <span class="cert-meta">CITI Program · ID 77289766</span>
-                <a href="https://www.citiprogram.org/verify/?wc8e3f9f7-8f06-47bd-ba08-80ac69449bc4-77289766" target="_blank" rel="noopener noreferrer">Verificar →</a>
-              </div>
-              <div class="cert-badge">
-                <span class="cert-name">CITI — Investigación Biomédica (Sujetos Humanos)</span>
-                <span class="cert-meta">CITI Program · ID 77289765</span>
-                <a href="https://www.citiprogram.org/verify/?w321cd296-9737-4dd8-a660-db4860e47611-77289765" target="_blank" rel="noopener noreferrer">Verificar →</a>
-              </div>
-              <div class="cert-badge">
-                <span class="cert-name">CITI — HIPAA para Investigación</span>
-                <span class="cert-meta">CITI Program · ID 77289768</span>
-                <a href="https://www.citiprogram.org/verify/?w7ce7274a-9806-4e5c-94ec-9ea77af7a663-77289768" target="_blank" rel="noopener noreferrer">Verificar →</a>
-              </div>
-              <div class="cert-badge">
-                <span class="cert-name">CITI — Investigación Clínica: Introducción</span>
-                <span class="cert-meta">CITI Program · ID 77289767</span>
-                <a href="https://www.citiprogram.org/verify/?wc14ae6d7-351d-4e16-88f1-102b45af0def-77289767" target="_blank" rel="noopener noreferrer">Verificar →</a>
-              </div>
-            </div>
-
-            <div class="eva-pills">
-              <span class="eva-pill">Python (pandas, openpyxl)</span>
-              <span class="eva-pill">SQL</span>
-              <span class="eva-pill">Regex</span>
-              <span class="eva-pill">HL7 v2.x / FHIR R4</span>
-              <span class="eva-pill">AWS (EC2, S3, IAM)</span>
-              <span class="eva-pill">Git</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="hero-right">
-          <div class="home-img-wrapper">
-            <img src="profile.png" alt="Portrait of David Matthew Quintana" class="profile-photo clickable-img" loading="lazy" />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FEATURED PROJECT: EVA -->
-    <section id="projects" class="section-spacing" aria-labelledby="projects-title">
-      <div class="container">
-        <div data-lang="en" lang-block>
-          <h3 id="projects-title-en" class="text-center">Featured Work</h3>
-          <p class="mb-8 text-center" style="color: var(--muted-silver); font-size: 1.125rem;">Real clinical-data engineering — pipelines, validation, and interoperability under HIPAA/GCP constraints. Not demos.</p>
-        </div>
-        <div data-lang="es" lang-block>
-          <h3 id="projects-title-es" class="text-center">Trabajo Destacado</h3>
-          <p class="mb-8 text-center" style="color: var(--muted-silver); font-size: 1.125rem;">Ingeniería real de datos clínicos — pipelines, validación e interoperabilidad bajo HIPAA/GCP. No son demos.</p>
-        </div>
-
-        <!-- EVA flagship -->
-        <div class="featured-eva">
-          <div data-lang="en" lang-block>
-            <p class="flag">★ Flagship · Clinical Data ETL Pipeline</p>
-            <h4>EVA CTMS Archive — Clinical Data ETL Pipeline</h4>
-            <p>A 10-stage local Python ETL pipeline that inventoried a decade of unstructured clinical-trial files, cleaned a legacy patient database, and cross-validated every document — catching an 18% patient-ID integrity failure <em>before</em> migration into a compliant SharePoint archive. All processing local; zero PHI exposure.</p>
-            <div class="featured-stats">
-              <span><b>9,925</b> documents inventoried</span>
-              <span><b>6,830</b> records cleaned</span>
-              <span><b>10</b> pipeline stages</span>
-              <span><b>18%</b> integrity failures caught</span>
-            </div>
-            <div class="eva-pills">
-              <span class="eva-pill">Python</span><span class="eva-pill">pandas</span><span class="eva-pill">openpyxl</span><span class="eva-pill">Regex</span><span class="eva-pill">JSON/YAML</span><span class="eva-pill">SharePoint</span>
-            </div>
-            <div class="project-links">
-              <a href="eva-ctms-case-study.html">Read the full case study →</a>
-            </div>
-          </div>
-          <div data-lang="es" lang-block>
-            <p class="flag">★ Destacado · Pipeline ETL de Datos Clínicos</p>
-            <h4>Archivo EVA CTMS — Pipeline ETL de Datos Clínicos</h4>
-            <p>Un pipeline ETL local de 10 etapas en Python que inventarió una década de archivos de ensayos clínicos sin estructura, limpió una base de datos de pacientes heredada y validó cada documento — detectando un 18% de fallos de integridad de IDs <em>antes</em> de migrar a un archivo SharePoint conforme. Todo el procesamiento local; sin exposición de PHI.</p>
-            <div class="featured-stats">
-              <span><b>9,925</b> documentos inventariados</span>
-              <span><b>6,830</b> registros limpiados</span>
-              <span><b>10</b> etapas del pipeline</span>
-              <span><b>18%</b> fallos detectados</span>
-            </div>
-            <div class="eva-pills">
-              <span class="eva-pill">Python</span><span class="eva-pill">pandas</span><span class="eva-pill">openpyxl</span><span class="eva-pill">Regex</span><span class="eva-pill">JSON/YAML</span><span class="eva-pill">SharePoint</span>
-            </div>
-            <div class="project-links">
-              <a href="eva-ctms-case-study.html">Leer el estudio de caso completo →</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- More work: 3 HCIS builds -->
-        <div class="work-grid">
-          <div class="work-card">
-            <div data-lang="en" lang-block>
-              <h4>FHIR Patient Intake Generator</h4>
-              <p>Full-stack bilingual intake app mapping patient-generated data into validated HL7 FHIR R4 resources at the source.</p>
-              <div class="eva-pills"><span class="eva-pill">Python</span><span class="eva-pill">FastAPI</span><span class="eva-pill">Pydantic</span><span class="eva-pill">FHIR R4</span></div>
-            </div>
-            <div data-lang="es" lang-block>
-              <h4>Generador de Admisión FHIR</h4>
-              <p>App bilingüe full-stack que mapea datos generados por el paciente a recursos HL7 FHIR R4 validados en el origen.</p>
-              <div class="eva-pills"><span class="eva-pill">Python</span><span class="eva-pill">FastAPI</span><span class="eva-pill">Pydantic</span><span class="eva-pill">FHIR R4</span></div>
-            </div>
-            <div class="work-links project-links">
-              <a href="intake-web-app.html"><span lang-block data-lang="en">Case study →</span><span lang-block data-lang="es">Estudio de caso →</span></a>
-            </div>
-          </div>
-
-          <div class="work-card">
-            <div data-lang="en" lang-block>
-              <h4>HL7 v2.x Infectious Disease Parser</h4>
-              <p>Parsing engine for ORU lab messages: extracts PID/OBX segments and validates against a LOINC dictionary to flag abnormal findings.</p>
-              <div class="eva-pills"><span class="eva-pill">Python</span><span class="eva-pill">hl7apy</span><span class="eva-pill">Regex</span><span class="eva-pill">LOINC</span></div>
-            </div>
-            <div data-lang="es" lang-block>
-              <h4>Analizador HL7 v2.x de Enfermedades Infecciosas</h4>
-              <p>Motor de análisis para mensajes ORU de laboratorio: extrae segmentos PID/OBX y valida contra un diccionario LOINC para marcar hallazgos anormales.</p>
-              <div class="eva-pills"><span class="eva-pill">Python</span><span class="eva-pill">hl7apy</span><span class="eva-pill">Regex</span><span class="eva-pill">LOINC</span></div>
-            </div>
-            <div class="work-links project-links">
-              <a href="hl7-parser.html"><span lang-block data-lang="en">Case study →</span><span lang-block data-lang="es">Estudio de caso →</span></a>
-            </div>
-          </div>
-
-          <div class="work-card">
-            <div data-lang="en" lang-block>
-              <h4>Pediatric CDS Dosage Calculator</h4>
-              <p>Clinical Decision Support tool with weight-based dose caps and an 80% caution threshold, delivering bilingual caregiver instructions.</p>
-              <div class="eva-pills"><span class="eva-pill">Python</span><span class="eva-pill">FastAPI</span><span class="eva-pill">Pydantic</span><span class="eva-pill">JSON L10n</span></div>
-            </div>
-            <div data-lang="es" lang-block>
-              <h4>Calculadora de Dosis Pediátrica CDS</h4>
-              <p>Herramienta de Soporte a la Decisión Clínica con límites de dosis por peso y un umbral de precaución del 80%, con instrucciones bilingües para cuidadores.</p>
-              <div class="eva-pills"><span class="eva-pill">Python</span><span class="eva-pill">FastAPI</span><span class="eva-pill">Pydantic</span><span class="eva-pill">JSON L10n</span></div>
-            </div>
-            <div class="work-links project-links">
-              <a href="pediatric-cds-calculator.html"><span lang-block data-lang="en">Case study →</span><span lang-block data-lang="es">Estudio de caso →</span></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="text-center" style="margin-top: var(--space-8);">
-          <a href="hcis-portfolio.html" class="btn btn-secondary"><span lang-block data-lang="en">See all work →</span><span lang-block data-lang="es">Ver todo el trabajo →</span></a>
-        </div>
-      </div>
-    </section>
-
-    <!-- DATA ENGINEERING SKILLS -->
-    <section id="skills" class="section-spacing" aria-labelledby="skills-title" style="background: var(--gunmetal);">
-      <div class="container">
-        <div data-lang="en" lang-block>
-          <h3 id="skills-title-en" class="text-center">Data Engineering Skills</h3>
-          <p class="mb-8 text-center" style="color: var(--muted-silver); font-size: 1.125rem;">Building and validating clinical data pipelines under real compliance constraints.</p>
-        </div>
-        <div data-lang="es" lang-block>
-          <h3 id="skills-title-es" class="text-center">Habilidades de Ingeniería de Datos</h3>
-          <p class="mb-8 text-center" style="color: var(--muted-silver); font-size: 1.125rem;">Construir y validar pipelines de datos clínicos bajo restricciones reales de cumplimiento.</p>
-        </div>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-6);">
-          <div class="skill-detail-card">
-            <div data-lang="en" lang-block><h5>Languages &amp; Data</h5><p>Python (pandas, openpyxl) • SQL • Regex • JSON / CSV / YAML</p></div>
-            <div data-lang="es" lang-block><h5>Lenguajes y Datos</h5><p>Python (pandas, openpyxl) • SQL • Regex • JSON / CSV / YAML</p></div>
-          </div>
-          <div class="skill-detail-card">
-            <div data-lang="en" lang-block><h5>ETL &amp; Pipelines</h5><p>Extract–Transform–Load design • data cleaning &amp; standardization • cross-validation • deduplication • schema-driven config • reproducible multi-stage pipelines</p></div>
-            <div data-lang="es" lang-block><h5>ETL y Pipelines</h5><p>Diseño Extraer–Transformar–Cargar • limpieza y estandarización de datos • validación cruzada • deduplicación • configuración por esquema • pipelines multietapa reproducibles</p></div>
-          </div>
-          <div class="skill-detail-card">
-            <div data-lang="en" lang-block><h5>Healthcare Interoperability</h5><p>HL7 v2.x • FHIR R4 • LOINC / SNOMED-CT • metadata &amp; lookup modeling • SharePoint data architecture</p></div>
-            <div data-lang="es" lang-block><h5>Interoperabilidad en Salud</h5><p>HL7 v2.x • FHIR R4 • LOINC / SNOMED-CT • modelado de metadatos y lookups • arquitectura de datos en SharePoint</p></div>
-          </div>
-          <div class="skill-detail-card">
-            <div data-lang="en" lang-block><h5>Governance &amp; Compliance</h5><p>HIPAA • ICH-GCP • human-subjects protection (CITI) • IRB / regulatory • PHI masking • audit trails • versioning &amp; access control</p></div>
-            <div data-lang="es" lang-block><h5>Gobernanza y Cumplimiento</h5><p>HIPAA • ICH-GCP • protección de sujetos humanos (CITI) • IRB / regulatorio • enmascarado de PHI • registros de auditoría • versionado y control de acceso</p></div>
-          </div>
-          <div class="skill-detail-card">
-            <div data-lang="en" lang-block><h5>Cloud &amp; Analytics</h5><p>AWS (EC2, S3, IAM) — foundational • predictive analytics &amp; data mining • Git / GitHub • Excel (pivot analysis)</p></div>
-            <div data-lang="es" lang-block><h5>Nube y Analítica</h5><p>AWS (EC2, S3, IAM) — fundamentos • analítica predictiva y minería de datos • Git / GitHub • Excel (tablas dinámicas)</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" class="section-spacing" aria-labelledby="about-title">
-      <div class="container about">
-        <div class="content-block">
-          <div class="about-content">
-            <div class="about-text">
-              <div data-lang="en" lang-block>
-                <h3 id="about-title-en" class="text-center">About Me</h3>
-                <p>
-                  I'm David Quintana — a bilingual Health Care Information Systems specialist and clinical data engineer, and a 2026 B.S. HCIS graduate of MSU Denver (Castle Rock, Colorado).
-                </p>
-                <p>
-                  <strong>Clinical data engineering:</strong> As an intern at Western States Cancer Research NCORP, I engineered Python/pandas ETL pipelines to extract, clean, and transition legacy clinical-trial records into structured, compliant SharePoint data architectures — with hands-on experience in ETL workflows, HL7 FHIR R4, EHR/EMR transitions, and HIPAA-compliant records management.
-                </p>
-                <p>
-                  <strong>Regulatory &amp; clinical-research fluency:</strong> I'm CITI-certified in Good Clinical Practice (US FDA), Biomedical/Human-Subjects Research, HIPAA for Research, and Clinical Research fundamentals — with working knowledge of IRB process, protocol deviations, and ICH-GCP record integrity.
-                </p>
-                <p>
-                  <strong>Bilingual protection:</strong> As founder of Servicios Quintana LLC and a commissioned Colorado Notary Public, I've spent years preparing and auditing regulated healthcare and legal documents in English and Spanish — because a compliance gap and a language gap are so often the same gap.
-                </p>
-              </div>
-              <div data-lang="es" lang-block>
-                <h3 id="about-title-es" class="text-center">Sobre mí</h3>
-                <p>
-                  Soy David Quintana — especialista bilingüe en Sistemas de Información de Salud e ingeniero de datos clínicos, y graduado 2026 de la Licenciatura en HCIS por MSU Denver (Castle Rock, Colorado).
-                </p>
-                <p>
-                  <strong>Ingeniería de datos clínicos:</strong> Como practicante en Western States Cancer Research NCORP, diseñé pipelines ETL en Python/pandas para extraer, limpiar y transferir registros heredados de ensayos clínicos a arquitecturas de datos estructuradas y conformes en SharePoint — con experiencia práctica en flujos ETL, HL7 FHIR R4, transiciones EHR/EMR y gestión de registros conforme a HIPAA.
-                </p>
-                <p>
-                  <strong>Fluidez regulatoria y de investigación clínica:</strong> Tengo certificaciones CITI en Buenas Prácticas Clínicas (US FDA), Investigación Biomédica/Sujetos Humanos, HIPAA para Investigación y fundamentos de Investigación Clínica — con conocimiento práctico del proceso IRB, desviaciones de protocolo e integridad de registros ICH-GCP.
-                </p>
-                <p>
-                  <strong>Protección bilingüe:</strong> Como fundador de Servicios Quintana LLC y Notario Público de Colorado, he dedicado años a preparar y auditar documentos médicos y legales regulados en inglés y español — porque una brecha de cumplimiento y una brecha de idioma son, con demasiada frecuencia, la misma brecha.
-                </p>
-              </div>
-            </div>
-            <div class="about-photo">
-              <div class="home-img-wrapper">
-                <img src="about-photo.png" alt="David Quintana in professional attire with Colorado landscape background" class="clickable-img" loading="lazy" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="section-spacing">
-      <div class="container">
-        <div data-lang="en" lang-block>
-          <h3 class="text-center">Contact</h3>
-          <div class="contact-card">
-            <p class="contact-intro">Open to full-time ETL / Data Engineer and clinical data roles. Write in English or Spanish.</p>
-            <div class="contact-links">
-              <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                Résumé (PDF)
-              </a>
-              <a href="https://www.linkedin.com/in/quintanadm95" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                LinkedIn
-              </a>
-              <a href="https://github.com/dquint32" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                GitHub
-              </a>
-              <a href="https://wa.me/13035004122" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-                WhatsApp
-              </a>
-              <a href="tel:+13035004122" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.81 12.81 0 0 0 .63 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.63A2 2 0 0 1 22 16.92z"></path></svg>
-                303-500-4122
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div data-lang="es" lang-block>
-          <h3 class="text-center">Contacto</h3>
-          <div class="contact-card">
-            <p class="contact-intro">Disponible para roles full-time de ETL / Ingeniería de Datos y datos clínicos. Escribe en inglés o español.</p>
-            <div class="contact-links">
-              <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                Currículum (PDF)
-              </a>
-              <a href="https://www.linkedin.com/in/quintanadm95" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                LinkedIn
-              </a>
-              <a href="https://github.com/dquint32" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                GitHub
-              </a>
-              <a href="https://wa.me/13035004122" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-                WhatsApp
-              </a>
-              <a href="tel:+13035004122" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.81 12.81 0 0 0 .63 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.63A2 2 0 0 1 22 16.92z"></path></svg>
-                303-500-4122
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="portfolio-footer site-footer">
-    <div class="container">
-      <p class="footer-links">
-        <span lang-block data-lang="en">Also build bilingual websites for small businesses &amp; professionals — <a href="web-dev.html">Web Development &amp; pricing →</a></span>
-        <span lang-block data-lang="es">También creo sitios web bilingües para pequeñas empresas y profesionales — <a href="web-dev.html">Desarrollo Web y precios →</a></span>
-      </p>
-      <p>
-        <span lang-block data-lang="en">David Quintana Dev is a registered trade name of Servicios Quintana LLC.</span>
-        <span lang-block data-lang="es">David Quintana Dev es un nombre comercial registrado de Servicios Quintana LLC.</span>
-      </p>
-      <p>
-        <span lang-block data-lang="en">© 2026 Servicios Quintana LLC. All Rights Reserved.</span>
-        <span lang-block data-lang="es">© 2026 Servicios Quintana LLC. Todos los derechos reservados.</span>
-      </p>
-    </div>
-  </footer>
-
-  <div id="lightbox-modal" class="lightbox-modal" style="display: none;">
-    <span class="lightbox-close">&times;</span>
-    <img class="lightbox-content" id="lightbox-img" alt="Full screen project screenshot">
-    <div class="lightbox-caption" id="lightbox-caption"></div>
   </div>
-
-  <script src="main.js"></script>
+</header>
+<main id="main">
+<section class="hero">
+<div class="container hero-grid">
+<div>
+<p data-lang="en" class="kicker">Clinical Data Engineer · HCIS</p>
+<p data-lang="es" lang="es" class="kicker">Ingeniero de Datos Clínicos · HCIS</p>
+<h1 data-lang="en">From legacy chaos to <em>audit-ready</em> clinical data.</h1>
+<h1 data-lang="es" lang="es">Del caos heredado a datos clínicos <em>listos para auditoría</em>.</h1>
+<p data-lang="en" class="lead">I'm David Quintana, a bilingual clinical data engineer. I build Python/pandas ETL pipelines and HL7/FHIR tools that extract, clean, and validate messy clinical data, then deliver it as structured, interoperable records under HIPAA and GCP.</p>
+<p data-lang="es" lang="es" class="lead">Soy David Quintana, ingeniero bilingüe de datos clínicos. Construyo pipelines ETL en Python/pandas y herramientas HL7/FHIR que extraen, limpian y validan datos clínicos desordenados, y los entregan como registros estructurados e interoperables bajo HIPAA y GCP.</p>
+<div class="btn-row">
+<a class="btn btn-primary" href="eva-ctms-case-study.html"><span data-lang="en">View the EVA pipeline</span><span data-lang="es" lang="es">Ver el pipeline EVA</span></a>
+<a class="btn btn-secondary" href="hcis-portfolio.html"><span data-lang="en">See all work</span><span data-lang="es" lang="es">Ver todo el trabajo</span></a>
+<a class="btn btn-ghost" href="resume.pdf" target="_blank" rel="noopener"><span data-lang="en">Résumé (PDF)</span><span data-lang="es" lang="es">Currículum (PDF)</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg></a>
+</div>
+</div>
+<div class="portrait">
+<img src="assets/img/profile.webp" alt="Portrait of David Matthew Quintana" width="768" height="1352" fetchpriority="high" decoding="async">
+<div class="status-card">
+<p data-lang="en"><span class="status-dot" aria-hidden="true"></span>Open to full-time clinical data roles</p>
+<p data-lang="es" lang="es"><span class="status-dot" aria-hidden="true"></span>Disponible para roles de datos clínicos</p>
+<p data-lang="en">B.S. HCIS, MSU Denver (2026) · Castle Rock, CO</p>
+<p data-lang="es" lang="es">Lic. HCIS, MSU Denver (2026) · Castle Rock, CO</p>
+</div>
+</div>
+</div>
+</section>
+<section class="section pt-0 pb-tight">
+<div class="container">
+<div class="stats">
+<div class="stat"><span class="stat-num">9,925</span><span class="stat-label"><span data-lang="en">clinical-trial documents inventoried and classified</span><span data-lang="es" lang="es">documentos de ensayos clínicos inventariados y clasificados</span></span></div>
+<div class="stat"><span class="stat-num">18%</span><span class="stat-label"><span data-lang="en">patient-ID integrity failures caught before migration</span><span data-lang="es" lang="es">fallos de integridad de IDs detectados antes de migrar</span></span></div>
+<div class="stat"><span class="stat-num">203</span><span class="stat-label"><span data-lang="en">automated tests across my HL7 &amp; FHIR projects</span><span data-lang="es" lang="es">pruebas automatizadas en mis proyectos HL7 y FHIR</span></span></div>
+<div class="stat"><span class="stat-num">4</span><span class="stat-label"><span data-lang="en">CITI certifications: GCP, HIPAA, human subjects</span><span data-lang="es" lang="es">certificaciones CITI: GCP, HIPAA, sujetos humanos</span></span></div>
+</div>
+</div>
+</section>
+<section class="section" id="work">
+<div class="container">
+<div class="section-head"><h2 data-lang="en">Featured work</h2>
+<h2 data-lang="es" lang="es">Trabajo destacado</h2><p data-lang="en">Clinical-data engineering under real HIPAA/GCP constraints — pipelines, validation, and interoperability.</p>
+<p data-lang="es" lang="es">Ingeniería de datos clínicos bajo restricciones reales de HIPAA/GCP — pipelines, validación e interoperabilidad.</p></div>
+<article class="featured">
+<div>
+<p class="kicker">★ <span data-lang="en">Flagship · Clinical data ETL</span><span data-lang="es" lang="es">Destacado · ETL de datos clínicos</span></p>
+<h3 data-lang="en">EVA CTMS Archive — clinical data ETL pipeline</h3>
+<h3 data-lang="es" lang="es">Archivo EVA CTMS — pipeline ETL de datos clínicos</h3>
+<p data-lang="en">A 10-stage local Python pipeline that inventoried a decade of unstructured clinical-trial files, cleaned a legacy patient database, and cross-validated every document — catching an 18% patient-ID integrity failure <em>before</em> migration to a compliant SharePoint archive. All processing local; zero PHI exposure.</p>
+<p data-lang="es" lang="es">Un pipeline local de 10 etapas en Python que inventarió una década de archivos de ensayos clínicos, limpió una base de datos de pacientes heredada y validó cada documento — detectando un 18% de fallos de integridad de IDs <em>antes</em> de migrar a un archivo SharePoint conforme. Todo local; sin exposición de PHI.</p>
+<ul class="tags" aria-label="Technologies"><li><span class="tag">Python</span></li><li><span class="tag">pandas</span></li><li><span class="tag">openpyxl</span></li><li><span class="tag">Regex</span></li><li><span class="tag">JSON/YAML</span></li><li><span class="tag">SharePoint</span></li></ul>
+<div class="btn-row"><a class="btn btn-primary" href="eva-ctms-case-study.html"><span data-lang="en">Read the case study</span><span data-lang="es" lang="es">Leer el estudio de caso</span></a></div>
+</div>
+<div class="flow" role="img" aria-label="ETL pipeline: extract raw logs and a legacy patient database, transform through classification, cleaning and cross-validation, load into a governed SharePoint archive.">
+<div class="flow-lane extract"><b>Extract</b><div class="flow-step">Raw Windows logs<small>tree /f · dir /s /b</small></div><div class="flow-step">Legacy patient DB<small>recovered backup</small></div></div>
+<div class="flow-arrow" aria-hidden="true">↓</div>
+<div class="flow-lane transform"><b>Transform</b><div class="flow-step">Crawl &amp; classify<small>9,925 documents</small></div><div class="flow-step">Clean patient DB<small>6,830 records</small></div><div class="flow-step hit">Cross-validate ◀ finding<small>document ↔ patient match</small></div></div>
+<div class="flow-arrow" aria-hidden="true">↓</div>
+<div class="flow-lane load"><b>Load</b><div class="flow-step">SharePoint archive<small>11 metadata columns · 4 views</small></div></div>
+</div>
+</article>
+<div class="grid grid-projects">
+<article class="card project-card">
+<a class="thumb" href="intake-web-app.html" tabindex="-1" aria-hidden="true"><img src="assets/img/projects/intake-fhir-bundle.webp" alt="Intake app showing a generated FHIR R4 bundle" width="1600" height="2158" loading="lazy" decoding="async"></a>
+<div class="body">
+<p class="eyebrow">FHIR R4 · FastAPI</p>
+<h3 data-lang="en"><a href="intake-web-app.html">Bilingual Patient Intake → FHIR</a></h3>
+<h3 data-lang="es" lang="es"><a href="intake-web-app.html">Admisión bilingüe → FHIR</a></h3>
+<p data-lang="en">Bilingual intake form whose API validates every submission with Pydantic v2 and returns a self-contained FHIR R4 Bundle.</p>
+<p data-lang="es" lang="es">Formulario bilingüe cuya API valida cada envío con Pydantic v2 y devuelve un Bundle FHIR R4 autocontenido.</p>
+<ul class="tags" aria-label="Technologies"><li><span class="tag">Python</span></li><li><span class="tag">FastAPI</span></li><li><span class="tag">Pydantic v2</span></li><li><span class="tag">FHIR R4</span></li><li><span class="tag">pytest</span></li></ul>
+<div class="links"><a href="intake-web-app.html"><span data-lang="en">Case study</span><span data-lang="es" lang="es">Estudio de caso</span></a><a href="https://dquint32.github.io/bilingual-patient-intake-fhir/" target="_blank" rel="noopener"><span data-lang="en">Live demo</span><span data-lang="es" lang="es">Demo</span></a><a href="https://github.com/dquint32/bilingual-patient-intake-fhir" target="_blank" rel="noopener"><span data-lang="en">Code</span><span data-lang="es" lang="es">Código</span></a></div>
+</div>
+</article>
+<article class="card project-card">
+<a class="thumb" href="hl7-parser.html" tabindex="-1" aria-hidden="true"><img src="assets/img/projects/hl7-respiratory-panel.webp" alt="HL7 parser summarizing a respiratory panel" width="1600" height="1255" loading="lazy" decoding="async"></a>
+<div class="body">
+<p class="eyebrow">HL7 v2.x · LOINC</p>
+<h3 data-lang="en"><a href="hl7-parser.html">HL7 v2 Infectious Disease Parser</a></h3>
+<h3 data-lang="es" lang="es"><a href="hl7-parser.html">Analizador HL7 v2 de enfermedades infecciosas</a></h3>
+<p data-lang="en">Parses ORU^R01 lab messages, verifies LOINC codes and check digits, and reports every defect with its exact HL7 location.</p>
+<p data-lang="es" lang="es">Analiza mensajes ORU^R01, verifica códigos LOINC y dígitos de control, e informa cada defecto con su ubicación HL7 exacta.</p>
+<ul class="tags" aria-label="Technologies"><li><span class="tag">Python</span></li><li><span class="tag">Pydantic v2</span></li><li><span class="tag">LOINC</span></li><li><span class="tag">SNOMED CT</span></li><li><span class="tag">pytest</span></li></ul>
+<div class="links"><a href="hl7-parser.html"><span data-lang="en">Case study</span><span data-lang="es" lang="es">Estudio de caso</span></a><a href="https://dquint32.github.io/hl7-infectious-disease-parser/" target="_blank" rel="noopener"><span data-lang="en">Live demo</span><span data-lang="es" lang="es">Demo</span></a><a href="https://github.com/dquint32/hl7-infectious-disease-parser" target="_blank" rel="noopener"><span data-lang="en">Code</span><span data-lang="es" lang="es">Código</span></a></div>
+</div>
+</article>
+<article class="card project-card">
+<a class="thumb" href="pediatric-cds-calculator.html" tabindex="-1" aria-hidden="true"><img src="assets/img/projects/cds-caution.webp" alt="Dosage calculator showing a caution-level result" width="1600" height="1188" loading="lazy" decoding="async"></a>
+<div class="body">
+<p class="eyebrow">Clinical decision support</p>
+<h3 data-lang="en"><a href="pediatric-cds-calculator.html">Pediatric CDS Dosage Calculator</a></h3>
+<h3 data-lang="es" lang="es"><a href="pediatric-cds-calculator.html">Calculadora pediátrica de dosis (CDS)</a></h3>
+<p data-lang="en">Weight-based dosing with a hard stop above the maximum dose, an 80% caution threshold, and bilingual caregiver instructions.</p>
+<p data-lang="es" lang="es">Dosificación por peso con parada estricta sobre la dosis máxima, umbral de precaución del 80% e instrucciones bilingües.</p>
+<ul class="tags" aria-label="Technologies"><li><span class="tag">Python</span></li><li><span class="tag">FastAPI</span></li><li><span class="tag">Pydantic</span></li><li><span class="tag">JSON i18n</span></li></ul>
+<div class="links"><a href="pediatric-cds-calculator.html"><span data-lang="en">Case study</span><span data-lang="es" lang="es">Estudio de caso</span></a><a href="https://github.com/dquint32/bilingual-pediatric-CDS-dosage-calculator" target="_blank" rel="noopener"><span data-lang="en">Code</span><span data-lang="es" lang="es">Código</span></a></div>
+</div>
+</article>
+<article class="card project-card">
+<a class="thumb" href="https://github.com/dquint32/fhir-patient-converter" tabindex="-1" aria-hidden="true"><img src="assets/img/projects/converter-output.webp" alt="FHIR converter showing US Core Patient JSON output" width="1600" height="1453" loading="lazy" decoding="async"></a>
+<div class="body">
+<p class="eyebrow">US Core · FHIR R4</p>
+<h3 data-lang="en"><a href="https://github.com/dquint32/fhir-patient-converter">FHIR Patient Converter</a></h3>
+<h3 data-lang="es" lang="es"><a href="https://github.com/dquint32/fhir-patient-converter">Convertidor de pacientes FHIR</a></h3>
+<p data-lang="en">Converts intake data into US Core Patient resources, with a batch CLI that reports bad records without stopping the run.</p>
+<p data-lang="es" lang="es">Convierte datos de admisión en recursos Patient de US Core, con un CLI por lotes que reporta registros inválidos sin detenerse.</p>
+<ul class="tags" aria-label="Technologies"><li><span class="tag">Python</span></li><li><span class="tag">Pydantic v2</span></li><li><span class="tag">US Core</span></li><li><span class="tag">JavaScript</span></li></ul>
+<div class="links"><a href="https://dquint32.github.io/fhir-patient-converter/" target="_blank" rel="noopener"><span data-lang="en">Live demo</span><span data-lang="es" lang="es">Demo</span></a><a href="https://github.com/dquint32/fhir-patient-converter" target="_blank" rel="noopener"><span data-lang="en">Code</span><span data-lang="es" lang="es">Código</span></a></div>
+</div>
+</article>
+</div>
+<div class="btn-row"><a class="btn btn-secondary" href="hcis-portfolio.html"><span data-lang="en">See all work →</span><span data-lang="es" lang="es">Ver todo el trabajo →</span></a></div>
+</div>
+</section>
+<section class="section section-alt" id="skills">
+<div class="container">
+<div class="section-head"><h2 data-lang="en">Skills</h2>
+<h2 data-lang="es" lang="es">Habilidades</h2><p data-lang="en">Building and validating clinical data pipelines under real compliance constraints.</p>
+<p data-lang="es" lang="es">Construir y validar pipelines de datos clínicos bajo restricciones reales de cumplimiento.</p></div>
+<div class="grid grid-3">
+<div class="card"><h3 data-lang="en">Languages &amp; data</h3>
+<h3 data-lang="es" lang="es">Lenguajes y datos</h3><p data-lang="en">Python (pandas, openpyxl, Pydantic) · SQL · Regex · JSON / CSV / YAML</p>
+<p data-lang="es" lang="es">Python (pandas, openpyxl, Pydantic) · SQL · Regex · JSON / CSV / YAML</p></div><div class="card"><h3 data-lang="en">ETL &amp; pipelines</h3>
+<h3 data-lang="es" lang="es">ETL y pipelines</h3><p data-lang="en">Extract–transform–load design · cleaning &amp; standardization · cross-validation · deduplication · schema-driven, reproducible multi-stage pipelines</p>
+<p data-lang="es" lang="es">Diseño extraer–transformar–cargar · limpieza y estandarización · validación cruzada · deduplicación · pipelines multietapa reproducibles</p></div><div class="card"><h3 data-lang="en">Healthcare interoperability</h3>
+<h3 data-lang="es" lang="es">Interoperabilidad en salud</h3><p data-lang="en">HL7 v2.x · FHIR R4 &amp; US Core · LOINC · SNOMED CT · metadata &amp; lookup modeling · SharePoint data architecture</p>
+<p data-lang="es" lang="es">HL7 v2.x · FHIR R4 y US Core · LOINC · SNOMED CT · modelado de metadatos y lookups · arquitectura de datos en SharePoint</p></div><div class="card"><h3 data-lang="en">Governance &amp; compliance</h3>
+<h3 data-lang="es" lang="es">Gobernanza y cumplimiento</h3><p data-lang="en">HIPAA · ICH-GCP · human-subjects protection · IRB / regulatory · PHI masking · audit trails · versioning &amp; access control</p>
+<p data-lang="es" lang="es">HIPAA · ICH-GCP · protección de sujetos humanos · IRB / regulatorio · enmascarado de PHI · auditoría · versionado y control de acceso</p></div><div class="card"><h3 data-lang="en">Communication</h3>
+<h3 data-lang="es" lang="es">Comunicación</h3><p data-lang="en">Fully bilingual (English / Spanish) · clinical &amp; regulatory documentation · plain-language writing for patients and staff</p>
+<p data-lang="es" lang="es">Totalmente bilingüe (inglés / español) · documentación clínica y regulatoria · redacción en lenguaje claro para pacientes y personal</p></div><div class="card"><h3 data-lang="en">Quality &amp; tooling</h3>
+<h3 data-lang="es" lang="es">Calidad y herramientas</h3><p data-lang="en">pytest · FastAPI · GitHub Actions CI · Git / GitHub · Excel (pivot analysis) · AWS fundamentals (EC2, S3, IAM)</p>
+<p data-lang="es" lang="es">pytest · FastAPI · CI con GitHub Actions · Git / GitHub · Excel (tablas dinámicas) · fundamentos de AWS (EC2, S3, IAM)</p></div>
+</div>
+</div>
+</section>
+<section class="section" id="credentials">
+<div class="container">
+<div class="section-head"><h2 data-lang="en">Credentials</h2>
+<h2 data-lang="es" lang="es">Credenciales</h2><p data-lang="en">CITI Program certifications — each one verifiable.</p>
+<p data-lang="es" lang="es">Certificaciones del CITI Program — todas verificables.</p></div>
+<div class="grid grid-4">
+<div class="card cert"><h3 data-lang="en">CITI — Good Clinical Practice (US FDA)</h3>
+<h3 data-lang="es" lang="es">CITI — Buenas Prácticas Clínicas (US FDA)</h3><span class="meta">CITI Program · ID 77289766</span><a href="https://www.citiprogram.org/verify/?wc8e3f9f7-8f06-47bd-ba08-80ac69449bc4-77289766" target="_blank" rel="noopener"><span data-lang="en">Verify →</span><span data-lang="es" lang="es">Verificar →</span></a></div><div class="card cert"><h3 data-lang="en">CITI — Biomedical Research — Human Subjects</h3>
+<h3 data-lang="es" lang="es">CITI — Investigación Biomédica — Sujetos Humanos</h3><span class="meta">CITI Program · ID 77289765</span><a href="https://www.citiprogram.org/verify/?w321cd296-9737-4dd8-a660-db4860e47611-77289765" target="_blank" rel="noopener"><span data-lang="en">Verify →</span><span data-lang="es" lang="es">Verificar →</span></a></div><div class="card cert"><h3 data-lang="en">CITI — HIPAA for Research</h3>
+<h3 data-lang="es" lang="es">CITI — HIPAA para Investigación</h3><span class="meta">CITI Program · ID 77289768</span><a href="https://www.citiprogram.org/verify/?w7ce7274a-9806-4e5c-94ec-9ea77af7a663-77289768" target="_blank" rel="noopener"><span data-lang="en">Verify →</span><span data-lang="es" lang="es">Verificar →</span></a></div><div class="card cert"><h3 data-lang="en">CITI — Clinical Research: An Introduction</h3>
+<h3 data-lang="es" lang="es">CITI — Investigación Clínica: Introducción</h3><span class="meta">CITI Program · ID 77289767</span><a href="https://www.citiprogram.org/verify/?wc14ae6d7-351d-4e16-88f1-102b45af0def-77289767" target="_blank" rel="noopener"><span data-lang="en">Verify →</span><span data-lang="es" lang="es">Verificar →</span></a></div>
+</div>
+</div>
+</section>
+<section class="section section-alt" id="about">
+<div class="container">
+<div class="about-grid">
+<div>
+<div class="section-head"><h2 data-lang="en">About</h2>
+<h2 data-lang="es" lang="es">Sobre mí</h2></div>
+<div data-lang="en" class="prose"><p>I'm David Quintana, a bilingual Health Care Information Systems specialist and clinical data engineer, and a 2026 B.S. HCIS graduate of MSU Denver.</p>
+<p><strong>Clinical data engineering.</strong> As an intern at Western States Cancer Research NCORP, I engineered Python/pandas ETL pipelines to extract, clean, and transition legacy clinical-trial records into structured, compliant SharePoint data architectures — with hands-on experience in ETL workflows, HL7 FHIR R4, EHR/EMR transitions, and HIPAA-compliant records management.</p>
+<p><strong>Regulatory &amp; clinical-research fluency.</strong> I'm CITI-certified in Good Clinical Practice (US FDA), human-subjects research, HIPAA for research, and clinical research fundamentals, with working knowledge of IRB process, protocol deviations, and ICH-GCP record integrity.</p>
+<p><strong>Bilingual by design.</strong> As founder of Servicios Quintana LLC and a commissioned Colorado Notary Public, I've spent years preparing and auditing regulated healthcare and legal documents in English and Spanish — because a compliance gap and a language gap are so often the same gap.</p></div>
+<div data-lang="es" lang="es" class="prose"><p>Soy David Quintana, especialista bilingüe en Sistemas de Información de Salud e ingeniero de datos clínicos, graduado en 2026 de la Licenciatura en HCIS de MSU Denver.</p>
+<p><strong>Ingeniería de datos clínicos.</strong> Como practicante en Western States Cancer Research NCORP, diseñé pipelines ETL en Python/pandas para extraer, limpiar y migrar registros heredados de ensayos clínicos a arquitecturas de datos estructuradas y conformes en SharePoint — con experiencia práctica en flujos ETL, HL7 FHIR R4, transiciones EHR/EMR y gestión de registros conforme a HIPAA.</p>
+<p><strong>Fluidez regulatoria y de investigación clínica.</strong> Tengo certificaciones CITI en Buenas Prácticas Clínicas (US FDA), investigación con sujetos humanos, HIPAA para investigación y fundamentos de investigación clínica, con conocimiento práctico del proceso IRB, desviaciones de protocolo e integridad de registros ICH-GCP.</p>
+<p><strong>Bilingüe por diseño.</strong> Como fundador de Servicios Quintana LLC y Notario Público de Colorado, he pasado años preparando y auditando documentos médicos y legales regulados en inglés y español — porque una brecha de cumplimiento y una brecha de idioma son, con demasiada frecuencia, la misma brecha.</p></div>
+<div class="edu">
+<img src="assets/img/msu-denver-logo.webp" alt="MSU Denver logo" width="400" height="400" loading="lazy" decoding="async">
+<div><p data-lang="en">Metropolitan State University of Denver</p>
+<p data-lang="es" lang="es">Universidad Estatal Metropolitana de Denver</p><p data-lang="en">B.S. Health Care Information Systems, 2026</p>
+<p data-lang="es" lang="es">Lic. en Sistemas de Información de Salud, 2026</p></div>
+</div>
+</div>
+<div class="about-photo"><img src="assets/img/about.webp" alt="David Quintana in professional attire with a Colorado landscape behind him" width="872" height="1192" loading="lazy" decoding="async"></div>
+</div>
+</div>
+</section>
+<section class="section" id="contact">
+<div class="container">
+<div class="contact-panel">
+<div class="section-head center"><h2 data-lang="en">Let's talk</h2>
+<h2 data-lang="es" lang="es">Hablemos</h2><p data-lang="en">Open to full-time ETL / data engineering and clinical data roles. Write in English or Spanish.</p>
+<p data-lang="es" lang="es">Disponible para roles de ETL / ingeniería de datos y datos clínicos. Escríbeme en inglés o español.</p></div>
+<div class="contact-links">
+<a class="btn btn-primary" href="https://www.linkedin.com/in/quintanadm95" target="_blank" rel="noopener"><span data-lang="en">LinkedIn</span><span data-lang="es" lang="es">LinkedIn</span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05a3.75 3.75 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+<a class="btn btn-secondary" href="resume.pdf" target="_blank" rel="noopener"><span data-lang="en">Résumé (PDF)</span><span data-lang="es" lang="es">Currículum (PDF)</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg></a>
+<a class="btn btn-secondary" href="https://github.com/dquint32" target="_blank" rel="noopener"><span data-lang="en">GitHub</span><span data-lang="es" lang="es">GitHub</span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.3 1.9 1.3 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg></a>
+<a class="btn btn-secondary" href="https://wa.me/13035004122" target="_blank" rel="noopener"><span data-lang="en">WhatsApp</span><span data-lang="es" lang="es">WhatsApp</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7A8.4 8.4 0 0 1 12.5 3 8.5 8.5 0 0 1 21 11.5z"/></svg></a>
+<a class="btn btn-secondary" href="tel:+13035004122"><span data-lang="en">303-500-4122</span><span data-lang="es" lang="es">303-500-4122</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <p><strong>David Quintana</strong> · <span data-lang="en">Clinical data engineering, HL7/FHIR interoperability and HIPAA/GCP-compliant data work.</span><span data-lang="es" lang="es">Ingeniería de datos clínicos, interoperabilidad HL7/FHIR y trabajo de datos conforme a HIPAA/GCP.</span></p>
+      <p><span data-lang="en">David Quintana Dev is a registered trade name of Servicios Quintana LLC.</span><span data-lang="es" lang="es">David Quintana Dev es un nombre comercial registrado de Servicios Quintana LLC.</span></p>
+      
+      <p>© <span data-year>2026</span> Servicios Quintana LLC. <span data-lang="en">All rights reserved.</span><span data-lang="es" lang="es">Todos los derechos reservados.</span></p>
+    </div>
+    <nav aria-label="Footer">
+      <ul class="footer-links">
+        <li><a href="hcis-portfolio.html"><span data-lang="en">Work</span><span data-lang="es" lang="es">Trabajo</span></a></li>
+        <li><a href="eva-ctms-case-study.html"><span data-lang="en">EVA case study</span><span data-lang="es" lang="es">Caso EVA</span></a></li>
+        <li><a href="resume.pdf" target="_blank" rel="noopener"><span data-lang="en">Résumé (PDF)</span><span data-lang="es" lang="es">Currículum (PDF)</span></a></li>
+        <li><a href="https://github.com/dquint32" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/quintanadm95" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="web-dev.html"><span data-lang="en">Web development for small businesses</span><span data-lang="es" lang="es">Desarrollo web para pequeñas empresas</span></a></li>
+        <li><a href="pricing.html"><span data-lang="en">Web pricing</span><span data-lang="es" lang="es">Precios web</span></a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+<button class="icon-btn back-to-top" type="button" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg></button>
+<script src="main.js" defer></script>
 </body>
 </html>

@@ -2,318 +2,180 @@
 <html lang="en" data-language="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Web Development | David Matthew Quintana — Bilingual Websites for Small Businesses</title>
-  <meta name="description" content="Side practice: bilingual (EN/ES), mobile-first, accessible websites for small businesses and professionals in Colorado. Built with clean, dependency-free code.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Web Development | David Quintana — Bilingual Websites for Small Businesses</title>
+  <meta name="description" content="Bilingual (English/Spanish), mobile-first, accessible websites for small businesses and professionals in Colorado, built by David Quintana through Servicios Quintana LLC.">
+  <link rel="canonical" href="https://davidquintana.dev/web-dev.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="David Quintana">
+  <meta property="og:title" content="Web Development | David Quintana — Bilingual Websites for Small Businesses">
+  <meta property="og:description" content="Bilingual (English/Spanish), mobile-first, accessible websites for small businesses and professionals in Colorado, built by David Quintana through Servicios Quintana LLC.">
+  <meta property="og:url" content="https://davidquintana.dev/web-dev.html">
+  <meta property="og:image" content="https://davidquintana.dev/assets/img/og-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0d0d0d">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap">
   <script>
     (function () {
       try {
         var d = document.documentElement;
         var lang = localStorage.getItem('preferred-language');
-        if (lang) { d.setAttribute('data-language', lang); d.setAttribute('lang', lang); }
+        if (lang === 'en' || lang === 'es') { d.setAttribute('data-language', lang); d.setAttribute('lang', lang); }
         var theme = localStorage.getItem('preferred-theme');
-        if (theme) { d.setAttribute('data-theme', theme); }
-      } catch (e) { /* localStorage unavailable — defaults render */ }
+        if (theme === 'light' || theme === 'dark') { d.setAttribute('data-theme', theme); }
+      } catch (e) { /* storage unavailable: defaults apply */ }
     })();
   </script>
   <link rel="stylesheet" href="styles.css">
-  <style>
-    .wd-note {
-      background: var(--gunmetal); border-left: 4px solid var(--cyber-orange);
-      padding: var(--space-4) var(--space-6); margin: var(--space-6) 0; color: var(--muted-silver);
-    }
-    .wd-note a { font-weight: 600; }
-  </style>
 </head>
-<body class="home-page" data-language="en">
-  <a href="#main-content" class="skip-link">Skip to main content</a>
-
-  <div class="logo-background" aria-hidden="true">
-    <div class="bg-logo">DQ</div>
-  </div>
-
-  <button class="floating-toggle" type="button" aria-label="Toggle language">
-    <span data-lang="en">EN</span>
-    <span class="divider">|</span>
-    <span data-lang="es" class="inactive">ES</span>
-  </button>
-
-  <button class="theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false" title="Toggle theme">
-    <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-    <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
-  </button>
-
-  <button id="back-to-top" class="back-to-top-btn" aria-label="Back to top">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="18 15 12 9 6 15"></polyline>
-    </svg>
-  </button>
-
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <h1><a href="index.html">David Matthew Quintana</a></h1>
-        <p class="tagline">Clinical Data Engineer · HCIS | Python/pandas ETL, data integrity, HL7/FHIR &amp; HIPAA/GCP compliance</p>
-      </div>
-      <nav class="nav" aria-label="Primary">
-        <ul>
-          <li><a href="index.html"><span lang-block data-lang="en">Home</span><span lang-block data-lang="es">Inicio</span></a></li>
-          <li><a href="hcis-portfolio.html"><span lang-block data-lang="en">Work</span><span lang-block data-lang="es">Trabajo</span></a></li>
-          <li><a href="eva-ctms-case-study.html"><span lang-block data-lang="en">EVA Case Study</span><span lang-block data-lang="es">Estudio EVA</span></a></li>
-          <li><a href="web-dev.html" class="active"><span lang-block data-lang="en">Web Development</span><span lang-block data-lang="es">Desarrollo Web</span></a></li>
-          <li><a href="index.html#contact" class="cta"><span lang-block data-lang="en">Contact</span><span lang-block data-lang="es">Contacto</span></a></li>
-        </ul>
-      </nav>
+<body>
+<a class="skip-link" href="#main"><span data-lang="en">Skip to main content</span><span data-lang="es" lang="es">Saltar al contenido principal</span></a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="David Quintana, home">
+      <span class="brand-mark" aria-hidden="true">DQ</span>
+      <span class="brand-text"><span class="brand-name">David Quintana</span><span class="brand-role"><span data-lang="en">Clinical Data Engineer · HCIS</span><span data-lang="es" lang="es">Ingeniero de Datos Clínicos · HCIS</span></span></span>
+    </a>
+    <nav id="site-nav" class="site-nav" aria-label="Primary">
+      <ul class="nav-list">
+        <li><a href="hcis-portfolio.html"><span data-lang="en">Work</span><span data-lang="es" lang="es">Trabajo</span></a></li>
+        <li><a href="eva-ctms-case-study.html"><span data-lang="en">EVA case study</span><span data-lang="es" lang="es">Caso EVA</span></a></li>
+        <li><a href="index.html#about"><span data-lang="en">About</span><span data-lang="es" lang="es">Sobre mí</span></a></li>
+        <li><a href="resume.pdf" target="_blank" rel="noopener"><span data-lang="en">Résumé</span><span data-lang="es" lang="es">Currículum</span></a></li>
+        <li><a class="nav-cta" href="index.html#contact"><span data-lang="en">Contact</span><span data-lang="es" lang="es">Contacto</span></a></li>
+      </ul>
+    </nav>
+    <div class="header-tools">
+      <button class="lang-switch" type="button" aria-label="Cambiar a español"><span class="opt opt-en">EN</span><span class="opt opt-es">ES</span></button>
+      <button class="icon-btn theme-toggle" type="button" aria-pressed="false" aria-label="Switch to light theme"><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></button>
+      <button class="icon-btn menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     </div>
-  </header>
-
-  <main id="main-content">
-
-    <!-- HERO -->
-    <section class="section-spacing" aria-labelledby="wd-hero">
-      <div class="container">
-        <div data-lang="en" lang-block>
-          <h2 id="wd-hero-en">Web Development</h2>
-          <p class="lead" style="max-width:800px;">Alongside my clinical data work, I design and build bilingual (EN/ES), mobile-first, accessible websites for small businesses and professionals in Colorado — through my agency, Servicios Quintana LLC. Clean, dependency-free code; built to load fast and read clearly in both languages.</p>
-          <div class="wd-note">
-            <p style="margin:0;">Looking for my clinical data engineering work instead? <a href="index.html">Back to the main portfolio →</a> or read the <a href="eva-ctms-case-study.html">EVA CTMS ETL case study →</a></p>
-          </div>
-          <div class="hero-cta-group">
-            <a href="pricing.html" class="btn btn-primary">View pricing</a>
-            <a href="#client-sites" class="btn btn-secondary">See client sites</a>
-          </div>
-        </div>
-        <div data-lang="es" lang-block>
-          <h2 id="wd-hero-es">Desarrollo Web</h2>
-          <p class="lead" style="max-width:800px;">Además de mi trabajo con datos clínicos, diseño y construyo sitios web bilingües (EN/ES), mobile-first y accesibles para pequeñas empresas y profesionales en Colorado — a través de mi agencia, Servicios Quintana LLC. Código limpio y sin dependencias; hecho para cargar rápido y leerse con claridad en ambos idiomas.</p>
-          <div class="wd-note">
-            <p style="margin:0;">¿Buscas mi trabajo de ingeniería de datos clínicos? <a href="index.html">Volver al portafolio principal →</a> o lee el <a href="eva-ctms-case-study.html">estudio de caso ETL de EVA CTMS →</a></p>
-          </div>
-          <div class="hero-cta-group">
-            <a href="pricing.html" class="btn btn-primary">Ver precios</a>
-            <a href="#client-sites" class="btn btn-secondary">Ver sitios de clientes</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CLIENT SITES -->
-    <section id="client-sites" class="section-spacing" style="background: var(--gunmetal);">
-      <div class="container">
-        <div data-lang="en" lang-block>
-          <h3 class="text-center">Client Websites</h3>
-          <p class="mb-8 text-center" style="color: var(--muted-silver); font-size: 1.125rem;">Live bilingual platforms built for real Colorado businesses. Click through for the live site, case study, or source.</p>
-        </div>
-        <div data-lang="es" lang-block>
-          <h3 class="text-center">Sitios Web de Clientes</h3>
-          <p class="mb-8 text-center" style="color: var(--muted-silver); font-size: 1.125rem;">Plataformas bilingües en vivo para empresas reales de Colorado. Explora el sitio en vivo, el estudio de caso o el código.</p>
-        </div>
-
-        <article class="project-card mb-8">
-          <div class="project-image-container">
-            <img src="servicios-quintana-homepage-sc.png" alt="Servicios Quintana LLC homepage screenshot" class="clickable-img" loading="lazy" />
-          </div>
-          <div data-lang="en" lang-block>
-            <h4>Servicios Quintana LLC</h4>
-            <p class="project-subtitle">Client Website · Bilingual Services Agency</p>
-            <p>A bilingual (EN/ES) platform for an agency that prepares, translates, and helps clients navigate regulated healthcare and government documents. Centralized architecture, accessible throughout, structured for confidential document workflows.</p>
-            <div class="project-details">
-              <h5>Stack:</h5>
-              <pre><code>Vanilla JavaScript (ES6+, IIFE modules), Semantic HTML5, CSS3 (custom variables, Flexbox, Grid), FontAwesome, Google Fonts.</code></pre>
-            </div>
-            <div class="project-links">
-              <a href="https://serviciosquintana.com" target="_blank" rel="noopener noreferrer">Live site</a>
-              <a href="https://github.com/dquint32/servicios-quintana-llc" target="_blank" rel="noopener noreferrer">Code on GitHub</a>
-            </div>
-          </div>
-          <div data-lang="es" lang-block>
-            <h4>Servicios Quintana LLC</h4>
-            <p class="project-subtitle">Sitio Web de Cliente · Agencia de Servicios Bilingüe</p>
-            <p>Una plataforma bilingüe (EN/ES) para una agencia que prepara, traduce y ayuda a los clientes a navegar documentos regulados de salud y gobierno. Arquitectura centralizada, accesible en todo el sitio y estructurada para flujos de documentos confidenciales.</p>
-            <div class="project-details">
-              <h5>Stack:</h5>
-              <pre><code>Vanilla JavaScript (ES6+, módulos IIFE), HTML5 semántico, CSS3 (variables personalizadas, Flexbox, Grid), FontAwesome, Google Fonts.</code></pre>
-            </div>
-            <div class="project-links">
-              <a href="https://serviciosquintana.com" target="_blank" rel="noopener noreferrer">Sitio en vivo</a>
-              <a href="https://github.com/dquint32/servicios-quintana-llc" target="_blank" rel="noopener noreferrer">Código en GitHub</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card mb-8">
-          <div class="project-image-container">
-            <img src="quintana-notary-signing-homepage-sc.png" alt="Quintana Notary &amp; Signing homepage screenshot" class="clickable-img" loading="lazy" />
-          </div>
-          <div data-lang="en" lang-block>
-            <h4>Quintana Notary &amp; Signing</h4>
-            <p class="project-subtitle">Client Website · Bilingual Notary Services</p>
-            <p>A bilingual notarial-services site with persistent language state across a multi-page platform and a responsive pricing grid that renders complex service pricing as clear, accessible mobile cards. Integrated WhatsApp and click-to-call.</p>
-            <div class="project-details">
-              <h5>Stack:</h5>
-              <pre><code>Vanilla JavaScript (ES6), semantic &amp; SEO-optimized HTML5, CSS3 (custom properties, responsive Grid), FontAwesome, LocalStorage API.</code></pre>
-            </div>
-            <div class="project-links">
-              <a href="https://quintananotary.com" target="_blank" rel="noopener noreferrer">Live site</a>
-              <a href="quintana-notary-signing-case-study.html">Case study</a>
-              <a href="https://github.com/dquint32/quintana-notary" target="_blank" rel="noopener noreferrer">Code on GitHub</a>
-            </div>
-          </div>
-          <div data-lang="es" lang-block>
-            <h4>Quintana Notary &amp; Signing</h4>
-            <p class="project-subtitle">Sitio Web de Cliente · Servicios Notariales Bilingües</p>
-            <p>Un sitio de servicios notariales bilingüe con estado de idioma persistente en una plataforma multipágina y una cuadrícula de precios responsiva que presenta precios complejos como tarjetas móviles claras y accesibles. Integra WhatsApp y clic para llamar.</p>
-            <div class="project-details">
-              <h5>Stack:</h5>
-              <pre><code>Vanilla JavaScript (ES6), HTML5 semántico y optimizado para SEO, CSS3 (propiedades personalizadas, Grid responsivo), FontAwesome, API LocalStorage.</code></pre>
-            </div>
-            <div class="project-links">
-              <a href="https://quintananotary.com" target="_blank" rel="noopener noreferrer">Sitio en vivo</a>
-              <a href="quintana-notary-signing-case-study.html">Estudio de caso</a>
-              <a href="https://github.com/dquint32/quintana-notary" target="_blank" rel="noopener noreferrer">Código en GitHub</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card mb-8">
-          <div class="project-image-container">
-            <img src="ayudadmv-homepage-sc.png" alt="Ayuda DMV Platform homepage screenshot" class="clickable-img" loading="lazy" />
-          </div>
-          <div data-lang="en" lang-block>
-            <h4>Ayuda DMV</h4>
-            <p class="project-subtitle">Client Website · Government-Services Guidance Hub</p>
-            <p>A responsive, multi-page platform that translates complex DMV and government requirements into plain-language bilingual, step-by-step guidance for Colorado residents. Lightweight, dependency-free i18n engine for instant, flicker-free EN/ES switching.</p>
-            <div class="project-details">
-              <h5>Stack:</h5>
-              <pre><code>Vanilla JavaScript (ES6+, IIFE modules), Semantic HTML5, CSS3 (variables, Flexbox, Grid), FontAwesome, LocalStorage API.</code></pre>
-            </div>
-            <div class="project-links">
-              <a href="https://ayudadmv.com" target="_blank" rel="noopener noreferrer">Live site</a>
-              <a href="https://github.com/dquint32/ayuda-dmv" target="_blank" rel="noopener noreferrer">Code on GitHub</a>
-            </div>
-          </div>
-          <div data-lang="es" lang-block>
-            <h4>Ayuda DMV</h4>
-            <p class="project-subtitle">Sitio Web de Cliente · Centro de Guía de Servicios Gubernamentales</p>
-            <p>Una plataforma multipágina responsiva que traduce requisitos complejos del DMV y del gobierno en guías bilingües paso a paso, en lenguaje sencillo, para residentes de Colorado. Motor i18n ligero y sin dependencias para un cambio EN/ES instantáneo y sin parpadeos.</p>
-            <div class="project-details">
-              <h5>Stack:</h5>
-              <pre><code>Vanilla JavaScript (ES6+, módulos IIFE), HTML5 semántico, CSS3 (variables, Flexbox, Grid), FontAwesome, API LocalStorage.</code></pre>
-            </div>
-            <div class="project-links">
-              <a href="https://ayudadmv.com" target="_blank" rel="noopener noreferrer">Sitio en vivo</a>
-              <a href="https://github.com/dquint32/ayuda-dmv" target="_blank" rel="noopener noreferrer">Código en GitHub</a>
-            </div>
-          </div>
-        </article>
-
-        <div class="text-center">
-          <div data-lang="en" lang-block><p style="color:var(--muted-silver);">More detail: <a href="tienda-case-study.html">Tienda case study</a> · <a href="quintana-notary-signing-case-study.html">Notary case study</a></p></div>
-          <div data-lang="es" lang-block><p style="color:var(--muted-silver);">Más detalle: <a href="tienda-case-study.html">Estudio de caso Tienda</a> · <a href="quintana-notary-signing-case-study.html">Estudio de caso Notaría</a></p></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- WEB SKILLS -->
-    <section class="section-spacing" aria-labelledby="wd-skills">
-      <div class="container">
-        <div data-lang="en" lang-block>
-          <h3 id="wd-skills-en" class="text-center">Web Development Skills</h3>
-          <p class="mb-8 text-center" style="color: var(--muted-silver); font-size: 1.125rem;">Bilingual, accessible, results-driven front-end work.</p>
-        </div>
-        <div data-lang="es" lang-block>
-          <h3 id="wd-skills-es" class="text-center">Habilidades de Desarrollo Web</h3>
-          <p class="mb-8 text-center" style="color: var(--muted-silver); font-size: 1.125rem;">Trabajo front-end bilingüe, accesible y orientado a resultados.</p>
-        </div>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-6);">
-          <div class="skill-detail-card">
-            <div data-lang="en" lang-block><h5>Modern Frontend</h5><p>Semantic HTML5 • CSS3 (Grid, Flexbox, custom variables) • Responsive design &amp; media queries • JavaScript (ES6+)</p></div>
-            <div data-lang="es" lang-block><h5>Frontend Moderno</h5><p>HTML5 semántico • CSS3 (Grid, Flexbox, variables personalizadas) • Diseño responsivo y media queries • JavaScript (ES6+)</p></div>
-          </div>
-          <div class="skill-detail-card">
-            <div data-lang="en" lang-block><h5>Web Architecture</h5><p>Custom i18n systems • state management (LocalStorage, IIFE modules) • DOM manipulation • performance optimization</p></div>
-            <div data-lang="es" lang-block><h5>Arquitectura Web</h5><p>Sistemas i18n personalizados • gestión de estado (LocalStorage, módulos IIFE) • manipulación DOM • optimización de rendimiento</p></div>
-          </div>
-          <div class="skill-detail-card">
-            <div data-lang="en" lang-block><h5>Accessibility &amp; Design</h5><p>WCAG 2.1 AA compliance • ARIA roles &amp; keyboard navigation • reduced-motion support • accessible forms &amp; validation</p></div>
-            <div data-lang="es" lang-block><h5>Accesibilidad y Diseño</h5><p>Cumplimiento WCAG 2.1 AA • roles ARIA y navegación por teclado • soporte de movimiento reducido • formularios accesibles y validación</p></div>
-          </div>
-          <div class="skill-detail-card">
-            <div data-lang="en" lang-block><h5>Tools &amp; Deployment</h5><p>Git &amp; GitHub • Netlify deployments • Google Maps, FontAwesome • multimedia &amp; WebVTT captions</p></div>
-            <div data-lang="es" lang-block><h5>Herramientas y Despliegue</h5><p>Git y GitHub • despliegues en Netlify • Google Maps, FontAwesome • multimedia y subtítulos WebVTT</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FOUNDATIONAL TRAINING -->
-    <section class="section-spacing" style="background: var(--gunmetal);">
-      <div class="container">
-        <div class="service-card">
-          <div data-lang="en" lang-block>
-            <h4>⭐ Foundational Web Development Training (MSU Denver)</h4>
-            <p>Formal training in semantic HTML5, modern CSS, responsive design, multimedia integration, JavaScript fundamentals, and standards-based development through CIS-3030: Business Web Page Development at Metropolitan State University of Denver — emphasizing clean architecture, accessibility, and professional coding practices.</p>
-            <p style="margin-top: var(--space-4);"><strong style="color: var(--cyber-orange);">👉</strong> <a href="https://dquintanaweb.netlify.app" target="_blank" rel="noopener noreferrer" style="color: var(--cyber-orange); font-weight: 600;">Foundational Web Development Projects (CIS-3030 Archive)</a></p>
-          </div>
-          <div data-lang="es" lang-block>
-            <h4>⭐ Formación Fundamental en Desarrollo Web (MSU Denver)</h4>
-            <p>Formación formal en HTML5 semántico, CSS moderno, diseño responsivo, integración multimedia, fundamentos de JavaScript y desarrollo basado en estándares a través de CIS-3030: Desarrollo de Páginas Web Comerciales en Metropolitan State University of Denver — con énfasis en arquitectura limpia, accesibilidad y prácticas profesionales de codificación.</p>
-            <p style="margin-top: var(--space-4);"><strong style="color: var(--cyber-orange);">👉</strong> <a href="https://dquintanaweb.netlify.app" target="_blank" rel="noopener noreferrer" style="color: var(--cyber-orange); font-weight: 600;">Proyectos Fundamentales de Desarrollo Web (Archivo CIS-3030)</a></p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PRICING CTA -->
-    <section class="section-spacing">
-      <div class="container" style="text-align:center; max-width:800px;">
-        <div data-lang="en" lang-block>
-          <h3>Ready to build your site?</h3>
-          <p style="color: var(--muted-silver); font-size: 1.125rem;">See transparent, bilingual pricing for small-business websites and packages.</p>
-          <div class="hero-cta-group" style="justify-content:center;">
-            <a href="pricing.html" class="btn btn-primary">View pricing</a>
-            <a href="index.html#contact" class="btn btn-secondary">Get in touch</a>
-          </div>
-        </div>
-        <div data-lang="es" lang-block>
-          <h3>¿Listo para crear tu sitio?</h3>
-          <p style="color: var(--muted-silver); font-size: 1.125rem;">Consulta precios transparentes y bilingües para sitios web y paquetes de pequeñas empresas.</p>
-          <div class="hero-cta-group" style="justify-content:center;">
-            <a href="pricing.html" class="btn btn-primary">Ver precios</a>
-            <a href="index.html#contact" class="btn btn-secondary">Contáctame</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="portfolio-footer site-footer">
-    <div class="container">
-      <p class="footer-links">
-        <span lang-block data-lang="en"><a href="index.html">← Back to main portfolio (clinical data engineering)</a></span>
-        <span lang-block data-lang="es"><a href="index.html">← Volver al portafolio principal (ingeniería de datos clínicos)</a></span>
-      </p>
-      <p class="legal-notice">
-        <span lang-block data-lang="en">Mandatory Disclosure: I am not an attorney licensed to practice law in the State of Colorado and I may not give legal advice or accept fees for legal advice.</span>
-        <span lang-block data-lang="es">Aviso Obligatorio: No soy un abogado licenciado para ejercer el derecho en el Estado de Colorado y no puedo dar asesoría legal ni aceptar honorarios por asesoría legal.</span>
-      </p>
-      <p>
-        <span lang-block data-lang="en">© 2026 Servicios Quintana LLC. All Rights Reserved.</span>
-        <span lang-block data-lang="es">© 2026 Servicios Quintana LLC. Todos los derechos reservados.</span>
-      </p>
-    </div>
-  </footer>
-
-  <div id="lightbox-modal" class="lightbox-modal" style="display: none;">
-    <span class="lightbox-close">&times;</span>
-    <img class="lightbox-content" id="lightbox-img" alt="Full screen project screenshot">
-    <div class="lightbox-caption" id="lightbox-caption"></div>
   </div>
-
-  <script src="main.js"></script>
+</header>
+<main id="main">
+<section class="page-hero">
+<div class="container">
+<p data-lang="en" class="kicker">Servicios Quintana LLC · web development</p>
+<p data-lang="es" lang="es" class="kicker">Servicios Quintana LLC · desarrollo web</p>
+<h1 data-lang="en">Web development</h1>
+<h1 data-lang="es" lang="es">Desarrollo web</h1>
+<p data-lang="en" class="lead">Alongside my clinical data work, I design and build bilingual (EN/ES), mobile-first, accessible websites for small businesses and professionals in Colorado. Clean, dependency-free code, built to load fast and read clearly in both languages.</p>
+<p data-lang="es" lang="es" class="lead">Además de mi trabajo con datos clínicos, diseño y construyo sitios web bilingües (EN/ES), móviles y accesibles para pequeñas empresas y profesionales en Colorado. Código limpio y sin dependencias, rápido y claro en ambos idiomas.</p>
+<div class="btn-row"><a class="btn btn-primary" href="pricing.html"><span data-lang="en">View pricing</span><span data-lang="es" lang="es">Ver precios</span></a><a class="btn btn-secondary" href="#clients"><span data-lang="en">See client sites</span><span data-lang="es" lang="es">Ver sitios de clientes</span></a></div>
+</div>
+</section><section class="section" id="clients">
+<div class="container">
+<p data-lang="en" class="notice">Looking for my clinical data engineering work? <a href="index.html">Go to the main portfolio →</a></p>
+<p data-lang="es" lang="es" class="notice">¿Buscas mi trabajo de ingeniería de datos clínicos? <a href="index.html">Ir al portafolio principal →</a></p>
+<div class="mt-10"><div class="section-head"><h2 data-lang="en">Client websites</h2>
+<h2 data-lang="es" lang="es">Sitios de clientes</h2><p data-lang="en">Live bilingual platforms built for real Colorado businesses.</p>
+<p data-lang="es" lang="es">Plataformas bilingües en vivo para negocios reales de Colorado.</p></div></div>
+<div class="grid grid-projects">
+<article class="card project-card">
+<div class="thumb"><img src="assets/img/web/servicios-quintana-home.webp" alt="Servicios Quintana homepage" width="1600" height="1054" loading="lazy" decoding="async"></div>
+<div class="body">
+<p class="eyebrow"><span data-lang="en">Bilingual services agency</span><span data-lang="es" lang="es">Agencia de servicios bilingüe</span></p>
+<h3 data-lang="en">Servicios Quintana LLC</h3>
+<h3 data-lang="es" lang="es">Servicios Quintana LLC</h3>
+<p data-lang="en">A bilingual platform for an agency that prepares, translates, and helps clients navigate regulated healthcare and government documents. Accessible throughout and structured for confidential document workflows.</p>
+<p data-lang="es" lang="es">Una plataforma bilingüe para una agencia que prepara, traduce y ayuda con documentos regulados de salud y gobierno. Accesible y estructurada para flujos de documentos confidenciales.</p>
+<ul class="tags" aria-label="Technologies"><li><span class="tag">JavaScript (ES6+)</span></li><li><span class="tag">HTML5</span></li><li><span class="tag">CSS Grid</span></li></ul>
+<div class="links"><a href="https://serviciosquintana.com" target="_blank" rel="noopener"><span data-lang="en">Live site</span><span data-lang="es" lang="es">Sitio</span></a><a href="https://github.com/dquint32/servicios-quintana-llc" target="_blank" rel="noopener"><span data-lang="en">Code</span><span data-lang="es" lang="es">Código</span></a></div>
+</div>
+</article>
+<article class="card project-card">
+<div class="thumb"><img src="assets/img/web/notary-home.webp" alt="Quintana Notary homepage" width="1600" height="618" loading="lazy" decoding="async"></div>
+<div class="body">
+<p class="eyebrow"><span data-lang="en">Bilingual notary services</span><span data-lang="es" lang="es">Servicios notariales bilingües</span></p>
+<h3 data-lang="en">Quintana Notary &amp; Signing</h3>
+<h3 data-lang="es" lang="es">Quintana Notary &amp; Signing</h3>
+<p data-lang="en">Persistent language state across a multi-page site, a responsive pricing grid that becomes accessible mobile cards, and built-in WhatsApp and click-to-call.</p>
+<p data-lang="es" lang="es">Idioma persistente en un sitio de varias páginas, una tabla de precios que se convierte en tarjetas móviles accesibles, y WhatsApp y llamada integrados.</p>
+<ul class="tags" aria-label="Technologies"><li><span class="tag">JavaScript</span></li><li><span class="tag">HTML5</span></li><li><span class="tag">CSS Grid</span></li><li><span class="tag">localStorage</span></li></ul>
+<div class="links"><a href="quintana-notary-signing-case-study.html"><span data-lang="en">Case study</span><span data-lang="es" lang="es">Estudio de caso</span></a><a href="https://quintananotary.com" target="_blank" rel="noopener"><span data-lang="en">Live site</span><span data-lang="es" lang="es">Sitio</span></a><a href="https://github.com/dquint32/quintana-notary" target="_blank" rel="noopener"><span data-lang="en">Code</span><span data-lang="es" lang="es">Código</span></a></div>
+</div>
+</article>
+<article class="card project-card">
+<div class="thumb"><img src="assets/img/web/ayuda-dmv-home.webp" alt="Ayuda DMV homepage" width="1600" height="690" loading="lazy" decoding="async"></div>
+<div class="body">
+<p class="eyebrow"><span data-lang="en">Government-services guidance</span><span data-lang="es" lang="es">Guía de trámites gubernamentales</span></p>
+<h3 data-lang="en">Ayuda DMV</h3>
+<h3 data-lang="es" lang="es">Ayuda DMV</h3>
+<p data-lang="en">Turns complex DMV and government requirements into plain-language, step-by-step bilingual guidance for Colorado residents, with a lightweight, flicker-free EN/ES engine.</p>
+<p data-lang="es" lang="es">Convierte requisitos complejos del DMV y del gobierno en guías bilingües paso a paso en lenguaje sencillo para residentes de Colorado, con un motor EN/ES ligero y sin parpadeos.</p>
+<ul class="tags" aria-label="Technologies"><li><span class="tag">JavaScript</span></li><li><span class="tag">HTML5</span></li><li><span class="tag">CSS Grid</span></li><li><span class="tag">localStorage</span></li></ul>
+<div class="links"><a href="https://ayudadmv.com" target="_blank" rel="noopener"><span data-lang="en">Live site</span><span data-lang="es" lang="es">Sitio</span></a><a href="https://github.com/dquint32/ayuda-dmv" target="_blank" rel="noopener"><span data-lang="en">Code</span><span data-lang="es" lang="es">Código</span></a></div>
+</div>
+</article>
+<article class="card project-card">
+<div class="thumb"><img src="assets/img/web/tienda-home.webp" alt="Tienda Salvadoreña homepage" width="1600" height="1447" loading="lazy" decoding="async"></div>
+<div class="body">
+<p class="eyebrow"><span data-lang="en">Cultural grocery store</span><span data-lang="es" lang="es">Tienda cultural</span></p>
+<h3 data-lang="en">Tienda Salvadoreña</h3>
+<h3 data-lang="es" lang="es">Tienda Salvadoreña</h3>
+<p data-lang="en">Digitized Denver's oldest Salvadoran grocery store with a 500-key translation engine, product filtering, and an accessible image lightbox — no frameworks.</p>
+<p data-lang="es" lang="es">Digitalizó la tienda salvadoreña más antigua de Denver con un motor de traducción de 500 claves, filtros de productos y un lightbox accesible — sin frameworks.</p>
+<ul class="tags" aria-label="Technologies"><li><span class="tag">JavaScript</span></li><li><span class="tag">CSS Grid</span></li><li><span class="tag">Google Maps API</span></li></ul>
+<div class="links"><a href="tienda-case-study.html"><span data-lang="en">Case study</span><span data-lang="es" lang="es">Estudio de caso</span></a><a href="https://tiendasalvadorena.com" target="_blank" rel="noopener"><span data-lang="en">Live site</span><span data-lang="es" lang="es">Sitio</span></a></div>
+</div>
+</article>
+</div>
+</div>
+</section><section class="section section-alt">
+<div class="container">
+<div class="section-head"><h2 data-lang="en">Web development skills</h2>
+<h2 data-lang="es" lang="es">Habilidades de desarrollo web</h2></div>
+<div class="grid grid-4"><div class="card"><h3 data-lang="en">Modern front end</h3>
+<h3 data-lang="es" lang="es">Front end moderno</h3><p data-lang="en">Semantic HTML5 · CSS3 (Grid, Flexbox, custom properties) · responsive design · JavaScript (ES6+)</p>
+<p data-lang="es" lang="es">HTML5 semántico · CSS3 (Grid, Flexbox, propiedades) · diseño adaptable · JavaScript (ES6+)</p></div><div class="card"><h3 data-lang="en">Web architecture</h3>
+<h3 data-lang="es" lang="es">Arquitectura web</h3><p data-lang="en">Custom i18n systems · state with localStorage and IIFE modules · DOM APIs · performance</p>
+<p data-lang="es" lang="es">Sistemas i18n propios · estado con localStorage y módulos IIFE · APIs del DOM · rendimiento</p></div><div class="card"><h3 data-lang="en">Accessibility</h3>
+<h3 data-lang="es" lang="es">Accesibilidad</h3><p data-lang="en">WCAG 2.1 AA · ARIA and keyboard navigation · reduced-motion support · accessible forms</p>
+<p data-lang="es" lang="es">WCAG 2.1 AA · ARIA y teclado · soporte de movimiento reducido · formularios accesibles</p></div><div class="card"><h3 data-lang="en">Tools &amp; deployment</h3>
+<h3 data-lang="es" lang="es">Herramientas y despliegue</h3><p data-lang="en">Git &amp; GitHub · Netlify and GitHub Pages · Google Maps · captions (WebVTT)</p>
+<p data-lang="es" lang="es">Git y GitHub · Netlify y GitHub Pages · Google Maps · subtítulos (WebVTT)</p></div></div>
+<div class="card mt-8"><h3 data-lang="en">Foundational training (MSU Denver)</h3>
+<h3 data-lang="es" lang="es">Formación base (MSU Denver)</h3>
+<p data-lang="en">Semantic HTML5, modern CSS, responsive design, multimedia, and JavaScript fundamentals through CIS 3030: Business Web Page Development. <a href="https://dquintanaweb.netlify.app" target="_blank" rel="noopener">See the CIS 3030 project archive →</a></p>
+<p data-lang="es" lang="es">HTML5 semántico, CSS moderno, diseño adaptable, multimedia y fundamentos de JavaScript en CIS 3030: Desarrollo de Páginas Web para Negocios. <a href="https://dquintanaweb.netlify.app" target="_blank" rel="noopener">Ver el archivo de proyectos de CIS 3030 →</a></p></div>
+</div>
+</section><section class="section">
+<div class="container">
+<div class="card contact-panel">
+<h2 data-lang="en">Ready to build your site?</h2>
+<h2 data-lang="es" lang="es">¿Listo para crear tu sitio?</h2>
+<p data-lang="en">Transparent, bilingual pricing for small-business websites.</p>
+<p data-lang="es" lang="es">Precios transparentes y bilingües para sitios de pequeñas empresas.</p>
+<div class="contact-links"><a class="btn btn-primary" href="pricing.html"><span data-lang="en">View pricing</span><span data-lang="es" lang="es">Ver precios</span></a><a class="btn btn-secondary" href="https://wa.me/13035004122" target="_blank" rel="noopener"><span data-lang="en">WhatsApp</span><span data-lang="es" lang="es">WhatsApp</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7A8.4 8.4 0 0 1 12.5 3 8.5 8.5 0 0 1 21 11.5z"/></svg></a><a class="btn btn-secondary" href="tel:+13035004122"><span data-lang="en">303-500-4122</span><span data-lang="es" lang="es">303-500-4122</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></a></div>
+</div>
+</div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <p><strong>David Quintana</strong> · <span data-lang="en">Clinical data engineering, HL7/FHIR interoperability and HIPAA/GCP-compliant data work.</span><span data-lang="es" lang="es">Ingeniería de datos clínicos, interoperabilidad HL7/FHIR y trabajo de datos conforme a HIPAA/GCP.</span></p>
+      <p><span data-lang="en">David Quintana Dev is a registered trade name of Servicios Quintana LLC.</span><span data-lang="es" lang="es">David Quintana Dev es un nombre comercial registrado de Servicios Quintana LLC.</span></p>
+      
+      <p>© <span data-year>2026</span> Servicios Quintana LLC. <span data-lang="en">All rights reserved.</span><span data-lang="es" lang="es">Todos los derechos reservados.</span></p>
+    </div>
+    <nav aria-label="Footer">
+      <ul class="footer-links">
+        <li><a href="hcis-portfolio.html"><span data-lang="en">Work</span><span data-lang="es" lang="es">Trabajo</span></a></li>
+        <li><a href="eva-ctms-case-study.html"><span data-lang="en">EVA case study</span><span data-lang="es" lang="es">Caso EVA</span></a></li>
+        <li><a href="resume.pdf" target="_blank" rel="noopener"><span data-lang="en">Résumé (PDF)</span><span data-lang="es" lang="es">Currículum (PDF)</span></a></li>
+        <li><a href="https://github.com/dquint32" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/quintanadm95" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="web-dev.html"><span data-lang="en">Web development for small businesses</span><span data-lang="es" lang="es">Desarrollo web para pequeñas empresas</span></a></li>
+        <li><a href="pricing.html"><span data-lang="en">Web pricing</span><span data-lang="es" lang="es">Precios web</span></a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+<button class="icon-btn back-to-top" type="button" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg></button>
+<script src="main.js" defer></script>
 </body>
 </html>

@@ -1,477 +1,195 @@
 <!DOCTYPE html>
-<html lang="en" data-language="en">
+<html lang="en" data-language="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quintana Notary Signing Case Study | David Matthew Quintana</title>
-  <meta name="description" content="Case study: Quintana Notary Signing — building trust through transparent verification, plain-language services, and mobile-first UX for a Colorado mobile notary business.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quintana Notary &amp; Signing Case Study | David Quintana</title>
+  <meta name="description" content="Client case study: a bilingual, mobile-first site for a Colorado mobile notary, built around front-and-center commission verification and an always-visible contact bar.">
+  <link rel="canonical" href="https://davidquintana.dev/quintana-notary-signing-case-study.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="David Quintana">
+  <meta property="og:title" content="Quintana Notary &amp; Signing Case Study | David Quintana">
+  <meta property="og:description" content="Client case study: a bilingual, mobile-first site for a Colorado mobile notary, built around front-and-center commission verification and an always-visible contact bar.">
+  <meta property="og:url" content="https://davidquintana.dev/quintana-notary-signing-case-study.html">
+  <meta property="og:image" content="https://davidquintana.dev/assets/img/og-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0d0d0d">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap">
+  <script>
+    (function () {
+      try {
+        var d = document.documentElement;
+        var lang = localStorage.getItem('preferred-language');
+        if (lang === 'en' || lang === 'es') { d.setAttribute('data-language', lang); d.setAttribute('lang', lang); }
+        var theme = localStorage.getItem('preferred-theme');
+        if (theme === 'light' || theme === 'dark') { d.setAttribute('data-theme', theme); }
+      } catch (e) { /* storage unavailable: defaults apply */ }
+    })();
+  </script>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="case-study-page" data-language="en">
-  <a href="#main-content" class="skip-link">Skip to main content</a>
-
-  <div class="logo-background" aria-hidden="true">
-    <div class="bg-logo">DMQ</div>
+<body>
+<a class="skip-link" href="#main"><span data-lang="en">Skip to main content</span><span data-lang="es" lang="es">Saltar al contenido principal</span></a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="David Quintana, home">
+      <span class="brand-mark" aria-hidden="true">DQ</span>
+      <span class="brand-text"><span class="brand-name">David Quintana</span><span class="brand-role"><span data-lang="en">Clinical Data Engineer · HCIS</span><span data-lang="es" lang="es">Ingeniero de Datos Clínicos · HCIS</span></span></span>
+    </a>
+    <nav id="site-nav" class="site-nav" aria-label="Primary">
+      <ul class="nav-list">
+        <li><a href="hcis-portfolio.html"><span data-lang="en">Work</span><span data-lang="es" lang="es">Trabajo</span></a></li>
+        <li><a href="eva-ctms-case-study.html"><span data-lang="en">EVA case study</span><span data-lang="es" lang="es">Caso EVA</span></a></li>
+        <li><a href="index.html#about"><span data-lang="en">About</span><span data-lang="es" lang="es">Sobre mí</span></a></li>
+        <li><a href="resume.pdf" target="_blank" rel="noopener"><span data-lang="en">Résumé</span><span data-lang="es" lang="es">Currículum</span></a></li>
+        <li><a class="nav-cta" href="index.html#contact"><span data-lang="en">Contact</span><span data-lang="es" lang="es">Contacto</span></a></li>
+      </ul>
+    </nav>
+    <div class="header-tools">
+      <button class="lang-switch" type="button" aria-label="Cambiar a español"><span class="opt opt-en">EN</span><span class="opt opt-es">ES</span></button>
+      <button class="icon-btn theme-toggle" type="button" aria-pressed="false" aria-label="Switch to light theme"><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></button>
+      <button class="icon-btn menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
   </div>
-
-  <button class="floating-toggle" type="button" aria-label="Toggle language">
-    <span data-lang="en">EN</span>
-    <span data-lang="es" class="inactive">ES</span>
-  </button>
-
-  <button id="back-to-top" class="back-to-top-btn" aria-label="Back to top">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="18 15 12 9 6 15"></polyline>
-    </svg>
-  </button>
-
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <h1>
-          <a href="index.html">David Matthew Quintana</a>
-        </h1>
-        <p class="tagline">Bilingual Web Developer | Creating practical solutions for small businesses and professionals.</p>
-      </div>
-      <nav class="nav" aria-label="Primary">
-        <ul>
-          <li>
-            <a href="index.html">
-              <span lang-block data-lang="en" data-active="true">Home</span>
-              <span lang-block data-lang="es">Inicio</span>
-            </a>
-          </li>
-          <li>
-            <a href="index.html#projects">
-              <span lang-block data-lang="en" data-active="true">HCIS Portfolio</span>
-              <span lang-block data-lang="es">Portafolio HCIS</span>
-            </a>
-          </li>
-          <li>
-            <a href="pricing.html">
-              <span lang-block data-lang="en" data-active="true">Pricing</span>
-              <span lang-block data-lang="es">Precios</span>
-            </a>
-          </li>
-          <li>
-            <a href="#contact" class="cta">
-              <span lang-block data-lang="en" data-active="true">Contact</span>
-              <span lang-block data-lang="es">Contacto</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
+</header>
+<main id="main">
+<section class="page-hero">
+<div class="container">
+<nav aria-label="Breadcrumb"><ol class="breadcrumb"><li><a href="index.html"><span data-lang="en">Home</span><span data-lang="es" lang="es">Inicio</span></a></li><li><a href="web-dev.html"><span data-lang="en">Web development</span><span data-lang="es" lang="es">Desarrollo web</span></a></li><li aria-current="page"><span data-lang="en">Quintana Notary &amp; Signing</span><span data-lang="es" lang="es">Quintana Notary &amp; Signing</span></li></ol></nav>
+<p data-lang="en" class="kicker">Client case study · Bilingual notary services</p>
+<p data-lang="es" lang="es" class="kicker">Caso de cliente · Servicios notariales bilingües</p>
+<h1 data-lang="en">Quintana Notary &amp; Signing: trust through transparent design</h1>
+<h1 data-lang="es" lang="es">Quintana Notary &amp; Signing: confianza a través del diseño transparente</h1>
+<p data-lang="en" class="lead">How plain-language communication, mobile-first design, and front-and-center verification create a trustworthy digital presence for a mobile notary business.</p>
+<p data-lang="es" lang="es" class="lead">Cómo la comunicación en lenguaje sencillo, el diseño móvil primero y la verificación visible crean una presencia digital confiable para un negocio notarial móvil.</p>
+<ul class="tags" aria-label="Technologies"><li><span class="tag">HTML5</span></li><li><span class="tag">CSS3</span></li><li><span class="tag">JavaScript</span></li><li><span class="tag">LocalStorage</span></li><li><span class="tag">Google Maps API</span></li></ul>
+<div class="btn-row"><a class="btn btn-primary" href="https://quintananotarysigning.com" target="_blank" rel="noopener"><span data-lang="en">Visit the live site</span><span data-lang="es" lang="es">Ver el sitio</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+<dl class="meta-row"><div><dt><span data-lang="en">My role</span><span data-lang="es" lang="es">Mi rol</span></dt><dd><span data-lang="en">Lead developer · UX · content</span><span data-lang="es" lang="es">Desarrollador principal · UX · contenido</span></dd></div><div><dt><span data-lang="en">Stack</span><span data-lang="es" lang="es">Tecnologías</span></dt><dd><span data-lang="en">HTML5 · CSS3 · vanilla JS · Google Maps API</span><span data-lang="es" lang="es">HTML5 · CSS3 · JS vanilla · Google Maps API</span></dd></div><div><dt><span data-lang="en">Timeline</span><span data-lang="es" lang="es">Duración</span></dt><dd><span data-lang="en">5 weeks, concept to launch</span><span data-lang="es" lang="es">5 semanas, del concepto al lanzamiento</span></dd></div><div><dt><span data-lang="en">Audience</span><span data-lang="es" lang="es">Público</span></dt><dd><span data-lang="en">Older adults · families · small businesses</span><span data-lang="es" lang="es">Adultos mayores · familias · pequeñas empresas</span></dd></div></dl>
+</div>
+</section>
+<section class="section pt-0 pb-tight">
+<div class="container">
+<figure>
+<div class="shot"><img src="assets/img/notary/hero-homepage.webp" alt="Quintana Notary homepage hero with bilingual services headline" width="1600" height="698" fetchpriority="high" decoding="async" class="zoomable"></div>
+<figcaption data-lang="en">Homepage hero on desktop.</figcaption>
+<figcaption data-lang="es" lang="es">Portada en escritorio.</figcaption>
+</figure>
+</div>
+</section>
+<section class="section">
+<div class="container">
+<div class="section-head"><h2 data-lang="en">Overview</h2>
+<h2 data-lang="es" lang="es">Resumen</h2></div>
+<div class="grid grid-2">
+<div class="card"><h3 data-lang="en">Purpose</h3>
+<h3 data-lang="es" lang="es">Propósito</h3><p data-lang="en">The official digital presence for my mobile notary business in Colorado: a platform that feels trustworthy, simple, and welcoming — especially for clients who aren't tech-savvy or familiar with legal terminology.</p>
+<p data-lang="es" lang="es">La presencia digital oficial de mi negocio de notario móvil en Colorado: una plataforma confiable, simple y acogedora — especialmente para clientes que no son expertos en tecnología ni conocen la terminología legal.</p></div>
+<div class="card"><h3 data-lang="en">Goals</h3>
+<h3 data-lang="es" lang="es">Objetivos</h3><p data-lang="en">Build immediate trust through transparent verification, explain services in everyday language, ensure full mobile usability for older adults and busy families, support English and Spanish, and reduce confusion and unnecessary phone calls.</p>
+<p data-lang="es" lang="es">Generar confianza inmediata con verificación transparente, explicar los servicios en lenguaje cotidiano, garantizar usabilidad móvil para adultos mayores y familias ocupadas, ofrecer inglés y español, y reducir la confusión y las llamadas innecesarias.</p></div>
+</div>
+</div>
+</section>
+<section class="section section-alt">
+<div class="container">
+<div class="section-head"><h2 data-lang="en">Design decisions</h2>
+<h2 data-lang="es" lang="es">Decisiones de diseño</h2></div><div class="feature">
+<figure>
+<div class="shot"><img src="assets/img/notary/service-cards.webp" alt="Three service cards: mobile notary, certified translations, transparent pricing" width="1600" height="563" loading="lazy" decoding="async" class="zoomable"></div>
+<figcaption data-lang="en">Services as scannable cards.</figcaption>
+<figcaption data-lang="es" lang="es">Servicios como tarjetas fáciles de escanear.</figcaption>
+</figure>
+<div>
+<h3 data-lang="en">Three services, explained in plain language</h3>
+<h3 data-lang="es" lang="es">Tres servicios, explicados en lenguaje sencillo</h3>
+<div data-lang="en" class="prose"><p>Each service gets an icon, a descriptive title, and a one-sentence explanation, so clients understand the offer without navigating multiple pages.</p><ul class="checklist"><li><strong>Mobile notary service:</strong> We meet you where you are: home, office, hospital, or coffee shop.</li><li><strong>Certified translations:</strong> Spanish-to-English translations for official documents (USCIS) that meet government requirements.</li><li><strong>Transparent pricing:</strong> Know the exact cost up front, including local and discounted rates — no hidden fees.</li></ul></div>
+<div data-lang="es" lang="es" class="prose"><p>Cada servicio tiene un ícono, un título descriptivo y una explicación de una oración, para que los clientes entiendan la oferta sin navegar varias páginas.</p><ul class="checklist"><li><strong>Servicio de notario móvil:</strong> Nos reunimos donde estés: hogar, oficina, hospital o café.</li><li><strong>Traducciones certificadas:</strong> Traducciones de español a inglés para documentos oficiales (USCIS) que cumplen requisitos gubernamentales.</li><li><strong>Precios transparentes:</strong> Conoce el costo exacto por adelantado, con tarifas locales y descuentos — sin cargos ocultos.</li></ul></div>
+</div>
+</div><div class="feature flip">
+<figure>
+<div class="shot"><img src="assets/img/notary/verification-banner.webp" alt="Verification banner with commission ID, expiration date and a Verify Now button" width="1434" height="600" loading="lazy" decoding="async" class="zoomable"></div>
+<figcaption data-lang="en">The verification banner links straight to the Colorado Secretary of State search.</figcaption>
+<figcaption data-lang="es" lang="es">El banner de verificación enlaza directo a la búsqueda del Secretario de Estado de Colorado.</figcaption>
+</figure>
+<div>
+<h3 data-lang="en">Trust-first verification</h3>
+<h3 data-lang="es" lang="es">Verificación primero</h3>
+<div data-lang="en" class="prose"><p>A custom banner shows my full name, commission ID, expiration date, and a button that opens the Colorado Secretary of State's official notary search.</p><ul class="checklist"><li>Most notary sites bury or omit verification details</li><li>Clients confirm credentials in seconds — no searching, no guessing</li><li>Proof of legitimacy appears before any sales copy</li></ul></div>
+<div data-lang="es" lang="es" class="prose"><p>Un banner personalizado muestra mi nombre completo, ID de comisión, fecha de vencimiento y un botón que abre la búsqueda oficial de notarios del Secretario de Estado de Colorado.</p><ul class="checklist"><li>La mayoría de sitios notariales ocultan u omiten la verificación</li><li>Los clientes confirman credenciales en segundos — sin buscar ni adivinar</li><li>La prueba de legitimidad aparece antes que cualquier texto de venta</li></ul></div>
+</div>
+</div><div class="feature">
+<div><figure>
+<div class="shot"><img src="assets/img/notary/contact-bar.webp" alt="Sticky contact bar with call, text and WhatsApp buttons" width="1600" height="178" loading="lazy" decoding="async" class="zoomable"></div>
+</figure><div class="mt-6"><figure>
+<div class="shot"><img src="assets/img/notary/code-contact-bar.webp" alt="CSS for the sticky header and fluid container" width="1068" height="939" loading="lazy" decoding="async" class="zoomable"></div>
+<figcaption data-lang="en">The sticky bar is plain CSS: position: sticky with a blurred backdrop.</figcaption>
+<figcaption data-lang="es" lang="es">La barra fija es CSS puro: position: sticky con fondo difuminado.</figcaption>
+</figure></div></div>
+<div>
+<h3 data-lang="en">Instant contact on every page</h3>
+<h3 data-lang="es" lang="es">Contacto inmediato en cada página</h3>
+<div data-lang="en" class="prose"><p>A sticky bar with call, text, and WhatsApp buttons stays visible at every scroll position. It removes the most common question — "How do I contact you?" — and supports each client's preferred channel, which matters most for older adults.</p></div>
+<div data-lang="es" lang="es" class="prose"><p>Una barra fija con botones de llamada, mensaje y WhatsApp permanece visible al desplazarse. Elimina la pregunta más común — "¿Cómo te contacto?" — y respeta el canal preferido de cada cliente, algo clave para adultos mayores.</p></div>
+</div>
+</div><div class="feature flip">
+<div class="shot-pair"><figure>
+<div class="shot"><img src="assets/img/notary/mobile-view.webp" alt="Notary site on a phone, in Spanish" width="1080" height="2005" loading="lazy" decoding="async" class="zoomable"></div>
+<figcaption data-lang="en">Phone, Spanish.</figcaption>
+<figcaption data-lang="es" lang="es">Teléfono, español.</figcaption>
+</figure><figure>
+<div class="shot"><img src="assets/img/notary/code-verification.webp" alt="HTML and JavaScript for the language toggle" width="1061" height="1210" loading="lazy" decoding="async" class="zoomable"></div>
+<figcaption data-lang="en">Language toggle: data attributes plus a saved preference.</figcaption>
+<figcaption data-lang="es" lang="es">Cambio de idioma: atributos data y preferencia guardada.</figcaption>
+</figure></div>
+<div>
+<h3 data-lang="en">Mobile-first and bilingual</h3>
+<h3 data-lang="es" lang="es">Móvil primero y bilingüe</h3>
+<div data-lang="en" class="prose"><p>Most clients look up services on a phone, so every layout starts at 320px: a single column with large touch targets, then two-column grids on tablets and wider, centered blocks on desktop.</p><p>The whole site switches between English and Spanish, and the choice persists across pages with <code>localStorage</code>.</p></div>
+<div data-lang="es" lang="es" class="prose"><p>La mayoría de los clientes buscan servicios desde el teléfono, así que cada diseño empieza en 320px: una columna con botones grandes, luego cuadrículas de dos columnas en tableta y bloques centrados en escritorio.</p><p>Todo el sitio cambia entre inglés y español, y la elección se mantiene entre páginas con <code>localStorage</code>.</p></div>
+</div>
+</div><div class="feature">
+<div><h3 data-lang="en">A palette that signals trust</h3>
+<h3 data-lang="es" lang="es">Una paleta que transmite confianza</h3><p data-lang="en">Navy establishes authority and credibility, teal adds warmth, and orange is reserved for actions so the next step is always obvious.</p>
+<p data-lang="es" lang="es">El azul marino establece autoridad, el verde azulado aporta calidez y el naranja se reserva para acciones, así el siguiente paso siempre es claro.</p></div>
+<div class="swatches"><div class="swatch"><span style="background:#0F47AF"></span><p><strong><span data-lang="en">Navy</span><span data-lang="es" lang="es">Marino</span></strong><code>#0F47AF</code><span data-lang="en">Trust &amp; legitimacy</span><span data-lang="es" lang="es">Confianza y legitimidad</span></p></div><div class="swatch"><span style="background:#00897B"></span><p><strong><span data-lang="en">Teal</span><span data-lang="es" lang="es">Verde azulado</span></strong><code>#00897B</code><span data-lang="en">Approachability</span><span data-lang="es" lang="es">Cercanía</span></p></div><div class="swatch"><span style="background:#FF6600"></span><p><strong><span data-lang="en">Orange</span><span data-lang="es" lang="es">Naranja</span></strong><code>#FF6600</code><span data-lang="en">High-visibility calls to action</span><span data-lang="es" lang="es">Llamados a la acción</span></p></div></div>
+</div>
+</div>
+</section>
+<section class="section">
+<div class="container">
+<div class="card next-project">
+<div><span class="label"><span data-lang="en">Next case study</span><span data-lang="es" lang="es">Siguiente caso</span></span><a class="title" href="tienda-case-study.html"><span data-lang="en">Tienda Salvadoreña</span><span data-lang="es" lang="es">Tienda Salvadoreña</span> →</a></div>
+<a class="btn btn-secondary" href="web-dev.html"><span data-lang="en">All web projects</span><span data-lang="es" lang="es">Todos los proyectos web</span></a>
+</div>
+</div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <p><strong>David Quintana</strong> · <span data-lang="en">Clinical data engineering, HL7/FHIR interoperability and HIPAA/GCP-compliant data work.</span><span data-lang="es" lang="es">Ingeniería de datos clínicos, interoperabilidad HL7/FHIR y trabajo de datos conforme a HIPAA/GCP.</span></p>
+      <p><span data-lang="en">David Quintana Dev is a registered trade name of Servicios Quintana LLC.</span><span data-lang="es" lang="es">David Quintana Dev es un nombre comercial registrado de Servicios Quintana LLC.</span></p>
+      <p data-lang="en">Notary disclosure: I am not an attorney licensed to practice law in the State of Colorado and I may not give legal advice or accept fees for legal advice.</p>
+<p data-lang="es" lang="es">Aviso notarial: No soy un abogado licenciado para ejercer el derecho en el Estado de Colorado y no puedo dar asesoría legal ni aceptar honorarios por asesoría legal.</p>
+      <p>© <span data-year>2026</span> Servicios Quintana LLC. <span data-lang="en">All rights reserved.</span><span data-lang="es" lang="es">Todos los derechos reservados.</span></p>
     </div>
-  </header>
-
-    <main id="main-content">
-      <section class="case-study-hero section-spacing">
-        <div class="container">
-          <div class="case-hero-content">
-            <div lang-block data-lang="en" data-active="true">
-              <h2>Quintana Notary Signing<br />Building Trust Through Transparent Design</h2>
-              <p class="lead">A comprehensive case study exploring how plain-language communication, mobile-first design, and front-and-center verification create a trustworthy digital presence for mobile notary services.</p>
-              <div class="hero-cta-group">
-                <a href="https://quintananotarysigning.com" class="btn btn-primary" target="_blank" rel="noopener">View Live Site</a>
-                <a href="#project-overview" class="btn btn-secondary hero-nav-btn">Jump to Overview</a>
-              </div>
-            </div>
-            <div lang-block data-lang="es">
-              <h2>Quintana Notary Signing<br />Construyendo Confianza a Través del Diseño Transparente</h2>
-              <p class="lead">Un caso de estudio exhaustivo que explora cómo la comunicación en lenguaje sencillo, el diseño móvil-primero y la verificación frontal crean una presencia digital confiable para servicios notariales móviles.</p>
-              <div class="hero-cta-group">
-                <a href="https://quintananotarysigning.com" class="btn btn-primary" target="_blank" rel="noopener">Ver Sitio en Vivo</a>
-                <a href="#project-overview" class="btn btn-secondary hero-nav-btn">Ir al Resumen</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="meta-section">
-        <div class="container">
-          <div class="meta-grid">
-            <div lang-block data-lang="en" class="meta-group-wrapper" data-active="true">
-              <div class="meta-group"><span class="meta-label">My Role</span><span class="meta-value">Lead Developer, UX Designer, Content Strategist</span></div>
-              <div class="meta-group"><span class="meta-label">Tech Stack</span><span class="meta-value">HTML5, CSS3, Vanilla JS, Google Maps API</span></div>
-              <div class="meta-group"><span class="meta-label">Timeline</span><span class="meta-value">5 Weeks (Concept to Launch)</span></div>
-            </div>
-            <div lang-block data-lang="es" class="meta-group-wrapper">
-              <div class="meta-group"><span class="meta-label">Mi Rol</span><span class="meta-value">Desarrollador Principal, Diseñador UX, Estratega de Contenido</span></div>
-              <div class="meta-group"><span class="meta-label">Tecnologías</span><span class="meta-value">HTML5, CSS3, JS Vanilla, Google Maps API</span></div>
-              <div class="meta-group"><span class="meta-label">Cronología</span><span class="meta-value">5 Semanas (Concepto a Lanzamiento)</span></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="project-overview" class="section-spacing case-study projects">
-        <div class="container">
-          <header class="section-header">
-            <h3 lang-block data-lang="en" data-active="true">Project Overview</h3>
-            <h3 lang-block data-lang="es">Descripción del Proyecto</h3>
-          </header>
-          <div class="case-study-layout">
-            <article class="case-study-copy">
-              <h4 lang-block data-lang="en" data-active="true">Purpose</h4>
-              <h4 lang-block data-lang="es">Propósito</h4>
-              <p lang-block data-lang="en" data-active="true">Created as the official digital presence for my mobile notary business in Colorado. The goal was to build a platform that feels trustworthy, simple, and welcoming — especially for clients who may not be tech-savvy or familiar with legal terminology.</p>
-              <p lang-block data-lang="es">Creado como la presencia digital oficial para mi negocio de notario móvil en Colorado. El objetivo era construir una plataforma que se sienta confiable, simple y acogedora, especialmente para clientes que pueden no ser expertos en tecnología o estar familiarizados con la terminología legal.</p>
-
-              <h4 lang-block data-lang="en" data-active="true">Goals</h4>
-              <h4 lang-block data-lang="es">Objetivos</h4>
-              <p lang-block data-lang="en" data-active="true">Build immediate trust through transparent verification, explain notary services in clear everyday language, ensure full mobile usability for older adults and busy families, support bilingual English/Spanish content, and reduce confusion and unnecessary phone calls.</p>
-              <p lang-block data-lang="es">Construir confianza inmediata mediante verificación transparente, explicar servicios notariales en lenguaje cotidiano claro, asegurar usabilidad móvil completa para adultos mayores y familias ocupadas, apoyar contenido bilingüe inglés/español, y reducir la confusión y llamadas telefónicas innecesarias.</p>
-            </article>
-            <aside class="case-study-aside">
-              <div class="cs-img-wrapper">
-                <img src="notary-hero-homepage.png" alt="Full-page screenshot of the Quintana Notary &amp; Signing homepage" class="clickable-img" />
-              </div>
-            </aside>
-          </div>
-        </div>
-      </section>
-
-      <div class="container"><hr class="section-divider"></div>
-
-      <section class="section-spacing case-study">
-        <div class="container">
-          <header class="section-header">
-            <h3 lang-block data-lang="en" data-active="true">Core Services Offered</h3>
-            <h3 lang-block data-lang="es">Servicios Principales Ofrecidos</h3>
-          </header>
-          <div class="services-content">
-            <p lang-block data-lang="en" data-active="true" class="section-intro">The website highlights three core offerings that differentiate the notary business and attract clients seeking comprehensive solutions:</p>
-            <p lang-block data-lang="es" class="section-intro">El sitio destaca tres ofertas principales que diferencian el negocio notarial y atraen a clientes que buscan soluciones completas:</p>
-            
-            <div class="services-showcase">
-              <div class="service-card">
-                <div class="service-icon">🚗</div>
-                <h4 lang-block data-lang="en" data-active="true">Mobile Notary Service</h4>
-                <h4 lang-block data-lang="es">Servicio de Notario Móvil</h4>
-                <p lang-block data-lang="en" data-active="true">We meet you where you are: home, office, hospital, or coffee shop. Convenient, flexible notary services without the trip to a physical location.</p>
-                <p lang-block data-lang="es">Nos reunimos contigo donde estés: hogar, oficina, hospital o café. Servicios notariales convenientes y flexibles sin viajes a una ubicación física.</p>
-              </div>
-              <div class="service-card">
-                <div class="service-icon">🌐</div>
-                <h4 lang-block data-lang="en" data-active="true">Certified Translations</h4>
-                <h4 lang-block data-lang="es">Traducciones Certificadas</h4>
-                <p lang-block data-lang="en" data-active="true">Quick Spanish-to-English translations for official documents (USCIS). Professional, accurate translations that meet government requirements.</p>
-                <p lang-block data-lang="es">Traducciones rápidas de español a inglés para documentos oficiales (USCIS). Traducciones profesionales y precisas que cumplen requisitos gubernamentales.</p>
-              </div>
-              <div class="service-card">
-                <div class="service-icon">💰</div>
-                <h4 lang-block data-lang="en" data-active="true">Transparent Pricing</h4>
-                <h4 lang-block data-lang="es">Precios Transparentes</h4>
-                <p lang-block data-lang="en" data-active="true">Know the exact cost upfront. Includes local, discounted rates. No hidden fees or surprise charges — clear pricing builds confidence.</p>
-                <p lang-block data-lang="es">Conoce el costo exacto por adelantado. Incluye tarifas locales y descuentos. Sin cargos ocultos ni sorpresas — precios claros generan confianza.</p>
-              </div>
-            </div>
-
-            <div class="cs-img-wrapper cs-img-featured">
-              <img src="notary-service-cards.png" alt="Service cards showcase" class="clickable-img" />
-              <p class="cs-img-caption">
-                <span lang-block data-lang="en" data-active="true">Service offerings displayed as prominent feature cards (click to zoom)</span>
-                <span lang-block data-lang="es">Ofertas de servicios mostradas como tarjetas de características prominentes (clic para ampliar)</span>
-              </p>
-            </div>
-
-            <h4 style="margin-top: 2rem;" lang-block data-lang="en" data-active="true">Design Approach</h4>
-            <h4 style="margin-top: 2rem;" lang-block data-lang="es">Enfoque de Diseño</h4>
-            <p lang-block data-lang="en" data-active="true">Each service is presented with a clear icon, descriptive title, and plain-language explanation. This design pattern helps clients quickly understand what's offered without navigating multiple pages or menus.</p>
-            <p lang-block data-lang="es">Cada servicio se presenta con un icono claro, título descriptivo y explicación en lenguaje sencillo. Este patrón de diseño ayuda a los clientes a entender rápidamente lo que se ofrece sin navegar múltiples páginas o menús.</p>
-          </div>
-        </div>
-      </section>
-
-      <div class="container"><hr class="section-divider"></div>
-
-      <section class="section-spacing case-study">
-        <div class="container">
-          <div class="feature-with-image">
-            <div class="feature-copy">
-              <h3 lang-block data-lang="en" data-active="true">Trust-First Verification System</h3>
-              <h3 lang-block data-lang="es">Sistema de Verificación Centrado en la Confianza</h3>
-              <p lang-block data-lang="en" data-active="true">One of the core features of the site is a custom verification banner that displays my full name, Commission ID, commission expiration date, and a button linking directly to the Colorado Secretary of State's official notary search.</p>
-              <p lang-block data-lang="es">Una de las características principales del sitio es un banner de verificación personalizado que muestra mi nombre completo, ID de comisión, fecha de vencimiento de comisión y un botón que enlaza directamente a la búsqueda oficial de notarios del Secretario de Estado de Colorado.</p>
-
-              <h4 lang-block data-lang="en" data-active="true">Why This Matters</h4>
-              <h4 lang-block data-lang="es">Por qué es importante</h4>
-              <ul class="compact-list">
-                <li lang-block data-lang="en" data-active="true">Most notary websites bury or omit verification details</li>
-                <li lang-block data-lang="es">La mayoría de sitios web de notarios ocultan o omiten detalles de verificación</li>
-                <li lang-block data-lang="en" data-active="true">Clients can confirm credentials in seconds — no searching, no guessing</li>
-                <li lang-block data-lang="es">Los clientes pueden confirmar credenciales en segundos — sin búsquedas, sin conjeturas</li>
-                <li lang-block data-lang="en" data-active="true">Front-and-center placement builds immediate trust</li>
-                <li lang-block data-lang="es">La colocación frontal genera confianza inmediata</li>
-                <li lang-block data-lang="en" data-active="true">Dramatically reduces skepticism and increases conversions</li>
-                <li lang-block data-lang="es">Reduce dramáticamente el escepticismo y aumenta las conversiones</li>
-                <li lang-block data-lang="en" data-active="true">Sets service apart from competitors who hide verification</li>
-                <li lang-block data-lang="es">Diferencia el servicio de competidores que ocultan la verificación</li>
-              </ul>
-
-              <div class="feature-highlight">
-                <p lang-block data-lang="en" data-active="true"><strong>Design Decision:</strong> By placing verification at the top of every page, clients see proof of legitimacy before they even read about services. This removes friction and positions the business as transparent and professional.</p>
-                <p lang-block data-lang="es"><strong>Decisión de Diseño:</strong> Al colocar la verificación en la parte superior de cada página, los clientes ven prueba de legitimidad antes de leer sobre los servicios. Esto elimina la fricción y posiciona el negocio como transparente y profesional.</p>
-              </div>
-            </div>
-            <div class="feature-image-col">
-              <div class="cs-img-wrapper">
-                <img src="notary-verification-badge.png" alt="Verification badge system" class="clickable-img" />
-              </div>
-              <div class="cs-img-wrapper cs-code-wrapper">
-                <img src="notary-verification-code.png" alt="Verification badge implementation" class="clickable-img" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class="container"><hr class="section-divider"></div>
-
-      <section class="section-spacing case-study">
-        <div class="container">
-          <header class="section-header">
-            <h3 lang-block data-lang="en" data-active="true">Mobile-First Responsive Design</h3>
-            <h3 lang-block data-lang="es">Diseño Responsivo Móvil-Primero</h3>
-          </header>
-          <p lang-block data-lang="en" data-active="true">The site is designed primarily for mobile users. According to Colorado demographic data, a significant portion of my target market (older adults, families, small business owners) prefers mobile devices for quick lookups and service research.</p>
-          <p lang-block data-lang="es">El sitio está diseñado principalmente para usuarios móviles. Según datos demográficos de Colorado, una porción significativa de mi mercado objetivo (adultos mayores, familias, dueños de pequeñas empresas) prefiere dispositivos móviles para búsquedas rápidas e investigación de servicios.</p>
-          
-          <div class="responsive-grid">
-            <div class="responsive-item">
-              <h4 lang-block data-lang="en" data-active="true">Mobile (320px–768px)</h4>
-              <h4 lang-block data-lang="es">Móvil (320px–768px)</h4>
-              <p lang-block data-lang="en" data-active="true">Single-column layout, large touch targets, readable text</p>
-              <p lang-block data-lang="es">Diseño de una columna, objetivos táctiles grandes, texto legible</p>
-            </div>
-            <div class="responsive-item">
-              <h4 lang-block data-lang="en" data-active="true">Tablet (768px–1024px)</h4>
-              <h4 lang-block data-lang="es">Tablet (768px–1024px)</h4>
-              <p lang-block data-lang="en" data-active="true">Two-column grids, side-by-side content, optimized spacing</p>
-              <p lang-block data-lang="es">Cuadrículas de dos columnas, contenido lado a lado, espaciado optimizado</p>
-            </div>
-            <div class="responsive-item">
-              <h4 lang-block data-lang="en" data-active="true">Desktop (1024px+)</h4>
-              <h4 lang-block data-lang="es">Escritorio (1024px+)</h4>
-              <p lang-block data-lang="en" data-active="true">Wider layouts, more whitespace, centered content blocks</p>
-              <p lang-block data-lang="es">Diseños más amplios, más espacio en blanco, bloques de contenido centrados</p>
-            </div>
-          </div>
-          <div class="cs-img-wrapper cs-img-featured">
-            <img src="notary-desktop-view.png" alt="Homepage hero section" class="clickable-img" />
-            <p class="cs-img-caption">Homepage hero section (click to zoom)</p>
-          </div>
-        </div>
-      </section>
-
-      <div class="container"><hr class="section-divider"></div>
-
-      <section class="section-spacing case-study">
-        <div class="container">
-          <div class="feature-with-image">
-            <div class="feature-copy">
-              <h3 lang-block data-lang="en" data-active="true">Instant Contact System</h3>
-              <h3 lang-block data-lang="es">Sistema de Contacto Instantáneo</h3>
-              <p lang-block data-lang="en" data-active="true">Every page includes a sticky contact bar with call, text, and WhatsApp buttons. Clients never have to scroll or search for how to reach me — the help bar is always available.</p>
-              <p lang-block data-lang="es">Cada página incluye una barra de contacto persistente con botones de llamada, texto y WhatsApp. Los clientes nunca tienen que desplazarse o buscar cómo contactarme — la barra de ayuda siempre está disponible.</p>
-
-              <h4 lang-block data-lang="en" data-active="true">Why This Matters</h4>
-              <h4 lang-block data-lang="es">Por qué es importante</h4>
-              <ul class="compact-list">
-                <li lang-block data-lang="en" data-active="true">Older adults often struggle to find contact information</li>
-                <li lang-block data-lang="es">Los adultos mayores a menudo tienen dificultades para encontrar información de contacto</li>
-                <li lang-block data-lang="en" data-active="true">Removes friction and increases conversions</li>
-                <li lang-block data-lang="es">Elimina la fricción y aumenta las conversiones</li>
-                <li lang-block data-lang="en" data-active="true">Supports multiple communication preferences</li>
-                <li lang-block data-lang="es">Soporta múltiples preferencias de comunicación</li>
-                <li lang-block data-lang="en" data-active="true">Always visible regardless of scroll position</li>
-                <li lang-block data-lang="es">Siempre visible independientemente de la posición de desplazamiento</li>
-              </ul>
-              <div class="feature-highlight">
-                <p lang-block data-lang="en" data-active="true"><strong>User Experience Impact:</strong> The sticky bar eliminates the most common question: "How do I contact you?" Clients can reach out instantly without navigating menus or searching for hidden contact forms.</p>
-                <p lang-block data-lang="es"><strong>Impacto en UX:</strong> La barra persistente elimina la pregunta más común: "¿Cómo te contacto?" Los clientes pueden comunicarse al instante sin navegar menús o buscar formularios ocultos.</p>
-              </div>
-            </div>
-            <div class="feature-image-col">
-              <div class="cs-img-wrapper">
-                <img src="notary-contact-bar.png" alt="Sticky contact bar" class="clickable-img" />
-              </div>
-              <div class="cs-img-wrapper cs-code-wrapper">
-                <img src="notary-code-contact-bar.png" alt="Contact bar implementation code" class="clickable-img" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class="container"><hr class="section-divider"></div>
-
-      <section class="section-spacing case-study">
-        <div class="container">
-          <header class="section-header">
-            <h3 lang-block data-lang="en" data-active="true">Bilingual-Ready Architecture</h3>
-            <h3 lang-block data-lang="es">Arquitectura Lista para Bilingüe</h3>
-          </header>
-          <div class="case-study-layout">
-            <article class="case-study-copy">
-              <p lang-block data-lang="en" data-active="true">While the site currently displays English content, I built the architecture to support full bilingual functionality using clean content separation, consistent HTML structure, and easy duplication for Spanish pages.</p>
-              <p lang-block data-lang="es">Aunque el sitio muestra actualmente contenido en inglés, construí la arquitectura para soportar funcionalidad bilingüe completa usando separación de contenido limpia, estructura HTML consistente y duplicación fácil para páginas en español.</p>
-              <ul class="compact-list">
-                <li lang-block data-lang="en" data-active="true">A large portion of clients prefer Spanish</li>
-                <li lang-block data-lang="es">Una gran parte de los clientes prefiere el español</li>
-                <li lang-block data-lang="en" data-active="true">Site is ready to expand without redesigning layout</li>
-                <li lang-block data-lang="es">El sitio está listo para expandirse sin rediseñar el diseño</li>
-                <li lang-block data-lang="en" data-active="true">SEO-friendly bilingual metadata already in place</li>
-                <li lang-block data-lang="es">Metadatos bilingües optimizados para SEO ya implementados</li>
-              </ul>
-            </article>
-            <aside class="case-study-aside">
-              <div class="cs-img-wrapper">
-                <img src="notary-bilingual-structure.png" alt="Bilingual-ready structure" class="clickable-img" />
-              </div>
-            </aside>
-          </div>
-        </div>
-      </section>
-
-      <div class="container"><hr class="section-divider"></div>
-
-      <section class="section-spacing case-study">
-        <div class="container">
-          <header class="section-header">
-            <h3 lang-block data-lang="en" data-active="true">Design System & Color Palette</h3>
-            <h3 lang-block data-lang="es">Sistema de Diseño y Paleta de Colores</h3>
-          </header>
-          <p lang-block data-lang="en" data-active="true">The visual identity uses a carefully curated color palette that reflects trust, professionalism, and accessibility. Navy blue establishes authority and credibility, while teal accents create warmth and approachability. All colors meet WCAG AA contrast standards.</p>
-          <p lang-block data-lang="es">La identidad visual utiliza una paleta de colores cuidadosamente seleccionada que refleja confianza, profesionalismo y accesibilidad. El azul marino establece autoridad y credibilidad, mientras que los acentos verde azulado crean calidez y cercanía. Todos los colores cumplen con los estándares de contraste WCAG AA.</p>
-          
-          <div class="meta-grid">
-            <div class="meta-group">
-              <span class="meta-label">Navy (#0F47AF)</span>
-              <span lang-block data-lang="en" data-active="true" class="meta-value">Trust & Legitimacy</span>
-              <span lang-block data-lang="es" class="meta-value">Confianza y Legitimidad</span>
-            </div>
-            <div class="meta-group">
-              <span class="meta-label">Teal (#00897B)</span>
-              <span lang-block data-lang="en" data-active="true" class="meta-value">Approachability</span>
-              <span lang-block data-lang="es" class="meta-value">Cercanía y Acción</span>
-            </div>
-            <div class="meta-group">
-              <span class="meta-label">Orange (#FF6600)</span>
-              <span lang-block data-lang="en" data-active="true" class="meta-value">High-Visibility CTA</span>
-              <span lang-block data-lang="es" class="meta-value">Llamados a la Acción</span>
-            </div>
-          </div>
-
-          <div class="cs-img-wrapper cs-img-featured">
-            <img src="notary-color-palette.png" alt="Complete color palette" class="clickable-img" />
-          </div>
-        </div>
-      </section>
-
-          <section id="contact" class="section-spacing">
-      <div class="container">
-        <div data-lang="en" lang-block>
-          <h3>Contact</h3>
-          <div class="contact-card">
-            <p class="contact-intro">Have a project in mind or need bilingual consulting? You can write in English or Spanish.</p>
-            
-            <div class="contact-links">
-              <a href="https://www.linkedin.com/in/quintanadm95" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                LinkedIn
-              </a>
-
-              <a href="https://github.com/dquint32" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                GitHub
-              </a>
-
-              <a href="https://wa.me/13035004122" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-                WhatsApp
-              </a>
-
-              <a href="tel:+13035004122" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.81 12.81 0 0 0 .63 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.63A2 2 0 0 1 22 16.92z"></path></svg>
-                303-500-4122
-              </a>
-
-              <a href="/cdn-cgi/l/email-protection#117570677875517469707c617d743f727e7c" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                Email
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div data-lang="es" lang-block data-active="true">
-          <h3>Contacto</h3>
-          <div class="contact-card">
-            <p class="contact-intro">¿Tienes un proyecto o necesitas asesoría bilingüe? Puedes escribir en inglés o español; respondo en ambos idiomas.</p>
-            
-            <div class="contact-links">
-              <a href="https://www.linkedin.com/in/quintanadm95" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                LinkedIn
-              </a>
-
-              <a href="https://github.com/dquint32" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                GitHub
-              </a>
-
-              <a href="https://wa.me/13035004122" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-                WhatsApp
-              </a>
-
-              <a href="tel:+13035004122" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.81 12.81 0 0 0 .63 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.63A2 2 0 0 1 22 16.92z"></path></svg>
-                303-500-4122
-              </a>
-
-              <a href="/cdn-cgi/l/email-protection#b6d2d7c0dfd2f6d3ced7dbc6dad398d5d9db" class="contact-link-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                Correo
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="portfolio-footer site-footer">
-    <div class="container">
-      <p>
-        <span lang-block data-lang="en">David Quintana Dev is a registered trade name of Servicios Quintana LLC.</span>
-        <span lang-block data-lang="es" data-active="true">David Quintana Dev es un nombre comercial registrado de Servicios Quintana LLC.</span>
-      </p>
-
-      <p class="legal-notice">
-        <span lang-block data-lang="en">Mandatory Disclosure: I am not an attorney licensed to practice law in the State of Colorado and I may not give legal advice or accept fees for legal advice.</span>
-        <span lang-block data-lang="es" data-active="true">Aviso Obligatorio: No soy un abogado licenciado para ejercer el derecho en el Estado de Colorado y no puedo dar asesoría legal ni aceptar honorarios por asesoría legal.</span>
-      </p>
-
-      <p>
-        <span lang-block data-lang="en">© 2026 Servicios Quintana LLC. All Rights Reserved.</span>
-        <span lang-block data-lang="es" data-active="true">© 2026 Servicios Quintana LLC. Todos los derechos reservados.</span>
-      </p>
-
-      <p class="footer-links">
-        <a href="index.html">
-          <span lang-block data-lang="en">Back to Portfolio</span>
-          <span lang-block data-lang="es" data-active="true">Volver al Portafolio</span>
-        </a>
-      </p>
-    </div>
-  </footer>
-
-  <script src="main.js"></script>
+    <nav aria-label="Footer">
+      <ul class="footer-links">
+        <li><a href="hcis-portfolio.html"><span data-lang="en">Work</span><span data-lang="es" lang="es">Trabajo</span></a></li>
+        <li><a href="eva-ctms-case-study.html"><span data-lang="en">EVA case study</span><span data-lang="es" lang="es">Caso EVA</span></a></li>
+        <li><a href="resume.pdf" target="_blank" rel="noopener"><span data-lang="en">Résumé (PDF)</span><span data-lang="es" lang="es">Currículum (PDF)</span></a></li>
+        <li><a href="https://github.com/dquint32" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/quintanadm95" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="web-dev.html"><span data-lang="en">Web development for small businesses</span><span data-lang="es" lang="es">Desarrollo web para pequeñas empresas</span></a></li>
+        <li><a href="pricing.html"><span data-lang="en">Web pricing</span><span data-lang="es" lang="es">Precios web</span></a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+<button class="icon-btn back-to-top" type="button" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg></button>
+<script src="main.js" defer></script>
 </body>
 </html>

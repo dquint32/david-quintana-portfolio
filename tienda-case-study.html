@@ -2,835 +2,244 @@
 <html lang="en" data-language="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tienda Case Study | David Matthew Quintana</title>
-  <meta name="description" content="Case study: Tienda — modernizing local commerce with a bilingual interface, inventory management, and a streamlined mobile shopping experience.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tienda Salvadoreña Case Study | David Quintana</title>
+  <meta name="description" content="Client case study: a framework-free bilingual website for Denver&#x27;s oldest Salvadoran grocery store, with a 500-key translation engine, accessible lightbox, and responsive CSS Grid.">
+  <link rel="canonical" href="https://davidquintana.dev/tienda-case-study.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="David Quintana">
+  <meta property="og:title" content="Tienda Salvadoreña Case Study | David Quintana">
+  <meta property="og:description" content="Client case study: a framework-free bilingual website for Denver&#x27;s oldest Salvadoran grocery store, with a 500-key translation engine, accessible lightbox, and responsive CSS Grid.">
+  <meta property="og:url" content="https://davidquintana.dev/tienda-case-study.html">
+  <meta property="og:image" content="https://davidquintana.dev/assets/img/og-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0d0d0d">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap">
   <script>
     (function () {
       try {
         var d = document.documentElement;
         var lang = localStorage.getItem('preferred-language');
-        if (lang) { d.setAttribute('data-language', lang); d.setAttribute('lang', lang); }
+        if (lang === 'en' || lang === 'es') { d.setAttribute('data-language', lang); d.setAttribute('lang', lang); }
         var theme = localStorage.getItem('preferred-theme');
-        if (theme) { d.setAttribute('data-theme', theme); }
-      } catch (e) { /* localStorage unavailable — defaults render */ }
+        if (theme === 'light' || theme === 'dark') { d.setAttribute('data-theme', theme); }
+      } catch (e) { /* storage unavailable: defaults apply */ }
     })();
   </script>
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="tienda-case-study-images.css">
 </head>
-<body class="case-study-page tienda-case-study-page" data-language="en">
-  <a href="#main-content" class="skip-link">Skip to main content</a>
-
-  <div class="logo-background" aria-hidden="true">
-    <div class="bg-logo">DMQ</div>
+<body>
+<a class="skip-link" href="#main"><span data-lang="en">Skip to main content</span><span data-lang="es" lang="es">Saltar al contenido principal</span></a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="David Quintana, home">
+      <span class="brand-mark" aria-hidden="true">DQ</span>
+      <span class="brand-text"><span class="brand-name">David Quintana</span><span class="brand-role"><span data-lang="en">Clinical Data Engineer · HCIS</span><span data-lang="es" lang="es">Ingeniero de Datos Clínicos · HCIS</span></span></span>
+    </a>
+    <nav id="site-nav" class="site-nav" aria-label="Primary">
+      <ul class="nav-list">
+        <li><a href="hcis-portfolio.html"><span data-lang="en">Work</span><span data-lang="es" lang="es">Trabajo</span></a></li>
+        <li><a href="eva-ctms-case-study.html"><span data-lang="en">EVA case study</span><span data-lang="es" lang="es">Caso EVA</span></a></li>
+        <li><a href="index.html#about"><span data-lang="en">About</span><span data-lang="es" lang="es">Sobre mí</span></a></li>
+        <li><a href="resume.pdf" target="_blank" rel="noopener"><span data-lang="en">Résumé</span><span data-lang="es" lang="es">Currículum</span></a></li>
+        <li><a class="nav-cta" href="index.html#contact"><span data-lang="en">Contact</span><span data-lang="es" lang="es">Contacto</span></a></li>
+      </ul>
+    </nav>
+    <div class="header-tools">
+      <button class="lang-switch" type="button" aria-label="Cambiar a español"><span class="opt opt-en">EN</span><span class="opt opt-es">ES</span></button>
+      <button class="icon-btn theme-toggle" type="button" aria-pressed="false" aria-label="Switch to light theme"><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></button>
+      <button class="icon-btn menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
   </div>
-
-  <button class="floating-toggle" type="button" aria-label="Toggle language">
-    <span data-lang="en">EN</span>
-    <span data-lang="es" class="inactive">ES</span>
-  </button>
-
-  <button class="theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false" title="Toggle theme">
-    <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-    <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
-  </button>
-
-  <button id="back-to-top" class="back-to-top-btn" aria-label="Back to top">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="18 15 12 9 6 15"></polyline>
-    </svg>
-  </button>
-
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <h1>
-          <a href="index.html">David Matthew Quintana</a>
-        </h1>
-        <p class="tagline">Clinical Data Engineer · HCIS | Python/pandas ETL, data integrity, HL7/FHIR &amp; HIPAA/GCP compliance</p>
-      </div>
-      <nav class="nav" aria-label="Primary">
-        <ul>
-          <li><a href="index.html"><span lang-block data-lang="en">Home</span><span lang-block data-lang="es">Inicio</span></a></li>
-          <li><a href="hcis-portfolio.html"><span lang-block data-lang="en">Work</span><span lang-block data-lang="es">Trabajo</span></a></li>
-          <li><a href="eva-ctms-case-study.html"><span lang-block data-lang="en">EVA Case Study</span><span lang-block data-lang="es">Estudio EVA</span></a></li>
-          <li><a href="index.html#about"><span lang-block data-lang="en">About</span><span lang-block data-lang="es">Sobre mí</span></a></li>
-          <li><a href="index.html#contact" class="cta"><span lang-block data-lang="en">Contact</span><span lang-block data-lang="es">Contacto</span></a></li>
-        </ul>
-      </nav>
+</header>
+<main id="main">
+<section class="page-hero">
+<div class="container">
+<nav aria-label="Breadcrumb"><ol class="breadcrumb"><li><a href="index.html"><span data-lang="en">Home</span><span data-lang="es" lang="es">Inicio</span></a></li><li><a href="web-dev.html"><span data-lang="en">Web development</span><span data-lang="es" lang="es">Desarrollo web</span></a></li><li aria-current="page"><span data-lang="en">Tienda Salvadoreña</span><span data-lang="es" lang="es">Tienda Salvadoreña</span></li></ol></nav>
+<p data-lang="en" class="kicker">Client case study · CIS 3030, MSU Denver</p>
+<p data-lang="es" lang="es" class="kicker">Caso de cliente · CIS 3030, MSU Denver</p>
+<h1 data-lang="en">Tienda Salvadoreña: digital preservation of a 30-year legacy</h1>
+<h1 data-lang="es" lang="es">Tienda Salvadoreña: preservación digital de un legado de 30 años</h1>
+<p data-lang="en" class="lead">The technical architecture, design decisions, and cultural impact behind the website for Denver's oldest Salvadoran grocery store — built without frameworks.</p>
+<p data-lang="es" lang="es" class="lead">La arquitectura técnica, las decisiones de diseño y el impacto cultural del sitio web de la tienda salvadoreña más antigua de Denver — construido sin frameworks.</p>
+<ul class="tags" aria-label="Technologies"><li><span class="tag">HTML5</span></li><li><span class="tag">CSS Grid</span></li><li><span class="tag">Flexbox</span></li><li><span class="tag">JavaScript</span></li><li><span class="tag">localStorage</span></li><li><span class="tag">Google Maps API</span></li></ul>
+<div class="btn-row"><a class="btn btn-primary" href="https://tiendasalvadorena.com" target="_blank" rel="noopener"><span data-lang="en">Visit the live site</span><span data-lang="es" lang="es">Ver el sitio</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a><a class="btn btn-secondary" href="https://github.com/dquint32/tienda-salvadorena" target="_blank" rel="noopener"><span data-lang="en">Source code</span><span data-lang="es" lang="es">Código fuente</span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.3 1.9 1.3 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg></a></div>
+<dl class="meta-row"><div><dt><span data-lang="en">My role</span><span data-lang="es" lang="es">Mi rol</span></dt><dd><span data-lang="en">Lead developer · UI · accessibility</span><span data-lang="es" lang="es">Desarrollador principal · UI · accesibilidad</span></dd></div><div><dt><span data-lang="en">Stack</span><span data-lang="es" lang="es">Tecnologías</span></dt><dd><span data-lang="en">HTML5 · CSS3 · vanilla JS · Google Maps API</span><span data-lang="es" lang="es">HTML5 · CSS3 · JS vanilla · Google Maps API</span></dd></div><div><dt><span data-lang="en">Timeline</span><span data-lang="es" lang="es">Duración</span></dt><dd><span data-lang="en">4 weeks, design to deployment</span><span data-lang="es" lang="es">4 semanas, del diseño al despliegue</span></dd></div><div><dt><span data-lang="en">Scope</span><span data-lang="es" lang="es">Alcance</span></dt><dd><span data-lang="en">6 pages · 500+ translation keys</span><span data-lang="es" lang="es">6 páginas · más de 500 claves de traducción</span></dd></div></dl>
+</div>
+</section>
+<section class="section pt-0 pb-tight">
+<div class="container">
+<figure>
+<div class="shot"><img src="assets/img/web/tienda-home.webp" alt="Tienda Salvadoreña homepage" width="1600" height="1447" fetchpriority="high" decoding="async" class="zoomable"></div>
+<figcaption data-lang="en">The homepage: bilingual content, cultural imagery, and clear navigation.</figcaption>
+<figcaption data-lang="es" lang="es">La portada: contenido bilingüe, imágenes culturales y navegación clara.</figcaption>
+</figure>
+</div>
+</section>
+<section class="section">
+<div class="container">
+<div class="section-head"><h2 data-lang="en">Overview</h2>
+<h2 data-lang="es" lang="es">Resumen</h2></div>
+<div class="grid grid-2">
+<div class="card"><h3 data-lang="en">Purpose</h3>
+<h3 data-lang="es" lang="es">Propósito</h3><p data-lang="en">A complete digital presence for Denver's oldest Salvadoran grocery store (30+ years), built for CIS 3030 at MSU Denver while honoring Jorge and Delia Romero's story.</p>
+<p data-lang="es" lang="es">Una presencia digital completa para la tienda salvadoreña más antigua de Denver (más de 30 años), construida para CIS 3030 en MSU Denver honrando la historia de Jorge y Delia Romero.</p></div>
+<div class="card"><h3 data-lang="en">Goals</h3>
+<h3 data-lang="es" lang="es">Objetivos</h3><p data-lang="en">Preserve cultural heritage, provide bilingual business information, deliver advanced features without frameworks, improve search visibility, and meet WCAG 2.1 AA.</p>
+<p data-lang="es" lang="es">Preservar el patrimonio cultural, ofrecer información bilingüe, lograr funciones avanzadas sin frameworks, mejorar la visibilidad en buscadores y cumplir WCAG 2.1 AA.</p></div>
+</div>
+</div>
+</section>
+<section class="section section-alt">
+<div class="container">
+<div class="section-head"><h2 data-lang="en">Building it</h2>
+<h2 data-lang="es" lang="es">La construcción</h2></div><div class="feature">
+<figure>
+<div class="shot"><img src="assets/img/tienda/code-translation.webp" alt="JavaScript translation engine code" width="1035" height="1023" loading="lazy" decoding="async" class="zoomable"></div>
+<figcaption data-lang="en">The translation engine: no libraries, one function.</figcaption>
+<figcaption data-lang="es" lang="es">El motor de traducción: sin librerías, una función.</figcaption>
+</figure>
+<div>
+<h3 data-lang="en">Custom translation engine (500+ keys)</h3>
+<h3 data-lang="es" lang="es">Motor de traducción propio (500+ claves)</h3>
+<div data-lang="en" class="prose"><p>A bilingual system in pure JavaScript manages more than 500 translation keys across 6 pages and remembers the language with <code>localStorage</code>.</p>
+<ul class="checklist"><li>Separate English and Spanish translation sets, toggled by one function</li><li>Handles text, HTML, alt text, meta descriptions, and placeholders</li><li>Updates every element instantly, without a page refresh</li></ul></div>
+<div data-lang="es" lang="es" class="prose"><p>Un sistema bilingüe en JavaScript puro gestiona más de 500 claves de traducción en 6 páginas y recuerda el idioma con <code>localStorage</code>.</p>
+<ul class="checklist"><li>Conjuntos de traducción separados en inglés y español, controlados por una función</li><li>Maneja texto, HTML, texto alternativo, metadescripciones y marcadores</li><li>Actualiza cada elemento al instante, sin recargar la página</li></ul></div>
+</div>
+</div><div class="feature flip">
+<div class="shot-pair"><figure>
+<div class="shot"><img src="assets/img/tienda/language-english.webp" alt="Tienda site in English" width="1131" height="1638" loading="lazy" decoding="async" class="zoomable"></div>
+<figcaption data-lang="en">English</figcaption>
+<figcaption data-lang="es" lang="es">Inglés</figcaption>
+</figure><figure>
+<div class="shot"><img src="assets/img/tienda/language-spanish.webp" alt="Tienda site in Spanish" width="1196" height="1644" loading="lazy" decoding="async" class="zoomable"></div>
+<figcaption data-lang="en">Spanish</figcaption>
+<figcaption data-lang="es" lang="es">Español</figcaption>
+</figure></div>
+<div>
+<h3 data-lang="en">Two languages, one layout</h3>
+<h3 data-lang="es" lang="es">Dos idiomas, un diseño</h3>
+<div data-lang="en" class="prose"><p>The English and Spanish versions share an identical DOM, so switching never shifts the layout. The bilingual experience connects older diaspora members with younger, English-dominant generations.</p></div>
+<div data-lang="es" lang="es" class="prose"><p>Las versiones en inglés y español comparten el mismo DOM, así que cambiar de idioma nunca mueve el diseño. La experiencia bilingüe conecta a la diáspora mayor con generaciones jóvenes que hablan más inglés.</p></div>
+</div>
+</div><div class="feature">
+<div class="shot-pair"><figure>
+<div class="shot"><img src="assets/img/tienda/mobile-header.webp" alt="Tienda site on a phone" width="1284" height="2778" loading="lazy" decoding="async" class="zoomable"></div>
+<figcaption data-lang="en">Mobile: one column, 44px touch targets.</figcaption>
+<figcaption data-lang="es" lang="es">Móvil: una columna, botones de 44px.</figcaption>
+</figure><figure>
+<div class="shot"><img src="assets/img/tienda/desktop-header.webp" alt="Tienda site header on desktop" width="1600" height="705" loading="lazy" decoding="async" class="zoomable"></div>
+<figcaption data-lang="en">Desktop: 3–4 column grids.</figcaption>
+<figcaption data-lang="es" lang="es">Escritorio: cuadrículas de 3–4 columnas.</figcaption>
+</figure></div>
+<div>
+<h3 data-lang="en">Responsive CSS Grid from 320px to 1920px</h3>
+<h3 data-lang="es" lang="es">CSS Grid adaptable de 320px a 1920px</h3>
+<div data-lang="en" class="prose"><p>Layouts adapt automatically with <code>clamp()</code>, <code>minmax()</code>, and <code>auto-fit</code>: single-column stacks on phones, 2–3 columns on tablets, and 3–4 columns with generous whitespace on desktop.</p><div class="mt-6"><figure>
+<div class="shot"><img src="assets/img/tienda/code-css-grid.webp" alt="CSS grid code for the product grid" width="1533" height="396" loading="lazy" decoding="async" class="zoomable"></div>
+</figure></div></div>
+<div data-lang="es" lang="es" class="prose"><p>Los diseños se adaptan con <code>clamp()</code>, <code>minmax()</code> y <code>auto-fit</code>: una columna en teléfonos, 2–3 en tabletas y 3–4 con amplio espacio en escritorio.</p><div class="mt-6"><figure>
+<div class="shot"><img src="assets/img/tienda/code-css-grid.webp" alt="CSS grid code for the product grid" width="1533" height="396" loading="lazy" decoding="async" class="zoomable"></div>
+</figure></div></div>
+</div>
+</div><div class="feature flip">
+<figure>
+<div class="shot"><img src="assets/img/tienda/color-palette.webp" alt="Color palette inspired by the Salvadoran flag" width="1600" height="720" loading="lazy" decoding="async" class="zoomable"></div>
+<figcaption data-lang="en">Colors drawn from the Salvadoran flag.</figcaption>
+<figcaption data-lang="es" lang="es">Colores tomados de la bandera salvadoreña.</figcaption>
+</figure>
+<div>
+<h3 data-lang="en">A palette from the Salvadoran flag</h3>
+<h3 data-lang="es" lang="es">Una paleta de la bandera salvadoreña</h3>
+<div data-lang="en" class="prose"><p>Cobalt blue, tangerine yellow, and Lincoln green create a cohesive identity that celebrates the store's heritage while keeping accessible contrast.</p></div>
+<div data-lang="es" lang="es" class="prose"><p>Azul cobalto, amarillo tangerina y verde Lincoln crean una identidad coherente que celebra la herencia de la tienda con contraste accesible.</p></div>
+</div>
+</div><div class="feature">
+<div class="shot-pair"><figure>
+<div class="shot"><img src="assets/img/tienda/items-filter.webp" alt="Product grid with category filters" width="1600" height="1517" loading="lazy" decoding="async" class="zoomable"></div>
+<figcaption data-lang="en">29 products with category filters.</figcaption>
+<figcaption data-lang="es" lang="es">29 productos con filtros por categoría.</figcaption>
+</figure><figure>
+<div class="shot"><img src="assets/img/tienda/zoom-modal.webp" alt="Full-screen product photo in a zoom modal" width="1600" height="1200" loading="lazy" decoding="async" class="zoomable"></div>
+<figcaption data-lang="en">Accessible zoom modal.</figcaption>
+<figcaption data-lang="es" lang="es">Modal de zoom accesible.</figcaption>
+</figure></div>
+<div>
+<h3 data-lang="en">Product filtering and an accessible lightbox</h3>
+<h3 data-lang="es" lang="es">Filtros de productos y un lightbox accesible</h3>
+<div data-lang="en" class="prose"><p>The Items page has 29 product cards filtered by category (food, drinks, clothing, wellness, nostalgia). Images open in a modal that traps focus while open, closes with Esc, locks page scrolling, and returns focus when it closes.</p></div>
+<div data-lang="es" lang="es" class="prose"><p>La página de artículos tiene 29 tarjetas filtradas por categoría (comida, bebidas, ropa, bienestar, nostalgia). Las imágenes abren un modal que mantiene el foco, se cierra con Esc, bloquea el desplazamiento y devuelve el foco al cerrar.</p></div>
+</div>
+</div><div class="feature flip">
+<div class="shot-pair"><figure>
+<div class="shot"><img src="assets/img/tienda/contact-map.webp" alt="Contact page with embedded Google Map" width="1600" height="871" loading="lazy" decoding="async" class="zoomable"></div>
+<figcaption data-lang="en">Directions, hours, and contact options.</figcaption>
+<figcaption data-lang="es" lang="es">Indicaciones, horario y contacto.</figcaption>
+</figure><figure>
+<div class="shot"><img src="assets/img/tienda/press-coverage.webp" alt="Press coverage page" width="943" height="1639" loading="lazy" decoding="async" class="zoomable"></div>
+<figcaption data-lang="en">Press and community recognition.</figcaption>
+<figcaption data-lang="es" lang="es">Prensa y reconocimiento comunitario.</figcaption>
+</figure></div>
+<div>
+<h3 data-lang="en">Location, contact, and community recognition</h3>
+<h3 data-lang="es" lang="es">Ubicación, contacto y reconocimiento</h3>
+<div data-lang="en" class="prose"><p>An embedded Google Map gives directions, hours, and phone, email, WhatsApp, and Facebook contact. A press page documents coverage in El Diario El Salvadoreño, Denverite, and local outlets — the store's role as a cultural anchor.</p></div>
+<div data-lang="es" lang="es" class="prose"><p>Un mapa de Google integrado ofrece indicaciones, horario y contacto por teléfono, correo, WhatsApp y Facebook. Una página de prensa documenta la cobertura en El Diario El Salvadoreño, Denverite y medios locales — el papel de la tienda como ancla cultural.</p></div>
+</div>
+</div>
+</div>
+</section>
+<section class="section">
+<div class="container">
+<div class="section-head"><h2 data-lang="en">Challenges &amp; solutions</h2>
+<h2 data-lang="es" lang="es">Desafíos y soluciones</h2></div>
+<div class="grid grid-3"><div class="card"><h3 data-lang="en">Strict "no frameworks" rule</h3>
+<h3 data-lang="es" lang="es">Regla estricta de "sin frameworks"</h3><p data-lang="en">Language switching needed real state management, but React and Vue were not allowed. I built a lightweight vanilla-JS engine that swaps text and ARIA labels instantly.</p>
+<p data-lang="es" lang="es">El cambio de idioma requería manejo de estado, pero React y Vue no estaban permitidos. Construí un motor ligero en JS que cambia textos y etiquetas ARIA al instante.</p></div><div class="card"><h3 data-lang="en">Accessibility traps</h3>
+<h3 data-lang="es" lang="es">Trampas de accesibilidad</h3><p data-lang="en">Custom modals often trap keyboard focus or fail screen readers. The lightbox cycles focus inside the open modal and restores it on close.</p>
+<p data-lang="es" lang="es">Los modales propios suelen atrapar el foco o fallar con lectores de pantalla. El lightbox mantiene el foco dentro del modal y lo restaura al cerrar.</p></div><div class="card"><h3 data-lang="en">Bilingual SEO</h3>
+<h3 data-lang="es" lang="es">SEO bilingüe</h3><p data-lang="en">Search engines need to understand both languages. Distinct <code>lang</code> attributes and semantic HTML5 make the language context explicit.</p>
+<p data-lang="es" lang="es">Los buscadores deben entender ambos idiomas. Atributos <code>lang</code> distintos y HTML5 semántico hacen explícito el contexto.</p></div></div>
+</div>
+</section>
+<section class="section section-alt">
+<div class="container">
+<div class="section-head"><h2 data-lang="en">Results</h2>
+<h2 data-lang="es" lang="es">Resultados</h2></div>
+<div class="stats"><div class="stat"><span class="stat-num">30+</span><span class="stat-label"><span data-lang="en">years of heritage preserved online</span><span data-lang="es" lang="es">años de herencia preservados en línea</span></span></div><div class="stat"><span class="stat-num">99</span><span class="stat-label"><span data-lang="en">Lighthouse performance score</span><span data-lang="es" lang="es">puntuación de rendimiento Lighthouse</span></span></div><div class="stat"><span class="stat-num">0</span><span class="stat-label"><span data-lang="en">framework dependencies</span><span data-lang="es" lang="es">dependencias de frameworks</span></span></div><div class="stat"><span class="stat-num">&lt;50 KB</span><span class="stat-label"><span data-lang="en">total script size</span><span data-lang="es" lang="es">tamaño total de scripts</span></span></div></div>
+<div class="mt-10"><div class="card next-project">
+<div><span class="label"><span data-lang="en">Next case study</span><span data-lang="es" lang="es">Siguiente caso</span></span><a class="title" href="quintana-notary-signing-case-study.html"><span data-lang="en">Quintana Notary &amp; Signing</span><span data-lang="es" lang="es">Quintana Notary &amp; Signing</span> →</a></div>
+<a class="btn btn-secondary" href="web-dev.html"><span data-lang="en">All web projects</span><span data-lang="es" lang="es">Todos los proyectos web</span></a>
+</div></div>
+</div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <p><strong>David Quintana</strong> · <span data-lang="en">Clinical data engineering, HL7/FHIR interoperability and HIPAA/GCP-compliant data work.</span><span data-lang="es" lang="es">Ingeniería de datos clínicos, interoperabilidad HL7/FHIR y trabajo de datos conforme a HIPAA/GCP.</span></p>
+      <p><span data-lang="en">David Quintana Dev is a registered trade name of Servicios Quintana LLC.</span><span data-lang="es" lang="es">David Quintana Dev es un nombre comercial registrado de Servicios Quintana LLC.</span></p>
+      
+      <p>© <span data-year>2026</span> Servicios Quintana LLC. <span data-lang="en">All rights reserved.</span><span data-lang="es" lang="es">Todos los derechos reservados.</span></p>
     </div>
-  </header>
-
-  <main id="main-content">
-    <section class="case-study-hero section-spacing">
-      <div class="container">
-        <div class="case-hero-content">
-          <div lang-block data-lang="en">
-            <h2>Tienda Case Study<br />Modernizing Community Commerce</h2>
-            <p class="lead">Exploring how a bilingual digital marketplace connects local vendors with their community through intuitive UX and streamlined inventory management.</p>
-            <div class="hero-cta-group">
-              <a href="#" class="btn btn-primary" target="_blank" rel="noopener">View Live Site</a>
-              <a href="#project-overview" class="btn btn-secondary hero-nav-btn">Jump to Overview</a>
-            </div>
-          </div>
-          <div lang-block data-lang="es">
-            <h2>Caso de Estudio Tienda<br />Modernizando el Comercio Comunitario</h2>
-            <p class="lead">Explorando cómo un mercado digital bilingüe conecta a los vendedores locales con su comunidad a través de una UX intuitiva y una gestión de inventario optimizada.</p>
-            <div class="hero-cta-group">
-              <a href="#" class="btn btn-primary" target="_blank" rel="noopener">Ver Sitio en Vivo</a>
-              <a href="#project-overview" class="btn btn-secondary hero-nav-btn">Ir al Resumen</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <article class="case-study">
-
-      <section id="top" class="section-spacing">
-        <div class="container">
-          <div class="case-study-hero">
-            <div class="case-hero-content">
-              <div lang-block data-lang="en">
-                <h2>Tienda Salvadorea<br>Digital Preservation of a 30-Year Legacy</h2>
-                <p class="lead">A comprehensive case study exploring the technical architecture, design decisions, and cultural impact of Denver's oldest Salvadoran grocery store website.</p>
-              </div>
-              <div lang-block data-lang="es">
-                <h2>Tienda Salvadorea<br>Preservación Digital de un Legado de 30 Años</h2>
-                <p class="lead">Un caso de estudio exhaustivo que explora la arquitectura técnica, las decisiones de diseño y el impacto cultural del sitio web de la tienda de comestibles salvadorea más antigua de Denver.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="meta-section">
-        <div class="container">
-          <div class="meta-grid">
-            <div lang-block data-lang="en" class="meta-group-wrapper">
-              <div class="meta-group">
-                <span class="meta-label">My Role</span>
-                <span class="meta-value">Lead Developer, UI Designer, Accessibility Engineer</span>
-              </div>
-              <div class="meta-group">
-                <span class="meta-label">Tech Stack</span>
-                <span class="meta-value">HTML5, CSS3, Vanilla JS, Google Maps API</span>
-              </div>
-              <div class="meta-group">
-                <span class="meta-label">Timeline</span>
-                <span class="meta-value">4 Weeks (Design to Deployment)</span>
-              </div>
-            </div>
-
-            <div lang-block data-lang="es" class="meta-group-wrapper">
-              <div class="meta-group">
-                <span class="meta-label">Mi Rol</span>
-                <span class="meta-value">Desarrollador Principal, Diseñador UI, Ing. de Accesibilidad</span>
-              </div>
-              <div class="meta-group">
-                <span class="meta-label">Tecnologías</span>
-                <span class="meta-value">HTML5, CSS3, JS Vanilla, Google Maps API</span>
-              </div>
-              <div class="meta-group">
-                <span class="meta-label">Cronología</span>
-                <span class="meta-value">4 Semanas (Diseño a Despliegue)</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-spacing">
-        <div class="container">
-          <div class="case-section-compact">
-            <div lang-block data-lang="en">
-              <h3>Project Overview</h3>
-              <div class="two-col-text">
-                <div>
-                  <h4>Purpose</h4>
-                  <p>Created as a comprehensive digital presence for Denver's oldest Salvadoran grocery store (30+ years). Built for CIS 3030 at MSU Denver, demonstrating professional web development while honoring Jorge and Delia Romero's story.</p>
-                </div>
-                <div>
-                  <h4>Goals</h4>
-                  <p>Preserve cultural heritage, provide bilingual business information, showcase advanced web development without frameworks, increase SEO visibility, and maintain WCAG 2.1 AA accessibility standards.</p>
-                </div>
-              </div>
-            </div>
-            <div lang-block data-lang="es">
-              <h3>Descripción del Proyecto</h3>
-              <div class="two-col-text">
-                <div>
-                  <h4>Propósito</h4>
-                  <p>Creado como una presencia digital integral para la tienda salvadorea más antigua de Denver (más de 30 años). Construido para CIS 3030 en MSU Denver, demostrando desarrollo web profesional mientras honra la historia de Jorge y Delia Romero.</p>
-                </div>
-                <div>
-                  <h4>Objetivos</h4>
-                  <p>Preservar el patrimonio cultural, proporcionar información comercial bilingüe, mostrar desarrollo web avanzado sin frameworks, aumentar la visibilidad SEO y mantener los estándares de accesibilidad WCAG 2.1 AA.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class="container"><hr class="section-divider"></div>
-
-      <section class="section-spacing">
-        <div class="container">
-          <div class="feature-section">
-            <div lang-block data-lang="en">
-              <h3>Complete Homepage Design</h3>
-              <p class="feature-intro">The homepage combines bilingual content, cultural imagery, and intuitive navigation to create a welcoming digital experience that reflects the store's 30+ year legacy in Denver's Hispanic community.</p>
-              <figure class="tienda-full-width-container">
-                <img src="tienda-salvadorena-homepage-sc.png" alt="Complete Homepage Screenshot" class="full-img clickable-img tienda-homepage-screenshot">
-                <figcaption class="img-caption">Full homepage design showing integrated bilingual layout - click to zoom</figcaption>
-              </figure>
-            </div>
-            <div lang-block data-lang="es">
-              <h3>Diseño Completo de la Página Principal</h3>
-              <p class="feature-intro">La página principal combina contenido bilingüe, imágenes culturales y navegación intuitiva para crear una experiencia digital acogedora que refleja el legado de 30+ años de la tienda en la comunidad hispana de Denver.</p>
-              <figure class="tienda-full-width-container">
-                <img src="tienda-salvadorena-homepage-sc.png" alt="Captura de pantalla de la página principal completa" class="full-img clickable-img tienda-homepage-screenshot">
-                <figcaption class="img-caption">Diseño completo de la página principal mostrando diseño bilingüe integrado - clic para ampliar</figcaption>
-              </figure>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class="container"><hr class="section-divider"></div>
-
-      <section class="section-spacing">
-        <div class="container">
-          <div class="feature-section">
-            <div lang-block data-lang="en">
-              <h3>Custom Translation Engine (500+ Keys)</h3>
-              <p class="feature-intro">Built a complete bilingual translation system using pure vanilla JavaScript without any external libraries. The system manages over 500 translation keys across 6 pages and persists language preference using localStorage.</p>
-              <div class="tienda-feature-grid">
-                <div class="feature-content">
-                  <div class="feature-detail">
-                    <h4>How It Works</h4>
-                    <ul class="compact-list">
-                      <li>Uses <code>data-i18n</code> attributes on HTML elements</li>
-                      <li>Separate translation objects for English and Spanish</li>
-                      <li>Handles text, HTML, alt text, meta descriptions, placeholders</li>
-                      <li>Language saved to localStorage for persistence</li>
-                      <li>Updates all elements dynamically without page refresh</li>
-                    </ul>
-                  </div>
-                  <div class="feature-highlight">
-                    <strong>Why This Matters</strong>
-                    <p>Most websites use heavy frameworks like i18next or React Context. This custom solution has zero dependencies, loads faster, and gives complete control over translation logic.</p>
-                  </div>
-                </div>
-                <figure class="tienda-feature-image-container">
-                  <img src="tienda-code-translation.png" alt="Translation Engine Code" class="feature-img clickable-img tienda-code-screenshot">
-                  <figcaption class="img-caption">Translation engine code - click to zoom</figcaption>
-                </figure>
-              </div>
-
-              <div class="tienda-comparison-grid">
-                <figure class="tienda-comparison-container">
-                  <img src="tienda-language-spanish.png" alt="Website in Spanish" class="comparison-img clickable-img tienda-language-screenshot">
-                  <figcaption class="img-caption lang-block" data-lang="en">Spanish Version - click to zoom</figcaption>
-                  <figcaption class="img-caption lang-block" data-lang="es">Versión en Español - clic para ampliar</figcaption>
-                </figure>
-                <figure class="tienda-comparison-container">
-                  <img src="tienda-language-english.png" alt="Website in English" class="comparison-img clickable-img tienda-language-screenshot">
-                  <figcaption class="img-caption lang-block" data-lang="en">English Version - click to zoom</figcaption>
-                  <figcaption class="img-caption lang-block" data-lang="es">Versión en Inglés - clic para ampliar</figcaption>
-                </figure>
-              </div>
-            </div>
-
-            <div lang-block data-lang="es">
-              <h3>Motor de Traducción Personalizado (500+ Claves)</h3>
-              <p class="feature-intro">Construí un sistema de traducción bilingüe completo utilizando JavaScript puro sin librerías externas. El sistema gestiona más de 500 claves de traducción en 6 páginas y persiste la preferencia de idioma usando localStorage.</p>
-              <div class="tienda-feature-grid">
-                <div class="feature-content">
-                  <div class="feature-detail">
-                    <h4>Cómo Funciona</h4>
-                    <ul class="compact-list">
-                      <li>Utiliza atributos <code>data-i18n</code> en elementos HTML</li>
-                      <li>Objetos de traducción separados para inglés y español</li>
-                      <li>Maneja texto, HTML, texto alt, metadescripciones, marcadores</li>
-                      <li>Idioma guardado en localStorage para persistencia</li>
-                      <li>Actualiza todos los elementos dinámicamente sin refrescar</li>
-                    </ul>
-                  </div>
-                  <div class="feature-highlight">
-                    <strong>Por qué es importante</strong>
-                    <p>La mayoría de los sitios usan marcos pesados como i18next o React Context. Esta solución no tiene dependencias, carga más rápido y ofrece control total sobre la lógica de traducción.</p>
-                  </div>
-                </div>
-                <figure class="tienda-feature-image-container">
-                  <img src="tienda-code-translation.png" alt="Código del motor de traducción" class="feature-img clickable-img tienda-code-screenshot">
-                  <figcaption class="img-caption">Código del motor de traducción - clic para ampliar</figcaption>
-                </figure>
-              </div>
-
-              <div class="tienda-comparison-grid">
-                <figure class="tienda-comparison-container">
-                  <img src="tienda-language-spanish.png" alt="Website in Spanish" class="comparison-img clickable-img tienda-language-screenshot">
-                  <figcaption class="img-caption lang-block" data-lang="en">Spanish Version - click to zoom</figcaption>
-                  <figcaption class="img-caption lang-block" data-lang="es">Versión en Español - clic para ampliar</figcaption>
-                </figure>
-                <figure class="tienda-comparison-container">
-                  <img src="tienda-language-english.png" alt="Website in English" class="comparison-img clickable-img tienda-language-screenshot">
-                  <figcaption class="img-caption lang-block" data-lang="en">English Version - click to zoom</figcaption>
-                  <figcaption class="img-caption lang-block" data-lang="es">Versión en Inglés - clic para ampliar</figcaption>
-                </figure>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class="container"><hr class="section-divider"></div>
-
-      <section class="section-spacing">
-        <div class="container">
-          <div class="feature-section">
-            <div lang-block data-lang="en">
-              <h3>Bilingual HTML Structure</h3>
-              <p class="feature-intro">The HTML architecture uses semantic lang-block containers to manage both language versions simultaneously. Each section maintains identical DOM structure with separate language data attributes, enabling instant switching without page reloads.</p>
-              <figure class="tienda-feature-image-container">
-                <img src="tienda-bilingual-structure.png" alt="Bilingual HTML Structure Diagram" class="feature-img clickable-img tienda-structure-screenshot">
-                <figcaption class="img-caption">HTML structure with lang-block implementation - click to zoom</figcaption>
-              </figure>
-            </div>
-            <div lang-block data-lang="es">
-              <h3>Estructura HTML Bilingüe</h3>
-              <p class="feature-intro">La arquitectura HTML utiliza contenedores lang-block semánticos para gestionar ambas versiones de idioma simultáneamente. Cada sección mantiene una estructura DOM idéntica con atributos de datos de idioma separados, permitiendo cambios instantáneos sin recargas de página.</p>
-              <figure class="tienda-feature-image-container">
-                <img src="tienda-bilingual-structure.png" alt="Diagrama de Estructura HTML Bilingüe" class="feature-img clickable-img tienda-structure-screenshot">
-                <figcaption class="img-caption">Estructura HTML con implementación de lang-block - clic para ampliar</figcaption>
-              </figure>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-spacing">
-        <div class="container">
-          <div class="feature-section">
-            <div lang-block data-lang="en">
-              <h3>Responsive CSS Grid System</h3>
-              <div class="tienda-feature-grid">
-                <div class="feature-content">
-                  <p class="feature-intro">Implemented modern CSS Grid and Flexbox layouts that automatically adapt from mobile (320px) to large desktop (1920px) using <code>clamp()</code>, <code>minmax()</code>, and <code>auto-fit</code>.</p>
-                  <div class="tienda-breakpoint-grid">
-                    <div class="tienda-breakpoint-card">
-                      <div class="breakpoint-text">
-                        <h4>Mobile<br>320px-768px</h4>
-                        <p>Single-column layouts, stacked sections, 44px minimum touch targets</p>
-                      </div>
-                      <figure class="tienda-breakpoint-image-container">
-                        <img src="tienda-mobile-header.png" alt="Mobile View" class="feature-img clickable-img tienda-responsive-screenshot">
-                      </figure>
-                    </div>
-                    <div class="tienda-breakpoint-card">
-                      <div class="breakpoint-text">
-                        <h4>Tablet<br>768px-1024px</h4>
-                        <p>2-3 column grids, balanced spacing</p>
-                      </div>
-                      <figure class="tienda-breakpoint-image-container">
-                        <img src="tienda-tablet-header.png" alt="Tablet View" class="feature-img clickable-img tienda-responsive-screenshot">
-                      </figure>
-                    </div>
-                    <div class="tienda-breakpoint-card">
-                      <div class="breakpoint-text">
-                        <h4>Desktop<br>1024px+</h4>
-                        <p>3-4 column grids, generous whitespace</p>
-                      </div>
-                      <figure class="tienda-breakpoint-image-container">
-                        <img src="tienda-desktop-header.png" alt="Desktop View" class="feature-img clickable-img tienda-responsive-screenshot">
-                      </figure>
-                    </div>
-                  </div>
-                </div>
-                <figure class="tienda-feature-image-container">
-                  <div class="code-showcase">
-                    <img src="tienda-code-css-grid.png" alt="Responsive CSS Grid Code" class="code-img clickable-img tienda-code-screenshot">
-                    <figcaption class="img-caption">CSS Grid implementation code - click to zoom</figcaption>
-                  </div>
-                </figure>
-              </div>
-            </div>
-
-            <div lang-block data-lang="es">
-              <h3>Sistema de Cuadrícula CSS Adaptable</h3>
-              <div class="tienda-feature-grid">
-                <div class="feature-content">
-                  <p class="feature-intro">Implementé diseños modernos de CSS Grid y Flexbox que se adaptan automáticamente desde móviles (320px) hasta escritorios grandes (1920px) usando <code>clamp()</code>, <code>minmax()</code>, y <code>auto-fit</code>.</p>
-                  <div class="tienda-breakpoint-grid">
-                    <div class="tienda-breakpoint-card">
-                      <div class="breakpoint-text">
-                        <h4>Móvil<br>320px-768px</h4>
-                        <p>Diseños de una columna, secciones apiladas, objetivos táctiles de 44px</p>
-                      </div>
-                      <figure class="tienda-breakpoint-image-container">
-                        <img src="tienda-mobile-header.png" alt="Vista Móvil" class="feature-img clickable-img tienda-responsive-screenshot">
-                      </figure>
-                    </div>
-                    <div class="tienda-breakpoint-card">
-                      <div class="breakpoint-text">
-                        <h4>Tableta<br>768px-1024px</h4>
-                        <p>Cuadrículas de 2-3 columnas, espaciado equilibrado</p>
-                      </div>
-                      <figure class="tienda-breakpoint-image-container">
-                        <img src="tienda-tablet-header.png" alt="Vista de Tableta" class="feature-img clickable-img tienda-responsive-screenshot">
-                      </figure>
-                    </div>
-                    <div class="tienda-breakpoint-card">
-                      <div class="breakpoint-text">
-                        <h4>Escritorio<br>1024px+</h4>
-                        <p>Cuadrículas de 3-4 columnas, espacio generoso</p>
-                      </div>
-                      <figure class="tienda-breakpoint-image-container">
-                        <img src="tienda-desktop-header.png" alt="Vista de Escritorio" class="feature-img clickable-img tienda-responsive-screenshot">
-                      </figure>
-                    </div>
-                  </div>
-                </div>
-                <figure class="tienda-feature-image-container">
-                  <div class="code-showcase">
-                    <img src="tienda-code-css-grid.png" alt="Código CSS Grid Responsive" class="code-img clickable-img tienda-code-screenshot">
-                    <figcaption class="img-caption">Código de implementación CSS Grid - clic para ampliar</figcaption>
-                  </div>
-                </figure>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class="container"><hr class="section-divider"></div>
-
-      <section class="section-spacing">
-        <div class="container">
-          <div class="feature-section">
-            <div lang-block data-lang="en">
-              <h3>Design System & Color Palette</h3>
-              <p class="feature-intro">A carefully curated color palette inspired by the Salvadoran flag—featuring cobalt blue, tangerine yellow, and lincoln green—creates a cohesive visual identity that celebrates cultural heritage while maintaining modern accessibility standards.</p>
-              <figure class="tienda-feature-image-container">
-                <img src="tienda-color-palette.png" alt="Tienda Salvadorea Color Palette" class="feature-img clickable-img tienda-design-screenshot">
-                <figcaption class="img-caption">Official color palette with hex values - click to zoom</figcaption>
-              </figure>
-            </div>
-            <div lang-block data-lang="es">
-              <h3>Sistema de Diseño y Paleta de Colores</h3>
-              <p class="feature-intro">Una paleta de colores cuidadosamente seleccionada inspirada en la bandera salvadoreña—con azul cobalto, amarillo tangerina y verde Lincoln—crea una identidad visual cohesiva que celebra la herencia cultural mientras mantiene estándares modernos de accesibilidad.</p>
-              <figure class="tienda-feature-image-container">
-                <img src="tienda-color-palette.png" alt="Paleta de Colores de Tienda Salvadorea" class="feature-img clickable-img tienda-design-screenshot">
-                <figcaption class="img-caption">Paleta de colores oficial con valores hex - clic para ampliar</figcaption>
-              </figure>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-spacing">
-        <div class="container">
-          <div class="feature-section">
-            <div lang-block data-lang="en">
-              <h3>Interactive Image Gallery & Product Filtering</h3>
-              <div class="tienda-feature-grid">
-                <div class="feature-content">
-                  <p class="feature-intro">The Items page features 29 product cards with dynamic filtering and zoom modal functionality. Users can filter by category and click images to view full-size versions.</p>
-                  <div class="feature-detail">
-                    <h4>Technical Features</h4>
-                    <ul class="compact-list">
-                      <li>Smooth fade-in and zoom animations using CSS keyframes</li>
-                      <li>Keyboard accessible – press ESC to close modal</li>
-                      <li>Body scroll locked when modal is open</li>
-                      <li>Category filtering with JavaScript (food, drinks, clothing, wellness, nostalgia)</li>
-                    </ul>
-                  </div>
-                </div>
-                <figure class="tienda-feature-image-container">
-                  <img src="tienda-items-filter.png" alt="Items Page with Filters" class="feature-img clickable-img tienda-filter-screenshot">
-                  <figcaption class="img-caption">Product filtering interface - click to zoom</figcaption>
-                </figure>
-              </div>
-            </div>
-
-            <div lang-block data-lang="es">
-              <h3>Galería de Imágenes Interactiva y Filtrado de Productos</h3>
-              <div class="tienda-feature-grid">
-                <div class="feature-content">
-                  <p class="feature-intro">La página de artículos cuenta con 29 tarjetas de productos con filtrado dinámico y funcionalidad de zoom. Los usuarios pueden filtrar por categoría y hacer clic en las imágenes para ver versiones a tamaño completo.</p>
-                  <div class="feature-detail">
-                    <h4>Características Técnicas</h4>
-                    <ul class="compact-list">
-                      <li>Animaciones suaves de desvanecimiento y zoom mediante keyframes</li>
-                      <li>Accesibilidad por teclado – presione ESC para cerrar el modal</li>
-                      <li>Bloqueo de desplazamiento del cuerpo cuando el modal está abierto</li>
-                      <li>Filtrado por categorías con JavaScript (comida, bebidas, ropa, bienestar, nostalgia)</li>
-                    </ul>
-                  </div>
-                </div>
-                <figure class="tienda-feature-image-container">
-                  <img src="tienda-items-filter.png" alt="Página de artículos con filtros" class="feature-img clickable-img tienda-filter-screenshot">
-                  <figcaption class="img-caption">Interfaz de filtrado de productos - clic para ampliar</figcaption>
-                </figure>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-spacing">
-        <div class="container">
-           <div class="feature-section">
-            <div lang-block data-lang="en">
-              <h3>Image Zoom Modal & Lightbox</h3>
-              <p class="feature-intro">A fully accessible modal lightbox enables users to view product images and gallery photos at full resolution. The implementation includes keyboard navigation, focus management, and smooth animations for an enhanced user experience.</p>
-              <figure class="tienda-feature-image-container">
-                <img src="tienda-zoom-modal.png" alt="Image Zoom Modal Demonstration" class="feature-img clickable-img tienda-modal-screenshot">
-                <figcaption class="img-caption">Full-screen image modal with close button - click to zoom</figcaption>
-              </figure>
-            </div>
-            <div lang-block data-lang="es">
-              <h3>Modal de Zoom de Imagen y Lightbox</h3>
-              <p class="feature-intro">Un modal lightbox completamente accesible permite a los usuarios ver imágenes de productos y fotos de galería en resolución completa. La implementación incluye navegación por teclado, gestión del enfoque y animaciones suaves para una mejor experiencia de usuario.</p>
-              <figure class="tienda-feature-image-container">
-                <img src="tienda-zoom-modal.png" alt="Demostración del Modal de Zoom de Imagen" class="feature-img clickable-img tienda-modal-screenshot">
-                <figcaption class="img-caption">Modal de imagen de pantalla completa con botón de cerrar - clic para ampliar</figcaption>
-              </figure>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class="container"><hr class="section-divider"></div>
-
-      <section class="section-spacing">
-        <div class="container">
-          <div class="feature-section">
-            <div lang-block data-lang="en">
-              <h3>Contact & Location Map Integration</h3>
-              <p class="feature-intro">An embedded Google Map displays Tienda Salvadorea's exact location with directions, business hours, and contact information. The contact page provides multiple communication channels including phone, email, WhatsApp, and Facebook for customer convenience.</p>
-              <figure class="tienda-feature-image-container">
-                <img src="tienda-contact-map.png" alt="Contact Page with Embedded Map" class="feature-img clickable-img tienda-map-screenshot">
-                <figcaption class="img-caption">Location map with integrated contact details - click to zoom</figcaption>
-              </figure>
-            </div>
-            <div lang-block data-lang="es">
-              <h3>Integración de Mapa de Contacto y Ubicación</h3>
-              <p class="feature-intro">Un mapa de Google integrado muestra la ubicación exacta de Tienda Salvadorea con indicaciones, horario comercial e información de contacto. La página de contacto proporciona múltiples canales de comunicación incluidos teléfono, correo electrónico, WhatsApp y Facebook para comodidad de los clientes.</p>
-              <figure class="tienda-feature-image-container">
-                <img src="tienda-contact-map.png" alt="Página de Contacto con Mapa Integrado" class="feature-img clickable-img tienda-map-screenshot">
-                <figcaption class="img-caption">Mapa de ubicación con detalles de contacto integrados - clic para ampliar</figcaption>
-              </figure>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-spacing">
-        <div class="container">
-          <div class="feature-section">
-            <div lang-block data-lang="en">
-              <h3>Press Coverage & Community Recognition</h3>
-              <p class="feature-intro">Tienda Salvadorea has been featured in prominent Denver media outlets including El Diario El Salvadoreno, Denverite, and local journalism publications. The website documents this media presence, showcasing the store's importance as a cultural anchor in Denver's Hispanic community.</p>
-              <figure class="tienda-feature-image-container">
-                <img src="tienda-press-coverage.png" alt="Press Coverage and Media Mentions" class="feature-img clickable-img tienda-press-screenshot">
-                <figcaption class="img-caption">Featured media mentions and press coverage - click to zoom</figcaption>
-              </figure>
-            </div>
-            <div lang-block data-lang="es">
-              <h3>Cobertura de Prensa y Reconocimiento Comunitario</h3>
-              <p class="feature-intro">Tienda Salvadorea ha sido presentada en destacados medios de comunicación de Denver incluyendo El Diario El Salvadoreno, Denverite y publicaciones de periodismo local. El sitio web documenta esta presencia mediática, mostrando la importancia de la tienda como ancla cultural en la comunidad hispana de Denver.</p>
-              <figure class="tienda-feature-image-container">
-                <img src="tienda-press-coverage.png" alt="Cobertura de Prensa y Menciones en Medios" class="feature-img clickable-img tienda-press-screenshot">
-                <figcaption class="img-caption">Menciones mediáticas destacadas y cobertura de prensa - clic para ampliar</figcaption>
-              </figure>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class="container"><hr class="section-divider"></div>
-
-      <section class="section-spacing">
-        <div class="container">
-          <div class="challenges-section">
-            <div lang-block data-lang="en">
-              <h3>Engineering Challenges & Solutions</h3>
-              <p class="feature-intro">Overcoming constraints to deliver a high-performance application.</p>
-            </div>
-            <div lang-block data-lang="es">
-              <h3>Desafíos de Ingeniería y Soluciones</h3>
-              <p class="feature-intro">Superando restricciones para entregar una aplicación de alto rendimiento.</p>
-            </div>
-
-            <div class="challenges-grid">
-              
-              <div class="challenge-card">
-                <div lang-block data-lang="en">
-                  <div class="ch-block ch-problem">
-                    <span class="ch-icon">⚠️</span>
-                    <h4>Challenge</h4>
-                    <p><strong>Strict "No Frameworks" Requirement</strong><br>Complex state management was needed for language switching, but React/Vue were prohibited.</p>
-                  </div>
-                  <div class="ch-block ch-solution">
-                    <span class="ch-icon">✅</span>
-                    <h4>Solution</h4>
-                    <p><strong>Custom Observer Pattern</strong><br>Architected a lightweight vanilla JS state engine that hot-swaps text content and ARIA labels instantly without reloads.</p>
-                  </div>
-                </div>
-                <div lang-block data-lang="es">
-                  <div class="ch-block ch-problem">
-                    <span class="ch-icon">⚠️</span>
-                    <h4>Desafío</h4>
-                    <p><strong>Requisito estricto "Sin Frameworks"</strong><br>Se requería gestión de estado compleja para idiomas, pero React/Vue estaban prohibidos.</p>
-                  </div>
-                  <div class="ch-block ch-solution">
-                    <span class="ch-icon">✅</span>
-                    <h4>Solución</h4>
-                    <p><strong>Patrón Observer Personalizado</strong><br>Arquitecté un motor JS ligero que intercambia contenido de texto y etiquetas ARIA instantáneamente.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="challenge-card">
-                <div lang-block data-lang="en">
-                  <div class="ch-block ch-problem">
-                    <span class="ch-icon">⚠️</span>
-                    <h4>Challenge</h4>
-                    <p><strong>Accessibility (WCAG) Traps</strong><br>Custom modals and image lightboxes often trap keyboard focus or fail screen reader tests.</p>
-                  </div>
-                  <div class="ch-block ch-solution">
-                    <span class="ch-icon">✅</span>
-                    <h4>Solution</h4>
-                    <p><strong>Focus Management Logic</strong><br>Implemented a JS focus trap that cycles tab index strictly within open modals and restores focus on close.</p>
-                  </div>
-                </div>
-                <div lang-block data-lang="es">
-                  <div class="ch-block ch-problem">
-                    <span class="ch-icon">⚠️</span>
-                    <h4>Desafío</h4>
-                    <p><strong>Trampas de Accesibilidad (WCAG)</strong><br>Los modales personalizados a menudo atrapan el foco del teclado o fallan en lectores de pantalla.</p>
-                  </div>
-                  <div class="ch-block ch-solution">
-                    <span class="ch-icon">✅</span>
-                    <h4>Solución</h4>
-                    <p><strong>Lógica de Gestión de Foco</strong><br>Implementé una trampa de foco JS que cicla el tabulador estrictamente dentro de modales abiertos.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="challenge-card">
-                <div lang-block data-lang="en">
-                  <div class="ch-block ch-problem">
-                    <span class="ch-icon">⚠️</span>
-                    <h4>Challenge</h4>
-                    <p><strong>Bilingual SEO</strong><br>Ensuring search engines index both English and Spanish content correctly without duplication penalties.</p>
-                  </div>
-                  <div class="ch-block ch-solution">
-                    <span class="ch-icon">✅</span>
-                    <h4>Solution</h4>
-                    <p><strong>Semantic Structure</strong><br>Utilized distinct <code>lang</code> attributes and semantic HTML5 to ensure crawlers understand context changes.</p>
-                  </div>
-                </div>
-                <div lang-block data-lang="es">
-                  <div class="ch-block ch-problem">
-                    <span class="ch-icon">⚠️</span>
-                    <h4>Desafío</h4>
-                    <p><strong>SEO Bilingüe</strong><br>Asegurar que los motores de búsqueda indexen contenido en inglés y español sin penalizaciones.</p>
-                  </div>
-                  <div class="ch-block ch-solution">
-                    <span class="ch-icon">✅</span>
-                    <h4>Solución</h4>
-                    <p><strong>Estructura Semántica</strong><br>Utilicé atributos <code>lang</code> distintos y HTML5 semántico para asegurar la comprensión de los crawlers.</p>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-spacing">
-        <div class="container">
-          <div class="results-section">
-            <div lang-block data-lang="en">
-              <h3>Impact & Quantitative Results</h3>
-              <div class="results-grid">
-                <div class="result-card">
-                  <h4>30+ Years</h4>
-                  <p>Of cultural heritage preserved digitally</p>
-                </div>
-                <div class="result-card">
-                  <h4>99/100</h4>
-                  <p>Lighthouse Performance Score</p>
-                </div>
-                <div class="result-card">
-                  <h4>100%</h4>
-                  <p>WCAG 2.1 AA Compliance Pass Rate</p>
-                </div>
-                <div class="result-card">
-                  <h4>0 Dependencies</h4>
-                  <p>Pure HTML/CSS/JS (No Framework Overhead)</p>
-                </div>
-                <div class="result-card">
-                  <h4>&lt; 50KB</h4>
-                  <p>Total Script Bundle Size</p>
-                </div>
-                <div class="result-card">
-                  <h4>Dual SEO</h4>
-                  <p>Rankings for both EN/ES keywords</p>
-                </div>
-              </div>
-            </div>
-
-            <div lang-block data-lang="es">
-              <h3>Impacto y Resultados Cuantitativos</h3>
-              <div class="results-grid">
-                <div class="result-card">
-                  <h4>30+ Años</h4>
-                  <p>De herencia cultural preservada digitalmente</p>
-                </div>
-                <div class="result-card">
-                  <h4>99/100</h4>
-                  <p>Puntuación de Rendimiento Lighthouse</p>
-                </div>
-                <div class="result-card">
-                  <h4>100%</h4>
-                  <p>Tasa de cumplimiento WCAG 2.1 AA</p>
-                </div>
-                <div class="result-card">
-                  <h4>0 Dependencias</h4>
-                  <p>HTML/CSS/JS puro (Sin carga de Frameworks)</p>
-                </div>
-                <div class="result-card">
-                  <h4>&lt; 50KB</h4>
-                  <p>Tamaño total del bundle de scripts</p>
-                </div>
-                <div class="result-card">
-                  <h4>SEO Dual</h4>
-                  <p>Posicionamiento para palabras clave EN/ES</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" class="section-spacing">
-        <div class="container">
-          <div data-lang="en" lang-block>
-            <h3>Contact</h3>
-            <div class="contact-card">
-              <p class="contact-intro">Have a project in mind or need bilingual consulting? You can write in English or Spanish.</p>
-              <div class="contact-links">
-                <a href="https://www.linkedin.com/in/quintanadm95" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                    <rect x="2" y="9" width="4" height="12"></rect>
-                    <circle cx="4" cy="4" r="2"></circle>
-                  </svg>
-                  LinkedIn
-                </a>
-                <a href="https://github.com/dquint32" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                  </svg>
-                  GitHub
-                </a>
-                <a href="https://wa.me/13035004122" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-                  </svg>
-                  WhatsApp
-                </a>
-                <a href="tel:13035004122" class="contact-link-btn">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.81 12.81 0 0 0 .63 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.63A2 2 0 0 1 22 16.92z"></path>
-                  </svg>
-                  303-500-4122
-                </a>
-                <a href="/cdn-cgi/l/email-protection#1e7a7f68777a7b667f736e727b307d7173" class="contact-link-btn">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-                    <path d="M22 6L12 13 2 6"></path>
-                  </svg>
-                  Email
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div data-lang="es" lang-block>
-            <h3>Contacto</h3>
-            <div class="contact-card">
-              <p class="contact-intro">¿Tienes un proyecto o necesitas asesoría bilingüe? Puedes escribir en inglés o español; respondo en ambos idiomas.</p>
-              <div class="contact-links">
-                <a href="https://www.linkedin.com/in/quintanadm95" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                    <rect x="2" y="9" width="4" height="12"></rect>
-                    <circle cx="4" cy="4" r="2"></circle>
-                  </svg>
-                  LinkedIn
-                </a>
-                <a href="https://github.com/dquint32" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                  </svg>
-                  GitHub
-                </a>
-                <a href="https://wa.me/13035004122" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-                  </svg>
-                  WhatsApp
-                </a>
-                <a href="tel:13035004122" class="contact-link-btn">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.81 12.81 0 0 0 .63 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.63A2 2 0 0 1 22 16.92z"></path>
-                  </svg>
-                  303-500-4122
-                </a>
-                <a href="/cdn-cgi/l/email-protection#1c787d6a757879647d716c7079327f7371" class="contact-link-btn">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-                    <path d="M22 6L12 13 2 6"></path>
-                  </svg>
-                  Correo
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-    </article>
-  </main>
-
-  <footer class="portfolio-footer site-footer">
-    <div class="container">
-      <p>
-        <span lang-block data-lang="en">David Quintana Dev is a registered trade name of Servicios Quintana LLC.</span>
-        <span lang-block data-lang="es">David Quintana Dev es un nombre comercial registrado de Servicios Quintana LLC.</span>
-      </p>
-      <p class="legal-notice">
-        <span lang-block data-lang="en">Mandatory Disclosure: I am not an attorney licensed to practice law in the State of Colorado and I may not give legal advice or accept fees for legal advice.</span>
-        <span lang-block data-lang="es">Aviso Obligatorio: No soy un abogado licenciado para ejercer el derecho en el Estado de Colorado y no puedo dar asesoría legal ni aceptar honorarios por asesoría legal.</span>
-      </p>
-      <p>
-        <span lang-block data-lang="en">&copy; 2026 Servicios Quintana LLC. All Rights Reserved.</span>
-        <span lang-block data-lang="es">&copy; 2026 Servicios Quintana LLC. Todos los derechos reservados.</span>
-      </p>
-    </div>
-  </footer>
-
-  <script src="main.js"></script>
+    <nav aria-label="Footer">
+      <ul class="footer-links">
+        <li><a href="hcis-portfolio.html"><span data-lang="en">Work</span><span data-lang="es" lang="es">Trabajo</span></a></li>
+        <li><a href="eva-ctms-case-study.html"><span data-lang="en">EVA case study</span><span data-lang="es" lang="es">Caso EVA</span></a></li>
+        <li><a href="resume.pdf" target="_blank" rel="noopener"><span data-lang="en">Résumé (PDF)</span><span data-lang="es" lang="es">Currículum (PDF)</span></a></li>
+        <li><a href="https://github.com/dquint32" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/quintanadm95" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="web-dev.html"><span data-lang="en">Web development for small businesses</span><span data-lang="es" lang="es">Desarrollo web para pequeñas empresas</span></a></li>
+        <li><a href="pricing.html"><span data-lang="en">Web pricing</span><span data-lang="es" lang="es">Precios web</span></a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+<button class="icon-btn back-to-top" type="button" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg></button>
+<script src="main.js" defer></script>
 </body>
 </html>

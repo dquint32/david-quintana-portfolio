@@ -1,396 +1,129 @@
-/* ============================================
-   DAVID QUINTANA PORTFOLIO
-   Enhanced JavaScript with Cyber-Minimalist Features
-   ============================================ */
+/* David Quintana — portfolio behaviour (no dependencies).
+   Language and theme are applied before first paint by the inline script in
+   each page's <head>; this file wires up the controls and keeps them in sync. */
+(function () {
+  'use strict';
 
-(function() {
-'use strict';
+  var root = document.documentElement;
 
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function store(key, value) {
+    try { localStorage.setItem(key, value); } catch (e) { /* storage blocked: still works for this page */ }
+  }
 
-/* ============================================
-   LANGUAGE TOGGLE
-   ============================================ */
-function initLanguageToggle() {
-  const toggle = document.querySelector('.floating-toggle');
-  const body = document.body;
-  
-  if (!toggle) return;
-
-  const switchLanguage = (lang) => {
-    const root = document.documentElement;
-
-    // Root-level language state — CSS shows the matching [lang-block] elements.
+  /* Language ------------------------------------------------------------ */
+  function setLanguage(lang) {
     root.setAttribute('data-language', lang);
-    root.setAttribute('lang', lang); // WCAG 3.1.1/3.1.2: keep page language accurate
-    body.setAttribute('data-language', lang);
-
-    // Update toggle button UI + expose state to assistive tech
-    const spans = toggle.querySelectorAll('span[data-lang]');
-    spans.forEach(span => {
-      span.classList.toggle('inactive', span.getAttribute('data-lang') !== lang);
+    root.setAttribute('lang', lang);
+    document.querySelectorAll('.lang-switch').forEach(function (btn) {
+      btn.setAttribute('aria-label', lang === 'en' ? 'Cambiar a español' : 'Switch to English');
     });
-    toggle.setAttribute('aria-pressed', String(lang === 'es'));
+    store('preferred-language', lang);
+  }
 
-    // Persist preference (read back by the pre-paint script on next load)
-    localStorage.setItem('preferred-language', lang);
-  };
-
-  // Click event
-  toggle.addEventListener('click', () => {
-    const currentLang = body.getAttribute('data-language') || 'en';
-    const newLang = currentLang === 'en' ? 'es' : 'en';
-    switchLanguage(newLang);
-  });
-
-  // Initialize with saved preference or default to English
-  const savedLang = localStorage.getItem('preferred-language') || 'en';
-  switchLanguage(savedLang);
-}
-
-/* ============================================
-   THEME TOGGLE (dark/light · root attribute · pre-paint friendly)
-   ============================================ */
-function initThemeToggle() {
-  const root = document.documentElement;
-  const btn = document.querySelector('.theme-toggle');
-
-  const apply = (theme) => {
+  /* Theme --------------------------------------------------------------- */
+  function setTheme(theme) {
     root.setAttribute('data-theme', theme);
-    if (btn) {
-      const isLight = theme === 'light';
-      btn.setAttribute('aria-pressed', String(isLight));
-      btn.setAttribute('aria-label', isLight ? 'Switch to dark theme' : 'Switch to light theme');
-    }
-  };
-
-  // Honor the value the pre-paint snippet set, else stored pref, else dark.
-  let theme = root.getAttribute('data-theme');
-  if (!theme) { try { theme = localStorage.getItem('preferred-theme'); } catch (e) {} }
-  apply(theme || 'dark');
-
-  if (!btn) return;
-  btn.addEventListener('click', () => {
-    const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-    apply(next);
-    try { localStorage.setItem('preferred-theme', next); } catch (e) {}
-  });
-}
-
-/* ============================================
-   LIGHTBOX MODAL - Enhanced Version
-   ============================================ */
-function initLightbox() {
-  const modal = document.getElementById('lightbox-modal');
-  const modalImg = document.getElementById('lightbox-img');
-  const captionText = document.getElementById('lightbox-caption');
-  const closeBtn = document.querySelector('.lightbox-close');
-
-  if (!modal || !modalImg || !closeBtn) return;
-
-  // Get all clickable images
-  const clickableImages = document.querySelectorAll('.clickable-img');
-
-  // Open lightbox
-  function openLightbox(img) {
-    modal.style.display = 'flex';
-    modalImg.src = img.src;
-    modalImg.alt = img.alt;
-    
-    if (captionText) {
-      captionText.textContent = img.alt || 'Project Screenshot';
-    }
-    
-    // Trigger animation
-    requestAnimationFrame(() => {
-      modal.classList.add('active');
+    document.querySelectorAll('.theme-toggle').forEach(function (btn) {
+      btn.setAttribute('aria-pressed', String(theme === 'light'));
+      btn.setAttribute('aria-label', theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
     });
-
-    // Prevent body scroll
-    document.body.style.overflow = 'hidden';
+    store('preferred-theme', theme);
   }
 
-  // Close lightbox
-  function closeLightbox() {
-    modal.classList.remove('active');
-    
-    setTimeout(() => {
-      modal.style.display = 'none';
-      modalImg.src = '';
-      document.body.style.overflow = '';
-    }, 300);
+  /* Mobile navigation ---------------------------------------------------- */
+  function initMenu() {
+    var toggle = document.querySelector('.menu-toggle');
+    var nav = document.getElementById('site-nav');
+    if (!toggle || !nav) return;
+    function close() { nav.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); }
+    toggle.addEventListener('click', function () {
+      var open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+    nav.addEventListener('click', function (e) { if (e.target.closest('a')) close(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+    window.matchMedia('(min-width: 921px)').addEventListener('change', close);
   }
 
-  // Add click listeners to all clickable images
-  clickableImages.forEach(img => {
-    img.addEventListener('click', () => {
-      openLightbox(img);
-    });
-  });
+  /* Lightbox for screenshots (native <dialog>: focus trap + Esc for free) - */
+  function initLightbox() {
+    var images = Array.prototype.slice.call(document.querySelectorAll('img.zoomable'));
+    if (!images.length || typeof HTMLDialogElement !== 'function') return;
 
-  // Close button
-  closeBtn.addEventListener('click', closeLightbox);
+    var dialog = document.createElement('dialog');
+    dialog.className = 'lightbox';
+    dialog.innerHTML = '<button class="lightbox-close" type="button" aria-label="Close">&times;</button><img alt=""><p></p>';
+    document.body.appendChild(dialog);
+    var big = dialog.querySelector('img');
+    var caption = dialog.querySelector('p');
+    var current = -1;
 
-  // Click outside image to close
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      closeLightbox();
+    function visible() { return images.filter(function (img) { return img.offsetParent !== null; }); }
+    function show(img) {
+      var list = visible();
+      current = list.indexOf(img);
+      big.src = img.currentSrc || img.src;
+      big.alt = img.alt;
+      var fig = img.closest('figure');
+      var cap = fig && Array.prototype.find.call(fig.querySelectorAll('figcaption'), function (c) { return c.offsetParent !== null; });
+      caption.textContent = cap ? cap.textContent : img.alt;
+      if (!dialog.open) dialog.showModal();
     }
-  });
 
-  // Escape key to close
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('active')) {
-      closeLightbox();
-    }
-  });
-
-  // Arrow keys for navigation (if multiple images)
-  document.addEventListener('keydown', (e) => {
-    if (!modal.classList.contains('active')) return;
-
-    const currentImg = modalImg.src;
-    const allImages = Array.from(clickableImages);
-    const currentIndex = allImages.findIndex(img => img.src === currentImg);
-
-    if (e.key === 'ArrowRight' && currentIndex < allImages.length - 1) {
-      openLightbox(allImages[currentIndex + 1]);
-    } else if (e.key === 'ArrowLeft' && currentIndex > 0) {
-      openLightbox(allImages[currentIndex - 1]);
-    }
-  });
-}
-
-/* ============================================
-   SCROLL REVEAL ANIMATIONS
-   ============================================ */
-function initScrollReveal() {
-  if (prefersReducedMotion) return;
-
-  const revealElements = document.querySelectorAll(`
-    .project-card,
-    .skill-detail-card,
-    .service-card
-  `);
-
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px 0px -100px 0px',
-    threshold: 0.1
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  revealElements.forEach((el, index) => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-    observer.observe(el);
-  });
-}
-
-/* ============================================
-   SMOOTH SCROLL FOR ANCHOR LINKS
-   ============================================ */
-function initSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const href = this.getAttribute('href');
-      if (!href || href === '#') return;
-
-      const target = document.querySelector(href);
-      if (target) {
-        e.preventDefault();
-        const headerOffset = 80;
-        const elementPosition = target.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: prefersReducedMotion ? 'auto' : 'smooth'
-        });
-      }
-    });
-  });
-}
-
-/* ============================================
-   PARALLAX SCROLL EFFECT (Subtle)
-   ============================================ */
-function initParallaxEffect() {
-  if (prefersReducedMotion) return;
-
-  const parallaxElements = document.querySelectorAll('.project-screenshot img');
-  
-  window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-
-    parallaxElements.forEach(el => {
-      const rect = el.getBoundingClientRect();
-      const elementTop = rect.top + window.pageYOffset;
-      const elementHeight = rect.height;
-      
-      if (scrolled + window.innerHeight > elementTop && scrolled < elementTop + elementHeight) {
-        const parallaxOffset = (scrolled - elementTop) * 0.1;
-        el.style.transform = `translateY(${parallaxOffset}px)`;
-      }
-    });
-  });
-}
-
-/* ============================================
-   HEADER SHADOW ON SCROLL
-   ============================================ */
-function initHeaderScroll() {
-  const header = document.querySelector('.site-header');
-  if (!header) return;
-
-  let lastScroll = 0;
-
-  window.addEventListener('scroll', () => {
-    header.classList.toggle('scrolled', window.pageYOffset > 100);
-  });
-}
-
-/* ============================================
-   BACK TO TOP BUTTON
-   ============================================ */
-function initBackToTop() {
-  const backToTopBtn = document.getElementById('back-to-top');
-
-  if (backToTopBtn) {
-    window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 300) {
-        backToTopBtn.classList.add('visible');
-      } else {
-        backToTopBtn.classList.remove('visible');
-      }
-    });
-    
-    backToTopBtn.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: prefersReducedMotion ? 'auto' : 'smooth'
+    images.forEach(function (img) {
+      img.setAttribute('tabindex', '0');
+      img.setAttribute('role', 'button');
+      img.addEventListener('click', function () { show(img); });
+      img.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); show(img); }
       });
     });
-  }
-}
-
-/* ============================================
-   CYBER CURSOR TRAIL (Subtle)
-   ============================================ */
-function initCyberCursor() {
-  if (prefersReducedMotion) return;
-  if (!window.matchMedia('(hover: hover)').matches) return;
-
-  const trailElements = [];
-  const maxTrails = 5;
-
-  document.addEventListener('mousemove', (e) => {
-    // Create trail element
-    const trail = document.createElement('div');
-    trail.className = 'cursor-trail';
-    trail.style.cssText = `
-      position: fixed;
-      width: 4px;
-      height: 4px;
-      background: var(--cyber-orange);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9998;
-      left: ${e.clientX}px;
-      top: ${e.clientY}px;
-      opacity: 0.6;
-      transform: translate(-50%, -50%);
-      animation: trailFade 0.5s ease-out forwards;
-    `;
-
-    document.body.appendChild(trail);
-    trailElements.push(trail);
-
-    // Remove old trails
-    if (trailElements.length > maxTrails) {
-      const oldTrail = trailElements.shift();
-      oldTrail.remove();
-    }
-
-    // Auto-remove after animation
-    setTimeout(() => {
-      trail.remove();
-      const index = trailElements.indexOf(trail);
-      if (index > -1) {
-        trailElements.splice(index, 1);
-      }
-    }, 500);
-  });
-
-  // Add keyframes dynamically
-  const style = document.createElement('style');
-  style.textContent = `
-    @keyframes trailFade {
-      to {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0);
-      }
-    }
-  `;
-  document.head.appendChild(style);
-}
-
-/* ============================================
-   DYNAMIC YEAR IN FOOTER
-   ============================================ */
-function updateFooterYear() {
-  const yearElements = document.querySelectorAll('#year, [data-year]');
-  yearElements.forEach(el => {
-    el.textContent = new Date().getFullYear();
-  });
-}
-
-/* ============================================
-   INITIALIZE ALL FEATURES
-   ============================================ */
-function init() {
-  console.log('🚀 HCIS Portfolio Interactive Systems Initialized');
-  console.log('🎨 Cyber-Minimalist Design Active');
-
-  initLanguageToggle();
-  initThemeToggle();
-  initLightbox();
-  initScrollReveal();
-  initSmoothScroll();
-  initParallaxEffect();
-  initHeaderScroll();
-  initBackToTop();
-  initCyberCursor();
-  updateFooterYear();
-
-  if (prefersReducedMotion) {
-    console.log('⚠️ Reduced motion mode active - animations disabled');
+    dialog.querySelector('.lightbox-close').addEventListener('click', function () { dialog.close(); });
+    dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.close(); });
+    dialog.addEventListener('keydown', function (e) {
+      var list = visible();
+      if (e.key === 'ArrowRight' && current < list.length - 1) show(list[current + 1]);
+      if (e.key === 'ArrowLeft' && current > 0) show(list[current - 1]);
+    });
   }
 
-  document.body.classList.add('loaded');
-}
+  /* Back to top ---------------------------------------------------------- */
+  function initBackToTop() {
+    var btn = document.querySelector('.back-to-top');
+    if (!btn) return;
+    var ticking = false;
+    window.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        btn.classList.toggle('visible', window.scrollY > 600);
+        ticking = false;
+      });
+    }, { passive: true });
+    btn.addEventListener('click', function () { window.scrollTo({ top: 0 }); });
+  }
 
-// Run initialization when DOM is ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', init);
-} else {
-  init();
-}
+  function init() {
+    setLanguage(root.getAttribute('data-language') === 'es' ? 'es' : 'en');
+    setTheme(root.getAttribute('data-theme') === 'light' ? 'light' : 'dark');
 
-// Expose debug object
-window.portfolioDebug = {
-  prefersReducedMotion,
-  reinitialize: init
-};
+    document.querySelectorAll('.lang-switch').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        setLanguage(root.getAttribute('data-language') === 'en' ? 'es' : 'en');
+      });
+    });
+    document.querySelectorAll('.theme-toggle').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        setTheme(root.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+      });
+    });
 
+    initMenu();
+    initLightbox();
+    initBackToTop();
+    document.querySelectorAll('[data-year]').forEach(function (el) { el.textContent = new Date().getFullYear(); });
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
 })();

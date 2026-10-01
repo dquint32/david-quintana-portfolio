@@ -1,273 +1,54 @@
-# David Matthew Quintana — Portfolio  
-**Bilingual Web Developer | Building practical, culturally aware solutions for small businesses and professionals**
+# David Quintana — Portfolio
 
-This repository contains the source code for my professional portfolio, showcasing my work in web development, accessibility, bilingual UX, and community‑focused digital solutions. My approach blends technical precision with cultural sensitivity to create websites that are both robust and emotionally resonant.
+**Clinical Data Engineer · Health Care Information Systems**
+Live site: **https://davidquintana.dev**
 
----
+Source for my portfolio. I build Python/pandas ETL pipelines and HL7/FHIR tools that extract, clean, and validate clinical data under HIPAA and GCP. B.S. HCIS, MSU Denver (2026). Fully bilingual (English / Spanish).
 
-## 🌐 Bilingual, Accessible, Results‑Driven Websites
+## Featured work
 
-I design and build platforms that don’t just look good — they solve real problems.  
-My specialties include:
+| Project | What it shows | Links |
+|---|---|---|
+| **EVA CTMS Archive** | 10-stage local Python ETL pipeline; 9,925 clinical-trial documents inventoried; an 18% patient-ID integrity failure caught before migration, with zero PHI exposure | [Case study](https://davidquintana.dev/eva-ctms-case-study.html) |
+| **Bilingual Patient Intake → FHIR R4** | FastAPI + Pydantic v2 validation, self-contained FHIR R4 Bundle (SNOMED CT), 69 tests | [Case study](https://davidquintana.dev/intake-web-app.html) · [Code](https://github.com/dquint32/bilingual-patient-intake-fhir) |
+| **HL7 v2.x Infectious Disease Parser** | ORU^R01 parsing, LOINC check-digit validation, located error reporting, 81 tests | [Case study](https://davidquintana.dev/hl7-parser.html) · [Code](https://github.com/dquint32/hl7-infectious-disease-parser) |
+| **Pediatric CDS Dosage Calculator** | Weight-based dosing with a hard stop and 80% caution threshold, bilingual instructions | [Case study](https://davidquintana.dev/pediatric-cds-calculator.html) · [Code](https://github.com/dquint32/bilingual-pediatric-CDS-dosage-calculator) |
+| **FHIR Patient Converter** | US Core Patient mapping with a batch CLI, 53 tests | [Code](https://github.com/dquint32/fhir-patient-converter) |
 
-- Bilingual architecture (English/Spanish)  
-- WCAG 2.1 AA accessibility  
-- Mobile‑first responsive design  
-- Trust‑centered UX for legal, health, and service industries  
-- Community‑oriented content strategy  
+I also build bilingual websites for small businesses through Servicios Quintana LLC — see [web development](https://davidquintana.dev/web-dev.html).
 
----
+## How the site is built
 
-## 👤 About Me
+Plain HTML, CSS, and JavaScript — no framework, no build step — hosted on GitHub Pages.
 
-I’m **David Matthew Quintana**, a bilingual web developer, Colorado Notary Public, and senior student in **Health Care Information Systems** at MSU Denver.
+| Path | Purpose |
+|---|---|
+| `*.html` | One file per page. Every translatable element appears twice, with `data-lang="en"` and `data-lang="es"`. |
+| `styles.css` | Single stylesheet: design tokens, dark (default) and light themes, components. |
+| `main.js` | Language and theme toggles (saved in `localStorage`), mobile menu, screenshot lightbox, back-to-top. |
+| `assets/img/` | WebP images, organized by project. `og-card.png` is the link-preview image. |
+| `sitemap.xml`, `robots.txt`, `404.html`, `favicon.svg` | Search and hosting support files. |
 
-As the founder of **Quintana Notary & Signing**, I understand the real challenges of running a small business. My work combines:
+**Editing text:** change both the `data-lang="en"` and the `data-lang="es"` versions of an element. CSS hides whichever language is inactive.
 
-- Technical clarity  
-- Cultural alignment  
-- Accessible design  
-- Professional trust  
+**Adding a screenshot:** export it as WebP (about 1600 px wide), put it in `assets/img/<project>/`, and give the `<img>` `width`, `height`, `alt`, and `class="zoomable"` so it opens in the lightbox.
 
-My goal is to build websites that are technically solid and emotionally meaningful, especially for bilingual communities.
+**Accessibility:** pages are checked with axe-core (WCAG 2 A/AA) in both languages and themes, at desktop and phone widths.
 
----
+## Contact
 
-## 🧩 Featured Projects
-
-### 🇸🇻 Tienda Salvadoreña — Digital Preservation of a 30‑Year Legacy
-A full digital transformation of Denver’s oldest Salvadoran supermarket.
-
-**Technical Highlights:**  
-- Custom translation engine in Vanilla JS (500+ keys)  
-- Persistent language selection  
-- Nostalgic visuals enhanced with AI  
-
-**Stack:** HTML, CSS Grid/Flexbox, JavaScript  
+[LinkedIn](https://www.linkedin.com/in/quintanadm95) · [GitHub](https://github.com/dquint32) · WhatsApp / phone: 303-500-4122
 
 ---
 
-### 🖋️ Quintana Notary & Signing — Legal Authority & Mobile Conversion
-A live professional platform for bilingual notary services.
-
-**Technical Highlights:**  
-- Mobile‑first design  
-- Persistent contact bar  
-- WCAG 2.1 AA accessibility  
-- SEO optimization  
-
-**Stack:** HTML, CSS, JavaScript (Local Storage), SEO  
+© 2026 Servicios Quintana LLC. David Quintana Dev is a registered trade name of Servicios Quintana LLC. See [LICENSE](LICENSE).
 
 ---
 
-### 🧪 HTML/CSS/JS Practice Exam — Interactive Learning Tool
-A complete exam simulator with 75 questions, instant feedback, and visual analysis.
+## 🇪🇸 En español
 
-**Technical Highlights:**  
-- Advanced state management with arrays  
-- Dynamic DOM manipulation  
-- Regex‑based code detection  
-- 700+ lines of modular JavaScript  
+**Ingeniero de Datos Clínicos · Sistemas de Información de Salud** — https://davidquintana.dev
 
-**Stack:** JavaScript ES6+, HTML5, CSS Grid/Flexbox  
+Construyo pipelines ETL en Python/pandas y herramientas HL7/FHIR que extraen, limpian y validan datos clínicos bajo HIPAA y GCP. Licenciatura en HCIS, MSU Denver (2026). Totalmente bilingüe.
 
----
-
-### 🚗 Ayuda DMV — Community Resource Platform
-A bilingual site offering guidance for vehicle and legal processes.
-
-**Focus:**  
-- Simplified UX  
-- Clear content for users navigating bureaucratic systems  
-
-**Stack:** HTML, CSS  
-
----
-
-## 🛠️ Technical Skills
-
-### **Frontend**
-- Semantic HTML5  
-- CSS3 (Grid, Flexbox, custom properties)  
-- JavaScript ES6+ (DOM API)  
-- Responsive design  
-
-### **Design & Ethics**
-- WCAG 2.1 AA accessibility  
-- Bilingual UX/UI architecture  
-- Mobile‑first methodology  
-- Cultural tone alignment  
-
-### **Tools & Systems**
-- Git / GitHub  
-- Visual Studio Code  
-- Health Information Systems  
-- Legal and notarial standards  
-
----
-
-## 💼 How I Help Businesses
-
-### **Bilingual Local Presence**
-I don’t just translate text — I design experiences that resonate with English‑ and Spanish‑speaking clients.
-
-### **Trust‑Based Design**
-Especially for legal, medical, and professional service industries.
-
-### **Accessible Growth**
-Websites usable by everyone, improving SEO and legal compliance.
-
----
-
-## 📬 Contact
-
-If you have a project in mind or need bilingual consulting, feel free to reach out:
-
-- **LinkedIn:** https://www.linkedin.com/in/quintanadm95  
-- **GitHub:** https://github.com/dquint32  
-- **Phone:** 303‑500‑4122  
-- **Email:** placasfirmas.david@gmail.com  
-
----
-
-© 2025 David Matthew Quintana. All rights reserved.  
-This repository and its contents are not licensed for commercial use or redistribution.
-
----
-
-# 🇪🇸 Versión en Español
-
-# Portafolio de David Matthew Quintana  
-**Desarrollador Web Bilingüe | Creando soluciones prácticas y culturalmente conscientes para pequeños negocios y profesionales**
-
-Este repositorio contiene el código fuente de mi portafolio profesional, donde presento mi trabajo en desarrollo web, accesibilidad, UX bilingüe y soluciones digitales enfocadas en la comunidad. Mi enfoque combina precisión técnica con sensibilidad cultural para crear sitios que son robustos y emocionalmente significativos.
-
----
-
-## 🌐 Sitios bilingües, accesibles y enfocados en resultados
-
-Diseño y construyo plataformas que no solo se ven bien, sino que resuelven problemas reales.  
-Me especializo en:
-
-- Arquitectura bilingüe (inglés/español)  
-- Accesibilidad WCAG 2.1 AA  
-- Diseño adaptable mobile‑first  
-- UX basada en confianza para sectores legales, de salud y servicios  
-- Estrategia de contenido orientada a la comunidad  
-
----
-
-## 👤 Sobre mí
-
-Soy **David Matthew Quintana**, desarrollador web bilingüe, Notario Público en Colorado y estudiante de último año en **Health Care Information Systems** en MSU Denver.
-
-Como fundador de **Quintana Notaría y Firmas**, entiendo los retos reales de administrar un pequeño negocio. Mi trabajo combina:
-
-- Claridad técnica  
-- Alineación cultural  
-- Diseño accesible  
-- Confianza profesional  
-
-Mi objetivo es crear sitios que sean técnicamente sólidos y emocionalmente resonantes, especialmente para comunidades bilingües.
-
----
-
-## 🧩 Proyectos Destacados
-
-### 🇸🇻 Tienda Salvadoreña — Preservación Digital de un Legado de 30 Años
-Digitalización completa del supermercado salvadoreño más antiguo de Denver.
-
-**Logros técnicos:**  
-- Motor de traducción en Vanilla JS (500+ claves)  
-- Persistencia de idioma  
-- Visuales nostálgicos mejorados con IA  
-
-**Stack:** HTML, CSS Grid/Flexbox, JavaScript  
-
----
-
-### 🖋️ Quintana Notary & Signing — Autoridad Legal y Conversión Móvil
-Plataforma profesional activa para servicios notariales bilingües.
-
-**Logros técnicos:**  
-- Diseño mobile‑first  
-- Barra de contacto persistente  
-- Accesibilidad WCAG 2.1 AA  
-- Optimización SEO  
-
-**Stack:** HTML, CSS, JavaScript (Local Storage), SEO  
-
----
-
-### 🧪 Examen de Práctica HTML/CSS/JS — Herramienta Interactiva Educativa
-Simulador de examen con 75 preguntas, retroalimentación instantánea y análisis visual.
-
-**Logros técnicos:**  
-- Gestión avanzada de estado con arrays  
-- Manipulación dinámica del DOM  
-- Detección de código con regex  
-- 700+ líneas de JavaScript modular  
-
-**Stack:** JavaScript ES6+, HTML5, CSS Grid/Flexbox  
-
----
-
-### 🚗 Ayuda DMV — Plataforma Comunitaria de Recursos
-Sitio bilingüe con orientación para trámites vehiculares y legales.
-
-**Enfoque:**  
-- UX simplificada  
-- Contenido claro para usuarios que navegan procesos burocráticos  
-
-**Stack:** HTML, CSS  
-
----
-
-## 🛠️ Habilidades Técnicas
-
-### **Frontend**
-- HTML5 semántico  
-- CSS3 (Grid, Flexbox, variables personalizadas)  
-- JavaScript ES6+ (DOM API)  
-- Diseño adaptable  
-
-### **Diseño y Ética**
-- Accesibilidad WCAG 2.1 AA  
-- Arquitectura UX/UI bilingüe  
-- Metodología mobile‑first  
-- Alineación de tono cultural  
-
-### **Herramientas y Sistemas**
-- Git / GitHub  
-- Visual Studio Code  
-- Sistemas de Información en Salud  
-- Estándares legales y notariales  
-
----
-
-## 💼 Cómo puedo ayudar a tu negocio
-
-### **Presencia Local Bilingüe**
-No solo traduzco texto; diseño experiencias que conectan con clientes que hablan inglés y español.
-
-### **Diseño Basado en Confianza**
-Especialmente para negocios legales, médicos y profesionales.
-
-### **Crecimiento Accesible**
-Sitios usables para todos, mejor SEO y cumplimiento legal.
-
----
-
-## 📬 Contacto
-
-Si tienes un proyecto en mente o necesitas asesoría bilingüe, puedes comunicarte conmigo:
-
-- **LinkedIn:** https://www.linkedin.com/in/quintanadm95  
-- **GitHub:** https://github.com/dquint32  
-- **Teléfono:** 303‑500‑4122  
-- **Correo:** placasfirmas.david@gmail.com  
-
----
-
-© 2025 David Matthew Quintana. Todos los derechos reservados.  
-Este repositorio y su contenido no están licenciados para uso comercial o redistribución.
+El sitio es HTML, CSS y JavaScript sin frameworks ni paso de compilación, publicado en GitHub Pages. Cada texto existe dos veces (`data-lang="en"` y `data-lang="es"`); al editar, cambia ambas versiones.

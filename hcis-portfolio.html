@@ -2,679 +2,206 @@
 <html lang="en" data-language="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HCIS Portfolio | David Matthew Quintana</title>
-  <meta name="description" content="Healthcare Information Systems Portfolio - David Quintana | Senior HCIS Student & Bilingual Developer specializing in FHIR, HL7, and clinical workflow optimization">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Work | David Quintana — Clinical Data &amp; HL7/FHIR Projects</title>
+  <meta name="description" content="Clinical data engineering portfolio: a clinical-trial ETL pipeline, a FHIR R4 intake service, an HL7 v2 lab-message parser, and a pediatric CDS dosage calculator.">
+  <link rel="canonical" href="https://davidquintana.dev/hcis-portfolio.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="David Quintana">
+  <meta property="og:title" content="Work | David Quintana — Clinical Data &amp; HL7/FHIR Projects">
+  <meta property="og:description" content="Clinical data engineering portfolio: a clinical-trial ETL pipeline, a FHIR R4 intake service, an HL7 v2 lab-message parser, and a pediatric CDS dosage calculator.">
+  <meta property="og:url" content="https://davidquintana.dev/hcis-portfolio.html">
+  <meta property="og:image" content="https://davidquintana.dev/assets/img/og-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0d0d0d">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap">
   <script>
     (function () {
       try {
         var d = document.documentElement;
         var lang = localStorage.getItem('preferred-language');
-        if (lang) { d.setAttribute('data-language', lang); d.setAttribute('lang', lang); }
+        if (lang === 'en' || lang === 'es') { d.setAttribute('data-language', lang); d.setAttribute('lang', lang); }
         var theme = localStorage.getItem('preferred-theme');
-        if (theme) { d.setAttribute('data-theme', theme); }
-      } catch (e) { /* localStorage unavailable — defaults render */ }
+        if (theme === 'light' || theme === 'dark') { d.setAttribute('data-theme', theme); }
+      } catch (e) { /* storage unavailable: defaults apply */ }
     })();
   </script>
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="hcis-portfolio-images.css">
 </head>
-<body class="case-study-page hcis-portfolio-page" data-language="en">
-  <a href="#main-content" class="skip-link">Skip to main content</a>
-
-  <div class="logo-background" aria-hidden="true">
-    <div class="bg-logo">DQ</div>
-  </div>
-
-  <button class="theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false" title="Toggle theme">
-    <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-    <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
-  </button>
-
-  <button id="back-to-top" class="back-to-top-btn" aria-label="Back to top">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="18 15 12 9 6 15"></polyline>
-    </svg>
-  </button>
-
-  <button class="floating-toggle" type="button" aria-label="Toggle language">
-    <span data-lang="en">EN</span>
-    <span data-lang="es" class="inactive">ES</span>
-  </button>
-
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <h1>
-          <a href="index.html">David Matthew Quintana</a>
-        </h1>
-        <p class="tagline">Clinical Data Engineer · HCIS | Python/pandas ETL, data integrity, HL7/FHIR &amp; HIPAA/GCP compliance</p>
-      </div>
-      <nav class="nav" aria-label="Primary">
-        <ul>
-          <li><a href="index.html"><span lang-block data-lang="en">Home</span><span lang-block data-lang="es">Inicio</span></a></li>
-          <li><a href="hcis-portfolio.html" class="active"><span lang-block data-lang="en">Work</span><span lang-block data-lang="es">Trabajo</span></a></li>
-          <li><a href="eva-ctms-case-study.html"><span lang-block data-lang="en">EVA Case Study</span><span lang-block data-lang="es">Estudio EVA</span></a></li>
-          <li><a href="index.html#about"><span lang-block data-lang="en">About</span><span lang-block data-lang="es">Sobre mí</span></a></li>
-          <li><a href="index.html#contact" class="cta"><span lang-block data-lang="en">Contact</span><span lang-block data-lang="es">Contacto</span></a></li>
-        </ul>
-      </nav>
+<body>
+<a class="skip-link" href="#main"><span data-lang="en">Skip to main content</span><span data-lang="es" lang="es">Saltar al contenido principal</span></a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="David Quintana, home">
+      <span class="brand-mark" aria-hidden="true">DQ</span>
+      <span class="brand-text"><span class="brand-name">David Quintana</span><span class="brand-role"><span data-lang="en">Clinical Data Engineer · HCIS</span><span data-lang="es" lang="es">Ingeniero de Datos Clínicos · HCIS</span></span></span>
+    </a>
+    <nav id="site-nav" class="site-nav" aria-label="Primary">
+      <ul class="nav-list">
+        <li><a href="hcis-portfolio.html" aria-current="page"><span data-lang="en">Work</span><span data-lang="es" lang="es">Trabajo</span></a></li>
+        <li><a href="eva-ctms-case-study.html"><span data-lang="en">EVA case study</span><span data-lang="es" lang="es">Caso EVA</span></a></li>
+        <li><a href="index.html#about"><span data-lang="en">About</span><span data-lang="es" lang="es">Sobre mí</span></a></li>
+        <li><a href="resume.pdf" target="_blank" rel="noopener"><span data-lang="en">Résumé</span><span data-lang="es" lang="es">Currículum</span></a></li>
+        <li><a class="nav-cta" href="index.html#contact"><span data-lang="en">Contact</span><span data-lang="es" lang="es">Contacto</span></a></li>
+      </ul>
+    </nav>
+    <div class="header-tools">
+      <button class="lang-switch" type="button" aria-label="Cambiar a español"><span class="opt opt-en">EN</span><span class="opt opt-es">ES</span></button>
+      <button class="icon-btn theme-toggle" type="button" aria-pressed="false" aria-label="Switch to light theme"><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></button>
+      <button class="icon-btn menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     </div>
-  </header>
-  <main id="main-content">
-    <section id="top" class="section-spacing" aria-labelledby="hero-title">
-      <div class="container hero">
-        <div class="hero-left">
-          <h2 id="hero-title">David M. Quintana</h2>
-          
-          <div lang-block data-lang="en">
-            <p style="font-size: 1.25rem; font-weight: 600; color: var(--cyber-orange); margin-bottom: 1rem;">
-              Regulatory &amp; Clinical Research Compliance | HCIS
-            </p>
-            <p style="font-size: 1.125rem; line-height: 1.7; margin-bottom: 1.5rem;">
-              Protecting the integrity of clinical data — from HL7 message to audit‑ready record.
-            </p>
-            <p style="font-size: 1rem; line-height: 1.7; opacity: 0.9;">
-              I engineer standards‑based, bilingual healthcare tools that transform raw clinical data into structured, interoperable, and audit‑ready information. My focus: HL7/FHIR interoperability, data‑integrity validation, clinical safety guardrails, and human‑subjects protection under GCP and HIPAA.
-            </p>
-          </div>
-
-          <div class="project-links" style="margin-top: 1.5rem; gap: 1rem;">
-            <a href="https://github.com/dquint32" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size: 0.9rem; padding: 0.5rem 1.1rem;">GitHub</a>
-            <a href="https://www.linkedin.com/in/quintanadm95" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size: 0.9rem; padding: 0.5rem 1.1rem;">LinkedIn</a>
-            <a href="mailto:david@quintanadev.com" class="btn btn-secondary" style="font-size: 0.9rem; padding: 0.5rem 1.1rem;">Email</a>
-          </div>
-
-          <div lang-block data-lang="es">
-            <p style="font-size: 1.25rem; font-weight: 600; color: var(--cyber-orange); margin-bottom: 1rem;">
-              Cumplimiento Regulatorio y de Investigación Clínica | HCIS
-            </p>
-            <p style="font-size: 1.125rem; line-height: 1.7; margin-bottom: 1.5rem;">
-              Protegiendo la integridad de los datos clínicos — desde el mensaje HL7 hasta el registro listo para auditoría.
-            </p>
-            <p style="font-size: 1rem; line-height: 1.7; opacity: 0.9;">
-              Diseño herramientas de salud bilingües basadas en estándares que transforman datos clínicos sin procesar en información estructurada, interoperable y lista para auditoría. Mi enfoque: interoperabilidad HL7/FHIR, validación de integridad de datos, protecciones de seguridad clínica y protección de sujetos humanos bajo GCP y HIPAA.
-            </p>
-          </div>
-        </div>
-
-        <div class="hero-right">
-          <div class="hcis-profile-container">
-            <img
-              src="profile.png"
-              alt="Portrait of David Matthew Quintana"
-              class="profile-photo"
-            />
-          </div>
-          <div class="hcis-logo-container">
-            <a href="https://www.msudenver.edu/" target="_blank" rel="noopener noreferrer">
-              <img src="msud-logo.png" alt="MSU Denver Logo" class="hcis-university-logo">
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects" class="section-spacing">
-      <div class="container">
-        <h3 style="text-align: center; margin-bottom: 0.5rem;" lang-block data-lang="en">🏆 Featured HCIS Projects</h3>
-        <h3 style="text-align: center; margin-bottom: 0.5rem;" lang-block data-lang="es">🏆 Proyectos HCIS Destacados</h3>
-        
-        <p style="text-align: center; font-size: 1.125rem; margin-bottom: 3rem; opacity: 0.85;" lang-block data-lang="en">Full‑stack architectures demonstrating clinical data exchange and safety logic.</p>
-        <p style="text-align: center; font-size: 1.125rem; margin-bottom: 3rem; opacity: 0.85;" lang-block data-lang="es">Arquitecturas full-stack con integración profunda de estándares clínicos.</p>
-
-        <article class="project-card">
-          <div class="project-number">01</div>
-          <h4 class="project-title" lang-block data-lang="en">EVA CTMS Archive — Clinical Data ETL Pipeline</h4>
-          <h4 class="project-title" lang-block data-lang="es">Archivo EVA CTMS — Pipeline ETL de Datos Clínicos</h4>
-
-          <div class="project-links" style="margin-top: 1rem;">
-            <a href="eva-ctms-case-study.html" class="btn btn-primary" style="font-size: 0.9rem; padding: 0.5rem 1rem;">
-              <span lang-block data-lang="en">→ View Full Case Study</span>
-              <span lang-block data-lang="es">→ Ver Estudio de Caso Completo</span>
-            </a>
-          </div>
-
-          <div class="project-details" style="margin-top: 1.5rem;">
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en">The Problem</h5>
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">El Problema</h5>
-            <p style="margin-bottom: 1.5rem; line-height: 1.7;" lang-block data-lang="en">A decommissioned Clinical Trial Management System left ~9,925 documents in inconsistently named folders, plus a separate 6,830-record patient database — with no archive structure. Everything had to be understood, cleaned, and validated before migration, without ever exposing patient data to an external AI or cloud service.</p>
-            <p style="margin-bottom: 1.5rem; line-height: 1.7;" lang-block data-lang="es">Un Sistema de Gestión de Ensayos Clínicos desmantelado dejó ~9,925 documentos en carpetas con nombres inconsistentes, más una base de datos de 6,830 pacientes — sin estructura de archivo. Todo debía entenderse, limpiarse y validarse antes de migrar, sin exponer nunca datos de pacientes a una IA o nube externa.</p>
-
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en">The Action</h5>
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">La Acción</h5>
-            <p style="margin-bottom: 1.5rem; line-height: 1.7;" lang-block data-lang="en">I built a 10-stage local Python ETL pipeline: capture raw structure, crawl and classify every document, build a patient roster, clean the patient database, cross-validate documents against patients, generate a SharePoint build plan, and tag by study and deviation. The validation stage cross-checks each document's extracted patient ID against the real database.</p>
-            <p style="margin-bottom: 1.5rem; line-height: 1.7;" lang-block data-lang="es">Construí un pipeline ETL local de 10 etapas en Python: capturar la estructura, rastrear y clasificar cada documento, construir un registro de pacientes, limpiar la base de datos, validar los documentos contra los pacientes, generar un plan de SharePoint y etiquetar por estudio y desviación. La etapa de validación coteja el ID extraído de cada documento contra la base de datos real.</p>
-
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en">Tech Stack</h5>
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">Tecnologías</h5>
-            <p style="margin-bottom: 1.5rem; line-height: 1.7; font-family: 'JetBrains Mono', monospace; font-size: 0.95rem;">Python (pandas, openpyxl), Regex, JSON/YAML config, python-docx, SharePoint</p>
-
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en">Workflow</h5>
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">Flujo de Trabajo</h5>
-            <pre style="background: rgba(255, 107, 0, 0.05); border-left: 3px solid var(--cyber-orange); padding: 1rem; margin-bottom: 1.5rem; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; line-height: 1.6;" lang-block data-lang="en">Raw logs + patient DB → Clean &amp; classify → Cross-validate → SharePoint archive</pre>
-            <pre style="background: rgba(255, 107, 0, 0.05); border-left: 3px solid var(--cyber-orange); padding: 1rem; margin-bottom: 1.5rem; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; line-height: 1.6;" lang-block data-lang="es">Logs + base de datos → Limpiar y clasificar → Validar → Archivo SharePoint</pre>
-
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en">The Impact</h5>
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">Impacto</h5>
-            <ul style="margin-bottom: 1.5rem; line-height: 1.7; padding-left: 1.5rem;" lang-block data-lang="en">
-              <li><strong>Data integrity:</strong> caught 1,791 documents (18%) whose filename patient IDs matched no real patient — before migration, not after.</li>
-              <li><strong>Compliance:</strong> all processing local; PHI masked in every log; no patient data exposed to AI or cloud.</li>
-              <li><strong>Usability:</strong> delivered a searchable SharePoint archive with Patient Lookup and Deviation views staff had asked for.</li>
-            </ul>
-            <ul style="margin-bottom: 1.5rem; line-height: 1.7; padding-left: 1.5rem;" lang-block data-lang="es">
-              <li><strong>Integridad de datos:</strong> detectó 1,791 documentos (18%) cuyos IDs de nombre no coincidían con ningún paciente real — antes de migrar, no después.</li>
-              <li><strong>Cumplimiento:</strong> todo el procesamiento local; PHI enmascarado en cada registro; sin exponer datos a IA o nube.</li>
-              <li><strong>Usabilidad:</strong> un archivo SharePoint consultable con vistas de Búsqueda de Paciente y Desviaciones que el personal pedía.</li>
-            </ul>
-
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en">What This Demonstrates</h5>
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">Lo que esto Demuestra</h5>
-            <p style="line-height: 1.7;" lang-block data-lang="en">End-to-end ETL on messy, real-world clinical data — with validation that catches errors before they propagate, compliance built in by design, and a reproducible, documented, schema-driven pipeline.</p>
-            <p style="line-height: 1.7;" lang-block data-lang="es">ETL de extremo a extremo sobre datos clínicos reales y desordenados — con validación que detecta errores antes de que se propaguen, cumplimiento por diseño y un pipeline reproducible, documentado y guiado por esquema.</p>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-number">02</div>
-          <h4 class="project-title" lang-block data-lang="en">i18n Patient Intake & FHIR Resource Generator</h4>
-          <h4 class="project-title" lang-block data-lang="es">Admisión de Pacientes Bilingüe (FHIR)</h4>
-          
-          <div class="project-links" style="margin-top: 1rem;">
-            <a href="https://dquint32.github.io/bilingual-patient-intake-fhir/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size: 0.9rem; padding: 0.5rem 1rem;">
-              <span lang-block data-lang="en">Live Demo</span>
-              <span lang-block data-lang="es">Demo en Vivo</span>
-            </a>
-            <a href="intake-web-app.html" class="btn btn-primary" style="font-size: 0.9rem; padding: 0.5rem 1rem;">
-              <span lang-block data-lang="en">→ View Full Case Study</span>
-              <span lang-block data-lang="es">→ Ver Estudio de Caso Completo</span>
-            </a>
-          </div>
-
-          <figure class="hcis-project-screenshot-container">
-            <img 
-              src="patient-intake-fhir-screenshot.png" 
-              alt="Screenshot of Bilingual Patient Intake FHIR Application"
-              class="project-img clickable-img hcis-project-screenshot"
-            />
-          </figure>
-          
-          <div class="project-details" style="margin-top: 1.5rem;">
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en">The Problem</h5>
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">El Problema</h5>
-            
-            <p style="margin-bottom: 1.5rem; line-height: 1.7;" lang-block data-lang="en">
-              Language barriers during intake lead to "dirty data" and incomplete clinical histories. Standardizing this data into a format EHRs can actually read (FHIR) is often a manual, error-prone hurdle.
-            </p>
-            <p style="margin-bottom: 1.5rem; line-height: 1.7;" lang-block data-lang="es">
-              Las barreras lingüísticas en la admisión provocan historiales clínicos incompletos y errores demográficos, mientras que la entrada manual de datos crea agotamiento administrativo y silos de información.
-            </p>
-
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en">The Action</h5>
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">La Acción</h5>
-            
-            <p style="margin-bottom: 1.5rem; line-height: 1.7;" lang-block data-lang="en">
-              I engineered a full‑stack application with an i18n‑enabled frontend (English/Spanish). The system captures Patient‑Generated Health Data (PGHD) and uses a FastAPI backend to map raw inputs into validated HL7 FHIR R4 Patient and Observation resources.
-            </p>
-            <p style="margin-bottom: 1.5rem; line-height: 1.7;" lang-block data-lang="es">
-              Un sistema full-stack con alternancia inglés/español en tiempo real. El frontend captura Datos de Salud Generados por Pacientes (PGHD), que un backend FastAPI mapea a recursos HL7 FHIR R4 de Paciente y Observación para interoperabilidad nativa con EHR.
-            </p>
-
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en">Tech Stack</h5>
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">Tecnologías</h5>
-            
-            <p style="margin-bottom: 1.5rem; line-height: 1.7; font-family: 'JetBrains Mono', monospace; font-size: 0.95rem;">
-              Python (FastAPI), JavaScript (ES6+), Pydantic Models, HL7 FHIR R4, JSON Schema Validation
-            </p>
-
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en">Workflow</h5>
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">Flujo de Trabajo</h5>
-            
-            <pre style="background: rgba(255, 107, 0, 0.05); border-left: 3px solid var(--cyber-orange); padding: 1rem; margin-bottom: 1.5rem; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; line-height: 1.6;" lang-block data-lang="en">Patient → Bilingual Intake Form → FastAPI Validation → FHIR Mapping → JSON Output → EHR Integration</pre>
-            <pre style="background: rgba(255, 107, 0, 0.05); border-left: 3px solid var(--cyber-orange); padding: 1rem; margin-bottom: 1.5rem; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; line-height: 1.6;" lang-block data-lang="es">Paciente → Formulario Bilingüe → Validación FastAPI → Mapeo FHIR → Salida JSON → Integración EHR</pre>
-
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en">The Impact</h5>
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">Impacto Clínico</h5>
-            
-            <ul style="margin-bottom: 1.5rem; line-height: 1.7; padding-left: 1.5rem;" lang-block data-lang="en">
-              <li><strong>Interoperability:</strong> Produces production‑ready JSON payloads for native EHR integration.</li>
-              <li><strong>Health Equity:</strong> Empowers Spanish‑speaking patients to provide history in their primary language without data loss.</li>
-              <li><strong>Data Integrity:</strong> Implements strict Pydantic schema validation to eliminate malformed clinical data at the source.</li>
-            </ul>
-            <ul style="margin-bottom: 1.5rem; line-height: 1.7; padding-left: 1.5rem;" lang-block data-lang="es">
-              <li><strong>Interoperabilidad:</strong> Genera JSON compatible con FHIR en el punto de atención</li>
-              <li><strong>Equidad en Salud:</strong> Permite a pacientes hispanohablantes proporcionar su historial en su idioma principal</li>
-              <li><strong>Flujo de Trabajo:</strong> Reduce errores administrativos y tiempo de reingreso de datos</li>
-            </ul>
-
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en">Security & Privacy</h5>
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">Seguridad y Privacidad</h5>
-            
-            <p style="margin-bottom: 1.5rem; line-height: 1.7;" lang-block data-lang="en">
-              Stateless architecture; no PHI stored.
-            </p>
-            <p style="margin-bottom: 1.5rem; line-height: 1.7;" lang-block data-lang="es">
-              Arquitectura sin estado; no se almacena PHI.
-            </p>
-
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en">Representative File Structure</h5>
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">Estructura de Archivos Representativa</h5>
-            
-            <pre style="background: #0a0a0a; border: 1px solid rgba(255, 107, 0, 0.3); padding: 1.25rem; margin-bottom: 1.5rem; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; line-height: 1.6; color: #e0e0e0;">bilingual-patient-intake-fhir/
-│── .gitignore
-│── LICENSE
-│── README.md
-│── index.html
-│
-├── backend/
-│   ├── app.py           <span style="color: var(--cyber-orange);" lang-block data-lang="en"># FastAPI logic & FHIR mapping</span><span style="color: var(--cyber-orange);" lang-block data-lang="es"># Lógica FastAPI y mapeo FHIR</span>
-│   ├── requirements.txt
-│   └── __pycache__/
-│
-└── static/
-    ├── css/
-    └── js/              <span style="color: var(--cyber-orange);" lang-block data-lang="en"># i18n and frontend validation</span><span style="color: var(--cyber-orange);" lang-block data-lang="es"># i18n y validación frontend</span></pre>
-
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en">What This Demonstrates</h5>
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">Lo que esto Demuestra</h5>
-            
-            <p style="line-height: 1.7;" lang-block data-lang="en">
-              Applied evidence of clinical data‑integrity engineering — enforcing HL7 FHIR R4 conformance, validating patient‑generated data at the source, and producing interoperable, audit‑ready records under a privacy‑by‑design (no‑PHI) architecture.
-            </p>
-            <p style="line-height: 1.7;" lang-block data-lang="es">
-              Evidencia aplicada de ingeniería de integridad de datos clínicos — conformidad con HL7 FHIR R4, validación de los datos del paciente en el origen y generación de registros interoperables y listos para auditoría bajo una arquitectura centrada en la privacidad (sin PHI).
-            </p>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-number">03</div>
-          <h4 class="project-title" lang-block data-lang="en">HL7 v2.x Infectious Disease & LOINC Parser</h4>
-          <h4 class="project-title" lang-block data-lang="es">Analizador de Enfermedades Infecciosas HL7</h4>
-          
-          <div class="project-links" style="margin-top: 1rem;">
-            <a href="https://dquint32.github.io/hl7-infectious-disease-parser/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size: 0.9rem; padding: 0.5rem 1rem;">
-              <span lang-block data-lang="en">Live Demo</span>
-              <span lang-block data-lang="es">Demo en Vivo</span>
-            </a>
-            <a href="hl7-parser.html" class="btn btn-primary" style="font-size: 0.9rem; padding: 0.5rem 1rem;">
-              <span lang-block data-lang="en">→ View Full Case Study</span>
-              <span lang-block data-lang="es">→ Ver Estudio de Caso Completo</span>
-            </a>
-          </div>
-
-          <figure class="hcis-project-screenshot-container">
-            <img 
-              src="hl7infectiuosparser-screenshot.png" 
-              alt="Screenshot of HL7 Infectious Disease Parser Application"
-              class="project-img clickable-img hcis-project-screenshot"
-            />
-          </figure>
-          
-          <div class="project-details" style="margin-top: 1.5rem;">
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en">The Problem</h5>
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">El Problema</h5>
-
-            <p style="margin-bottom: 1.5rem; line-height: 1.7;" lang-block data-lang="en">
-              Legacy HL7 v2.x messages are "black boxes" for many public health teams, requiring manual interpretation during time‑sensitive outbreaks.
-            </p>
-            <p style="margin-bottom: 1.5rem; line-height: 1.7;" lang-block data-lang="es">
-              Los mensajes heredados HL7 v2.x son "cajas negras" para muchos equipos de salud pública, requiriendo interpretación manual durante brotes sensibles al tiempo.
-            </p>
-
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en">The Action</h5>
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">La Acción</h5>
-
-            <p style="margin-bottom: 1.5rem; line-height: 1.7;" lang-block data-lang="en">
-              Built a specialized parsing engine to process ORU (Observation Result) messages. I utilized Regex‑based extraction and hl7apy to isolate PID and OBX segments, then integrated a LOINC dictionary to validate test codes and flag abnormal findings.
-            </p>
-            <p style="margin-bottom: 1.5rem; line-height: 1.7;" lang-block data-lang="es">
-              Un motor de análisis especializado para mensajes ORU (Resultados de Observación). Extrae segmentos PID y OBX, valida códigos LOINC y marca hallazgos anormales para enfermedades infecciosas de alta prioridad.
-            </p>
-
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en">Tech Stack</h5>
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">Tecnologías</h5>
-            
-            <p style="margin-bottom: 1.5rem; line-height: 1.7; font-family: 'JetBrains Mono', monospace; font-size: 0.95rem;">
-              JavaScript (Regex Engine), Python (hl7apy), LOINC Dictionary Integration
-            </p>
-
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en">Workflow</h5>
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">Flujo de Trabajo</h5>
-            
-            <pre style="background: rgba(255, 107, 0, 0.05); border-left: 3px solid var(--cyber-orange); padding: 1rem; margin-bottom: 1.5rem; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; line-height: 1.6;" lang-block data-lang="en">Lab System → HL7 Segments → Regex Extraction → LOINC Validation → Clinical Summary</pre>
-            <pre style="background: rgba(255, 107, 0, 0.05); border-left: 3px solid var(--cyber-orange); padding: 1rem; margin-bottom: 1.5rem; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; line-height: 1.6;" lang-block data-lang="es">Sistema de Laboratorio → Segmentos HL7 → Extracción Regex → Validación LOINC → Resumen Clínico</pre>
-
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en">The Impact</h5>
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">Impacto Clínico</h5>
-
-            <ul style="margin-bottom: 1.5rem; line-height: 1.7; padding-left: 1.5rem;" lang-block data-lang="en">
-              <li><strong>Surveillance:</strong> Accelerates the triage of positive lab results for public health reporting.</li>
-              <li><strong>Normalization:</strong> Converts non‑standard lab strings into standardized LOINC/SNOMED‑CT terminology.</li>
-              <li><strong>Resilience:</strong> Includes a synthetic test suite to ensure the parser handles "broken" or edge‑case legacy messages.</li>
-            </ul>
-            <ul style="margin-bottom: 1.5rem; line-height: 1.7; padding-left: 1.5rem;" lang-block data-lang="es">
-              <li><strong>Vigilancia:</strong> Acelera el triaje de resultados de laboratorio positivos</li>
-              <li><strong>Precisión:</strong> Normaliza datos usando terminología LOINC estandarizada</li>
-              <li><strong>Robustez:</strong> Maneja mensajes malformados con elegancia</li>
-            </ul>
-
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en">Security & Privacy</h5>
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">Seguridad y Privacidad</h5>
-
-            <p style="margin-bottom: 1.5rem; line-height: 1.7;" lang-block data-lang="en">
-              Processes only synthetic HL7 messages.
-            </p>
-            <p style="margin-bottom: 1.5rem; line-height: 1.7;" lang-block data-lang="es">
-              Procesa únicamente mensajes HL7 sintéticos.
-            </p>
-
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en">Representative File Structure</h5>
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">Estructura de Archivos Representativa</h5>
-
-            <pre style="background: #0a0a0a; border: 1px solid rgba(255, 107, 0, 0.3); padding: 1.25rem; margin-bottom: 1.5rem; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; line-height: 1.6; color: #e0e0e0;">hl7-infectious-disease-parser/
-│── LICENSE
-│── README.md
-│── index.html
-│── parser.py         <span style="color: var(--cyber-orange);" lang-block data-lang="en"># Regex-based extraction & LOINC validation</span><span style="color: var(--cyber-orange);" lang-block data-lang="es"># Extracción Regex y validación LOINC</span>
-│── script.js         <span style="color: var(--cyber-orange);" lang-block data-lang="en"># UI rendering for clinical summaries</span><span style="color: var(--cyber-orange);" lang-block data-lang="es"># Renderizado UI para resúmenes clínicos</span>
-│── style.css
-│
-└── hl-samples/       <span style="color: var(--cyber-orange);" lang-block data-lang="en"># Synthetic test suite</span><span style="color: var(--cyber-orange);" lang-block data-lang="es"># Suite de pruebas sintéticas</span>
-    ├── adt_a01.txt
-    ├── adt_a03.txt
-    ├── broken_oru.txt
-    ├── covid_oru.txt
-    ├── flu_oru.txt
-    └── hiv_oru.txt</pre>
-
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en">What This Demonstrates</h5>
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">Lo que esto Demuestra</h5>
-
-            <p style="line-height: 1.7;" lang-block data-lang="en">
-              Applied evidence of standards‑based normalization and validation — converting legacy HL7 v2.x into LOINC/SNOMED‑CT‑coded records with defensible, testable logic that supports audit‑ready public‑health surveillance reporting.
-            </p>
-            <p style="line-height: 1.7;" lang-block data-lang="es">
-              Evidencia aplicada de normalización y validación basada en estándares — conversión de HL7 v2.x heredado en registros codificados con LOINC/SNOMED‑CT mediante una lógica defendible y verificable que respalda informes de vigilancia de salud pública listos para auditoría.
-            </p>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-number">04</div>
-          <h4 class="project-title" lang-block data-lang="en">Bilingual Pediatric CDS Dosage Calculator</h4>
-          <h4 class="project-title" lang-block data-lang="es">Calculadora de Dosis Pediátrica CDS Bilingüe</h4>
-          
-          <div class="project-links" style="margin-top: 1rem;">
-            <a href="https://dquint32.github.io/bilingual-pediatric-CDS-dosage-calculator/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size: 0.9rem; padding: 0.5rem 1rem;">
-              <span lang-block data-lang="en">Live Demo</span>
-              <span lang-block data-lang="es">Demo en Vivo</span>
-            </a>
-            <a href="pediatric-cds-calculator.html" class="btn btn-primary" style="font-size: 0.9rem; padding: 0.5rem 1rem;">
-              <span lang-block data-lang="en">→ View Full Case Study</span>
-              <span lang-block data-lang="es">→ Ver Estudio de Caso Completo</span>
-            </a>
-          </div>
-
-          <figure class="hcis-project-screenshot-container">
-            <img 
-              src="pediatric-calculator-screenshot.png" 
-              alt="Screenshot of Bilingual Pediatric CDS Dosage Calculator"
-              class="project-img clickable-img hcis-project-screenshot"
-            />
-          </figure>
-          
-          <div class="project-details" style="margin-top: 1.5rem;">
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en">The Problem</h5>
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">El Problema</h5>
-
-            <p style="margin-bottom: 1.5rem; line-height: 1.7;" lang-block data-lang="en">
-              Pediatric dosing errors are "Never Events" in clinical safety. Communication gaps with non‑English speaking caregivers significantly increase outpatient medication risks.
-            </p>
-            <p style="margin-bottom: 1.5rem; line-height: 1.7;" lang-block data-lang="es">
-              Los errores de dosificación pediátrica son eventos centinela de alto riesgo. Las brechas de comunicación con cuidadores hispanohablantes aumentan los riesgos de medicación ambulatoria.
-            </p>
-
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en">The Action</h5>
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">La Acción</h5>
-
-            <p style="margin-bottom: 1.5rem; line-height: 1.7;" lang-block data-lang="en">
-              Developed a Clinical Decision Support (CDS) tool with built‑in safety guardrails. I implemented weight‑based dose caps and an 80% maximum‑dose caution threshold. The system uses JSON Localization (L10n) to generate precise, bilingual instructions for caregivers.
-            </p>
-            <p style="margin-bottom: 1.5rem; line-height: 1.7;" lang-block data-lang="es">
-              Una herramienta de Soporte a la Decisión Clínica (CDS) que impone límites estrictos basados en peso y genera instrucciones bilingües para los cuidadores.
-            </p>
-
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en">Tech Stack</h5>
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">Tecnologías</h5>
-
-            <p style="margin-bottom: 1.5rem; line-height: 1.7; font-family: 'JetBrains Mono', monospace; font-size: 0.95rem;">
-              Python (FastAPI), JavaScript (ES6+), Pydantic Models, JSON Localization
-            </p>
-
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en">Workflow</h5>
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">Flujo de Trabajo</h5>
-            
-            <pre style="background: rgba(255, 107, 0, 0.05); border-left: 3px solid var(--cyber-orange); padding: 1rem; margin-bottom: 1.5rem; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; line-height: 1.6;" lang-block data-lang="en">Patient Input → Safety Validation → Dose Calculation → Bilingual Instructions</pre>
-            <pre style="background: rgba(255, 107, 0, 0.05); border-left: 3px solid var(--cyber-orange); padding: 1rem; margin-bottom: 1.5rem; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; line-height: 1.6;" lang-block data-lang="es">Entrada del Paciente → Validación de Seguridad → Cálculo de Dosis → Instrucciones Bilingües</pre>
-
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en">The Impact</h5>
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">Impacto Clínico</h5>
-
-            <ul style="margin-bottom: 1.5rem; line-height: 1.7; padding-left: 1.5rem;" lang-block data-lang="en">
-              <li><strong>Clinical Safety:</strong> Rejects physiologically impossible weights and caps doses to prevent sentinel events.</li>
-              <li><strong>Caregiver Adherence:</strong> Reduces "lost‑in‑translation" errors by providing native‑language instructions for complex liquid dosing.</li>
-              <li><strong>Technical Precision:</strong> Demonstrates a stateless architecture capable of being embedded into larger clinical workflows.</li>
-            </ul>
-            <ul style="margin-bottom: 1.5rem; line-height: 1.7; padding-left: 1.5rem;" lang-block data-lang="es">
-              <li><strong>Prevención de Eventos Centinela:</strong> Rechaza pesos poco realistas y limita dosis</li>
-              <li><strong>UI de Seguridad:</strong> Implementa un umbral de precaución del 80%</li>
-              <li><strong>Seguridad Bilingüe:</strong> Reduce la confusión del cuidador</li>
-            </ul>
-
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en">Security & Privacy</h5>
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">Seguridad y Privacidad</h5>
-
-            <p style="margin-bottom: 1.5rem; line-height: 1.7;" lang-block data-lang="en">
-              Stateless; no PHI stored.
-            </p>
-            <p style="margin-bottom: 1.5rem; line-height: 1.7;" lang-block data-lang="es">
-              Sin estado; no se almacena PHI.
-            </p>
-
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en">Representative File Structure</h5>
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">Estructura de Archivos Representativa</h5>
-
-            <pre style="background: #0a0a0a; border: 1px solid rgba(255, 107, 0, 0.3); padding: 1.25rem; margin-bottom: 1.5rem; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; line-height: 1.6; color: #e0e0e0;">bilingual-pediatric-CDS-dosage-calculator/
-│── .gitignore
-│── LICENSE
-│── README.md
-│── index.html
-│── app.js
-│── styles.css
-│
-├── backend/
-│   ├── main.py           <span style="color: var(--cyber-orange);" lang-block data-lang="en"># API Entry point</span><span style="color: var(--cyber-orange);" lang-block data-lang="es"># Punto de entrada de API</span>
-│   ├── calculations.py   <span style="color: var(--cyber-orange);" lang-block data-lang="en"># Safety-critical logic</span><span style="color: var(--cyber-orange);" lang-block data-lang="es"># Lógica crítica de seguridad</span>
-│   ├── models.py         <span style="color: var(--cyber-orange);" lang-block data-lang="en"># Data validation schemas (Pydantic)</span><span style="color: var(--cyber-orange);" lang-block data-lang="es"># Esquemas de validación (Pydantic)</span>
-│   └── requirements.txt
-│
-├── lang/
-│   ├── en.json           <span style="color: var(--cyber-orange);" lang-block data-lang="en"># English localization</span><span style="color: var(--cyber-orange);" lang-block data-lang="es"># Localización en Inglés</span>
-│   └── es.json           <span style="color: var(--cyber-orange);" lang-block data-lang="en"># Spanish localization</span><span style="color: var(--cyber-orange);" lang-block data-lang="es"># Localización en Español</span>
-│
-└── __pycache__/
-    ├── calculations.cpython-313.pyc
-    └── models.cpython-313.pyc</pre>
-
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="en">What This Demonstrates</h5>
-            <h5 style="color: var(--cyber-orange); font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 600;" lang-block data-lang="es">Lo que esto Demuestra</h5>
-
-            <p style="line-height: 1.7;" lang-block data-lang="en">
-              Applied evidence of safety‑critical compliance logic — enforcing weight‑based dose caps and caution thresholds as verifiable guardrails, delivered accessibly (WCAG 2.1 AA) and bilingually to protect patient safety across the language barrier.
-            </p>
-            <p style="line-height: 1.7;" lang-block data-lang="es">
-              Evidencia aplicada de lógica de cumplimiento crítica para la seguridad — límites de dosis basados en peso y umbrales de precaución como salvaguardas verificables, entregados de forma accesible (WCAG 2.1 AA) y bilingüe para proteger la seguridad del paciente a través de la barrera del idioma.
-            </p>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <section class="section-spacing" style="background: rgba(255, 107, 0, 0.03);">
-      <div class="container">
-        <h3 style="text-align: center; margin-bottom: 0.5rem;" lang-block data-lang="en">📦 Supporting HCIS Tools</h3>
-        <h3 style="text-align: center; margin-bottom: 0.5rem;" lang-block data-lang="es">📦 Herramientas HCIS de Apoyo</h3>
-        
-        <p style="text-align: center; font-size: 1.125rem; margin-bottom: 3rem; opacity: 0.85;" lang-block data-lang="en">Targeted utilities for operations and data portability.</p>
-        <p style="text-align: center; font-size: 1.125rem; margin-bottom: 3rem; opacity: 0.85;" lang-block data-lang="es">Utilidades dirigidas para operaciones y portabilidad de datos.</p>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
-          
-          <div class="service-card">
-            <h4 style="color: var(--cyber-orange); font-size: 1.5rem; margin-bottom: 1rem; font-weight: 600;">05. BioMed Inventory Tracker</h4>
-            <div class="project-links" style="margin-bottom: 1.25rem;">
-              <a href="https://dquint32.github.io/biomed-inventory-tracker/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.4rem 0.9rem;">
-                <span lang-block data-lang="en">Live Demo</span>
-                <span lang-block data-lang="es">Demo en Vivo</span>
-              </a>
-            </div>
-            
-            <p style="margin-bottom: 0.75rem; line-height: 1.7;" lang-block data-lang="en">
-              A utility for tracking PM (Preventive Maintenance) status for high‑risk clinical assets to support Joint Commission/CMS compliance.
-            </p>
-            <p style="margin-bottom: 0.75rem; line-height: 1.7;" lang-block data-lang="es">
-              Rastrea el estado de Mantenimiento Preventivo (PM) para activos clínicos de alto riesgo, apoyando el cumplimiento de Joint Commission y CMS.
-            </p>
-          </div>
-
-          <div class="service-card">
-            <h4 style="color: var(--cyber-orange); font-size: 1.5rem; margin-bottom: 1rem; font-weight: 600;">06. US Core FHIR Converter</h4>
-            <div class="project-links" style="margin-bottom: 1.25rem;">
-              <a href="https://dquint32.github.io/fhir-patient-converter/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.4rem 0.9rem;">
-                <span lang-block data-lang="en">Live Demo</span>
-                <span lang-block data-lang="es">Demo en Vivo</span>
-              </a>
-            </div>
-            
-            <p style="margin-bottom: 0.75rem; line-height: 1.7;" lang-block data-lang="en">
-              A focused script that transforms flat demographic CSVs into US Core–compliant FHIR Patient JSON.
-            </p>
-            <p style="margin-bottom: 0.75rem; line-height: 1.7;" lang-block data-lang="es">
-              Transforma datos demográficos en JSON de Paciente FHIR compatible con US Core.
-            </p>
-
-            <p style="line-height: 1.7;" lang-block data-lang="en">
-              Supports data portability and Cures Act alignment.
-            </p>
-            <p style="line-height: 1.7;" lang-block data-lang="es">
-              Admite portabilidad de datos y alineación con la Ley Cures.
-            </p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <section id="skills" class="section-spacing">
-      <div class="container">
-        <h3 style="text-align: center; margin-bottom: 3rem;" lang-block data-lang="en">🛠 Technical Core Competencies</h3>
-        <h3 style="text-align: center; margin-bottom: 3rem;" lang-block data-lang="es">🛠 Competencias Técnicas Principales</h3>
-        
-        <div style="overflow-x: auto;">
-          <table style="width: 100%; border-collapse: collapse; max-width: 780px; margin: 0 auto;">
-            <thead>
-              <tr>
-                <th lang-block data-lang="en" style="text-align: left; padding: 0.85rem 1.25rem; border-bottom: 2px solid var(--cyber-orange); color: var(--cyber-orange); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Domain</th>
-                <th lang-block data-lang="es" style="text-align: left; padding: 0.85rem 1.25rem; border-bottom: 2px solid var(--cyber-orange); color: var(--cyber-orange); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Dominio</th>
-                <th lang-block data-lang="en" style="text-align: left; padding: 0.85rem 1.25rem; border-bottom: 2px solid var(--cyber-orange); color: var(--cyber-orange); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Skills &amp; Standards</th>
-                <th lang-block data-lang="es" style="text-align: left; padding: 0.85rem 1.25rem; border-bottom: 2px solid var(--cyber-orange); color: var(--cyber-orange); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Habilidades &amp; Estándares</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr style="border-bottom: 1px solid rgba(255,107,0,0.15);">
-                <td lang-block data-lang="en" style="padding: 0.85rem 1.25rem; font-weight: 600; color: var(--cyber-orange); font-size: 0.95rem; white-space: nowrap;">Interoperability</td>
-                <td lang-block data-lang="es" style="padding: 0.85rem 1.25rem; font-weight: 600; color: var(--cyber-orange); font-size: 0.95rem; white-space: nowrap;">Interoperabilidad</td>
-                <td lang-block data-lang="en" style="padding: 0.85rem 1.25rem; line-height: 1.7;">HL7 FHIR R4, HL7 v2.x, US Core Profiles, JSON Schema</td>
-                <td lang-block data-lang="es" style="padding: 0.85rem 1.25rem; line-height: 1.7;">HL7 FHIR R4, HL7 v2.x, Perfiles US Core, JSON Schema</td>
-              </tr>
-              <tr style="border-bottom: 1px solid rgba(255,107,0,0.15); background: rgba(255,107,0,0.03);">
-                <td lang-block data-lang="en" style="padding: 0.85rem 1.25rem; font-weight: 600; color: var(--cyber-orange); font-size: 0.95rem; white-space: nowrap;">Clinical Terminology</td>
-                <td lang-block data-lang="es" style="padding: 0.85rem 1.25rem; font-weight: 600; color: var(--cyber-orange); font-size: 0.95rem; white-space: nowrap;">Terminología Clínica</td>
-                <td lang-block data-lang="en" style="padding: 0.85rem 1.25rem; line-height: 1.7;">LOINC, ICD‑10, SNOMED‑CT (Basic), UCUM</td>
-                <td lang-block data-lang="es" style="padding: 0.85rem 1.25rem; line-height: 1.7;">LOINC, ICD‑10, SNOMED‑CT (Básico), UCUM</td>
-              </tr>
-              <tr style="border-bottom: 1px solid rgba(255,107,0,0.15);">
-                <td lang-block data-lang="en" style="padding: 0.85rem 1.25rem; font-weight: 600; color: var(--cyber-orange); font-size: 0.95rem; white-space: nowrap;">Development</td>
-                <td lang-block data-lang="es" style="padding: 0.85rem 1.25rem; font-weight: 600; color: var(--cyber-orange); font-size: 0.95rem; white-space: nowrap;">Desarrollo</td>
-                <td lang-block data-lang="en" style="padding: 0.85rem 1.25rem; line-height: 1.7;">Python (FastAPI, Pydantic), JavaScript (ES6+), API Design, i18n/L10n</td>
-                <td lang-block data-lang="es" style="padding: 0.85rem 1.25rem; line-height: 1.7;">Python (FastAPI, Pydantic), JavaScript (ES6+), Diseño de API, i18n/L10n</td>
-              </tr>
-              <tr>
-                <td lang-block data-lang="en" style="padding: 0.85rem 1.25rem; font-weight: 600; color: var(--cyber-orange); font-size: 0.95rem; white-space: nowrap;">Clinical Workflow</td>
-                <td lang-block data-lang="es" style="padding: 0.85rem 1.25rem; font-weight: 600; color: var(--cyber-orange); font-size: 0.95rem; white-space: nowrap;">Flujo de Trabajo Clínico</td>
-                <td lang-block data-lang="en" style="padding: 0.85rem 1.25rem; line-height: 1.7;">CDS Logic, PGHD Integration, Error Reduction, WCAG 2.1</td>
-                <td lang-block data-lang="es" style="padding: 0.85rem 1.25rem; line-height: 1.7;">Lógica CDS, Integración PGHD, Reducción de Errores, WCAG 2.1</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="section-spacing" style="background: rgba(255, 107, 0, 0.03);">
-      <div class="container">
-        <div lang-block data-lang="en">
-          <h3 style="text-align: center; margin-bottom: 1.5rem;">Actively Seeking HCIS Internship Opportunities</h3>
-          <p style="font-size: 1.125rem; line-height: 1.8; margin-bottom: 2rem; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
-            I'm ready to apply my skills in FHIR interoperability and clinical workflow optimization to help your team build safer, more equitable health systems.
-          </p>
-          <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
-            <a href="#" class="btn btn-primary">Download Resume</a>
-            <a href="https://www.linkedin.com/in/quintanadm95" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">LinkedIn</a>
-            <a href="https://github.com/dquint32" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub</a>
-          </div>
-        </div>
-
-        <div lang-block data-lang="es">
-          <h3 style="text-align: center; margin-bottom: 1.5rem;">Buscando Activamente Oportunidades de Pasantía en HCIS</h3>
-          <p style="font-size: 1.125rem; line-height: 1.8; margin-bottom: 2rem; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
-            Estoy listo para aplicar mis habilidades en interoperabilidad FHIR y optimización de flujos de trabajo clínicos para ayudar a su equipo a construir sistemas de salud más seguros y equitativos.
-          </p>
-          <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
-            <a href="#" class="btn btn-primary">Descargar Currículum</a>
-            <a href="https://www.linkedin.com/in/quintanadm95" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">LinkedIn</a>
-            <a href="https://github.com/dquint32" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="portfolio-footer site-footer">
-    <div class="container">
-      <p>
-        <span lang-block data-lang="en">David Quintana Dev is a registered trade name of Servicios Quintana LLC.</span>
-        <span lang-block data-lang="es">David Quintana Dev es un nombre comercial registrado de Servicios Quintana LLC.</span>
-      </p>
-
-      <p>
-        <span lang-block data-lang="en">© <span id="year">2026</span> Servicios Quintana LLC. All Rights Reserved.</span>
-        <span lang-block data-lang="es">© <span data-year>2026</span> Servicios Quintana LLC. Todos los derechos reservados.</span>
-      </p>
-    </div>
-  </footer>
-
-  <div id="lightbox-modal" class="lightbox-modal" style="display: none;">
-    <span class="lightbox-close">&times;</span>
-    <img class="lightbox-content" id="lightbox-img" alt="Full screen project screenshot">
-    <div class="lightbox-caption" id="lightbox-caption"></div>
   </div>
-
-  <script src="main.js"></script>
+</header>
+<main id="main">
+<section class="page-hero">
+<div class="container">
+<p data-lang="en" class="kicker">Portfolio · Health Care Information Systems</p>
+<p data-lang="es" lang="es" class="kicker">Portafolio · Sistemas de Información de Salud</p>
+<h1 data-lang="en">Work</h1>
+<h1 data-lang="es" lang="es">Trabajo</h1>
+<p data-lang="en" class="lead">Standards-based tools that turn raw clinical data into structured, interoperable, audit-ready records — HL7/FHIR interoperability, data-integrity validation, clinical safety guardrails, and human-subjects protection under GCP and HIPAA.</p>
+<p data-lang="es" lang="es" class="lead">Herramientas basadas en estándares que convierten datos clínicos crudos en registros estructurados, interoperables y listos para auditoría — interoperabilidad HL7/FHIR, validación de integridad, salvaguardas de seguridad clínica y protección de sujetos humanos bajo GCP y HIPAA.</p>
+</div>
+</section><section class="section pt-0">
+<div class="container">
+<article class="work-item">
+<div>
+<span class="num">01</span>
+<h2 data-lang="en">EVA CTMS Archive — clinical data ETL pipeline</h2>
+<h2 data-lang="es" lang="es">Archivo EVA CTMS — pipeline ETL de datos clínicos</h2>
+<dl class="par"><dt><span data-lang="en">Problem</span><span data-lang="es" lang="es">Problema</span></dt><dd><span data-lang="en">A decommissioned Clinical Trial Management System left ~9,925 documents in inconsistently named folders plus a separate 6,830-record patient database, with no archive structure. Everything had to be understood, cleaned, and validated before migration — without exposing patient data to an external AI or cloud service.</span><span data-lang="es" lang="es">Un CTMS desmantelado dejó ~9,925 documentos en carpetas con nombres inconsistentes y una base de 6,830 pacientes, sin estructura de archivo. Todo debía entenderse, limpiarse y validarse antes de migrar — sin exponer datos de pacientes a una IA o nube externa.</span></dd><dt><span data-lang="en">What I built</span><span data-lang="es" lang="es">Qué construí</span></dt><dd><span data-lang="en">A 10-stage local Python ETL pipeline: capture raw structure, crawl and classify every document, build a patient roster, clean the patient database, cross-validate documents against patients, generate a SharePoint build plan, and tag by study and deviation.</span><span data-lang="es" lang="es">Un pipeline ETL local de 10 etapas en Python: capturar la estructura, clasificar cada documento, construir un registro de pacientes, limpiar la base, validar documentos contra pacientes, generar el plan de SharePoint y etiquetar por estudio y desviación.</span></dd><dt><span data-lang="en">Impact</span><span data-lang="es" lang="es">Impacto</span></dt><dd><span data-lang="en">Caught 1,791 documents (18%) whose filename patient IDs matched no real patient — before migration, not after. All processing local, PHI masked in every log, and a searchable SharePoint archive with the Patient Lookup and Deviation views staff asked for.</span><span data-lang="es" lang="es">Detectó 1,791 documentos (18%) cuyos IDs no coincidían con ningún paciente real — antes de migrar, no después. Todo local, PHI enmascarado en cada registro y un archivo SharePoint consultable con las vistas que el personal pedía.</span></dd></dl>
+<ul class="tags" aria-label="Technologies"><li><span class="tag">Python</span></li><li><span class="tag">pandas</span></li><li><span class="tag">openpyxl</span></li><li><span class="tag">Regex</span></li><li><span class="tag">JSON/YAML</span></li><li><span class="tag">python-docx</span></li><li><span class="tag">SharePoint</span></li></ul>
+<div class="btn-row"><a class="btn btn-primary" href="eva-ctms-case-study.html"><span data-lang="en">Read the case study</span><span data-lang="es" lang="es">Leer el estudio de caso</span></a></div>
+</div>
+<div><div class="card"><div class="flow" role="img" aria-label="ETL pipeline: extract raw logs and a legacy patient database, transform through classification, cleaning and cross-validation, load into a governed SharePoint archive.">
+<div class="flow-lane extract"><b>Extract</b><div class="flow-step">Raw Windows logs<small>tree /f · dir /s /b</small></div><div class="flow-step">Legacy patient DB<small>recovered backup</small></div></div>
+<div class="flow-arrow" aria-hidden="true">↓</div>
+<div class="flow-lane transform"><b>Transform</b><div class="flow-step">Crawl &amp; classify<small>9,925 documents</small></div><div class="flow-step">Clean patient DB<small>6,830 records</small></div><div class="flow-step hit">Cross-validate ◀ finding<small>document ↔ patient match</small></div></div>
+<div class="flow-arrow" aria-hidden="true">↓</div>
+<div class="flow-lane load"><b>Load</b><div class="flow-step">SharePoint archive<small>11 metadata columns · 4 views</small></div></div>
+</div></div></div>
+</article>
+<article class="work-item flip">
+<div>
+<span class="num">02</span>
+<h2 data-lang="en">Bilingual Patient Intake → FHIR R4</h2>
+<h2 data-lang="es" lang="es">Admisión bilingüe de pacientes → FHIR R4</h2>
+<dl class="par"><dt><span data-lang="en">Problem</span><span data-lang="es" lang="es">Problema</span></dt><dd><span data-lang="en">Language barriers at intake lead to incomplete histories and dirty data, and turning that data into something an EHR can read (FHIR) is usually a manual, error-prone step.</span><span data-lang="es" lang="es">Las barreras de idioma en la admisión generan historiales incompletos y datos sucios, y convertirlos en algo que un EHR pueda leer (FHIR) suele ser un paso manual y propenso a errores.</span></dd><dt><span data-lang="en">What I built</span><span data-lang="es" lang="es">Qué construí</span></dt><dd><span data-lang="en">An EN/ES intake form and a FastAPI service that validates every submission with a strict Pydantic v2 model, then maps it to Patient, Encounter, Coverage, Condition (SNOMED CT), AllergyIntolerance, and MedicationStatement resources.</span><span data-lang="es" lang="es">Un formulario EN/ES y un servicio FastAPI que valida cada envío con un modelo Pydantic v2 estricto y lo mapea a recursos Patient, Encounter, Coverage, Condition (SNOMED CT), AllergyIntolerance y MedicationStatement.</span></dd><dt><span data-lang="en">Impact</span><span data-lang="es" lang="es">Impacto</span></dt><dd><span data-lang="en">Malformed data is rejected at the source with field-level errors. The bundle is self-contained (every reference resolves) and is checked against the official FHIR models by 69 automated tests at 100% coverage.</span><span data-lang="es" lang="es">Los datos inválidos se rechazan en el origen con errores por campo. El bundle es autocontenido (cada referencia se resuelve) y lo verifican 69 pruebas automatizadas con 100% de cobertura contra los modelos FHIR oficiales.</span></dd></dl>
+<ul class="tags" aria-label="Technologies"><li><span class="tag">Python</span></li><li><span class="tag">FastAPI</span></li><li><span class="tag">Pydantic v2</span></li><li><span class="tag">FHIR R4</span></li><li><span class="tag">SNOMED CT</span></li><li><span class="tag">pytest</span></li></ul>
+<div class="btn-row"><a class="btn btn-primary" href="intake-web-app.html"><span data-lang="en">Case study</span><span data-lang="es" lang="es">Estudio de caso</span></a><a class="btn btn-secondary" href="https://dquint32.github.io/bilingual-patient-intake-fhir/" target="_blank" rel="noopener"><span data-lang="en">Live demo</span><span data-lang="es" lang="es">Demo</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a><a class="btn btn-secondary" href="https://github.com/dquint32/bilingual-patient-intake-fhir" target="_blank" rel="noopener"><span data-lang="en">Code</span><span data-lang="es" lang="es">Código</span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.3 1.9 1.3 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg></a></div>
+</div>
+<div><figure>
+<div class="shot"><img src="assets/img/projects/intake-fhir-bundle.webp" alt="Intake app showing the generated FHIR R4 bundle in Spanish" width="1600" height="2158" loading="lazy" decoding="async" class="zoomable"></div>
+<figcaption data-lang="en">A Spanish-language submission returns a 9-resource FHIR R4 Bundle.</figcaption>
+<figcaption data-lang="es" lang="es">Un envío en español devuelve un Bundle FHIR R4 de 9 recursos.</figcaption>
+</figure></div>
+</article>
+<article class="work-item">
+<div>
+<span class="num">03</span>
+<h2 data-lang="en">HL7 v2.x Infectious Disease Parser</h2>
+<h2 data-lang="es" lang="es">Analizador HL7 v2.x de enfermedades infecciosas</h2>
+<dl class="par"><dt><span data-lang="en">Problem</span><span data-lang="es" lang="es">Problema</span></dt><dd><span data-lang="en">Legacy HL7 v2.x lab messages are black boxes for many public-health teams, and a wrong LOINC mapping silently misclassifies a result.</span><span data-lang="es" lang="es">Los mensajes HL7 v2.x son cajas negras para muchos equipos de salud pública, y un mapeo LOINC incorrecto clasifica mal un resultado sin avisar.</span></dd><dt><span data-lang="en">What I built</span><span data-lang="es" lang="es">Qué construí</span></dt><dd><span data-lang="en">A Python engine (ingestion → validation → transformation) that honors the delimiters each message declares, validates every segment through Pydantic v2 models, verifies LOINC check digits, and summarizes nine infectious-disease categories. A bilingual browser demo applies the same rules.</span><span data-lang="es" lang="es">Un motor en Python (ingesta → validación → transformación) que respeta los delimitadores de cada mensaje, valida cada segmento con modelos Pydantic v2, verifica dígitos de control LOINC y resume nueve categorías de enfermedades infecciosas. Una demo bilingüe aplica las mismas reglas.</span></dd><dt><span data-lang="en">Impact</span><span data-lang="es" lang="es">Impacto</span></dt><dd><span data-lang="en">Every defect is reported with its exact location (e.g. PID-7, OBX[2]-5) instead of crashing. 81 tests at 99% coverage, and every LOINC code verified against loinc.org.</span><span data-lang="es" lang="es">Cada defecto se reporta con su ubicación exacta (p. ej. PID-7, OBX[2]-5) en lugar de fallar. 81 pruebas con 99% de cobertura y cada código LOINC verificado en loinc.org.</span></dd></dl>
+<ul class="tags" aria-label="Technologies"><li><span class="tag">Python</span></li><li><span class="tag">Pydantic v2</span></li><li><span class="tag">pytest</span></li><li><span class="tag">LOINC</span></li><li><span class="tag">SNOMED CT</span></li><li><span class="tag">JavaScript</span></li></ul>
+<div class="btn-row"><a class="btn btn-primary" href="hl7-parser.html"><span data-lang="en">Case study</span><span data-lang="es" lang="es">Estudio de caso</span></a><a class="btn btn-secondary" href="https://dquint32.github.io/hl7-infectious-disease-parser/" target="_blank" rel="noopener"><span data-lang="en">Live demo</span><span data-lang="es" lang="es">Demo</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a><a class="btn btn-secondary" href="https://github.com/dquint32/hl7-infectious-disease-parser" target="_blank" rel="noopener"><span data-lang="en">Code</span><span data-lang="es" lang="es">Código</span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.3 1.9 1.3 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg></a></div>
+</div>
+<div><figure>
+<div class="shot"><img src="assets/img/projects/hl7-respiratory-panel.webp" alt="HL7 parser summarizing a four-analyte respiratory panel" width="1600" height="1255" loading="lazy" decoding="async" class="zoomable"></div>
+<figcaption data-lang="en">A respiratory panel (COVID-19, Flu A/B, RSV) parsed into disease badges.</figcaption>
+<figcaption data-lang="es" lang="es">Un panel respiratorio (COVID-19, Influenza A/B, VSR) convertido en indicadores.</figcaption>
+</figure></div>
+</article>
+<article class="work-item flip">
+<div>
+<span class="num">04</span>
+<h2 data-lang="en">Pediatric CDS Dosage Calculator</h2>
+<h2 data-lang="es" lang="es">Calculadora pediátrica de dosis (CDS)</h2>
+<dl class="par"><dt><span data-lang="en">Problem</span><span data-lang="es" lang="es">Problema</span></dt><dd><span data-lang="en">Pediatric dosing errors are never events: every dose is weight-based, and a slipped decimal can mean a 10× overdose. Language gaps with caregivers add risk after discharge.</span><span data-lang="es" lang="es">Los errores de dosificación pediátrica son eventos que nunca deben ocurrir: toda dosis depende del peso y un decimal mal puesto puede significar una sobredosis de 10×. Las brechas de idioma con cuidadores añaden riesgo.</span></dd><dt><span data-lang="en">What I built</span><span data-lang="es" lang="es">Qué construí</span></dt><dd><span data-lang="en">A clinical decision support tool with a FastAPI backend: weight validation, mg/kg calculation, a hard stop above the maximum single dose, an 80% caution threshold, and instructions generated in English and Spanish.</span><span data-lang="es" lang="es">Una herramienta de soporte a la decisión clínica con backend FastAPI: validación de peso, cálculo mg/kg, parada estricta sobre la dosis máxima, umbral de precaución del 80% e instrucciones en inglés y español.</span></dd><dt><span data-lang="en">Impact</span><span data-lang="es" lang="es">Impacto</span></dt><dd><span data-lang="en">Unsafe doses can't be accepted silently, high-but-safe doses prompt a double check without alert fatigue, and Spanish-speaking families get the same instructions as English speakers.</span><span data-lang="es" lang="es">Las dosis inseguras no pueden aceptarse en silencio, las dosis altas pero seguras piden una doble verificación sin fatiga de alertas, y las familias hispanohablantes reciben las mismas instrucciones.</span></dd></dl>
+<ul class="tags" aria-label="Technologies"><li><span class="tag">Python</span></li><li><span class="tag">FastAPI</span></li><li><span class="tag">Pydantic</span></li><li><span class="tag">JavaScript</span></li><li><span class="tag">JSON i18n</span></li></ul>
+<div class="btn-row"><a class="btn btn-primary" href="pediatric-cds-calculator.html"><span data-lang="en">Case study</span><span data-lang="es" lang="es">Estudio de caso</span></a><a class="btn btn-secondary" href="https://github.com/dquint32/bilingual-pediatric-CDS-dosage-calculator" target="_blank" rel="noopener"><span data-lang="en">Code</span><span data-lang="es" lang="es">Código</span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.3 1.9 1.3 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg></a></div>
+</div>
+<div><figure>
+<div class="shot"><img src="assets/img/projects/cds-critical.webp" alt="Dosage calculator blocking a dose above the maximum safe limit" width="1600" height="923" loading="lazy" decoding="async" class="zoomable"></div>
+<figcaption data-lang="en">A dose above the medication maximum triggers a hard stop: DO NOT ADMINISTER.</figcaption>
+<figcaption data-lang="es" lang="es">Una dosis sobre el máximo activa una parada estricta: NO ADMINISTRAR.</figcaption>
+</figure></div>
+</article>
+</div>
+</section><section class="section section-alt">
+<div class="container">
+<div class="section-head"><h2 data-lang="en">Supporting tools</h2>
+<h2 data-lang="es" lang="es">Herramientas de apoyo</h2><p data-lang="en">Smaller, focused utilities for data portability and operations.</p>
+<p data-lang="es" lang="es">Utilidades enfocadas en portabilidad de datos y operaciones.</p></div>
+<div class="grid grid-projects">
+<article class="card project-card">
+<div class="thumb"><img src="assets/img/projects/converter-output.webp" alt="FHIR converter showing US Core Patient JSON" width="1600" height="1453" loading="lazy" decoding="async"></div>
+<div class="body">
+<p class="eyebrow">05 · US Core · FHIR R4</p>
+<h3 data-lang="en">FHIR Patient Converter</h3>
+<h3 data-lang="es" lang="es">Convertidor de pacientes FHIR</h3>
+<p data-lang="en">Validates intake data and converts it into US Core Patient resources: MRN typed with v2-0203, emergency-contact relationships coded in v3-RoleCode from English or Spanish text, and no empty arrays (a FHIR JSON rule). A batch CLI reports bad records without stopping the run. 53 tests.</p>
+<p data-lang="es" lang="es">Valida datos de admisión y los convierte en recursos Patient de US Core: MRN tipificado con v2-0203, relaciones de contacto codificadas en v3-RoleCode desde texto en inglés o español, y sin arreglos vacíos (regla de FHIR JSON). Un CLI por lotes reporta registros inválidos sin detenerse. 53 pruebas.</p>
+<ul class="tags" aria-label="Technologies"><li><span class="tag">Python</span></li><li><span class="tag">Pydantic v2</span></li><li><span class="tag">US Core</span></li><li><span class="tag">pytest</span></li><li><span class="tag">JavaScript</span></li></ul>
+<div class="links"><a href="https://dquint32.github.io/fhir-patient-converter/" target="_blank" rel="noopener"><span data-lang="en">Live demo</span><span data-lang="es" lang="es">Demo</span></a><a href="https://github.com/dquint32/fhir-patient-converter" target="_blank" rel="noopener"><span data-lang="en">Code</span><span data-lang="es" lang="es">Código</span></a></div>
+</div>
+</article>
+<article class="card">
+<p class="eyebrow">06 · Biomedical equipment</p>
+<h3 data-lang="en">BioMed Inventory Tracker</h3>
+<h3 data-lang="es" lang="es">Rastreador de inventario biomédico</h3>
+<p data-lang="en">Tracks preventive-maintenance (PM) status for high-risk clinical assets to support Joint Commission and CMS compliance.</p>
+<p data-lang="es" lang="es">Rastrea el estado de mantenimiento preventivo (PM) de activos clínicos de alto riesgo para apoyar el cumplimiento de Joint Commission y CMS.</p>
+<ul class="tags" aria-label="Technologies"><li><span class="tag">JavaScript</span></li><li><span class="tag">HTML</span></li><li><span class="tag">CSS</span></li></ul>
+<div class="btn-row"><a class="btn btn-secondary" href="https://dquint32.github.io/biomed-inventory-tracker/" target="_blank" rel="noopener"><span data-lang="en">Live demo</span><span data-lang="es" lang="es">Demo</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+</article>
+</div>
+</div>
+</section><section class="section">
+<div class="container">
+<div class="section-head"><h2 data-lang="en">Core competencies</h2>
+<h2 data-lang="es" lang="es">Competencias principales</h2></div>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Core competencies table"><table>
+<thead><tr><th scope="col"><span data-lang="en">Domain</span><span data-lang="es" lang="es">Dominio</span></th><th scope="col"><span data-lang="en">Skills &amp; standards</span><span data-lang="es" lang="es">Habilidades y estándares</span></th></tr></thead>
+<tbody><tr><th scope="row"><span data-lang="en">Interoperability</span><span data-lang="es" lang="es">Interoperabilidad</span></th><td>HL7 FHIR R4 · HL7 v2.x · US Core profiles · JSON Schema</td></tr><tr><th scope="row"><span data-lang="en">Clinical terminology</span><span data-lang="es" lang="es">Terminología clínica</span></th><td>LOINC · SNOMED CT · ICD-10 · UCUM</td></tr><tr><th scope="row"><span data-lang="en">Data engineering</span><span data-lang="es" lang="es">Ingeniería de datos</span></th><td>Python (pandas, Pydantic v2) · ETL design · validation &amp; cross-checks · pytest</td></tr><tr><th scope="row"><span data-lang="en">Development</span><span data-lang="es" lang="es">Desarrollo</span></th><td>FastAPI · JavaScript (ES6+) · API design · i18n / L10n · Git &amp; CI</td></tr><tr><th scope="row"><span data-lang="en">Clinical workflow</span><span data-lang="es" lang="es">Flujo clínico</span></th><td>CDS logic · PGHD intake · error reduction · WCAG 2.1</td></tr><tr><th scope="row"><span data-lang="en">Compliance</span><span data-lang="es" lang="es">Cumplimiento</span></th><td>HIPAA · ICH-GCP · human-subjects protection · PHI masking · audit trails</td></tr></tbody>
+</table></div>
+</div>
+</section><section class="section">
+<div class="container">
+<div class="card contact-panel">
+<h2 data-lang="en">Hiring for clinical data work?</h2>
+<h2 data-lang="es" lang="es">¿Buscas talento en datos clínicos?</h2>
+<p data-lang="en">I'm open to full-time ETL / data engineering and clinical data roles.</p>
+<p data-lang="es" lang="es">Estoy disponible para roles de ETL / ingeniería de datos y datos clínicos.</p>
+<div class="contact-links"><a class="btn btn-primary" href="index.html#contact"><span data-lang="en">Get in touch</span><span data-lang="es" lang="es">Contáctame</span></a><a class="btn btn-secondary" href="resume.pdf" target="_blank" rel="noopener"><span data-lang="en">Résumé (PDF)</span><span data-lang="es" lang="es">Currículum (PDF)</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg></a></div>
+</div>
+</div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <p><strong>David Quintana</strong> · <span data-lang="en">Clinical data engineering, HL7/FHIR interoperability and HIPAA/GCP-compliant data work.</span><span data-lang="es" lang="es">Ingeniería de datos clínicos, interoperabilidad HL7/FHIR y trabajo de datos conforme a HIPAA/GCP.</span></p>
+      <p><span data-lang="en">David Quintana Dev is a registered trade name of Servicios Quintana LLC.</span><span data-lang="es" lang="es">David Quintana Dev es un nombre comercial registrado de Servicios Quintana LLC.</span></p>
+      
+      <p>© <span data-year>2026</span> Servicios Quintana LLC. <span data-lang="en">All rights reserved.</span><span data-lang="es" lang="es">Todos los derechos reservados.</span></p>
+    </div>
+    <nav aria-label="Footer">
+      <ul class="footer-links">
+        <li><a href="hcis-portfolio.html"><span data-lang="en">Work</span><span data-lang="es" lang="es">Trabajo</span></a></li>
+        <li><a href="eva-ctms-case-study.html"><span data-lang="en">EVA case study</span><span data-lang="es" lang="es">Caso EVA</span></a></li>
+        <li><a href="resume.pdf" target="_blank" rel="noopener"><span data-lang="en">Résumé (PDF)</span><span data-lang="es" lang="es">Currículum (PDF)</span></a></li>
+        <li><a href="https://github.com/dquint32" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/quintanadm95" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="web-dev.html"><span data-lang="en">Web development for small businesses</span><span data-lang="es" lang="es">Desarrollo web para pequeñas empresas</span></a></li>
+        <li><a href="pricing.html"><span data-lang="en">Web pricing</span><span data-lang="es" lang="es">Precios web</span></a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+<button class="icon-btn back-to-top" type="button" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg></button>
+<script src="main.js" defer></script>
 </body>
 </html>

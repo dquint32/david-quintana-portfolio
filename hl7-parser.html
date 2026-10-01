@@ -1,408 +1,228 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-language="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Pediatric Clinical Decision Support (CDS) Dosage Calculator by David Quintana">
-  <title>Pediatric CDS Dosage Calculator | David Quintana</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HL7 v2.x Infectious Disease Parser | David Quintana</title>
+  <meta name="description" content="Case study: a Python + Pydantic v2 parser for HL7 v2 ORU lab messages that verifies LOINC codes, reports every defect by HL7 location, and summarizes nine infectious-disease categories. 81 tests.">
+  <link rel="canonical" href="https://davidquintana.dev/hl7-parser.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="David Quintana">
+  <meta property="og:title" content="HL7 v2.x Infectious Disease Parser | David Quintana">
+  <meta property="og:description" content="Case study: a Python + Pydantic v2 parser for HL7 v2 ORU lab messages that verifies LOINC codes, reports every defect by HL7 location, and summarizes nine infectious-disease categories. 81 tests.">
+  <meta property="og:url" content="https://davidquintana.dev/hl7-parser.html">
+  <meta property="og:image" content="https://davidquintana.dev/assets/img/og-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0d0d0d">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap">
   <script>
     (function () {
       try {
         var d = document.documentElement;
         var lang = localStorage.getItem('preferred-language');
-        if (lang) { d.setAttribute('data-language', lang); d.setAttribute('lang', lang); }
+        if (lang === 'en' || lang === 'es') { d.setAttribute('data-language', lang); d.setAttribute('lang', lang); }
         var theme = localStorage.getItem('preferred-theme');
-        if (theme) { d.setAttribute('data-theme', theme); }
-      } catch (e) { /* localStorage unavailable — defaults render */ }
+        if (theme === 'light' || theme === 'dark') { d.setAttribute('data-theme', theme); }
+      } catch (e) { /* storage unavailable: defaults apply */ }
     })();
   </script>
   <link rel="stylesheet" href="styles.css">
-  
-  <style>
-    /* Inline override for the meta-list in the hero, 
-       keeping it consistent with the project's minimalist theme */
-    .project-meta-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      list-style: none;
-      padding: 0;
-      margin: 2rem 0;
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      color: var(--cyber-orange);
-    }
-    
-    .project-meta-list li {
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-    }
-    
-    .project-meta-list span.label {
-      color: var(--muted-silver);
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-  </style>
 </head>
-<body data-language="en" class="case-study-page">
-
-  <a href="#main-content" class="skip-link">Skip to main content</a>
-
-  <div class="logo-background" aria-hidden="true">
-    <div class="bg-logo">DQ</div>
-  </div>
-
-  <button class="floating-toggle" type="button" aria-label="Toggle language">
-    <span data-lang="en">EN</span>
-    <span class="divider">|</span>
-    <span data-lang="es" class="inactive">ES</span>
-  </button>
-
-  <button class="theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false" title="Toggle theme">
-    <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-    <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
-  </button>
-
-  <button id="back-to-top" class="back-to-top-btn" aria-label="Back to top">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="18 15 12 9 6 15"></polyline>
-    </svg>
-  </button>
-
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <h1>
-          <a href="index.html">David Matthew Quintana</a>
-        </h1>
-        <p class="tagline">Clinical Data Engineer · HCIS | Python/pandas ETL, data integrity, HL7/FHIR &amp; HIPAA/GCP compliance</p>
-      </div>
-      <nav class="nav" aria-label="Primary">
-        <ul>
-          <li><a href="index.html"><span lang-block data-lang="en">Home</span><span lang-block data-lang="es">Inicio</span></a></li>
-          <li><a href="hcis-portfolio.html" class="active"><span lang-block data-lang="en">Work</span><span lang-block data-lang="es">Trabajo</span></a></li>
-          <li><a href="eva-ctms-case-study.html"><span lang-block data-lang="en">EVA Case Study</span><span lang-block data-lang="es">Estudio EVA</span></a></li>
-          <li><a href="index.html#about"><span lang-block data-lang="en">About</span><span lang-block data-lang="es">Sobre mí</span></a></li>
-          <li><a href="index.html#contact" class="cta"><span lang-block data-lang="en">Contact</span><span lang-block data-lang="es">Contacto</span></a></li>
-        </ul>
-      </nav>
+<body>
+<a class="skip-link" href="#main"><span data-lang="en">Skip to main content</span><span data-lang="es" lang="es">Saltar al contenido principal</span></a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="David Quintana, home">
+      <span class="brand-mark" aria-hidden="true">DQ</span>
+      <span class="brand-text"><span class="brand-name">David Quintana</span><span class="brand-role"><span data-lang="en">Clinical Data Engineer · HCIS</span><span data-lang="es" lang="es">Ingeniero de Datos Clínicos · HCIS</span></span></span>
+    </a>
+    <nav id="site-nav" class="site-nav" aria-label="Primary">
+      <ul class="nav-list">
+        <li><a href="hcis-portfolio.html" aria-current="page"><span data-lang="en">Work</span><span data-lang="es" lang="es">Trabajo</span></a></li>
+        <li><a href="eva-ctms-case-study.html"><span data-lang="en">EVA case study</span><span data-lang="es" lang="es">Caso EVA</span></a></li>
+        <li><a href="index.html#about"><span data-lang="en">About</span><span data-lang="es" lang="es">Sobre mí</span></a></li>
+        <li><a href="resume.pdf" target="_blank" rel="noopener"><span data-lang="en">Résumé</span><span data-lang="es" lang="es">Currículum</span></a></li>
+        <li><a class="nav-cta" href="index.html#contact"><span data-lang="en">Contact</span><span data-lang="es" lang="es">Contacto</span></a></li>
+      </ul>
+    </nav>
+    <div class="header-tools">
+      <button class="lang-switch" type="button" aria-label="Cambiar a español"><span class="opt opt-en">EN</span><span class="opt opt-es">ES</span></button>
+      <button class="icon-btn theme-toggle" type="button" aria-pressed="false" aria-label="Switch to light theme"><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></button>
+      <button class="icon-btn menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     </div>
-  </header>
-
-  <main id="main-content">
-
-    <section class="section-spacing">
-      <div class="container">
-        <div class="project-hero">
-          <h2>
-            <span lang-block data-lang="en">Pediatric CDS Dosage Calculator</span>
-            <span lang-block data-lang="es">Calculadora de Dosis de Apoyo a Decisiones Clínicas (CDS) Pediátricas</span>
-          </h2>
-
-          <ul class="project-meta-list">
-            <li>
-              <span class="label">
-                <span lang-block data-lang="en">Role</span>
-                <span lang-block data-lang="es">Rol</span>
-              </span>
-              <span>Lead Developer</span>
-            </li>
-            <li>
-               <span class="label">
-                <span lang-block data-lang="en">Stack</span>
-                <span lang-block data-lang="es">Tecnología</span>
-              </span>
-              <span>Python (FastAPI), JS, Pydantic</span>
-            </li>
-            <li>
-               <span class="label">
-                <span lang-block data-lang="en">Context</span>
-                <span lang-block data-lang="es">Contexto</span>
-              </span>
-              <span>Clinical Safety Tool</span>
-            </li>
-          </ul>
-
-          <p class="project-intro">
-            <span lang-block data-lang="en">A fail-safe clinical decision support tool designed to eliminate pediatric dosing errors. It uses rigid backend logic to enforce maximum dosage caps, visual "hard stops" for toxic amounts, and bilingual instruction generation to improve health equity.</span>
-            <span lang-block data-lang="es">Una herramienta de apoyo a la decisión clínica a prueba de fallos diseñada para eliminar errores de dosificación pediátrica. Utiliza lógica de backend rígida para imponer límites máximos de dosis, "paradas duras" visuales para cantidades tóxicas y generación de instrucciones bilingües para mejorar la equidad en salud.</span>
-          </p>
-          <p>
-            <a href="https://dquint32.github.io/hl7-infectious-disease-parser/" target="_blank" rel="noopener noreferrer" class="hero-link">
-              <span lang-block data-lang="en">View Live Demo →</span>
-              <span lang-block data-lang="es">Ver Demo en Vivo →</span>
-            </a>
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-spacing">
-      <div class="container">
-        <div class="content-block">
-          <h3>
-            <span lang-block data-lang="en">[S] Situation: The High Stakes of Pediatric Dosing</span>
-            <span lang-block data-lang="es">[S] Situación: Los Altos Riesgos de la Dosificación Pediátrica</span>
-          </h3>
-          <p>
-            <span lang-block data-lang="en">Pediatric dosing errors are among the most dangerous "Never Events" in healthcare. Because children require weight-based dosing (mg/kg), a simple math error or decimal displacement can lead to a 10-fold overdose. Furthermore, language barriers between non-English speaking caregivers and providers significantly increase the risk of outpatient medication errors.</span>
-            <span lang-block data-lang="es">Los errores de dosificación pediátrica están entre los "Eventos de Nunca Ocurrir" más peligrosos en la atención médica. Debido a que los niños requieren dosificación basada en peso (mg/kg), un simple error matemático o desplazamiento decimal puede llevar a una sobredosis de 10 veces. Además, las barreras del idioma entre cuidadores que no hablan inglés y proveedores aumentan significativamente el riesgo de errores de medicación ambulatoria.</span>
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-spacing">
-      <div class="container">
-        <div class="content-block">
-          <h3>
-            <span lang-block data-lang="en">[T] Task: Fail-Safe Logic & Equity</span>
-            <span lang-block data-lang="es">[T] Tarea: Lógica a Prueba de Fallos y Equidad</span>
-          </h3>
-          <p>
-            <span lang-block data-lang="en">My goal was to engineer a safety-critical Clinical Decision Support (CDS) tool that would: 1) Eliminate math errors through automated, validated calculations, 2) Enforce strict "hard stops" for unsafe doses, and 3) Bridge the health equity gap by providing native-language instructions for Spanish-speaking families.</span>
-            <span lang-block data-lang="es">Mi objetivo fue diseñar una herramienta de Apoyo a la Decisión Clínica (CDS) crítica para la seguridad que: 1) Eliminara errores matemáticos mediante cálculos automatizados y validados, 2) Impusiera "paradas estrictas" para dosis inseguras, y 3) Cerrara la brecha de equidad en salud proporcionando instrucciones en el idioma nativo para familias de habla hispana.</span>
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-spacing">
-      <div class="container cds-project-layout">
-        
-        <div class="feature-section">
-          <div class="feature-image">
-            <img 
-              src="calc-red-safety-alert.png" 
-              alt="Critical safety alert with red border showing calculated dose of 1500mg exceeding maximum safe dose"
-              class="clickable-img"
-              loading="lazy"
-            >
-          </div>
-          <div class="feature-content">
-            <h3>
-              <span lang-block data-lang="en">[A] Action: Hard-Stop Guardrails</span>
-              <span lang-block data-lang="es">[A] Acción: Barreras de Parada Estricta</span>
-            </h3>
-            <p>
-              <span lang-block data-lang="en">I programmed "Hard Stop" logic into the Python backend. If a calculated dose exceeds the clinical maximum (e.g., Acetaminophen > 1000mg), the system triggers a <strong>CRITICAL</strong> state. This explicitly blocks the workflow with a "DO NOT ADMINISTER" warning, preventing sentinel events before they happen.</span>
-              <span lang-block data-lang="es">Programé una lógica de "Parada Estricta" en el backend de Python. Si una dosis calculada excede el máximo clínico (p. ej., Acetaminofeno > 1000mg), el sistema activa un estado <strong>CRÍTICO</strong>. Esto bloquea explícitamente el flujo de trabajo con una advertencia de "NO ADMINISTRAR", previniendo eventos centinela antes de que sucedan.</span>
-            </p>
-            <div class="highlight-box">
-              <p>
-                <span lang-block data-lang="en"><strong>Safety Logic:</strong> <code>if dose > max_dose: return Status.CRITICAL</code>. This simple but rigid logic ensures no user can accidentally validate a toxic dose.</span>
-                <span lang-block data-lang="es"><strong>Lógica de Seguridad:</strong> <code>if dose > max_dose: return Status.CRITICAL</code>. Esta lógica simple pero rígida asegura que ningún usuario pueda validar accidentalmente una dosis tóxica.</span>
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="feature-section reverse">
-          <div class="feature-image">
-            <img 
-              src="calc-yellow-safety-alert.png" 
-              alt="Caution safety alert with yellow border showing recommended dose approaching max limit"
-              class="clickable-img"
-              loading="lazy"
-            >
-          </div>
-          <div class="feature-content">
-            <h3>
-              <span lang-block data-lang="en">[A] Action: Human Factors Engineering</span>
-              <span lang-block data-lang="es">[A] Acción: Ingeniería de Factores Humanos</span>
-            </h3>
-            <p>
-              <span lang-block data-lang="en">Safety isn't just about blocking errors; it's about awareness. I implemented an 80% caution threshold. If a dose is safe but high, the UI shifts to yellow. This prompts the clinician to "Double Check" the weight input, reducing "Alert Fatigue" by only escalating when necessary.</span>
-              <span lang-block data-lang="es">La seguridad no se trata solo de bloquear errores; se trata de conciencia. Implementé un umbral de precaución del 80%. Si una dosis es segura pero alta, la interfaz cambia a amarillo. Esto incita al médico a "Verificar Doblemente" el peso ingresado, reduciendo la "Fatiga de Alerta" al escalar solo cuando es necesario.</span>
-            </p>
-          </div>
-        </div>
-
-        <div class="feature-section">
-          <div class="feature-image">
-            <img 
-              src="green-recommended-dosage-calc.png" 
-              alt="Safe dosage recommendation with green border showing 225mg dose"
-              class="clickable-img"
-              loading="lazy"
-            >
-          </div>
-          <div class="feature-content">
-            <h3>
-              <span lang-block data-lang="en">[A] Action: Algorithmic Precision</span>
-              <span lang-block data-lang="es">[A] Acción: Precisión Algorítmica</span>
-            </h3>
-            <p>
-              <span lang-block data-lang="en">The core calculation uses Pydantic models to standardize units (converting lbs to kg automatically). It applies the formula <code>Weight(kg) * Rate(mg/kg)</code> while validating the input against pediatric norms (2kg–100kg), ensuring the math is flawless every time.</span>
-              <span lang-block data-lang="es">El cálculo central utiliza modelos Pydantic para estandarizar unidades (convirtiendo lbs a kg automáticamente). Aplica la fórmula <code>Peso(kg) * Tasa(mg/kg)</code> mientras valida la entrada contra normas pediátricas (2kg–100kg), asegurando que las matemáticas sean impecables cada vez.</span>
-            </p>
-          </div>
-        </div>
-
-        <div class="feature-section reverse">
-          <div class="feature-image">
-            <img 
-              src="calc-bilingual-15-acet.png" 
-              alt="Full calculator interface showing patient weight input and Acetaminophen selection"
-              class="clickable-img"
-              loading="lazy"
-            >
-          </div>
-          <div class="feature-content">
-            <h3>
-              <span lang-block data-lang="en">[A] Action: UX for High-Stress Ops</span>
-              <span lang-block data-lang="es">[A] Acción: UX para Operaciones de Alto Estrés</span>
-            </h3>
-            <p>
-              <span lang-block data-lang="en">Emergency departments are chaotic. I designed the interface with a "Dark Mode" theme (Electric Tangerine) compliant with <strong>WCAG 2.1 AA</strong> standards. High contrast ensures readability in dimly lit rooms, reducing cognitive load for tired clinicians.</span>
-              <span lang-block data-lang="es">Los departamentos de emergencia son caóticos. Diseñé la interfaz con un tema de "Modo Oscuro" (Electric Tangerine) que cumple con los estándares <strong>WCAG 2.1 AA</strong>. El alto contraste asegura la legibilidad en habitaciones con poca luz, reduciendo la carga cognitiva para médicos cansados.</span>
-            </p>
-          </div>
-        </div>
-
-        <div class="feature-section">
-          <div class="feature-image">
-            <img 
-              src="dosage-calc-bilingual-button.png" 
-              alt="Language toggle buttons showing English and Español options"
-              class="clickable-img"
-              loading="lazy"
-            >
-          </div>
-          <div class="feature-content">
-            <h3>
-              <span lang-block data-lang="en">[A] Action: i18n for Equity</span>
-              <span lang-block data-lang="es">[A] Acción: i18n para la Equidad</span>
-            </h3>
-            <p>
-              <span lang-block data-lang="en">I built a client-side <strong>i18n (Internationalization)</strong> engine. This allows instant toggling between English and Spanish without reloading the page or losing clinical data. It generates discharge instructions in the family's native language, closing the communication loop.</span>
-              <span lang-block data-lang="es">Construí un motor de <strong>i18n (Internacionalización)</strong> del lado del cliente. Esto permite cambiar instantáneamente entre inglés y español sin recargar la página ni perder datos clínicos. Genera instrucciones de alta en el idioma nativo de la familia, cerrando el ciclo de comunicación.</span>
-            </p>
-            <div class="highlight-box">
-              <p>
-                <span lang-block data-lang="en"><strong>Technical Note:</strong> State preservation during language switching is critical in clinical tools—you never want to force a doctor to re-type data.</span>
-                <span lang-block data-lang="es"><strong>Nota Técnica:</strong> La preservación del estado durante el cambio de idioma es crítica en herramientas clínicas—nunca quieres obligar a un médico a volver a escribir datos.</span>
-              </p>
-            </div>
-          </div>
-        </div>
-        
-      </div>
-    </section>
-
-    <section class="section-spacing">
-      <div class="container cds-project-layout">
-        <div class="tech-details">
-          <h3>
-            <span lang-block data-lang="en">[R] Result: Measurable Safety Impact</span>
-            <span lang-block data-lang="es">[R] Resultado: Impacto de Seguridad Medible</span>
-          </h3>
-          
-          <div class="impact-grid">
-            <div class="impact-item">
-              <h4>
-                <span lang-block data-lang="en">Prevents Overdoses</span>
-                <span lang-block data-lang="es">Previene Sobredosis</span>
-              </h4>
-              <p>
-                <span lang-block data-lang="en">Hard-coded caps eliminate the possibility of "10x dosing" errors common with manual math.</span>
-                <span lang-block data-lang="es">Los límites codificados eliminan la posibilidad de errores de "dosis 10x" comunes con matemáticas manuales.</span>
-              </p>
-            </div>
-            
-            <div class="impact-item">
-              <h4>
-                <span lang-block data-lang="en">Standardizes Care</span>
-                <span lang-block data-lang="es">Estandariza la Atención</span>
-              </h4>
-              <p>
-                <span lang-block data-lang="en">Ensures every clinician uses the exact same evidence-based formula, reducing practice variation.</span>
-                <span lang-block data-lang="es">Asegura que cada médico use exactamente la misma fórmula basada en evidencia, reduciendo la variación en la práctica.</span>
-              </p>
-            </div>
-            
-            <div class="impact-item">
-              <h4>
-                <span lang-block data-lang="en">Improves Health Equity</span>
-                <span lang-block data-lang="es">Mejora la Equidad en Salud</span>
-              </h4>
-              <p>
-                <span lang-block data-lang="en">Spanish-speaking families receive the same high-quality instructions as English speakers.</span>
-                <span lang-block data-lang="es">Las familias de habla hispana reciben las mismas instrucciones de alta calidad que los hablantes de inglés.</span>
-              </p>
-            </div>
-            
-            <div class="impact-item">
-              <h4>
-                <span lang-block data-lang="en">Reduces Cognitive Load</span>
-                <span lang-block data-lang="es">Reduce Carga Cognitiva</span>
-              </h4>
-              <p>
-                <span lang-block data-lang="en">Automates the math, allowing clinicians to focus on the patient rather than the calculator.</span>
-                <span lang-block data-lang="es">Automatiza las matemáticas, permitiendo a los médicos enfocarse en el paciente en lugar de la calculadora.</span>
-              </p>
-            </div>
-          </div>
-          
-          <h3 style="margin-top: 3rem;">
-            <span lang-block data-lang="en">Technical Architecture</span>
-            <span lang-block data-lang="es">Arquitectura Técnica</span>
-          </h3>
-          <p>
-            <span lang-block data-lang="en"><strong>Frontend:</strong> HTML5, CSS3, JavaScript (ES6+)</span>
-            <span lang-block data-lang="es"><strong>Frontend:</strong> HTML5, CSS3, JavaScript (ES6+)</span>
-          </p>
-          <p>
-            <span lang-block data-lang="en"><strong>Backend Logic:</strong> Python (FastAPI), Pydantic for data validation</span>
-            <span lang-block data-lang="es"><strong>Lógica Backend:</strong> Python (FastAPI), Pydantic para validación de datos</span>
-          </p>
-          <p>
-            <span lang-block data-lang="en"><strong>Security:</strong> Stateless API (No PHI stored/logged)</span>
-            <span lang-block data-lang="es"><strong>Seguridad:</strong> API sin estado (No se almacena/registra PHI)</span>
-          </p>
-          <p>
-            <span lang-block data-lang="en"><strong>Standards:</strong> WCAG 2.1 AA, AAP Pediatric Dosing Guidelines</span>
-            <span lang-block data-lang="es"><strong>Estándares:</strong> WCAG 2.1 AA, Pautas de Dosificación Pediátrica de la AAP</span>
-          </p>
-
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="portfolio-footer site-footer">
-    <div class="container">
-      <p>
-        <span lang-block data-lang="en">David Quintana Dev is a registered trade name of Servicios Quintana LLC.</span>
-        <span lang-block data-lang="es">David Quintana Dev es un nombre comercial registrado de Servicios Quintana LLC.</span>
-      </p>
-
-      <p class="legal-notice">
-        <span lang-block data-lang="en">Mandatory Disclosure: I am not an attorney licensed to practice law in the State of Colorado and I may not give legal advice or accept fees for legal advice.</span>
-        <span lang-block data-lang="es">Aviso Obligatorio: No soy un abogado licenciado para ejercer el derecho en el Estado de Colorado y no puedo dar asesoría legal ni aceptar honorarios por asesoría legal.</span>
-      </p>
-
-      <p>
-        <span lang-block data-lang="en">© 2026 Servicios Quintana LLC. All Rights Reserved.</span>
-        <span lang-block data-lang="es">© 2026 Servicios Quintana LLC. Todos los derechos reservados.</span>
-      </p>
-    </div>
-  </footer>
-
-  <div id="lightbox-modal" class="lightbox-modal" style="display: none;">
-    <span class="lightbox-close">&times;</span>
-    <img class="lightbox-content" id="lightbox-img" alt="Full screen project screenshot">
-    <div class="lightbox-caption" id="lightbox-caption"></div>
   </div>
+</header>
+<main id="main">
+<section class="page-hero">
+<div class="container">
+<nav aria-label="Breadcrumb"><ol class="breadcrumb"><li><a href="index.html"><span data-lang="en">Home</span><span data-lang="es" lang="es">Inicio</span></a></li><li><a href="hcis-portfolio.html"><span data-lang="en">Work</span><span data-lang="es" lang="es">Trabajo</span></a></li><li aria-current="page"><span data-lang="en">HL7 v2 Parser</span><span data-lang="es" lang="es">Analizador HL7 v2</span></li></ol></nav>
+<p data-lang="en" class="kicker">Case study · HL7 v2 · Public-health lab reporting</p>
+<p data-lang="es" lang="es" class="kicker">Caso · HL7 v2 · Reporte de laboratorio en salud pública</p>
+<h1 data-lang="en">HL7 v2.x Infectious Disease Parser</h1>
+<h1 data-lang="es" lang="es">Analizador HL7 v2.x de enfermedades infecciosas</h1>
+<p data-lang="en" class="lead">Turns raw ORU^R01 lab messages into a validated, human-readable summary across nine infectious-disease categories — with a tested Python engine and a bilingual browser demo that apply the same rules.</p>
+<p data-lang="es" lang="es" class="lead">Convierte mensajes de laboratorio ORU^R01 en un resumen validado y legible para nueve categorías de enfermedades infecciosas — con un motor en Python probado y una demo bilingüe que aplican las mismas reglas.</p>
+<ul class="tags" aria-label="Technologies"><li><span class="tag">Python</span></li><li><span class="tag">Pydantic v2</span></li><li><span class="tag">pytest</span></li><li><span class="tag">LOINC</span></li><li><span class="tag">SNOMED CT</span></li><li><span class="tag">JavaScript</span></li></ul>
+<div class="btn-row"><a class="btn btn-primary" href="https://dquint32.github.io/hl7-infectious-disease-parser/" target="_blank" rel="noopener"><span data-lang="en">Live demo</span><span data-lang="es" lang="es">Ver demo</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a><a class="btn btn-secondary" href="https://github.com/dquint32/hl7-infectious-disease-parser" target="_blank" rel="noopener"><span data-lang="en">Source code</span><span data-lang="es" lang="es">Código fuente</span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.3 1.9 1.3 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg></a></div>
+<dl class="meta-row"><div><dt><span data-lang="en">Role</span><span data-lang="es" lang="es">Rol</span></dt><dd><span data-lang="en">Developer</span><span data-lang="es" lang="es">Desarrollador</span></dd></div><div><dt><span data-lang="en">Standards</span><span data-lang="es" lang="es">Estándares</span></dt><dd><span data-lang="en">HL7 v2.5.1 · LOINC · SNOMED CT</span><span data-lang="es" lang="es">HL7 v2.5.1 · LOINC · SNOMED CT</span></dd></div><div><dt><span data-lang="en">Data</span><span data-lang="es" lang="es">Datos</span></dt><dd><span data-lang="en">Synthetic messages only</span><span data-lang="es" lang="es">Solo mensajes sintéticos</span></dd></div><div><dt><span data-lang="en">Quality</span><span data-lang="es" lang="es">Calidad</span></dt><dd><span data-lang="en">81 tests · 99% coverage · CI</span><span data-lang="es" lang="es">81 pruebas · 99% cobertura · CI</span></dd></div></dl>
+</div>
+</section>
+<section class="section">
+<div class="container">
+<div class="section-head"><h2 data-lang="en">The problem</h2>
+<h2 data-lang="es" lang="es">El problema</h2></div>
+<div data-lang="en" class="prose"><p>HL7 v2 is still the dominant standard for electronic lab reporting, yet a line like <code>OBX|1|CWE|94500-6^SARS-CoV-2 RNA^LN||260373001^Detected^SCT</code> is close to unreadable for non-technical staff. That creates four real risks:</p>
+<ul class="checklist">
+<li><strong>Unreadable data</strong> slows triage when every hour counts during an outbreak.</li>
+<li><strong>A wrong LOINC mapping</strong> silently misclassifies a result and corrupts surveillance counts.</li>
+<li><strong>Malformed messages</strong> (missing IDs, impossible dates, bad codes) either crash a parser or slip through unnoticed.</li>
+<li><strong>Language barriers</strong> add cognitive load for Spanish-speaking staff reading English-only technical output.</li>
+</ul></div>
+<div data-lang="es" lang="es" class="prose"><p>HL7 v2 sigue siendo el estándar dominante para el reporte electrónico de laboratorio, pero una línea como <code>OBX|1|CWE|94500-6^SARS-CoV-2 RNA^LN||260373001^Detected^SCT</code> es casi ilegible para personal no técnico. Eso crea cuatro riesgos reales:</p>
+<ul class="checklist">
+<li><strong>Datos ilegibles</strong> retrasan el triaje cuando cada hora cuenta durante un brote.</li>
+<li><strong>Un mapeo LOINC incorrecto</strong> clasifica mal un resultado sin avisar y corrompe los conteos de vigilancia.</li>
+<li><strong>Mensajes mal formados</strong> (IDs faltantes, fechas imposibles, códigos inválidos) hacen fallar al analizador o pasan sin ser detectados.</li>
+<li><strong>Las barreras de idioma</strong> añaden carga cognitiva al personal hispanohablante que lee resultados técnicos solo en inglés.</li>
+</ul></div>
+</div>
+</section>
+<section class="section section-alt">
+<div class="container">
+<div class="section-head"><h2 data-lang="en">How it works</h2>
+<h2 data-lang="es" lang="es">Cómo funciona</h2></div>
+<div class="feature">
+<figure>
+<div class="shot"><img src="assets/img/projects/hl7-respiratory-panel.webp" alt="Parser summarizing a respiratory panel into disease badges" width="1600" height="1255" loading="lazy" decoding="async" class="zoomable"></div>
+<figcaption data-lang="en">A four-analyte respiratory panel: COVID-19, Flu A, Flu B, and RSV detected.</figcaption>
+<figcaption data-lang="es" lang="es">Un panel respiratorio de cuatro analitos: COVID-19, influenza A y B, y VSR detectado.</figcaption>
+</figure>
+<div>
+<h3 data-lang="en">From pipes to a clinical summary</h3>
+<h3 data-lang="es" lang="es">De barras verticales a un resumen clínico</h3>
+<div data-lang="en" class="prose"><p>Paste a message or upload a <code>.txt</code> file. The parser reads the delimiters each message declares in MSH-1/MSH-2, handles CR, LF, and CRLF line endings, and extracts the patient (PID) and every result (OBX).</p>
+<p>Results map to <strong>nine categories</strong> — COVID-19, Influenza A, Influenza B, RSV, HIV-1 viral load, TB (IGRA), and Hepatitis A, B, and C — through one LOINC lookup. Coded answers keep their SNOMED CT code but display the text (<em>Detected</em>), and abnormal flags follow HL7 table 0078 (<code>H</code>, <code>L</code>, <code>A</code>, <code>AA</code>…), not just <code>A</code>.</p></div>
+<div data-lang="es" lang="es" class="prose"><p>Pega un mensaje o carga un archivo <code>.txt</code>. El analizador lee los delimitadores que cada mensaje declara en MSH-1/MSH-2, maneja finales de línea CR, LF y CRLF, y extrae al paciente (PID) y cada resultado (OBX).</p>
+<p>Los resultados se asignan a <strong>nueve categorías</strong> — COVID-19, influenza A, influenza B, VSR, carga viral de VIH-1, TB (IGRA) y hepatitis A, B y C — con una sola búsqueda LOINC. Las respuestas codificadas conservan su código SNOMED CT pero muestran el texto (<em>Detectado</em>), y los indicadores anormales siguen la tabla HL7 0078 (<code>H</code>, <code>L</code>, <code>A</code>, <code>AA</code>…), no solo <code>A</code>.</p></div>
+</div>
+</div><div class="feature flip">
+<figure>
+<div class="shot"><img src="assets/img/projects/hl7-validation-errors.webp" alt="Parsed output listing validation errors for a malformed message" width="1600" height="1411" loading="lazy" decoding="async" class="zoomable"></div>
+<figcaption data-lang="en">A deliberately broken message: every defect is named, none crashes the parser.</figcaption>
+<figcaption data-lang="es" lang="es">Un mensaje roto a propósito: cada defecto se identifica y ninguno detiene el analizador.</figcaption>
+</figure>
+<div>
+<h3 data-lang="en">Every defect, with its exact location</h3>
+<h3 data-lang="es" lang="es">Cada defecto, con su ubicación exacta</h3>
+<div data-lang="en" class="prose"><p>Each record is built through a Pydantic v2 model. When a field fails, the error becomes an issue pointing at the HL7 location — <code>PID-3</code>, <code>PID-7</code>, <code>OBX[2]-5</code> — instead of an exception.</p>
+<ul class="checklist">
+<li>LOINC codes are checked for format <strong>and Mod-10 check digit</strong></li>
+<li><code>NM</code> results must be numeric; result status must be in HL7 table 0085</li>
+<li>Impossible or future birth dates are rejected; ORU messages without PID or OBX are flagged</li>
+<li>A record with one bad optional field is <strong>salvaged</strong>, so a bad DOB doesn't throw away the patient</li>
+</ul></div>
+<div data-lang="es" lang="es" class="prose"><p>Cada registro se construye con un modelo Pydantic v2. Cuando un campo falla, el error se convierte en un hallazgo que apunta a la ubicación HL7 — <code>PID-3</code>, <code>PID-7</code>, <code>OBX[2]-5</code> — en lugar de una excepción.</p>
+<ul class="checklist">
+<li>Los códigos LOINC se verifican en formato <strong>y dígito de control Mod-10</strong></li>
+<li>Los resultados <code>NM</code> deben ser numéricos; el estado debe estar en la tabla HL7 0085</li>
+<li>Se rechazan fechas de nacimiento imposibles o futuras; se marcan mensajes ORU sin PID u OBX</li>
+<li>Un registro con un campo opcional inválido se <strong>rescata</strong>, para que una fecha errónea no descarte al paciente</li>
+</ul></div>
+</div>
+</div><div class="feature">
+<figure>
+<div class="shot"><img src="assets/img/projects/hl7-spanish-dark.webp" alt="Parser interface in Spanish with dark mode" width="1600" height="1375" loading="lazy" decoding="async" class="zoomable"></div>
+<figcaption data-lang="en">Spanish interface and dark mode on a hepatitis and TB panel.</figcaption>
+<figcaption data-lang="es" lang="es">Interfaz en español y modo oscuro con un panel de hepatitis y TB.</figcaption>
+</figure>
+<div>
+<h3 data-lang="en">Bilingual, high-contrast, and safe to paste into</h3>
+<h3 data-lang="es" lang="es">Bilingüe, de alto contraste y seguro para pegar</h3>
+<div data-lang="en" class="prose"><p>The interface switches between English and Spanish without a reload, and a dark mode supports low-light settings. All message content is HTML-escaped before display, so a pasted message can never inject code into the page, and processing happens entirely in the browser.</p></div>
+<div data-lang="es" lang="es" class="prose"><p>La interfaz cambia entre inglés y español sin recargar, y un modo oscuro facilita entornos con poca luz. Todo el contenido del mensaje se escapa antes de mostrarse, así que un mensaje pegado nunca puede inyectar código en la página, y el procesamiento ocurre por completo en el navegador.</p></div>
+</div>
+</div>
+</div>
+</section>
+<section class="section">
+<div class="container">
+<div class="section-head"><h2 data-lang="en">Getting the codes right</h2>
+<h2 data-lang="es" lang="es">Usar los códigos correctos</h2><p data-lang="en">I verified every code against loinc.org and found three mapping errors in my own first version. A surveillance tool is only as good as its terminology.</p>
+<p data-lang="es" lang="es">Verifiqué cada código en loinc.org y encontré tres errores de mapeo en mi propia primera versión. Una herramienta de vigilancia es tan buena como su terminología.</p></div>
+<div class="table-wrap" tabindex="0" role="region" aria-label="LOINC registry table"><table>
+<thead><tr><th scope="col">LOINC</th><th scope="col"><span data-lang="en">Measures</span><span data-lang="es" lang="es">Mide</span></th><th scope="col"><span data-lang="en">Reported as</span><span data-lang="es" lang="es">Se reporta como</span></th><th scope="col"><span data-lang="en">Change</span><span data-lang="es" lang="es">Cambio</span></th></tr></thead>
+<tbody><tr><td><code>94500-6</code></td><td>SARS-CoV-2 RNA, NAA with probe</td><td>COVID-19</td><td></td></tr><tr><td><code>92142-9</code></td><td>Influenza A RNA, respiratory specimen</td><td>Influenza A</td><td><span data-lang="en">added</span><span data-lang="es" lang="es">agregado</span></td></tr><tr class="is-hold"><td><code>76078-5</code></td><td>Influenza A RNA, nasopharynx</td><td>Influenza A</td><td><span data-lang="en">fixed — was labeled RSV</span><span data-lang="es" lang="es">corregido — figuraba como VSR</span></td></tr><tr class="is-hold"><td><code>92141-1</code></td><td>Influenza B RNA, respiratory specimen</td><td>Influenza B</td><td><span data-lang="en">fixed — was used for Flu A and B</span><span data-lang="es" lang="es">corregido — se usaba para influenza A y B</span></td></tr><tr><td><code>85479-4</code></td><td>RSV RNA, upper respiratory specimen</td><td>RSV</td><td><span data-lang="en">added</span><span data-lang="es" lang="es">agregado</span></td></tr><tr><td><code>25836-8</code></td><td>HIV-1 RNA viral load</td><td>HIV-1</td><td></td></tr><tr><td><code>45323-3 · 64084-7</code></td><td>M. tuberculosis IFN-γ (IGRA)</td><td>TB</td><td></td></tr><tr class="is-hold"><td><code>71772-8</code></td><td>Mitogen-stimulated IFN-γ</td><td><span data-lang="en">QC control — not reported</span><span data-lang="es" lang="es">control de calidad — no se reporta</span></td><td><span data-lang="en">fixed — was counted as a TB result</span><span data-lang="es" lang="es">corregido — se contaba como resultado de TB</span></td></tr><tr><td><code>13950-1 · 5195-3 · 24113-3 · 13955-0</code></td><td>HAV IgM · HBsAg · HBc IgM · HCV Ab</td><td>Hepatitis A / B / C</td><td></td></tr></tbody>
+</table></div>
+</div>
+</section>
+<section class="section section-alt">
+<div class="container">
+<div>
+<div class="section-head"><h2 data-lang="en">Architecture</h2>
+<h2 data-lang="es" lang="es">Arquitectura</h2></div>
+<div data-lang="en" class="prose"><p>The Python package separates the pipeline into three layers, each with its own tests:</p>
+<ul class="checklist">
+<li><strong>Ingestion</strong> — normalizes line endings, reads declared delimiters, resolves HL7 escape sequences, and splits batch feeds</li>
+<li><strong>Validation</strong> — builds typed models and turns every problem into a located issue</li>
+<li><strong>Transformation</strong> — one LOINC lookup per result, grouped by disease, keeping every result instead of overwriting earlier ones</li>
+</ul>
+<p>A command-line tool prints a summary or JSON and exits non-zero when a message has errors, so it can sit in a data pipeline.</p></div>
+<div data-lang="es" lang="es" class="prose"><p>El paquete de Python separa el pipeline en tres capas, cada una con sus propias pruebas:</p>
+<ul class="checklist">
+<li><strong>Ingesta</strong> — normaliza finales de línea, lee los delimitadores declarados, resuelve secuencias de escape HL7 y divide lotes</li>
+<li><strong>Validación</strong> — construye modelos tipados y convierte cada problema en un hallazgo con ubicación</li>
+<li><strong>Transformación</strong> — una búsqueda LOINC por resultado, agrupada por enfermedad, conservando cada resultado en lugar de sobrescribir</li>
+</ul>
+<p>Una herramienta de línea de comandos imprime un resumen o JSON y termina con error cuando un mensaje tiene problemas, para usarse dentro de un pipeline de datos.</p></div>
+<pre class="code-block mt-8" tabindex="0" aria-label="Python usage example"><code><span class="k">from</span> hl7_infectious <span class="k">import</span> parse_message, Disease
 
-  <script src="main.js"></script>
-
+report = parse_message(raw_hl7)            <span class="c"># ingest → validate → summarize</span>
+report.latest(Disease.COVID19).value       <span class="c"># "Detected"</span>
+report.has_errors                          <span class="c"># False</span>
+[i.location <span class="k">for</span> i <span class="k">in</span> report.issues]   <span class="c"># e.g. ["PID-7", "OBX[2]-5"]</span>
+report.model_dump_json()                   <span class="c"># typed JSON for the next system</span></code></pre>
+</div>
+</div>
+</section>
+<section class="section">
+<div class="container">
+<div class="section-head"><h2 data-lang="en">Quality &amp; privacy</h2>
+<h2 data-lang="es" lang="es">Calidad y privacidad</h2></div>
+<div class="stats"><div class="stat"><span class="stat-num">81</span><span class="stat-label"><span data-lang="en">automated tests</span><span data-lang="es" lang="es">pruebas automatizadas</span></span></div><div class="stat"><span class="stat-num">99%</span><span class="stat-label"><span data-lang="en">line coverage</span><span data-lang="es" lang="es">cobertura de líneas</span></span></div><div class="stat"><span class="stat-num">8</span><span class="stat-label"><span data-lang="en">synthetic sample messages</span><span data-lang="es" lang="es">mensajes sintéticos de ejemplo</span></span></div><div class="stat"><span class="stat-num">13</span><span class="stat-label"><span data-lang="en">LOINC codes verified</span><span data-lang="es" lang="es">códigos LOINC verificados</span></span></div></div>
+<p data-lang="en" class="prose mt-6">Tests cover line-ending variants, custom delimiters, Latin-1 input, batch envelopes, escape sequences, impossible dates, bad check digits, and JSON round-trips, and run against every sample file. All messages are synthetic; no real patient data is used anywhere in the project.</p>
+<p data-lang="es" lang="es" class="prose mt-6">Las pruebas cubren variantes de fin de línea, delimitadores personalizados, texto Latin-1, lotes, secuencias de escape, fechas imposibles, dígitos de control inválidos y conversiones JSON, y se ejecutan contra cada archivo de ejemplo. Todos los mensajes son sintéticos; no se usa ningún dato real de pacientes.</p>
+<div class="mt-10"><div class="card next-project">
+<div><span class="label"><span data-lang="en">Next case study</span><span data-lang="es" lang="es">Siguiente caso</span></span><a class="title" href="pediatric-cds-calculator.html"><span data-lang="en">Pediatric CDS Dosage Calculator</span><span data-lang="es" lang="es">Calculadora pediátrica de dosis (CDS)</span> →</a></div>
+<a class="btn btn-secondary" href="hcis-portfolio.html"><span data-lang="en">All work</span><span data-lang="es" lang="es">Todo el trabajo</span></a>
+</div></div>
+</div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <p><strong>David Quintana</strong> · <span data-lang="en">Clinical data engineering, HL7/FHIR interoperability and HIPAA/GCP-compliant data work.</span><span data-lang="es" lang="es">Ingeniería de datos clínicos, interoperabilidad HL7/FHIR y trabajo de datos conforme a HIPAA/GCP.</span></p>
+      <p><span data-lang="en">David Quintana Dev is a registered trade name of Servicios Quintana LLC.</span><span data-lang="es" lang="es">David Quintana Dev es un nombre comercial registrado de Servicios Quintana LLC.</span></p>
+      
+      <p>© <span data-year>2026</span> Servicios Quintana LLC. <span data-lang="en">All rights reserved.</span><span data-lang="es" lang="es">Todos los derechos reservados.</span></p>
+    </div>
+    <nav aria-label="Footer">
+      <ul class="footer-links">
+        <li><a href="hcis-portfolio.html"><span data-lang="en">Work</span><span data-lang="es" lang="es">Trabajo</span></a></li>
+        <li><a href="eva-ctms-case-study.html"><span data-lang="en">EVA case study</span><span data-lang="es" lang="es">Caso EVA</span></a></li>
+        <li><a href="resume.pdf" target="_blank" rel="noopener"><span data-lang="en">Résumé (PDF)</span><span data-lang="es" lang="es">Currículum (PDF)</span></a></li>
+        <li><a href="https://github.com/dquint32" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/quintanadm95" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="web-dev.html"><span data-lang="en">Web development for small businesses</span><span data-lang="es" lang="es">Desarrollo web para pequeñas empresas</span></a></li>
+        <li><a href="pricing.html"><span data-lang="en">Web pricing</span><span data-lang="es" lang="es">Precios web</span></a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+<button class="icon-btn back-to-top" type="button" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg></button>
+<script src="main.js" defer></script>
 </body>
 </html>
