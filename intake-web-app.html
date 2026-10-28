@@ -65,12 +65,12 @@
 <h1 data-lang="es" lang="es">Admisión bilingüe de pacientes → FHIR R4</h1>
 <p data-lang="en" class="lead">A bilingual (EN/ES) intake portal whose Python backend validates every submission with Pydantic v2 and turns it into a self-contained FHIR R4 Bundle, ready for an EHR or FHIR server. The live demo runs that same tested backend in your browser.</p>
 <p data-lang="es" lang="es" class="lead">Un portal de admisión bilingüe (EN/ES) cuyo backend de Python valida cada envío con Pydantic v2 y lo convierte en un Bundle FHIR R4 autocontenido, listo para un EHR o servidor FHIR. La demo ejecuta ese mismo backend probado en su navegador.</p>
-<ul class="tags" aria-label="Technologies"><li><span class="tag">Python</span></li><li><span class="tag">FastAPI</span></li><li><span class="tag">Pydantic v2</span></li><li><span class="tag">FHIR R4</span></li><li><span class="tag">SNOMED CT</span></li><li><span class="tag">Pyodide</span></li><li><span class="tag">JavaScript</span></li><li><span class="tag">pytest</span></li></ul>
+<ul class="tags" aria-label="Technologies"><li><span class="tag">Python</span></li><li><span class="tag">FastAPI</span></li><li><span class="tag">Pydantic v2</span></li><li><span class="tag tag-std">FHIR R4</span></li><li><span class="tag tag-std">SNOMED CT</span></li><li><span class="tag">Pyodide</span></li><li><span class="tag">JavaScript</span></li><li><span class="tag">pytest</span></li></ul>
 <div class="btn-row"><a class="btn btn-primary" href="https://dquint32.github.io/bilingual-patient-intake-fhir/" target="_blank" rel="noopener"><span data-lang="en">Live demo</span><span data-lang="es" lang="es">Ver demo</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a><a class="btn btn-secondary" href="https://github.com/dquint32/bilingual-patient-intake-fhir" target="_blank" rel="noopener"><span data-lang="en">Source code</span><span data-lang="es" lang="es">Código fuente</span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.3 1.9 1.3 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg></a></div>
 <dl class="meta-row"><div><dt><span data-lang="en">Role</span><span data-lang="es" lang="es">Rol</span></dt><dd><span data-lang="en">Full-stack developer</span><span data-lang="es" lang="es">Desarrollador full-stack</span></dd></div><div><dt><span data-lang="en">Timeline</span><span data-lang="es" lang="es">Periodo</span></dt><dd><span data-lang="en">Dec 2024 – Jan 2025 · refactored 2026</span><span data-lang="es" lang="es">Dic 2024 – ene 2025 · refactorizado 2026</span></dd></div><div><dt><span data-lang="en">Standards</span><span data-lang="es" lang="es">Estándares</span></dt><dd><span data-lang="en">FHIR R4 · SNOMED CT · BCP-47</span><span data-lang="es" lang="es">FHIR R4 · SNOMED CT · BCP-47</span></dd></div><div><dt><span data-lang="en">Quality</span><span data-lang="es" lang="es">Calidad</span></dt><dd><span data-lang="en">80 tests · 100% coverage · CI</span><span data-lang="es" lang="es">80 pruebas · 100% cobertura · CI</span></dd></div></dl>
 </div>
 </section>
-<section class="section">
+<section class="section section-alt">
 <div class="container">
 <div class="section-head"><h2 data-lang="en">The problem</h2>
 <h2 data-lang="es" lang="es">El problema</h2></div>
@@ -80,7 +80,7 @@
 <p>Este prototipo captura los datos en el idioma del propio paciente y los convierte en recursos FHIR estándar en el origen, para que la estructura, la codificación y la validación ocurran una sola vez, en código, y no a mano.</p></div>
 </div>
 </section>
-<section class="section section-alt">
+<section class="section">
 <div class="container">
 <div class="section-head"><h2 data-lang="en">How it works</h2>
 <h2 data-lang="es" lang="es">Cómo funciona</h2></div>
@@ -149,7 +149,7 @@
 </div>
 </div>
 </section>
-<section class="section">
+<section class="section section-alt">
 <div class="container">
 <div class="section-head"><h2 data-lang="en">Engineering decisions</h2>
 <h2 data-lang="es" lang="es">Decisiones de ingeniería</h2><p data-lang="en">The choices a reviewer would ask about, and why.</p>
@@ -160,7 +160,7 @@
 </table></div>
 </div>
 </section>
-<section class="section section-alt">
+<section class="section">
 <div class="container">
 <div>
 <div class="section-head"><h2 data-lang="en">Architecture</h2>
@@ -197,7 +197,7 @@
 </div>
 </div>
 </section>
-<section class="section">
+<section class="section section-alt">
 <div class="container">
 <div class="section-head"><h2 data-lang="en">Quality</h2>
 <h2 data-lang="es" lang="es">Calidad</h2><p data-lang="en">Tests use mock payloads that mirror the browser's real submissions, including the edge cases a form actually produces.</p>

@@ -93,12 +93,13 @@
 </div>
 </div>
 </section>
-<section class="section" id="work">
+<section class="section section-alt" id="work">
 <div class="container">
 <div class="section-head"><h2 data-lang="en">Featured work</h2>
 <h2 data-lang="es" lang="es">Trabajo destacado</h2><p data-lang="en">Clinical-data engineering under real HIPAA/GCP constraints — pipelines, validation, and interoperability.</p>
 <p data-lang="es" lang="es">Ingeniería de datos clínicos bajo restricciones reales de HIPAA/GCP — pipelines, validación e interoperabilidad.</p></div>
-<article class="featured">
+<!-- Flagship card: copy on top, ETL pipeline below as a 3-column grid (.featured-stack + .flow.wide) -->
+<article class="featured featured-stack">
 <div>
 <p class="kicker">★ <span data-lang="en">Flagship · Clinical data ETL</span><span data-lang="es" lang="es">Destacado · ETL de datos clínicos</span></p>
 <h3 data-lang="en">EVA CTMS Archive — clinical data ETL pipeline</h3>
@@ -108,11 +109,11 @@
 <ul class="tags" aria-label="Technologies"><li><span class="tag">Python</span></li><li><span class="tag">pandas</span></li><li><span class="tag">openpyxl</span></li><li><span class="tag">Regex</span></li><li><span class="tag">JSON/YAML</span></li><li><span class="tag">SharePoint</span></li></ul>
 <div class="btn-row"><a class="btn btn-primary" href="eva-ctms-case-study.html"><span data-lang="en">Read the case study</span><span data-lang="es" lang="es">Leer el estudio de caso</span></a></div>
 </div>
-<div class="flow" role="img" aria-label="ETL pipeline: extract raw logs and a legacy patient database, transform through classification, cleaning and cross-validation, load into a governed SharePoint archive.">
+<div class="flow wide" role="img" aria-label="ETL pipeline: extract raw logs and a legacy patient database, transform through classification, cleaning and cross-validation, load into a governed SharePoint archive.">
 <div class="flow-lane extract"><b>Extract</b><div class="flow-step">Raw Windows logs<small>tree /f · dir /s /b</small></div><div class="flow-step">Legacy patient DB<small>recovered backup</small></div></div>
-<div class="flow-arrow" aria-hidden="true">↓</div>
+<div class="flow-arrow" aria-hidden="true">→</div>
 <div class="flow-lane transform"><b>Transform</b><div class="flow-step">Crawl &amp; classify<small>9,925 documents</small></div><div class="flow-step">Clean patient DB<small>6,830 records</small></div><div class="flow-step hit">Cross-validate ◀ finding<small>document ↔ patient match</small></div></div>
-<div class="flow-arrow" aria-hidden="true">↓</div>
+<div class="flow-arrow" aria-hidden="true">→</div>
 <div class="flow-lane load"><b>Load</b><div class="flow-step">SharePoint archive<small>11 metadata columns · 4 views</small></div></div>
 </div>
 </article>
@@ -125,7 +126,7 @@
 <h3 data-lang="es" lang="es"><a href="intake-web-app.html">Admisión bilingüe → FHIR</a></h3>
 <p data-lang="en">Bilingual intake form validated by Pydantic v2 and turned into a self-contained FHIR R4 Bundle. The live demo runs the tested Python in your browser.</p>
 <p data-lang="es" lang="es">Formulario bilingüe validado con Pydantic v2 y convertido en un Bundle FHIR R4 autocontenido. La demo ejecuta el Python probado en su navegador.</p>
-<ul class="tags" aria-label="Technologies"><li><span class="tag">Python</span></li><li><span class="tag">FastAPI</span></li><li><span class="tag">Pydantic v2</span></li><li><span class="tag">FHIR R4</span></li><li><span class="tag">pytest</span></li></ul>
+<ul class="tags" aria-label="Technologies"><li><span class="tag">Python</span></li><li><span class="tag">FastAPI</span></li><li><span class="tag">Pydantic v2</span></li><li><span class="tag tag-std">FHIR R4</span></li><li><span class="tag">pytest</span></li></ul>
 <div class="links"><a href="intake-web-app.html"><span data-lang="en">Case study</span><span data-lang="es" lang="es">Estudio de caso</span></a><a href="https://dquint32.github.io/bilingual-patient-intake-fhir/" target="_blank" rel="noopener"><span data-lang="en">Live demo</span><span data-lang="es" lang="es">Demo</span></a><a href="https://github.com/dquint32/bilingual-patient-intake-fhir" target="_blank" rel="noopener"><span data-lang="en">Code</span><span data-lang="es" lang="es">Código</span></a></div>
 </div>
 </article>
@@ -137,7 +138,7 @@
 <h3 data-lang="es" lang="es"><a href="hl7-parser.html">Analizador HL7 v2 de enfermedades infecciosas</a></h3>
 <p data-lang="en">Parses ORU^R01 lab messages, verifies LOINC codes and check digits, and reports every defect with its exact HL7 location.</p>
 <p data-lang="es" lang="es">Analiza mensajes ORU^R01, verifica códigos LOINC y dígitos de control, e informa cada defecto con su ubicación HL7 exacta.</p>
-<ul class="tags" aria-label="Technologies"><li><span class="tag">Python</span></li><li><span class="tag">Pydantic v2</span></li><li><span class="tag">LOINC</span></li><li><span class="tag">SNOMED CT</span></li><li><span class="tag">pytest</span></li></ul>
+<ul class="tags" aria-label="Technologies"><li><span class="tag">Python</span></li><li><span class="tag">Pydantic v2</span></li><li><span class="tag tag-std">LOINC</span></li><li><span class="tag tag-std">SNOMED CT</span></li><li><span class="tag">pytest</span></li></ul>
 <div class="links"><a href="hl7-parser.html"><span data-lang="en">Case study</span><span data-lang="es" lang="es">Estudio de caso</span></a><a href="https://dquint32.github.io/hl7-infectious-disease-parser/" target="_blank" rel="noopener"><span data-lang="en">Live demo</span><span data-lang="es" lang="es">Demo</span></a><a href="https://github.com/dquint32/hl7-infectious-disease-parser" target="_blank" rel="noopener"><span data-lang="en">Code</span><span data-lang="es" lang="es">Código</span></a></div>
 </div>
 </article>
@@ -161,7 +162,7 @@
 <h3 data-lang="es" lang="es"><a href="https://github.com/dquint32/fhir-patient-converter">Convertidor de pacientes FHIR</a></h3>
 <p data-lang="en">Converts intake data into US Core Patient resources, with a batch CLI that reports bad records without stopping the run.</p>
 <p data-lang="es" lang="es">Convierte datos de admisión en recursos Patient de US Core, con un CLI por lotes que reporta registros inválidos sin detenerse.</p>
-<ul class="tags" aria-label="Technologies"><li><span class="tag">Python</span></li><li><span class="tag">Pydantic v2</span></li><li><span class="tag">US Core</span></li><li><span class="tag">JavaScript</span></li></ul>
+<ul class="tags" aria-label="Technologies"><li><span class="tag">Python</span></li><li><span class="tag">Pydantic v2</span></li><li><span class="tag tag-std">US Core</span></li><li><span class="tag">JavaScript</span></li></ul>
 <div class="links"><a href="https://dquint32.github.io/fhir-patient-converter/" target="_blank" rel="noopener"><span data-lang="en">Live demo</span><span data-lang="es" lang="es">Demo</span></a><a href="https://github.com/dquint32/fhir-patient-converter" target="_blank" rel="noopener"><span data-lang="en">Code</span><span data-lang="es" lang="es">Código</span></a></div>
 </div>
 </article>
@@ -169,7 +170,7 @@
 <div class="btn-row"><a class="btn btn-secondary" href="hcis-portfolio.html"><span data-lang="en">See all work →</span><span data-lang="es" lang="es">Ver todo el trabajo →</span></a></div>
 </div>
 </section>
-<section class="section section-alt" id="skills">
+<section class="section" id="skills">
 <div class="container">
 <div class="section-head"><h2 data-lang="en">Skills</h2>
 <h2 data-lang="es" lang="es">Habilidades</h2><p data-lang="en">Building and validating clinical data pipelines under real compliance constraints.</p>
@@ -191,7 +192,7 @@
 </div>
 </div>
 </section>
-<section class="section" id="credentials">
+<section class="section section-alt" id="credentials">
 <div class="container">
 <div class="section-head"><h2 data-lang="en">Credentials</h2>
 <h2 data-lang="es" lang="es">Credenciales</h2><p data-lang="en">CITI Program certifications — each one verifiable.</p>
@@ -205,7 +206,7 @@
 </div>
 </div>
 </section>
-<section class="section section-alt" id="about">
+<section class="section" id="about">
 <div class="container">
 <div class="about-grid">
 <div>
@@ -233,7 +234,7 @@
 </div>
 </div>
 </section>
-<section class="section" id="contact">
+<section class="section section-alt" id="contact">
 <div class="container">
 <div class="contact-panel">
 <div class="section-head center"><h2 data-lang="en">Let's talk</h2>
