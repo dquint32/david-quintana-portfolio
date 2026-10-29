@@ -632,3 +632,13 @@ tbody th { color: var(--accent); font-weight: 600; font-size: 0.95rem; white-spa
 /* Insured badge (2026-10-21) */
 .insured-badge { display: inline-block; margin-top: var(--s5); padding: 4px 12px; border-radius: 999px; border: 1px solid transparent; background: var(--tag-bg); color: var(--tag-text); font: 600 0.78rem/1.5 var(--font-mono); letter-spacing: 0.04em; }
 .insured-note { margin-top: var(--s4); max-width: 68ch; color: var(--text-muted); font-size: 0.95rem; }
+
+/* Servicios Quintana LLC parent-company mark */
+.edu img { object-fit: contain; }
+.footer-company { display: inline-flex; align-items: center; gap: var(--s3); margin-bottom: var(--s5); text-decoration: none; }
+.footer-company img { height: 44px; width: auto; flex: none; }
+.footer-company-text { display: flex; flex-direction: column; gap: 2px; line-height: 1.15; }
+.footer-company-name { font-family: var(--font-display); font-size: 1.2rem; letter-spacing: 0.03em; text-transform: uppercase; color: var(--text); transition: color .2s var(--ease); }
+.footer-company-tag { font-size: 0.66rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-faint); }
+.footer-company:hover .footer-company-name, .footer-company:focus-visible .footer-company-name { color: var(--accent); }
+.kicker-mark { display: inline-block; height: 1.5em; width: auto; vertical-align: middle; margin-right: 0.55em; position: relative; top: -0.1em; }
