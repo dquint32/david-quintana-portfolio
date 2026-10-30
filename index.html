@@ -30,7 +30,228 @@
     })();
   </script>
   <link rel="stylesheet" href="styles.css">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "David Matthew Quintana", "jobTitle": "Clinical Data Engineer", "url": "https://davidquintana.dev", "image": "https://davidquintana.dev/assets/img/profile.webp", "alumniOf": {"@type": "CollegeOrUniversity", "name": "Metropolitan State University of Denver"}, "address": {"@type": "PostalAddress", "addressLocality": "Castle Rock", "addressRegion": "CO", "addressCountry": "US"}, "knowsLanguage": ["en", "es"], "knowsAbout": ["ETL", "Python", "pandas", "HL7 v2", "FHIR R4", "LOINC", "HIPAA", "ICH-GCP"], "sameAs": ["https://www.linkedin.com/in/quintanadm95", "https://github.com/dquint32"]}</script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://davidquintana.dev/#website",
+        "url": "https://davidquintana.dev/",
+        "name": "David Quintana | Clinical Data Engineer",
+        "inLanguage": "en-US",
+        "publisher": {
+          "@id": "https://davidquintana.dev/#person"
+        }
+      },
+      {
+        "@type": "ProfilePage",
+        "@id": "https://davidquintana.dev/#profilepage",
+        "url": "https://davidquintana.dev/",
+        "name": "David Quintana, Clinical Data Engineer in Denver, Colorado",
+        "isPartOf": {
+          "@id": "https://davidquintana.dev/#website"
+        },
+        "mainEntity": {
+          "@id": "https://davidquintana.dev/#person"
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://davidquintana.dev/#person",
+        "name": "David Quintana",
+        "alternateName": "David Matthew Quintana",
+        "url": "https://davidquintana.dev/",
+        "image": "https://davidquintana.dev/assets/img/profile.webp",
+        "jobTitle": "Clinical Data Engineer",
+        "description": "David Quintana is a bilingual (English/Spanish) clinical data engineer based in Denver, Colorado, serving the Denver metro area, specializing in HL7 v2 and FHIR R4 interoperability and Python ETL pipelines for clinical research data. He is the owner of Servicios Quintana LLC.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Denver",
+          "addressRegion": "CO",
+          "addressCountry": "US"
+        },
+        "areaServed": {
+          "@id": "https://serviciosquintana.com/#denver-metro"
+        },
+        "knowsLanguage": [
+          {
+            "@type": "Language",
+            "name": "English",
+            "alternateName": "en"
+          },
+          {
+            "@type": "Language",
+            "name": "Spanish",
+            "alternateName": "es"
+          }
+        ],
+        "worksFor": {
+          "@id": "https://serviciosquintana.com/#organization"
+        },
+        "alumniOf": {
+          "@id": "https://www.msudenver.edu/#organization"
+        },
+        "knowsAbout": [
+          "Clinical Data Engineering",
+          "HL7 v2",
+          "FHIR R4",
+          "Python",
+          "pandas",
+          "HIPAA",
+          "GCP",
+          "ETL Pipelines"
+        ],
+        "hasCredential": [
+          {
+            "@type": "EducationalOccupationalCredential",
+            "@id": "https://davidquintana.dev/#credential-bs-his",
+            "name": "Bachelor of Science in Health Information Systems",
+            "credentialCategory": "degree",
+            "educationalLevel": "Bachelor's degree",
+            "recognizedBy": {
+              "@id": "https://www.msudenver.edu/#organization"
+            }
+          },
+          {
+            "@type": "EducationalOccupationalCredential",
+            "@id": "https://davidquintana.dev/#credential-citi-gcp",
+            "name": "CITI Program Good Clinical Practice (US FDA)",
+            "credentialCategory": "certificate",
+            "identifier": {
+              "@type": "PropertyValue",
+              "propertyID": "CITI Program Record ID",
+              "value": "77289766"
+            },
+            "url": "https://www.citiprogram.org/verify/?wc8e3f9f7-8f06-47bd-ba08-80ac69449bc4-77289766",
+            "recognizedBy": {
+              "@id": "https://about.citiprogram.org/#organization"
+            }
+          },
+          {
+            "@type": "EducationalOccupationalCredential",
+            "@id": "https://davidquintana.dev/#credential-citi-hsr",
+            "name": "CITI Program Biomedical Research — Human Subjects",
+            "credentialCategory": "certificate",
+            "identifier": {
+              "@type": "PropertyValue",
+              "propertyID": "CITI Program Record ID",
+              "value": "77289765"
+            },
+            "url": "https://www.citiprogram.org/verify/?w321cd296-9737-4dd8-a660-db4860e47611-77289765",
+            "recognizedBy": {
+              "@id": "https://about.citiprogram.org/#organization"
+            }
+          },
+          {
+            "@type": "EducationalOccupationalCredential",
+            "@id": "https://davidquintana.dev/#credential-citi-hipaa",
+            "name": "CITI Program HIPAA for Research",
+            "credentialCategory": "certificate",
+            "identifier": {
+              "@type": "PropertyValue",
+              "propertyID": "CITI Program Record ID",
+              "value": "77289768"
+            },
+            "url": "https://www.citiprogram.org/verify/?w7ce7274a-9806-4e5c-94ec-9ea77af7a663-77289768",
+            "recognizedBy": {
+              "@id": "https://about.citiprogram.org/#organization"
+            }
+          },
+          {
+            "@type": "EducationalOccupationalCredential",
+            "@id": "https://davidquintana.dev/#credential-citi-clinical-intro",
+            "name": "CITI Program Clinical Research: An Introduction",
+            "credentialCategory": "certificate",
+            "identifier": {
+              "@type": "PropertyValue",
+              "propertyID": "CITI Program Record ID",
+              "value": "77289767"
+            },
+            "url": "https://www.citiprogram.org/verify/?wc14ae6d7-351d-4e16-88f1-102b45af0def-77289767",
+            "recognizedBy": {
+              "@id": "https://about.citiprogram.org/#organization"
+            }
+          }
+        ],
+        "sameAs": [
+          "https://www.linkedin.com/in/quintanadm95",
+          "https://github.com/dquint32"
+        ]
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://serviciosquintana.com/#organization",
+        "name": "Servicios Quintana LLC",
+        "url": "https://serviciosquintana.com/",
+        "description": "Servicios Quintana LLC is a bilingual, owner-operated Colorado company run by David Quintana, offering web and clinical data development (as David Quintana Dev), mobile notary and apostille, DMV assistance, and certified Spanish-English translation.",
+        "founder": {
+          "@id": "https://davidquintana.dev/#person"
+        },
+        "telephone": "+1-303-500-4122",
+        "email": "admin@serviciosquintana.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "5128 E Colfax Ave",
+          "addressLocality": "Denver",
+          "addressRegion": "CO",
+          "postalCode": "80220",
+          "addressCountry": "US"
+        },
+        "areaServed": {
+          "@id": "https://serviciosquintana.com/#denver-metro"
+        },
+        "brand": [
+          {
+            "@type": "Brand",
+            "name": "David Quintana Dev",
+            "url": "https://davidquintana.dev/"
+          },
+          {
+            "@type": "Brand",
+            "name": "Quintana Notary & Signing",
+            "url": "https://quintananotarysigning.com/"
+          },
+          {
+            "@type": "Brand",
+            "name": "Ayuda DMV",
+            "url": "https://ayudadmv.com/"
+          },
+          {
+            "@type": "Brand",
+            "name": "Quintana Notary Support"
+          }
+        ]
+      },
+      {
+        "@type": "AdministrativeArea",
+        "@id": "https://serviciosquintana.com/#denver-metro",
+        "name": "Denver metropolitan area",
+        "alternateName": "Denver Metro",
+        "sameAs": "https://en.wikipedia.org/wiki/Denver_metropolitan_area",
+        "containedInPlace": {
+          "@type": "State",
+          "name": "Colorado"
+        }
+      },
+      {
+        "@type": "CollegeOrUniversity",
+        "@id": "https://www.msudenver.edu/#organization",
+        "name": "Metropolitan State University of Denver",
+        "alternateName": "MSU Denver",
+        "url": "https://www.msudenver.edu/",
+        "sameAs": "https://en.wikipedia.org/wiki/Metropolitan_State_University_of_Denver"
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://about.citiprogram.org/#organization",
+        "name": "CITI Program",
+        "alternateName": "Collaborative Institutional Training Initiative",
+        "url": "https://about.citiprogram.org/"
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 <a class="skip-link" href="#main"><span data-lang="en">Skip to main content</span><span data-lang="es" lang="es">Saltar al contenido principal</span></a>
@@ -77,8 +298,8 @@
 <div class="status-card">
 <p data-lang="en"><span class="status-dot" aria-hidden="true"></span>Open to full-time clinical data roles</p>
 <p data-lang="es" lang="es"><span class="status-dot" aria-hidden="true"></span>Disponible para roles de datos clínicos</p>
-<p data-lang="en">B.S. HCIS, MSU Denver (2026) · Castle Rock, CO</p>
-<p data-lang="es" lang="es">Lic. HCIS, MSU Denver (2026) · Castle Rock, CO</p>
+<p data-lang="en">B.S. HCIS, MSU Denver (2026) · Denver, CO</p>
+<p data-lang="es" lang="es">Lic. HCIS, MSU Denver (2026) · Denver, CO</p>
 </div>
 </div>
 </div>
