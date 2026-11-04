@@ -729,3 +729,8 @@ tbody th { color: var(--accent); font-weight: 600; font-size: 0.95rem; white-spa
 .examples-strip { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s5) var(--s8); padding: var(--s6); border: 1px solid var(--border); border-radius: var(--radius-card); background: var(--surface); }
 .examples-strip h2 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 .examples-strip p { margin-top: var(--s2); }
+
+/* "Get a website" button: always the last, highlighted item in the top-right nav */
+.nav-list a.nav-cta-web { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.nav-list a.nav-cta-web:hover { background: var(--accent-hover); border-color: var(--accent-hover); color: var(--accent-ink); }
+.nav-list a.nav-cta-web[aria-current="page"] { color: var(--accent-ink); box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent); }
