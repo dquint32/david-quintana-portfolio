@@ -42,10 +42,10 @@
     <nav id="site-nav" class="site-nav" aria-label="Primary">
       <ul class="nav-list">
         <li><a href="hcis-portfolio.html" aria-current="page"><span data-lang="en">Work</span><span data-lang="es" lang="es">Trabajo</span></a></li>
-        <li><a href="eva-ctms-case-study.html"><span data-lang="en">EVA case study</span><span data-lang="es" lang="es">Caso EVA</span></a></li>
         <li><a href="index.html#about"><span data-lang="en">About</span><span data-lang="es" lang="es">Sobre mí</span></a></li>
         <li><a href="resume.pdf" target="_blank" rel="noopener"><span data-lang="en">Résumé</span><span data-lang="es" lang="es">Currículum</span></a></li>
-        <li><a class="nav-cta" href="index.html#contact"><span data-lang="en">Contact</span><span data-lang="es" lang="es">Contacto</span></a></li>
+        <li><a href="index.html#contact"><span data-lang="en">Contact</span><span data-lang="es" lang="es">Contacto</span></a></li>
+        <li><a class="nav-cta nav-cta-web" href="web-dev.html"><span data-lang="en">Get a website</span><span data-lang="es" lang="es">Haga su sitio web</span></a></li>
       </ul>
     </nav>
     <div class="header-tools">
@@ -58,12 +58,13 @@
 <main id="main">
 <section class="page-hero">
 <div class="container">
+<nav aria-label="Breadcrumb"><ol class="breadcrumb"><li><a href="index.html"><span data-lang="en">Home</span><span data-lang="es" lang="es">Inicio</span></a></li><li aria-current="page"><span data-lang="en">Work</span><span data-lang="es" lang="es">Trabajo</span></li></ol></nav>
 <p data-lang="en" class="kicker">Portfolio · Health Care Information Systems</p>
 <p data-lang="es" lang="es" class="kicker">Portafolio · Sistemas de Información de Salud</p>
-<h1 data-lang="en">Work</h1>
-<h1 data-lang="es" lang="es">Trabajo</h1>
-<p data-lang="en" class="lead">Standards-based tools that turn raw clinical data into structured, interoperable, audit-ready records — HL7/FHIR interoperability, data-integrity validation, clinical safety guardrails, and human-subjects protection under GCP and HIPAA.</p>
-<p data-lang="es" lang="es" class="lead">Herramientas basadas en estándares que convierten datos clínicos crudos en registros estructurados, interoperables y listos para auditoría — interoperabilidad HL7/FHIR, validación de integridad, salvaguardas de seguridad clínica y protección de sujetos humanos bajo GCP y HIPAA.</p>
+<h1 data-lang="en">Clinical data work</h1>
+<h1 data-lang="es" lang="es">Trabajo en datos clínicos</h1>
+<p data-lang="en" class="lead">Each project below starts with a real problem in healthcare data: messy records, lab results that systems can't read, or forms that lose information in translation. For each one you'll find the problem, what I built, and the result, with links to try it and to read the code.</p>
+<p data-lang="es" lang="es" class="lead">Cada proyecto parte de un problema real con datos de salud: registros desordenados, resultados de laboratorio que los sistemas no pueden leer o formularios que pierden información al traducirse. En cada uno encontrará el problema, lo que construí y el resultado, con enlaces para probarlo y ver el código.</p>
 </div>
 </section><section class="section pt-0">
 <div class="container">
@@ -76,12 +77,12 @@
 <ul class="tags" aria-label="Technologies"><li><span class="tag">Python</span></li><li><span class="tag">pandas</span></li><li><span class="tag">openpyxl</span></li><li><span class="tag">Regex</span></li><li><span class="tag">JSON/YAML</span></li><li><span class="tag">python-docx</span></li><li><span class="tag">SharePoint</span></li></ul>
 <div class="btn-row"><a class="btn btn-primary" href="eva-ctms-case-study.html"><span data-lang="en">Read the case study</span><span data-lang="es" lang="es">Leer el estudio de caso</span></a></div>
 </div>
-<div><div class="card"><div class="flow" role="img" aria-label="ETL pipeline: extract raw logs and a legacy patient database, transform through classification, cleaning and cross-validation, load into a governed SharePoint archive.">
-<div class="flow-lane extract"><b>Extract</b><div class="flow-step">Raw Windows logs<small>tree /f · dir /s /b</small></div><div class="flow-step">Legacy patient DB<small>recovered backup</small></div></div>
+<div><div class="card"><div class="flow" role="img" aria-label="How it worked: gather the old files and patient database, clean and cross-check them, then organize everything into a searchable SharePoint archive.">
+<div class="flow-lane extract"><b><span data-lang="en">Gather</span><span data-lang="es" lang="es">Reunir</span></b><div class="flow-step"><span data-lang="en">Old trial folders</span><span data-lang="es" lang="es">Carpetas antiguas</span><small><span data-lang="en">10 years of files</span><span data-lang="es" lang="es">10 años de archivos</span></small></div><div class="flow-step"><span data-lang="en">Old patient database</span><span data-lang="es" lang="es">Base de pacientes antigua</span><small><span data-lang="en">recovered from backup</span><span data-lang="es" lang="es">recuperada de respaldo</span></small></div></div>
 <div class="flow-arrow" aria-hidden="true">↓</div>
-<div class="flow-lane transform"><b>Transform</b><div class="flow-step">Crawl &amp; classify<small>9,925 documents</small></div><div class="flow-step">Clean patient DB<small>6,830 records</small></div><div class="flow-step hit">Cross-validate ◀ finding<small>document ↔ patient match</small></div></div>
+<div class="flow-lane transform"><b><span data-lang="en">Clean &amp; check</span><span data-lang="es" lang="es">Limpiar y verificar</span></b><div class="flow-step"><span data-lang="en">Sort every file</span><span data-lang="es" lang="es">Clasificar cada archivo</span><small><span data-lang="en">9,925 documents</span><span data-lang="es" lang="es">9,925 documentos</span></small></div><div class="flow-step"><span data-lang="en">Clean the patient list</span><span data-lang="es" lang="es">Depurar la lista de pacientes</span><small><span data-lang="en">6,830 records</span><span data-lang="es" lang="es">6,830 registros</span></small></div><div class="flow-step hit"><span data-lang="en">Match files to patients</span><span data-lang="es" lang="es">Cruzar archivos y pacientes</span><small><span data-lang="en">found 18% mismatched IDs</span><span data-lang="es" lang="es">18% de IDs no coincidían</span></small></div></div>
 <div class="flow-arrow" aria-hidden="true">↓</div>
-<div class="flow-lane load"><b>Load</b><div class="flow-step">SharePoint archive<small>11 metadata columns · 4 views</small></div></div>
+<div class="flow-lane load"><b><span data-lang="en">Organize</span><span data-lang="es" lang="es">Organizar</span></b><div class="flow-step"><span data-lang="en">Searchable SharePoint archive</span><span data-lang="es" lang="es">Archivo SharePoint con búsqueda</span><small><span data-lang="en">11 search fields · 4 saved views</span><span data-lang="es" lang="es">11 campos de búsqueda · 4 vistas</span></small></div></div>
 </div></div></div>
 </article>
 <article class="work-item flip">
@@ -192,13 +193,13 @@
     </div>
     <nav aria-label="Footer">
       <ul class="footer-links">
-        <li><a href="hcis-portfolio.html"><span data-lang="en">Work</span><span data-lang="es" lang="es">Trabajo</span></a></li>
+        <li><a href="hcis-portfolio.html"><span data-lang="en">Clinical data work</span><span data-lang="es" lang="es">Trabajo en datos clínicos</span></a></li>
         <li><a href="eva-ctms-case-study.html"><span data-lang="en">EVA case study</span><span data-lang="es" lang="es">Caso EVA</span></a></li>
+        <li><a href="web-dev.html"><span data-lang="en">Websites for small businesses</span><span data-lang="es" lang="es">Sitios web para pequeños negocios</span></a></li>
+        <li><a href="pricing.html"><span data-lang="en">Website pricing</span><span data-lang="es" lang="es">Precios de sitios web</span></a></li>
         <li><a href="resume.pdf" target="_blank" rel="noopener"><span data-lang="en">Résumé (PDF)</span><span data-lang="es" lang="es">Currículum (PDF)</span></a></li>
         <li><a href="https://github.com/dquint32" target="_blank" rel="noopener">GitHub</a></li>
         <li><a href="https://www.linkedin.com/in/quintanadm95" target="_blank" rel="noopener">LinkedIn</a></li>
-        <li><a href="web-dev.html"><span data-lang="en">Web development for small businesses</span><span data-lang="es" lang="es">Desarrollo web para pequeñas empresas</span></a></li>
-        <li><a href="pricing.html"><span data-lang="en">Web pricing</span><span data-lang="es" lang="es">Precios web</span></a></li>
       </ul>
     </nav>
   </div>
