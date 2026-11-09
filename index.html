@@ -64,7 +64,7 @@
         "url": "https://davidquintana.dev/",
         "image": "https://davidquintana.dev/assets/img/profile.webp",
         "jobTitle": "Clinical Data Engineer",
-        "description": "David Quintana is a bilingual (English/Spanish) clinical data engineer based in Denver, Colorado, serving the Denver metro area, specializing in HL7 v2 and FHIR R4 interoperability and Python ETL pipelines for clinical research data. He is the owner of Servicios Quintana LLC.",
+        "description": "David Quintana is a bilingual (English/Spanish) clinical data engineer based in Denver, Colorado, serving the Denver metro area, specializing in HL7 v2 and FHIR R4 interoperability and Python ETL pipelines for clinical research data. He is pursuing a Graduate Certificate in Information Systems Auditing at Colorado State University Global (expected late 2027) and is the owner of Servicios Quintana LLC.",
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Denver",
@@ -100,7 +100,9 @@
           "pandas",
           "HIPAA",
           "GCP",
-          "ETL Pipelines"
+          "ETL Pipelines",
+          "Information Systems Auditing",
+          "IT Risk Assessment"
         ],
         "hasCredential": [
           {
@@ -248,6 +250,13 @@
         "name": "CITI Program",
         "alternateName": "Collaborative Institutional Training Initiative",
         "url": "https://about.citiprogram.org/"
+      },
+      {
+        "@type": "CollegeOrUniversity",
+        "@id": "https://csuglobal.edu/#organization",
+        "name": "Colorado State University Global",
+        "alternateName": "CSU Global",
+        "url": "https://csuglobal.edu/"
       }
     ]
   }
@@ -267,7 +276,7 @@
         <li><a href="index.html#about"><span data-lang="en">About</span><span data-lang="es" lang="es">Sobre mí</span></a></li>
         <li><a href="resume.pdf" target="_blank" rel="noopener"><span data-lang="en">Résumé</span><span data-lang="es" lang="es">Currículum</span></a></li>
         <li><a href="index.html#contact"><span data-lang="en">Contact</span><span data-lang="es" lang="es">Contacto</span></a></li>
-        <li><a class="nav-cta nav-cta-web" href="web-dev.html"><span data-lang="en">Get a website</span><span data-lang="es" lang="es">Haga su sitio web</span></a></li>
+        <li><a class="nav-cta nav-cta-web" href="web-dev.html"><span data-lang="en">Get a website</span><span data-lang="es" lang="es">Pida su sitio web</span></a></li>
       </ul>
     </nav>
     <div class="header-tools">
@@ -302,6 +311,7 @@
 <img src="assets/img/profile.webp" alt="Portrait of David Matthew Quintana" width="768" height="1352" fetchpriority="high" decoding="async">
 <figcaption>
 <span data-lang="en">B.S. Health Care Information Systems, MSU Denver (2026)</span><span data-lang="es" lang="es">Lic. en Sistemas de Información de Salud, MSU Denver (2026)</span>
+<span class="portrait-now" data-lang="en">Now: Graduate Certificate, Information Systems Auditing, CSU Global (expected late 2027)</span><span class="portrait-now" data-lang="es" lang="es">Actualmente: Certificado de Posgrado en Auditoría de Sistemas de Información, CSU Global (termino a finales de 2027)</span>
 <span class="portrait-sub" data-lang="en">Certified in clinical research, patient privacy (HIPAA) and Good Clinical Practice</span><span class="portrait-sub" data-lang="es" lang="es">Certificado en investigación clínica, privacidad del paciente (HIPAA) y Buenas Prácticas Clínicas</span>
 </figcaption>
 </figure>
@@ -359,7 +369,7 @@
 <p data-lang="es" lang="es">Un formulario de admisión en inglés y español que revisa cada respuesta al ingresarla y la convierte al formato estándar (FHIR) que usan los sistemas hospitalarios para compartir registros.</p>
 <p class="quality"><span data-lang="en">80 automated tests · every line of code tested</span><span data-lang="es" lang="es">80 pruebas automáticas · todo el código probado</span></p>
 <ul class="tags" aria-label="Technologies"><li><span class="tag">Python</span></li><li><span class="tag">FastAPI</span></li><li><span class="tag">Pydantic v2</span></li><li><span class="tag tag-std">FHIR R4</span></li><li><span class="tag">pytest</span></li></ul>
-<div class="links"><a href="intake-web-app.html"><span data-lang="en">How I built it</span><span data-lang="es" lang="es">Cómo lo hice</span></a><a href="https://dquint32.github.io/bilingual-patient-intake-fhir/" target="_blank" rel="noopener"><span data-lang="en">Try it</span><span data-lang="es" lang="es">Probarlo</span></a><a href="https://github.com/dquint32/bilingual-patient-intake-fhir" target="_blank" rel="noopener"><span data-lang="en">Code</span><span data-lang="es" lang="es">Código</span></a></div>
+<div class="links"><a href="intake-web-app.html"><span data-lang="en">How I built it</span><span data-lang="es" lang="es">Cómo lo hice</span></a><a href="https://dquint32.github.io/bilingual-patient-intake-fhir/" target="_blank" rel="noopener"><span data-lang="en">Try it</span><span data-lang="es" lang="es">Pruébelo</span></a><a href="https://github.com/dquint32/bilingual-patient-intake-fhir" target="_blank" rel="noopener"><span data-lang="en">Code</span><span data-lang="es" lang="es">Código</span></a></div>
 </div>
 </article>
 <article class="card project-card">
@@ -372,7 +382,7 @@
 <p data-lang="es" lang="es">Lee resultados de laboratorio de enfermedades infecciosas en el formato en que los envían los laboratorios (HL7), confirma que cada código de prueba sea válido y los resume en lenguaje claro. Si un mensaje tiene un error, indica exactamente dónde está en lugar de fallar.</p>
 <p class="quality"><span data-lang="en">81 automated tests · 99% of code tested</span><span data-lang="es" lang="es">81 pruebas automáticas · 99% del código probado</span></p>
 <ul class="tags" aria-label="Technologies"><li><span class="tag">Python</span></li><li><span class="tag tag-std">HL7 v2</span></li><li><span class="tag tag-std">LOINC</span></li><li><span class="tag tag-std">SNOMED CT</span></li><li><span class="tag">pytest</span></li></ul>
-<div class="links"><a href="hl7-parser.html"><span data-lang="en">How I built it</span><span data-lang="es" lang="es">Cómo lo hice</span></a><a href="https://dquint32.github.io/hl7-infectious-disease-parser/" target="_blank" rel="noopener"><span data-lang="en">Try it</span><span data-lang="es" lang="es">Probarlo</span></a><a href="https://github.com/dquint32/hl7-infectious-disease-parser" target="_blank" rel="noopener"><span data-lang="en">Code</span><span data-lang="es" lang="es">Código</span></a></div>
+<div class="links"><a href="hl7-parser.html"><span data-lang="en">How I built it</span><span data-lang="es" lang="es">Cómo lo hice</span></a><a href="https://dquint32.github.io/hl7-infectious-disease-parser/" target="_blank" rel="noopener"><span data-lang="en">Try it</span><span data-lang="es" lang="es">Pruébelo</span></a><a href="https://github.com/dquint32/hl7-infectious-disease-parser" target="_blank" rel="noopener"><span data-lang="en">Code</span><span data-lang="es" lang="es">Código</span></a></div>
 </div>
 </article>
 </div>
@@ -387,7 +397,7 @@
 <p data-lang="es" lang="es">Calcula la dosis de un niño según su peso, rechaza cualquier dosis por encima del máximo seguro, advierte cuando se acerca a ese límite y da instrucciones en inglés y español. 58 pruebas automáticas.</p>
 <ul class="tags" aria-label="Technologies"><li><span class="tag">Python</span></li><li><span class="tag">Clinical decision support</span></li><li><span class="tag">FastAPI</span></li></ul>
 </div>
-<div class="tool-links"><a href="pediatric-cds-calculator.html"><span data-lang="en">How I built it</span><span data-lang="es" lang="es">Cómo lo hice</span></a><a href="https://dquint32.github.io/bilingual-pediatric-CDS-dosage-calculator/" target="_blank" rel="noopener"><span data-lang="en">Try it</span><span data-lang="es" lang="es">Probarlo</span></a><a href="https://github.com/dquint32/bilingual-pediatric-CDS-dosage-calculator" target="_blank" rel="noopener"><span data-lang="en">Code</span><span data-lang="es" lang="es">Código</span></a></div>
+<div class="tool-links"><a href="pediatric-cds-calculator.html"><span data-lang="en">How I built it</span><span data-lang="es" lang="es">Cómo lo hice</span></a><a href="https://dquint32.github.io/bilingual-pediatric-CDS-dosage-calculator/" target="_blank" rel="noopener"><span data-lang="en">Try it</span><span data-lang="es" lang="es">Pruébelo</span></a><a href="https://github.com/dquint32/bilingual-pediatric-CDS-dosage-calculator" target="_blank" rel="noopener"><span data-lang="en">Code</span><span data-lang="es" lang="es">Código</span></a></div>
 </li>
 <li class="tool-row">
 <div class="tool-main">
@@ -397,7 +407,7 @@
 <p data-lang="es" lang="es">Convierte los datos de registro de un paciente al formato estándar de EE. UU. Puede procesar un lote completo y lista los registros con errores sin detener el resto.</p>
 <ul class="tags" aria-label="Technologies"><li><span class="tag">Python</span></li><li><span class="tag tag-std">FHIR US Core</span></li><li><span class="tag">JavaScript</span></li></ul>
 </div>
-<div class="tool-links"><a href="https://dquint32.github.io/fhir-patient-converter/" target="_blank" rel="noopener"><span data-lang="en">Try it</span><span data-lang="es" lang="es">Probarlo</span></a><a href="https://github.com/dquint32/fhir-patient-converter" target="_blank" rel="noopener"><span data-lang="en">Code</span><span data-lang="es" lang="es">Código</span></a></div>
+<div class="tool-links"><a href="https://dquint32.github.io/fhir-patient-converter/" target="_blank" rel="noopener"><span data-lang="en">Try it</span><span data-lang="es" lang="es">Pruébelo</span></a><a href="https://github.com/dquint32/fhir-patient-converter" target="_blank" rel="noopener"><span data-lang="en">Code</span><span data-lang="es" lang="es">Código</span></a></div>
 </li>
 </ul>
 <div class="btn-row"><a class="btn btn-secondary" href="hcis-portfolio.html"><span data-lang="en">All projects →</span><span data-lang="es" lang="es">Todos los proyectos →</span></a></div>
@@ -441,11 +451,19 @@
 <div data-lang="en" class="prose"><p>I'm David Quintana, a bilingual Health Care Information Systems specialist and clinical data engineer, and a 2026 B.S. HCIS graduate of MSU Denver.</p>
 <p><strong>Clinical data engineering.</strong> As an intern at Western States Cancer Research NCORP, I engineered Python/pandas ETL pipelines to extract, clean, and transition legacy clinical-trial records into structured, compliant SharePoint data architectures — with hands-on experience in ETL workflows, HL7 FHIR R4, EHR/EMR transitions, and HIPAA-compliant records management.</p>
 <p><strong>Regulatory &amp; clinical-research fluency.</strong> I'm CITI-certified in Good Clinical Practice (US FDA), human-subjects research, HIPAA for research, and clinical research fundamentals, with working knowledge of IRB process, protocol deviations, and ICH-GCP record integrity.</p>
+<p><strong>Still learning.</strong> Since November 2026 I've been a graduate student at Colorado State University Global, earning a Graduate Certificate in Information Systems Auditing (expected late 2027). The program covers IT auditing, risk assessment, compliance and systems security, which builds directly on the audit-ready data work I already do.</p>
 <p><strong>Bilingual by design.</strong> As founder of Servicios Quintana LLC and a commissioned Colorado Notary Public, I've spent years preparing and auditing regulated healthcare and legal documents in English and Spanish — because a compliance gap and a language gap are so often the same gap.</p></div>
 <div data-lang="es" lang="es" class="prose"><p>Soy David Quintana, especialista bilingüe en Sistemas de Información de Salud e ingeniero de datos clínicos, graduado en 2026 de la Licenciatura en HCIS de MSU Denver.</p>
 <p><strong>Ingeniería de datos clínicos.</strong> Como practicante en Western States Cancer Research NCORP, diseñé pipelines ETL en Python/pandas para extraer, limpiar y migrar registros heredados de ensayos clínicos a arquitecturas de datos estructuradas y conformes en SharePoint — con experiencia práctica en flujos ETL, HL7 FHIR R4, transiciones EHR/EMR y gestión de registros conforme a HIPAA.</p>
 <p><strong>Fluidez regulatoria y de investigación clínica.</strong> Tengo certificaciones CITI en Buenas Prácticas Clínicas (US FDA), investigación con sujetos humanos, HIPAA para investigación y fundamentos de investigación clínica, con conocimiento práctico del proceso IRB, desviaciones de protocolo e integridad de registros ICH-GCP.</p>
+<p><strong>Sigo aprendiendo.</strong> Desde noviembre de 2026 soy estudiante de posgrado en Colorado State University Global, donde curso un Certificado de Posgrado en Auditoría de Sistemas de Información (termino a finales de 2027). El programa abarca auditoría de TI, evaluación de riesgos, cumplimiento y seguridad de sistemas, y se basa directamente en el trabajo de datos listos para auditoría que ya hago.</p>
 <p><strong>Bilingüe por diseño.</strong> Como fundador de Servicios Quintana LLC y Notary Public comisionado en Colorado, he pasado años preparando y auditando documentos médicos y legales regulados en inglés y español — porque una brecha de cumplimiento y una brecha de idioma son, con demasiada frecuencia, la misma brecha.</p></div>
+<div class="edu edu-current">
+<span class="edu-icon"><svg class="edu-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/><path d="M22 10v6"/></svg></span>
+<div><p>Colorado State University Global</p>
+<p data-lang="en">Graduate Certificate, Information Systems Auditing · In progress, expected late 2027</p>
+<p data-lang="es" lang="es">Certificado de Posgrado, Auditoría de Sistemas de Información · En curso, termino a finales de 2027</p></div>
+</div>
 <div class="edu">
 <img src="assets/img/msu-denver-logo.webp" alt="MSU Denver logo" width="400" height="400" loading="lazy" decoding="async">
 <div><p data-lang="en">Metropolitan State University of Denver</p>
@@ -471,7 +489,7 @@
 <div class="contact-panel">
 <div class="section-head center"><h2 data-lang="en">Let's talk</h2>
 <h2 data-lang="es" lang="es">Hablemos</h2><p data-lang="en">Open to full-time ETL / data engineering and clinical data roles. Write in English or Spanish.</p>
-<p data-lang="es" lang="es">Disponible para roles de ETL / ingeniería de datos y datos clínicos. Escríbeme en inglés o español.</p></div>
+<p data-lang="es" lang="es">Disponible para roles de ETL / ingeniería de datos y datos clínicos. Escríbame en inglés o en español.</p></div>
 <div class="contact-links">
 <a class="btn btn-primary" href="https://www.linkedin.com/in/quintanadm95" target="_blank" rel="noopener"><span data-lang="en">LinkedIn</span><span data-lang="es" lang="es">LinkedIn</span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05a3.75 3.75 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
 <a class="btn btn-secondary" href="resume.pdf" target="_blank" rel="noopener"><span data-lang="en">Résumé (PDF)</span><span data-lang="es" lang="es">Currículum (PDF)</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg></a>

@@ -45,7 +45,7 @@
         <li><a href="index.html#about"><span data-lang="en">About</span><span data-lang="es" lang="es">Sobre mí</span></a></li>
         <li><a href="resume.pdf" target="_blank" rel="noopener"><span data-lang="en">Résumé</span><span data-lang="es" lang="es">Currículum</span></a></li>
         <li><a href="index.html#contact"><span data-lang="en">Contact</span><span data-lang="es" lang="es">Contacto</span></a></li>
-        <li><a class="nav-cta nav-cta-web" href="web-dev.html"><span data-lang="en">Get a website</span><span data-lang="es" lang="es">Haga su sitio web</span></a></li>
+        <li><a class="nav-cta nav-cta-web" href="web-dev.html"><span data-lang="en">Get a website</span><span data-lang="es" lang="es">Pida su sitio web</span></a></li>
       </ul>
     </nav>
     <div class="header-tools">
@@ -60,7 +60,7 @@
 <div class="container">
 <nav aria-label="Breadcrumb"><ol class="breadcrumb"><li><a href="index.html"><span data-lang="en">Home</span><span data-lang="es" lang="es">Inicio</span></a></li><li><a href="hcis-portfolio.html"><span data-lang="en">Work</span><span data-lang="es" lang="es">Trabajo</span></a></li><li aria-current="page"><span data-lang="en">EVA CTMS Archive</span><span data-lang="es" lang="es">Archivo EVA CTMS</span></li></ol></nav>
 <p data-lang="en" class="kicker">Flagship case study · Clinical data engineering</p>
-<p data-lang="es" lang="es" class="kicker">Caso principal · Ingeniería de datos clínicos</p>
+<p data-lang="es" lang="es" class="kicker">Estudio de caso principal · Ingeniería de datos clínicos</p>
 <h1 data-lang="en">EVA CTMS Archive — clinical data ETL pipeline</h1>
 <h1 data-lang="es" lang="es">Archivo EVA CTMS — pipeline ETL de datos clínicos</h1>
 <p data-lang="en" class="lead">Turning a decade of unstructured clinical-trial files into a validated, searchable, audit-ready archive — engineered locally in Python, with zero PHI exposure.</p>
@@ -98,18 +98,18 @@
 <h2 data-lang="es" lang="es">El pipeline: extraer → transformar → cargar</h2><p data-lang="en">A 10-stage local Python ETL pipeline turns raw, messy inputs into a governed, validated schema. The cross-validation stage — highlighted — is where the project's central finding was caught, before anything reached SharePoint.</p>
 <p data-lang="es" lang="es">Un pipeline ETL local de 10 etapas en Python convierte entradas crudas y desordenadas en un esquema gobernado y validado. La etapa de validación cruzada — resaltada — es donde se detectó el hallazgo central, antes de que nada llegara a SharePoint.</p></div>
 <div class="flow wide" role="img" aria-label="ETL pipeline: extract from raw Windows logs and a legacy patient database; transform through structure analysis, classification, roster building, database cleaning, cross-validation, cleanup and tagging; load into a governed SharePoint archive.">
-<div class="flow-lane extract"><b>Extract</b><div class="flow-step">Raw Windows logs<small>tree /f · dir /s /b</small></div><div class="flow-step">Legacy patient DB export<small>recovered database backup</small></div></div>
+<div class="flow-lane extract"><b><span data-lang="en">Extract</span><span data-lang="es" lang="es">Extraer</span></b><div class="flow-step"><span data-lang="en">Raw Windows logs</span><span data-lang="es" lang="es">Listados crudos de Windows</span><small>tree /f · dir /s /b</small></div><div class="flow-step"><span data-lang="en">Legacy patient DB export</span><span data-lang="es" lang="es">Exportación de la base de pacientes</span><small><span data-lang="en">recovered database backup</span><span data-lang="es" lang="es">respaldo recuperado</span></small></div></div>
 <div class="flow-arrow" aria-hidden="true">→</div>
-<div class="flow-lane transform"><b>Transform</b>
-<div class="flow-step">Structure analysis<small>flag naming / duplicates</small></div>
-<div class="flow-step">Crawl &amp; classify<small>9,925 documents tagged</small></div>
-<div class="flow-step">Build patient roster<small>de-duplicated IDs</small></div>
-<div class="flow-step">Clean patient DB<small>6,830 records standardized</small></div>
-<div class="flow-step hit">Cross-validate ◀ finding<small>document ↔ patient match check</small></div>
-<div class="flow-step">Filename / category cleanup<small>non-destructive triage</small></div>
-<div class="flow-step">Study / deviation tagging<small>sponsor type &amp; tier</small></div></div>
+<div class="flow-lane transform"><b><span data-lang="en">Transform</span><span data-lang="es" lang="es">Transformar</span></b>
+<div class="flow-step"><span data-lang="en">Structure analysis</span><span data-lang="es" lang="es">Análisis de estructura</span><small><span data-lang="en">flag naming / duplicates</span><span data-lang="es" lang="es">marca nombres y duplicados</span></small></div>
+<div class="flow-step"><span data-lang="en">Crawl &amp; classify</span><span data-lang="es" lang="es">Recorrer y clasificar</span><small><span data-lang="en">9,925 documents tagged</span><span data-lang="es" lang="es">9,925 documentos etiquetados</span></small></div>
+<div class="flow-step"><span data-lang="en">Build patient roster</span><span data-lang="es" lang="es">Registro de pacientes</span><small><span data-lang="en">de-duplicated IDs</span><span data-lang="es" lang="es">IDs sin duplicados</span></small></div>
+<div class="flow-step"><span data-lang="en">Clean patient DB</span><span data-lang="es" lang="es">Limpiar la base de pacientes</span><small><span data-lang="en">6,830 records standardized</span><span data-lang="es" lang="es">6,830 registros estandarizados</span></small></div>
+<div class="flow-step hit"><span data-lang="en">Cross-validate ◀ finding</span><span data-lang="es" lang="es">Validación cruzada ◀ hallazgo</span><small><span data-lang="en">document ↔ patient match check</span><span data-lang="es" lang="es">coincidencia documento ↔ paciente</span></small></div>
+<div class="flow-step"><span data-lang="en">Filename / category cleanup</span><span data-lang="es" lang="es">Limpieza de nombres y categorías</span><small><span data-lang="en">non-destructive triage</span><span data-lang="es" lang="es">clasificación sin borrar nada</span></small></div>
+<div class="flow-step"><span data-lang="en">Study / deviation tagging</span><span data-lang="es" lang="es">Etiquetas de estudio y desviación</span><small><span data-lang="en">sponsor type &amp; tier</span><span data-lang="es" lang="es">tipo y nivel de patrocinador</span></small></div></div>
 <div class="flow-arrow" aria-hidden="true">→</div>
-<div class="flow-lane load"><b>Load</b><div class="flow-step">SharePoint archive<small>governed schema</small></div><div class="flow-step">5 reference lists</div><div class="flow-step">Document library<small>11 metadata columns</small></div><div class="flow-step">3 lookups · 4 custom views</div></div>
+<div class="flow-lane load"><b><span data-lang="en">Load</span><span data-lang="es" lang="es">Cargar</span></b><div class="flow-step"><span data-lang="en">SharePoint archive</span><span data-lang="es" lang="es">Archivo en SharePoint</span><small><span data-lang="en">governed schema</span><span data-lang="es" lang="es">esquema gobernado</span></small></div><div class="flow-step"><span data-lang="en">5 reference lists</span><span data-lang="es" lang="es">5 listas de referencia</span></div><div class="flow-step"><span data-lang="en">Document library</span><span data-lang="es" lang="es">Biblioteca de documentos</span><small><span data-lang="en">11 metadata columns</span><span data-lang="es" lang="es">11 columnas de metadatos</span></small></div><div class="flow-step"><span data-lang="en">3 lookups · 4 custom views</span><span data-lang="es" lang="es">3 búsquedas vinculadas · 4 vistas</span></div></div>
 </div>
 <p data-lang="en" class="muted center mt-6">Raw &amp; messy → validate &amp; standardize → governed, audit-ready schema</p>
 <p data-lang="es" lang="es" class="muted center mt-6">Crudo y desordenado → validar y estandarizar → esquema gobernado y listo para auditoría</p>
@@ -128,7 +128,7 @@
 <p data-lang="en" class="prose mt-6"><strong>Why it is a finding, not a failure:</strong> the validation step exists specifically to catch this class of problem before anything moves. It worked. Nothing was migrated on an unverified patient link — the system flagged the uncertainty and stopped rather than guessing. The underlying issue lives in the source data's naming conventions and predates the project entirely.</p>
 <p data-lang="es" lang="es" class="prose mt-6"><strong>Por qué es un hallazgo, no un fallo:</strong> la etapa de validación existe específicamente para detectar este tipo de problema antes de mover nada. Funcionó. Nada se migró con un vínculo de paciente sin verificar — el sistema marcó la incertidumbre y se detuvo en lugar de adivinar. El problema de fondo vive en las convenciones de nombres de los datos originales y es anterior al proyecto.</p>
 <div class="table-wrap" tabindex="0" role="region" aria-label="Migration clearance table"><table>
-<caption class="visually-hidden">Migration clearance by document count</caption>
+<caption class="visually-hidden"><span data-lang="en">Migration clearance by document count</span><span data-lang="es" lang="es">Estado de migración por número de documentos</span></caption>
 <thead><tr><th scope="col"><span data-lang="en">Migration clearance</span><span data-lang="es" lang="es">Estado de migración</span></th><th scope="col" class="num"><span data-lang="en">Documents</span><span data-lang="es" lang="es">Documentos</span></th></tr></thead>
 <tbody>
 <tr class="is-ok"><td><span data-lang="en">Cleared for migration</span><span data-lang="es" lang="es">Listo para migrar</span></td><td class="num">964</td></tr>
@@ -147,8 +147,8 @@
 <div class="grid grid-2"><div class="card"><h3 data-lang="en">Local-only processing</h3>
 <h3 data-lang="es" lang="es">Procesamiento solo local</h3><p data-lang="en">Every script ran on the organization's machine. No document and no patient record was ever uploaded to the cloud or any external service.</p>
 <p data-lang="es" lang="es">Cada script se ejecutó en la máquina de la organización. Ningún documento ni registro de paciente se subió a la nube ni a ningún servicio externo.</p></div><div class="card"><h3 data-lang="en">PHI masking in every log</h3>
-<h3 data-lang="es" lang="es">PHI enmascarado en cada registro</h3><p data-lang="en">A dedicated PHI-safe logger masks identifiers everywhere — letters to <code>X</code>, digits to <code>#</code> — so even routine troubleshooting never displays a real identifier.</p>
-<p data-lang="es" lang="es">Un registrador seguro para PHI enmascara los identificadores en todas partes — letras a <code>X</code>, dígitos a <code>#</code> — para que ni siquiera la depuración muestre un identificador real.</p></div><div class="card"><h3 data-lang="en">No AI exposure to patient data</h3>
+<h3 data-lang="es" lang="es">PHI enmascarada en cada bitácora</h3><p data-lang="en">A dedicated PHI-safe logger masks identifiers everywhere — letters to <code>X</code>, digits to <code>#</code> — so even routine troubleshooting never displays a real identifier.</p>
+<p data-lang="es" lang="es">Un sistema de bitácoras seguro para PHI enmascara los identificadores en todas partes — letras a <code>X</code>, dígitos a <code>#</code> — para que ni siquiera la depuración muestre un identificador real.</p></div><div class="card"><h3 data-lang="en">No AI exposure to patient data</h3>
 <h3 data-lang="es" lang="es">Sin exposición de datos a la IA</h3><p data-lang="en">AI assisted only with writing and debugging code — never to view or process a real patient record. Debugging used masked shapes, aggregate counts, or synthetic fixtures.</p>
 <p data-lang="es" lang="es">La IA solo ayudó a escribir y depurar código — nunca a ver ni procesar un registro real. La depuración usó formas enmascaradas, conteos agregados o datos sintéticos.</p></div><div class="card"><h3 data-lang="en">Audit-ready by design</h3>
 <h3 data-lang="es" lang="es">Listo para auditoría por diseño</h3><p data-lang="en">Versioning was enabled before any upload, with a read-only staff / edit core-team permission model — configured for HIPAA and ICH-GCP audit-readiness.</p>
@@ -168,8 +168,8 @@
 </ul></div>
 <div data-lang="es" lang="es" class="prose"><p>Más allá del pipeline, el proyecto entregó una <strong>arquitectura completa de archivo en SharePoint</strong>:</p>
 <ul class="checklist">
-<li><strong>Cinco listas de referencia</strong> — las "guías telefónicas" a las que se vinculan los documentos: Sitios (69), Médicos (182), Coordinadores (148), Sitios de Enfermedad (125), Categorías de Enfermedad (19).</li>
-<li><strong>Una biblioteca de documentos</strong> ("Clinical Trial Documents") con <strong>11 columnas de metadatos</strong> (categoría, ID de paciente, acción recomendada, marca de descarte, notas) y <strong>3 lookups</strong> que vinculan cada documento con su sitio, médico y coordinador.</li>
+<li><strong>Cinco listas de referencia</strong> — las "guías telefónicas" a las que se vinculan los documentos: Sitios (69), Médicos (182), Coordinadores (148), Localizaciones de la enfermedad (125), Categorías de enfermedad (19).</li>
+<li><strong>Una biblioteca de documentos</strong> ("Clinical Trial Documents") con <strong>11 columnas de metadatos</strong> (categoría, ID de paciente, acción recomendada, marca de descarte, notas) y <strong>3 búsquedas vinculadas</strong> que conectan cada documento con su sitio, médico y coordinador.</li>
 <li><strong>Cuatro vistas personalizadas:</strong> Búsqueda de Paciente (un clic muestra todo el historial), Desviaciones por Revisar, Limpieza Pendiente y Por Categoría.</li>
 <li><strong>Documentación completa</strong> — referencia del pipeline, guías de archivos generados y el hallazgo de auditoría — para que el proceso sea reproducible por la siguiente persona.</li>
 </ul></div>
@@ -199,11 +199,11 @@
 <h3 data-lang="es" lang="es">Cumplimiento por diseño</h3><p data-lang="en">HIPAA / ICH-GCP handling, PHI masking, and access control built in from the start.</p>
 <p data-lang="es" lang="es">Manejo HIPAA / ICH-GCP, enmascarado de PHI y control de acceso desde el inicio.</p></div><div class="card"><h3 data-lang="en">Reproducible design</h3>
 <h3 data-lang="es" lang="es">Diseño reproducible</h3><p data-lang="en">Schema-driven, documented, multi-stage pipeline the next engineer can re-run.</p>
-<p data-lang="es" lang="es">Pipeline multietapa, documentado y guiado por esquema que el siguiente ingeniero puede re-ejecutar.</p></div></div>
+<p data-lang="es" lang="es">Pipeline multietapa, documentado y guiado por esquema que el siguiente ingeniero puede volver a ejecutar.</p></div></div>
 <p data-lang="en" class="privacy-note"><strong>Privacy note:</strong> no real patient data, filenames, or archive files appear anywhere in this case study. It describes method, architecture, and aggregate counts only.</p>
 <p data-lang="es" lang="es" class="privacy-note"><strong>Nota de privacidad:</strong> ningún dato real de pacientes, nombre de archivo o archivo del repositorio aparece en este estudio de caso. Solo describe método, arquitectura y conteos agregados.</p>
 <div class="mt-10"><div class="card next-project">
-<div><span class="label"><span data-lang="en">Next case study</span><span data-lang="es" lang="es">Siguiente caso</span></span><a class="title" href="intake-web-app.html"><span data-lang="en">Bilingual Patient Intake → FHIR R4</span><span data-lang="es" lang="es">Admisión bilingüe → FHIR R4</span> →</a></div>
+<div><span class="label"><span data-lang="en">Next case study</span><span data-lang="es" lang="es">Siguiente estudio de caso</span></span><a class="title" href="intake-web-app.html"><span data-lang="en">Bilingual Patient Intake → FHIR R4</span><span data-lang="es" lang="es">Admisión bilingüe → FHIR R4</span> →</a></div>
 <a class="btn btn-secondary" href="hcis-portfolio.html"><span data-lang="en">All work</span><span data-lang="es" lang="es">Todo el trabajo</span></a>
 </div></div>
 </div>

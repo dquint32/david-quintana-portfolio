@@ -734,3 +734,8 @@ tbody th { color: var(--accent); font-weight: 600; font-size: 0.95rem; white-spa
 .nav-list a.nav-cta-web { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
 .nav-list a.nav-cta-web:hover { background: var(--accent-hover); border-color: var(--accent-hover); color: var(--accent-ink); }
 .nav-list a.nav-cta-web[aria-current="page"] { color: var(--accent-ink); box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent); }
+
+/* Continuing education (2026-11): CSU Global graduate certificate */
+.portrait figcaption .portrait-now { margin-top: var(--s2); padding: var(--s2) var(--s3); border-left: 3px solid var(--accent); background: var(--accent-soft); border-radius: 0 var(--radius) var(--radius) 0; font-weight: 500; color: var(--text); }
+.edu-icon { flex: none; display: grid; place-items: center; width: 64px; height: 64px; border-radius: var(--radius); background: var(--accent-soft); color: var(--accent); border: 1px solid var(--accent-line); }
+.edu-icon-svg { width: 32px; height: 32px; }
