@@ -1,0 +1,33 @@
+# David M. Quintana
+
+> Bilingual (English/Spanish) clinical data engineer based in Denver, Colorado. Builds Python/pandas ETL pipelines and HL7 v2 / FHIR R4 tools that validate clinical data and produce audit-ready records under HIPAA and ICH-GCP. B.S. Health Care Information Systems, MSU Denver (2026). Graduate student at Colorado State University Global, Graduate Certificate in Information Systems Auditing (in progress, expected late 2027).
+
+David M. Quintana (David Matthew Quintana) is a clinical data engineer, not a physician, and is not affiliated with any medical practice of the same name.
+
+## Facts
+- Name: David M. Quintana (David Matthew Quintana)
+- Based in: Denver, Colorado, USA
+- Role: Clinical data engineer: Python/pandas ETL, HL7 v2 and FHIR R4 interoperability, data validation
+- Experience: Clinical Systems Analyst Intern, Western States Cancer Research NCORP (clinical-trial data ETL and SharePoint migration)
+- Education: B.S. Health Care Information Systems, Metropolitan State University of Denver (2026); Graduate Certificate in Information Systems Auditing, Colorado State University Global (in progress, expected late 2027)
+- Certifications: CITI Program Good Clinical Practice (US FDA), Biomedical Research Human Subjects, HIPAA for Research, Clinical Research: An Introduction
+- Languages: English and Spanish (fully bilingual)
+- Looking for: full-time clinical data analyst, health data engineer and interoperability (HL7/FHIR) roles
+- Business: founder of Servicios Quintana LLC; builds bilingual websites for small businesses as David Quintana Dev; commissioned Colorado Notary Public
+
+## Clinical data work
+- [Portfolio home](https://davidquintana.dev/): summary, skills, credentials, contact
+- [All clinical data projects](https://davidquintana.dev/hcis-portfolio.html): problem, what was built, and result for each project
+- [EVA CTMS Archive case study](https://davidquintana.dev/eva-ctms-case-study.html): 10-stage local Python ETL pipeline; 9,925 clinical-trial documents, 6,830 patient records, 18% patient-ID mismatch caught before migration; zero PHI exposure
+- [Bilingual Patient Intake to FHIR R4](https://davidquintana.dev/intake-web-app.html): FastAPI + Pydantic v2 service returning a validated FHIR R4 Bundle; 80 tests, 100% coverage
+- [HL7 v2 Infectious Disease Parser](https://davidquintana.dev/hl7-parser.html): parses ORU^R01 lab messages, verifies LOINC codes, reports defects by HL7 location; 81 tests, 99% coverage
+- [Pediatric CDS Dosage Calculator](https://davidquintana.dev/pediatric-cds-calculator.html): weight-based dosing with a hard stop above the maximum dose; 58 tests, 100% coverage
+
+## Websites for small businesses
+- [Websites](https://davidquintana.dev/web-dev.html): bilingual small-business websites, examples and process
+- [Pricing](https://davidquintana.dev/pricing.html): package price ranges and ongoing costs
+
+## Contact
+- LinkedIn: https://www.linkedin.com/in/quintanadm95
+- GitHub: https://github.com/dquint32
+- Résumé: https://davidquintana.dev/resume.pdf

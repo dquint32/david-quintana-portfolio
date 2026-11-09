@@ -3,15 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>EVA CTMS Archive — Clinical Data ETL Pipeline | David Quintana</title>
-  <meta name="description" content="Case study: a local Python/pandas ETL pipeline that inventoried 9,925 clinical-trial documents, cleaned a 6,830-record patient database, and caught an 18% patient-ID integrity failure before migration — with zero PHI exposure.">
+  <title>Clinical Trial Data Migration (ETL) | David M. Quintana</title>
+  <meta name="description" content="How a local Python/pandas ETL pipeline sorted 9,925 clinical-trial documents, cleaned 6,830 patient records and caught an 18% ID mismatch before migration.">
   <link rel="canonical" href="https://davidquintana.dev/eva-ctms-case-study.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="David Quintana">
-  <meta property="og:title" content="EVA CTMS Archive — Clinical Data ETL Pipeline | David Quintana">
-  <meta property="og:description" content="Case study: a local Python/pandas ETL pipeline that inventoried 9,925 clinical-trial documents, cleaned a 6,830-record patient database, and caught an 18% patient-ID integrity failure before migration — with zero PHI exposure.">
+  <meta property="og:title" content="Clinical Trial Data Migration (ETL) | David M. Quintana">
+  <meta property="og:description" content="How a local Python/pandas ETL pipeline sorted 9,925 clinical-trial documents, cleaned 6,830 patient records and caught an 18% ID mismatch before migration.">
   <meta property="og:url" content="https://davidquintana.dev/eva-ctms-case-study.html">
   <meta property="og:image" content="https://davidquintana.dev/assets/img/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="David M. Quintana, Clinical Data Engineer in Denver, CO: Python ETL, HL7 v2, FHIR R4, HIPAA and ICH-GCP">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -30,6 +33,74 @@
     })();
   </script>
   <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://davidquintana.dev/eva-ctms-case-study.html#webpage",
+        "url": "https://davidquintana.dev/eva-ctms-case-study.html",
+        "name": "EVA CTMS Archive case study",
+        "isPartOf": {
+          "@id": "https://davidquintana.dev/#website"
+        },
+        "inLanguage": [
+          "en",
+          "es"
+        ]
+      },
+      {
+        "@type": "TechArticle",
+        "headline": "EVA CTMS Archive: clinical data ETL pipeline",
+        "url": "https://davidquintana.dev/eva-ctms-case-study.html",
+        "author": {
+          "@id": "https://davidquintana.dev/#person"
+        },
+        "inLanguage": [
+          "en",
+          "es"
+        ],
+        "about": [
+          "Clinical trial data migration",
+          "ETL pipeline",
+          "Data integrity validation",
+          "HIPAA",
+          "ICH-GCP",
+          "SharePoint"
+        ],
+        "description": "A 10-stage local Python/pandas ETL pipeline that inventoried 9,925 clinical-trial documents, cleaned 6,830 patient records and caught an 18% patient-ID mismatch before migration to SharePoint, with zero PHI exposure.",
+        "keywords": "Python, pandas, ETL, clinical trials, CTMS, data validation, SharePoint, HIPAA, ICH-GCP",
+        "isPartOf": {
+          "@id": "https://davidquintana.dev/eva-ctms-case-study.html#webpage"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://davidquintana.dev/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Work",
+            "item": "https://davidquintana.dev/hcis-portfolio.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "EVA CTMS Archive",
+            "item": "https://davidquintana.dev/eva-ctms-case-study.html"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 <a class="skip-link" href="#main"><span data-lang="en">Skip to main content</span><span data-lang="es" lang="es">Saltar al contenido principal</span></a>

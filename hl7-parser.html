@@ -3,15 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>HL7 v2.x Infectious Disease Parser | David Quintana</title>
-  <meta name="description" content="Case study: a Python + Pydantic v2 parser for HL7 v2 ORU lab messages that verifies LOINC codes, reports every defect by HL7 location, and summarizes nine infectious-disease categories. 81 tests.">
+  <title>HL7 v2 Lab Message Parser in Python | David M. Quintana</title>
+  <meta name="description" content="A Python and Pydantic v2 parser for HL7 v2 ORU lab results: verifies LOINC codes, pinpoints every defect by location, and summarizes 9 disease panels.">
   <link rel="canonical" href="https://davidquintana.dev/hl7-parser.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="David Quintana">
-  <meta property="og:title" content="HL7 v2.x Infectious Disease Parser | David Quintana">
-  <meta property="og:description" content="Case study: a Python + Pydantic v2 parser for HL7 v2 ORU lab messages that verifies LOINC codes, reports every defect by HL7 location, and summarizes nine infectious-disease categories. 81 tests.">
+  <meta property="og:title" content="HL7 v2 Lab Message Parser in Python | David M. Quintana">
+  <meta property="og:description" content="A Python and Pydantic v2 parser for HL7 v2 ORU lab results: verifies LOINC codes, pinpoints every defect by location, and summarizes 9 disease panels.">
   <meta property="og:url" content="https://davidquintana.dev/hl7-parser.html">
   <meta property="og:image" content="https://davidquintana.dev/assets/img/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="David M. Quintana, Clinical Data Engineer in Denver, CO: Python ETL, HL7 v2, FHIR R4, HIPAA and ICH-GCP">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -30,6 +33,64 @@
     })();
   </script>
   <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://davidquintana.dev/hl7-parser.html#webpage",
+        "url": "https://davidquintana.dev/hl7-parser.html",
+        "name": "HL7 v2.x Infectious Disease Parser case study",
+        "isPartOf": {
+          "@id": "https://davidquintana.dev/#website"
+        },
+        "inLanguage": [
+          "en",
+          "es"
+        ]
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "name": "HL7 v2.x Infectious Disease Parser",
+        "description": "Python and Pydantic v2 parser for HL7 v2 ORU^R01 lab messages that verifies LOINC codes and check digits, reports every defect by HL7 location, and summarizes nine infectious-disease categories. 81 tests, 99% coverage.",
+        "codeRepository": "https://github.com/dquint32/hl7-infectious-disease-parser",
+        "programmingLanguage": "Python",
+        "keywords": "HL7 v2, ORU^R01, LOINC, SNOMED CT, Pydantic, public health lab reporting",
+        "author": {
+          "@id": "https://davidquintana.dev/#person"
+        },
+        "creator": {
+          "@id": "https://davidquintana.dev/#person"
+        },
+        "url": "https://dquint32.github.io/hl7-infectious-disease-parser/"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://davidquintana.dev/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Work",
+            "item": "https://davidquintana.dev/hcis-portfolio.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "HL7 v2 Parser",
+            "item": "https://davidquintana.dev/hl7-parser.html"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 <a class="skip-link" href="#main"><span data-lang="en">Skip to main content</span><span data-lang="es" lang="es">Saltar al contenido principal</span></a>

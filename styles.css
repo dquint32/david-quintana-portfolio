@@ -739,3 +739,12 @@ tbody th { color: var(--accent); font-weight: 600; font-size: 0.95rem; white-spa
 .portrait figcaption .portrait-now { margin-top: var(--s2); padding: var(--s2) var(--s3); border-left: 3px solid var(--accent); background: var(--accent-soft); border-radius: 0 var(--radius) var(--radius) 0; font-weight: 500; color: var(--text); }
 .edu-icon { flex: none; display: grid; place-items: center; width: 64px; height: 64px; border-radius: var(--radius); background: var(--accent-soft); color: var(--accent); border: 1px solid var(--accent-line); }
 .edu-icon-svg { width: 32px; height: 32px; }
+
+/* "At a glance" fact list in About: one quotable fact per row (GEO) */
+.glance { margin-top: var(--s8); }
+.glance h3 { font-size: 1rem; margin-bottom: var(--s3); }
+.glance-list { border-top: 1px solid var(--border); font-size: 0.93rem; }
+.glance-list > div { display: grid; gap: 2px var(--s5); padding: var(--s2) 0; border-bottom: 1px solid var(--border); }
+@media (min-width: 640px) { .glance-list > div { grid-template-columns: 130px minmax(0, 1fr); } }
+.glance-list dt { font-weight: 600; color: var(--text); }
+.glance-list dd { margin: 0; color: var(--text-muted); }
